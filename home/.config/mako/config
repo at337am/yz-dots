@@ -1,0 +1,55 @@
+# 注意: mako 配置不支持行内注释!
+
+# 默认配置
+default-timeout=3000
+
+format=%s\n%b
+
+layer=overlay
+anchor=top-right
+
+font=Adwaita Sans SemiBold 12
+
+# 文字水平居中
+text-alignment=center
+
+width=300
+height=375
+margin=12
+padding=12
+border-size=2
+border-radius=4
+
+background-color=#F5F5F5f2
+border-color=#48CFCBf2
+text-color=#424242
+
+# 低优先级通知
+[urgency=low]
+default-timeout=1000
+anchor=center
+margin=360,0,0,0
+width=150
+
+# 重要通知
+[urgency=critical]
+background-color=#ff8282d9
+default-timeout=0
+
+# --- 需要覆盖配置的 app ---
+
+[app-name=microphone]
+width=120
+
+[app-name=clipboard]
+width=120
+
+# 测试:
+# makoctl reload && notify-send "测试标题" "这是一个简洁的直角风格通知"
+# notify-send -u low "低级通知" "这是一个低级通知"
+# notify-send -u critical "紧急！" "这是一个紧急通知"
+
+# 只有当 Firefox 发送的通知标题中包含 "Download" 时才触发
+# [app-name=Firefox summary="*Download*"]
+
+# 位置可选: top-right, top-center, top-left, bottom-right, bottom-center, bottom-left, center

@@ -1,0 +1,37 @@
+% find, fd, doc
+
+# 包含被忽略的文件 (--no-ignore)
+fd -I
+
+# 包含隐藏文件 (--hidden)
+fd -H
+
+# 不区分大小写 (--ignore-case)
+fd -i
+
+# 指定遍历深度 (--max-depth) 为 1
+fd -d 1
+
+
+
+% find, fd, mv
+
+# 给所有文件名加上前缀
+fd -IH -t f -x echo {} xxx_{/}
+
+# 修改所有文件名后缀
+fd -IH -e JPG -x echo {} {.}.jpg
+
+
+
+% find, fd, png
+
+# 查找所有 PNG 图像文件
+fd -IH -e png -x echo {}
+
+
+
+% find, fd, jpg
+
+# 查找所有 JPG 图像文件
+fd -IH -e jpg -x echo {}

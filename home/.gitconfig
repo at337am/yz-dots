@@ -1,0 +1,30 @@
+[init]
+    defaultBranch = main
+[user]
+    name = at337am
+    email = lueqit@gmail.com
+[alias]
+    st = status
+    lg = log --oneline --graph --decorate --all
+    sw = switch
+    br = branch
+    co = checkout
+    ci = commit
+    cm = commit -m
+    ca = commit --amend
+    wip = commit -m "WIP"
+    aa = !git add --all && git status -bs
+    aw = !git add --all && git commit -m "WIP"
+    ps = push origin main
+    count = rev-list --count HEAD
+    soft = reset --soft
+    rec = restore
+[core]
+    quotepath = false
+    editor = nvim
+[log]
+    date = iso
+[https]
+    proxy = http://127.0.0.1:2080
+[http]
+    proxy = http://127.0.0.1:2080

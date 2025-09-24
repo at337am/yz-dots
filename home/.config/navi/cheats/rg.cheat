@@ -1,0 +1,27 @@
+% grep, rg, doc
+
+# 包含被忽略的文件
+rg --no-ignore
+
+# 包含隐藏文件 (--hidden)
+rg -.
+
+# 不区分大小写 (--ignore-case)
+rg -i
+
+# 只列出匹配的文件名 (--files-with-matches)
+rg -l
+
+# 每个匹配结果单独占一行输出 (--only-matching)
+rg -o
+
+# 指定遍历深度为 1
+rg --max-depth 1
+
+
+
+% grep, rg, count
+
+# 统计某个文件中, 匹配的个数
+$ filename: fd --no-ignore --hidden --type f | fzf
+rg --no-ignore --hidden -o "https:" <filename> | wc -l

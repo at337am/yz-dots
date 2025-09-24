@@ -1,0 +1,53 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Google Sans Code", "0xProto Nerd Font Propo", "Noto Sans CJK SC";
+    font-size: 15px;
+    font-weight: 400;
+}
+
+window#waybar {
+    color: #e5e5e5;
+    background: rgba(46, 46, 46, 0.80);
+}
+
+#clock,
+#workspaces,
+#window,
+#tray,
+#pulseaudio,
+#backlight,
+#battery {
+    padding: 0 7.5px;
+}
+
+/* 工作区列表 */
+#workspaces {
+    margin: 4px 0;
+}
+#workspaces button {
+    padding: 0 15px;
+    color: #a6a6a6;
+}
+#workspaces button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+#workspaces button.active {
+    /* 当前的工作区 */
+    color: #e5e5e5;
+    background-color: #555555;
+}
+
+#battery {
+    color: #e5e5e5;
+}
+
+#battery.plugged {
+    color: #81E7AF;
+}
+
+/* 电量极低（危险状态）|| 电量低（警告状态）&& 未在充电 */
+#battery.warning:not(.plugged),
+#battery.critical:not(.plugged) {
+    color: #FF8282;
+}

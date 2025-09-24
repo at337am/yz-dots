@@ -1,0 +1,70 @@
+% misc, cowsay
+
+# 生成一句随机格言
+fortune | cowsay
+
+
+
+% misc, cmatrix
+
+# 彩虹雨
+cmatrix -r
+
+# 不同的颜色
+cmatrix -C red
+
+# 异步滚动
+cmatrix -C red -a
+
+
+
+% misc, wl-copy
+
+# 拷贝文件内容到剪贴板
+wl-copy < 1.txt
+
+
+
+% misc, watch
+
+# 监控当前目录下的文件变化, 新生成的文件会出现在最下面
+watch -d -n 1 'ls -lhrt'
+
+
+
+% misc, file
+
+# 检查文件的真实类型
+file a.mp4
+
+# 输出文件的 MIME 类型
+file -i a.mp4
+
+# 批量检查文件的类型
+file *
+
+
+
+% misc, tr
+
+# 去除多余的换行符
+tr -s '\n' < input.md > output.md
+
+
+
+% misc, uniq, sort
+
+# 去除重复行
+sort a.txt | uniq
+
+# 显示重复行
+sort a.txt | uniq -d
+
+# 显示重复行及次数
+sort a.txt | uniq -c | awk '$1>1'
+
+# 只显示未重复的行
+sort a.txt | uniq -u
+
+# 显示每行出现次数
+sort a.txt | uniq -c
