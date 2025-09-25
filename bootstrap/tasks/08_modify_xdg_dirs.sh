@@ -7,7 +7,7 @@ LC_ALL=C xdg-user-dirs-update --force
 CONFIG_FILE="$HOME/.config/user-dirs.dirs"
 
 if [[ ! -f "$CONFIG_FILE" ]]; then
-    echo "Error: 配置文件 '$CONFIG_FILE' 不存在"
+    echo "Error: Configuration file '$CONFIG_FILE' does not exist."
     exit 1
 fi
 
@@ -18,10 +18,10 @@ sed -i \
     "$CONFIG_FILE"
 
 if [[ $? -eq 0 ]]; then
-    echo "配置文件 '$CONFIG_FILE' 已成功更新"
+    echo "Configuration file '$CONFIG_FILE' successfully updated."
     command rm -rfv ~/Desktop ~/Templates ~/Public
     exit 0
 else
-    echo "Error: 文件更新失败"
+    echo "Error: File update failed."
     exit 1
 fi

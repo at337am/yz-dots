@@ -2,11 +2,11 @@
 
 set -e
 
-echo "设置 Flathub 仓库..."
+echo "Setting up Flathub repository..."
 
 flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-echo "开始安装..."
+echo "Starting installation..."
 
 flatpak install --user -y flathub \
     md.obsidian.Obsidian \

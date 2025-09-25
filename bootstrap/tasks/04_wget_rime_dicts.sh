@@ -8,16 +8,16 @@ if [[ -d "$HOME/.local/share/fcitx5/rime/en_dicts" ]]; then
     exit 0
 fi
 
-echo "开始拉取 rime 输入法词库..."
+echo "Starting download of Rime input dictionary..."
 
 wget -O ~/.local/share/fcitx5/rime/all_dicts.zip \
     https://github.com/iDvel/rime-ice/releases/latest/download/all_dicts.zip && \
 unzip ~/.local/share/fcitx5/rime/all_dicts.zip -d ~/.local/share/fcitx5/rime/
 
-echo "rime 输入法词库拉取完成"
+echo "Rime dictionary download complete."
 
-echo "清理临时文件..."
+echo "Cleaning up temporary files..."
 
 command rm -rfv ~/.local/share/fcitx5/rime/all_dicts.zip
 
-echo "临时文件清理完成"
+echo "Temporary file cleanup complete."
