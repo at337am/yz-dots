@@ -80,6 +80,7 @@ command rm -rfv ~/下载 ~/文档 ~/图片 ~/视频 ~/音乐 ~/模板 ~/公共 ~
 # ------------- 开发 todo -------------
 
 # 完成 xdg-user-dirs-update 脚本, 放到 tasks/gui 中
+# 定义可以重复执行的脚本, 实现 zsh, fcitx5 重置
 
 
 
