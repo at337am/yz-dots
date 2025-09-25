@@ -13,6 +13,7 @@ configs["mako"]="$HOME/.config/mako"
 configs["navi"]="$HOME/.config/navi"
 configs["kitty"]="$HOME/.config/kitty"
 configs["rime"]="$HOME/.local/share/fcitx5/rime"
+configs["yz-dots"]="$HOME/workspace/dev/yz-dots"
 
 config_choice=$(printf "%s\n" "${!configs[@]}" | rofi -dmenu -i -p "config" -theme ~/.config/rofi/themes/edit_config.rasi)
 

@@ -205,7 +205,7 @@ sudo dnf -y install \
     wev \
     wl-clipboard \
     dbus-daemon \
-    Thunar
+    langpacks-zh_CN
 
 echo "Hyprland 及相关软件包已安装完成"
 # -------------------------------- #
@@ -249,6 +249,8 @@ fi
 echo “开始清理无用软件包...”
 
 sudo dnf -y remove vim
+
+sudo dnf -y remove ccache
 
 sudo dnf -y autoremove
 
