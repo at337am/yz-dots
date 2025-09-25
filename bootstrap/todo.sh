@@ -59,7 +59,7 @@ command rm -rfv ~/Templates ~/Public ~/Desktop
 
 # 手动按顺序执行 tasks/gui 中的脚本
 
-# 脚本执行完成后, 解压 config_baks_for_linux.tar, 手动配置 GUI
+# 脚本执行完成后, 启动 GUI
 
 # ---------------- 流程 END ----------------
 
@@ -77,3 +77,5 @@ command rm -rfv ~/Templates ~/Public ~/Desktop
 
 # ------------- 启动 GUI 后 todo -------------
 fcitx5-configtool 设定输入法
+
+完成 config_baks_for_linux.tar 中的配置
