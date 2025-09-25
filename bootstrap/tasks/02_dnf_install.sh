@@ -4,7 +4,7 @@ set -euo pipefail
 
 # 检查是否需要跳过
 if rpm -q hyprland &>/dev/null; then
-    echo "此脚本不再重复执行, 跳过"
+    echo "Script will not run again, skipping."
     exit 0
 fi
 

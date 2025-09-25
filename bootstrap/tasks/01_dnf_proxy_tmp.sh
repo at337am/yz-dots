@@ -9,4 +9,4 @@ sudo tee "/etc/dnf/dnf.conf" > /dev/null <<EOF
 proxy=$http_proxy
 EOF
 
-echo "dnf 代理已设置"
+echo "DNF Proxy configured."
