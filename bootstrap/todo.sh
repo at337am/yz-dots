@@ -12,17 +12,7 @@ LANG=en_US.UTF-8 xdg-user-dirs-update --force
 
 cat ~/.config/user-dirs.dirs
 
-mv -n ~/下载/* ~/Downloads/
-mv -n ~/文档/* ~/Documents/
-mv -n ~/图片/* ~/Pictures/
-mv -n ~/视频/* ~/Videos/
-mv -n ~/音乐/* ~/Music/
-mv -n ~/模板/* ~/Templates/
-mv -n ~/公共/* ~/Public/
-mv -n ~/桌面/* ~/Desktop/
-
-command rm -rfv ~/下载 ~/文档 ~/图片 ~/视频 ~/音乐 ~/模板 ~/公共 ~/桌面
-
+command rm -rfv ~/Templates ~/Public ~/Desktop
 
 # 不需要: ~/Desktop, ~/Public, ~/Templates
 
@@ -85,4 +75,5 @@ command rm -rfv ~/下载 ~/文档 ~/图片 ~/视频 ~/音乐 ~/模板 ~/公共 ~
 
 
 
-# ------------- 测试 todo -------------
+# ------------- 启动 GUI 后 todo -------------
+fcitx5-configtool 设定输入法
