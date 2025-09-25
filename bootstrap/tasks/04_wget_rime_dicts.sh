@@ -8,10 +8,6 @@ if [[ -d "$HOME/.local/share/fcitx5/rime/en_dicts" ]]; then
     exit 0
 fi
 
-# proxy_run() {
-#     http_proxy=$http_proxy https_proxy=$https_proxy "$@"
-# }
-
 echo "开始拉取 rime 输入法词库..."
 
 wget -O ~/.local/share/fcitx5/rime/all_dicts.zip \
