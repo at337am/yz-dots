@@ -75,7 +75,7 @@ unpack_file_to_path() {
     echo "fonts 已到位"
 
     command rm -rf ~/.ssh
-    tar -zxf "$files_dir/ssh.tar" -C ~/
+    tar -xf "$files_dir/ssh.tar" -C ~/
     echo "ssh 已到位"
 
     tar -zxf "$files_dir/nekoray.tar.gz" -C /opt/soft/
