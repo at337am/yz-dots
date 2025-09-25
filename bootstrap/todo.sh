@@ -20,13 +20,11 @@ exit 0
 
 # 安装完 fedroa 系统后 (插网线或者连接 wifi )
 
-# 先设置代理环境
+# 先设置 dnf 代理: sudo vim /etc/dnf/dnf.conf, 或者执行脚本 gui/01_dnf_proxy.sh
 
 # 更新全部软件包 sudo dnf -y upgrade
 
 # 重启电脑
-
-# 再次设置代理环境
 
 # 使用 scp -r 上传 所有所需文件到 ~/ 目录下
 

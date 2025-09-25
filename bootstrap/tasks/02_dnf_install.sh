@@ -178,7 +178,8 @@ sudo dnf -y install \
     uv \
     yt-dlp \
     zsh \
-    obs-studio
+    obs-studio \
+    nano
 
 echo "常用软件包已安装完成"
 # -------------------------------- #
