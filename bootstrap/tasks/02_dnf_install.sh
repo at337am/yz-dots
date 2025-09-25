@@ -176,7 +176,9 @@ sudo dnf -y install \
     tmux \
     uv \
     yt-dlp \
-    zsh
+    zsh \
+    dolphin \
+    obs-studio
 
 echo "常用软件包已安装完成"
 # -------------------------------- #
@@ -203,7 +205,7 @@ sudo dnf -y install \
     waybar \
     wev \
     wl-clipboard \
-    xdg-user-dirs-update
+    dbus-daemon
 
 echo "Hyprland 及相关软件包已安装完成"
 # -------------------------------- #
