@@ -202,7 +202,8 @@ sudo dnf -y install \
     slurp \
     waybar \
     wev \
-    wl-clipboard
+    wl-clipboard \
+    xdg-user-dirs-update
 
 echo "Hyprland 及相关软件包已安装完成"
 # -------------------------------- #
