@@ -19,7 +19,7 @@ sed -i \
 
 if [[ $? -eq 0 ]]; then
     echo "配置文件 '$CONFIG_FILE' 已成功更新"
-    command rm -rfv ~/Templates ~/Public ~/Desktop
+    command rm -rfv ~/Desktop ~/Templates ~/Public
     exit 0
 else
     echo "Error: 文件更新失败"
