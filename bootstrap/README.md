@@ -25,12 +25,6 @@
 
 执行完成后都正常的话就可以重启进入 GUI 了
 
-启动 nekoray
-
-手动按顺序执行 tasks/gui 中的脚本
-
-脚本执行完成后, 启动 GUI
-
 # ---------------- 流程 END ----------------
 
 
@@ -45,6 +39,10 @@
 
 
 # ------------- 启动 GUI 后 todo -------------
+启动 nekoray
+
+手动按顺序执行 yz-dots/bootstrap/gui 中的脚本
+
 设定输入法 fcitx5-configtool
 
 完成 config_baks_for_linux.tar 中的配置
