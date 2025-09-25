@@ -66,6 +66,7 @@ fi
 
 enable_copr_repo "solopasha" "hyprland"
 enable_copr_repo "alternateved" "eza"
+enable_copr_repo "lihaohong" "yazi"
 
 # ------------------------------- REPO END -------------------------------
 
@@ -205,7 +206,8 @@ sudo dnf -y install \
     wev \
     wl-clipboard \
     dbus-daemon \
-    langpacks-zh_CN
+    langpacks-zh_CN \
+    yazi
 
 echo "Hyprland 及相关软件包已安装完成"
 # -------------------------------- #
