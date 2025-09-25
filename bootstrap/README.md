@@ -1,7 +1,3 @@
-#!/usr/bin/env bash
-
-exit 0
-
 # ---------------- 流程 START ----------------
 
 ## 准备工作:
@@ -16,25 +12,25 @@ exit 0
 
 ## 开始安装:
 
-# 安装完 fedroa 系统后 (插网线或者连接 wifi )
+安装完 fedroa 系统后 (插网线或者连接 wifi )
 
-# 先设置 dnf 代理: sudo vim /etc/dnf/dnf.conf, 或者执行脚本 gui/01_dnf_proxy.sh
+先设置 dnf 代理: sudo vim /etc/dnf/dnf.conf, 或者执行脚本 gui/01_dnf_proxy.sh
 
-# 更新全部软件包 sudo dnf -y upgrade
+更新全部软件包 sudo dnf -y upgrade
 
-# 重启电脑
+重启电脑
 
-# 使用 scp -r 上传 所有所需文件到 ~/ 目录下
+使用 scp -r 上传 所有所需文件到 ~/ 目录下
 
-# 就地解压 yz-dots, 然后执行 bootstrap.sh <代理地址>
+就地解压 yz-dots, 然后执行 bootstrap.sh <代理地址>
 
-# 执行完成后都正常的话就可以重启进入 GUI 了
+执行完成后都正常的话就可以重启进入 GUI 了
 
-# 启动 nekoray
+启动 nekoray
 
-# 手动按顺序执行 tasks/gui 中的脚本
+手动按顺序执行 tasks/gui 中的脚本
 
-# 脚本执行完成后, 启动 GUI
+脚本执行完成后, 启动 GUI
 
 # ---------------- 流程 END ----------------
 
