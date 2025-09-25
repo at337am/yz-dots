@@ -4,11 +4,11 @@ set -e
 
 echo "Setting up Flathub repository..."
 
-flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 echo "Starting installation..."
 
-flatpak install --user -y flathub \
+flatpak --user install -y flathub \
     md.obsidian.Obsidian \
     org.localsend.localsend_app \
     io.mgba.mGBA \

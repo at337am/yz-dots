@@ -11,6 +11,9 @@ if [[ ! -d "$DOTS_PATH" ]]; then
     exit 1
 fi
 
+command rm -rf ~/bin
+ln -sv "$DOTS_PATH/bin" ~/bin
+
 command rm -rf ~/.lain/lib/aliases.zsh
 ln -sv "$DOTS_PATH/.lain/lib/aliases.zsh" ~/.lain/lib/aliases.zsh
 
