@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-echo "开始克隆所有项目到指定位置..."
+echo "Starting cloning of all projects to specified locations..."
 
 git clone git@github.com:at337am/notes.git ~/Documents/notes
 
@@ -12,4 +12,4 @@ git clone git@github.com:at337am/skit.git ~/workspace/dev/skit
 
 git clone git@github.com:at337am/raindrop.git ~/workspace/dev/raindrop
 
-echo "项目克隆完成"
+echo "Project cloning complete."
