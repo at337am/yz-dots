@@ -8,14 +8,6 @@ if [[ -d "$HOME/.lain/themes/powerlevel10k" ]]; then
     exit 0
 fi
 
-command rm -rf ~/.p10k.zsh
-command rm -rf ~/.zshrc
-command rm -rf ~/.zsh_history
-command rm -rf ~/.zcompdump
-command rm -rf ~/.zprofile
-command rm -rf ~/.lain
-command rm -rf ~/.cache/p10k*
-
 # -------------------------------- #
 echo "开始同步所有配置..."
 
