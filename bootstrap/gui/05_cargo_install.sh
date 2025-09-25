@@ -2,14 +2,14 @@
 
 set -euo pipefail
 
-echo "开始安装 cargo-cache..."
+echo "Starting installation of cargo-cache..."
 
 cargo install cargo-cache
 
-echo "cargo-cache 已安装"
+echo "cargo-cache installed."
 
-echo "开始安装 xh..."
+echo "Starting installation of xh..."
 
 cargo install xh
 
-echo "xh 已安装"
+echo "xh installed."
