@@ -4,17 +4,14 @@ exit 0
 
 # ---------------- 流程 START ----------------
 
-# ## 注意事项: 安装完后检查是否误装 ffmpeg-free
-
-
 ## 准备工作:
-# pkgs/ssh.tar
-# pkgs/PFP.tar
-# pkgs/fonts.tar.gz
-# pkgs/nekoray.tar.gz
+- pkgs/ssh.tar
+- pkgs/PFP.tar
+- pkgs/fonts.tar.gz
+- pkgs/nekoray.tar.gz
 
-# yz-dots.tar.gz
-# config_baks_for_linux.tar
+- yz-dots.tar.gz
+- config_baks_for_linux.tar
 
 
 ## 开始安装:
@@ -53,6 +50,6 @@ exit 0
 
 
 # ------------- 启动 GUI 后 todo -------------
-fcitx5-configtool 设定输入法
+设定输入法 fcitx5-configtool
 
 完成 config_baks_for_linux.tar 中的配置
