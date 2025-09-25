@@ -72,14 +72,14 @@ unpack_file_to_path() {
     echo "解压所需文件到指定位置..."
 
     tar -zxf "$files_dir/fonts.tar.gz" -C ~/.local/share/
-    echo "fonts 已到位"
 
     command rm -rf ~/.ssh
     tar -xf "$files_dir/ssh.tar" -C ~/
-    echo "ssh 已到位"
+
+    mkdir -p ~/Pictures
+    tar -xf "$files_dir/PFP.tar" -C ~/Pictures
 
     tar -zxf "$files_dir/nekoray.tar.gz" -C /opt/soft/
-    echo "nekoray 已到位"
 
     echo "解压完成, 所有文件已到位"
 }

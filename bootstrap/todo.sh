@@ -9,6 +9,7 @@ exit 0
 
 ## 准备工作:
 # pkgs/ssh.tar
+# pkgs/PFP.tar
 # pkgs/fonts.tar.gz
 # pkgs/nekoray.tar.gz
 
