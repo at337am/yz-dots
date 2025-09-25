@@ -31,24 +31,24 @@ setup_basic() {
 
     echo "开始基础设置..."
 
-    echo "关闭防火墙..."
+    # 关闭防火墙
     sudo systemctl stop firewalld
     sudo systemctl disable firewalld
 
-    echo "设置硬件时钟为 UTC..."
+    # 设置硬件时钟为 UTC
     sudo timedatectl set-local-rtc '0'
 
-    echo "设置 sudo 过期时间为 60 分钟..."
+    # 设置 sudo 过期时间为 60 分钟
     echo 'Defaults    timestamp_timeout=60' | sudo tee -a /etc/sudoers
     echo 'Defaults    !tty_tickets' | sudo tee -a /etc/sudoers
 
-    echo "设置免密关机..."
+    # 设置免密关机
     echo "$(whoami) ALL=(ALL) NOPASSWD: /usr/sbin/shutdown" | sudo tee -a /etc/sudoers
 
-    echo "创建相关目录结构..."
-
+    # 创建相关目录结构
     mkdir -p ~/.config
     mkdir -p ~/.local/share
+    mkdir -p ~/Pictures
 
     sudo mkdir -p /workspace/dev /workspace/tmp
     sudo chown -R $(whoami):$(id -gn) /workspace
@@ -76,7 +76,6 @@ unpack_file_to_path() {
     command rm -rf ~/.ssh
     tar -xf "$files_dir/ssh.tar" -C ~/
 
-    mkdir -p ~/Pictures
     tar -xf "$files_dir/PFP.tar" -C ~/Pictures
 
     tar -zxf "$files_dir/nekoray.tar.gz" -C /opt/soft/
