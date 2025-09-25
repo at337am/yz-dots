@@ -3,7 +3,7 @@
 set -euo pipefail
 
 check_file_exists() {
-    echo "开始校验所需文件..."
+    echo "Verifying required files..."
 
     files=(
         "fonts.tar.gz"
@@ -20,16 +20,16 @@ check_file_exists() {
         fi
     done
 
-    echo "所需文件校验完成"
+    echo "Required files verification complete."
 }
 
 setup_basic() {
     if [[ -d "/opt/soft" ]]; then
-        echo "跳过: setup_basic()"
+        echo "Skipping: setup_basic()"
         return 0
     fi
 
-    echo "开始基础设置..."
+    echo "Starting basic setup..."
 
     # 关闭防火墙
     sudo systemctl stop firewalld
@@ -60,16 +60,16 @@ setup_basic() {
     sudo mkdir -p /opt/soft /opt/venvs
     sudo chown -R $(whoami):$(id -gn) /opt/soft /opt/venvs
 
-    echo "基础设置完成"
+    echo "Basic setup complete."
 }
 
 unpack_file_to_path() {
     if [[ -d "/opt/soft/nekoray" ]]; then
-        echo "跳过: unpack_file_to_path()"
+        echo "Skipping: unpack_file_to_path()"
         return 0
     fi
 
-    echo "解压所需文件到指定位置..."
+    echo "Unpacking required files to specified location..."
 
     tar -zxf "$files_dir/fonts.tar.gz" -C ~/.local/share/
 
@@ -80,7 +80,7 @@ unpack_file_to_path() {
 
     tar -zxf "$files_dir/nekoray.tar.gz" -C /opt/soft/
 
-    echo "解压完成, 所有文件已到位"
+    echo "Unpacking complete, all files are in place."
 }
 
 check_file_exists
