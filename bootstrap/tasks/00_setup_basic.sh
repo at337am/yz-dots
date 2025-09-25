@@ -15,7 +15,7 @@ check_file_exists() {
 
     for file in "${files[@]}"; do
         if [[ ! -f "$files_dir/$file" ]]; then
-            echo "Error: 所需文件不存在: $files_dir/$file"
+            echo "Error: Required file does not exist: $files_dir/$file"
             return 1
         fi
     done
