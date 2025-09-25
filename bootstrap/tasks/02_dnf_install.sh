@@ -177,7 +177,6 @@ sudo dnf -y install \
     uv \
     yt-dlp \
     zsh \
-    dolphin \
     obs-studio
 
 echo "常用软件包已安装完成"
