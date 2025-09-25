@@ -2,27 +2,6 @@
 
 exit 0
 
-# 测试 执行脚本
-./bootstrap.sh "http://192.168.9.130:2081" 2>&1 | tee ~/output.log
-
-
-# ------------ 修改 xdg-user-dirs-update 语言 START ------------
-
-LANG=en_US.UTF-8 xdg-user-dirs-update --force
-
-cat ~/.config/user-dirs.dirs
-
-command rm -rfv ~/Templates ~/Public ~/Desktop
-
-# 不需要: ~/Desktop, ~/Public, ~/Templates
-
-# ------------ 修改 xdg-user-dirs-update 语言 END ------------
-
-
-
-
-
-
 # ---------------- 流程 START ----------------
 
 # ## 注意事项: 安装完后检查是否误装 ffmpeg-free
