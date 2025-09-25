@@ -248,7 +248,7 @@ fi
 # -------------------------------- #
 echo “开始清理无用软件包...”
 
-sudo dnf -y remove vim
+sudo dnf -y remove vim-enhanced
 
 sudo dnf -y remove ccache
 
