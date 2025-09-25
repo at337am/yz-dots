@@ -55,4 +55,4 @@ ln -sv "$DOTS_PATH/.config/waybar" ~/.config/waybar
 command rm -rf ~/.config/yt-dlp
 ln -sv "$DOTS_PATH/.config/yt-dlp" ~/.config/yt-dlp
 
-echo "Configurations linked."
+echo "Symlinking complete."
