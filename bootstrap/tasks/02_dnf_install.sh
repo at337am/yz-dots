@@ -204,7 +204,8 @@ sudo dnf -y install \
     waybar \
     wev \
     wl-clipboard \
-    dbus-daemon
+    dbus-daemon \
+    Thunar
 
 echo "Hyprland 及相关软件包已安装完成"
 # -------------------------------- #
