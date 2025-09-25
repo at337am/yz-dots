@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-sudo rm -rf "/etc/dnf/dnf.conf"
+sudo rm -rfv "/etc/dnf/dnf.conf"
 
 sudo tee "/etc/dnf/dnf.conf" > /dev/null <<EOF
 [main]
