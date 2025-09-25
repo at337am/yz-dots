@@ -75,12 +75,12 @@
             "type": "disk",
             "key": "",
             "keyColor": "green"
-        },
-        "break",
-        {
-            "type": "colors",
-            "key": " ",
-            "symbol": "circle"
         }
+        // "break",
+        // {
+        //     "type": "colors",
+        //     "key": " ",
+        //     "symbol": "circle"
+        // }
     ]
 }
