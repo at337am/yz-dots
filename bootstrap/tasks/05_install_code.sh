@@ -5,7 +5,7 @@ set -euo pipefail
 # 检查是否需要跳过
 if rpm -q code &>/dev/null; then
     echo "Script will not run again, skipping."
-    exit 0
+    return 0
 fi
 
 echo "Importing Microsoft GPG key..."

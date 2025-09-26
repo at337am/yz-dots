@@ -5,7 +5,7 @@ set -euo pipefail
 # 检查是否需要跳过
 if [[ -d "$HOME/.lain/themes/powerlevel10k" ]]; then
     echo "Script will not run again, skipping."
-    exit 0
+    return 0
 fi
 
 # -------------------------------- #
@@ -19,7 +19,7 @@ SOURCE_PATH="$SCRIPT_DIR/../../home/"
 if [[ ! -d "$SOURCE_PATH" ]]; then
     echo "Error: Calculated source directory does not exist!"
     echo "Path: $SOURCE_PATH"
-    exit 1
+    return 1
 fi
 
 rsync -a "$SOURCE_PATH" ~/

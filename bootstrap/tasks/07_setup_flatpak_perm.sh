@@ -37,5 +37,3 @@ flatpak --user override org.telegram.desktop \
 
 flatpak --user override io.mgba.mGBA \
     --filesystem=/data
-
-exit 0

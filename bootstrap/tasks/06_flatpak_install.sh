@@ -14,5 +14,3 @@ flatpak --user install -y flathub \
     io.mgba.mGBA \
     io.github.ungoogled_software.ungoogled_chromium \
     org.telegram.desktop
-
-exit 0

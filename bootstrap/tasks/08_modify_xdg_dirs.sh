@@ -8,7 +8,7 @@ CONFIG_FILE="$HOME/.config/user-dirs.dirs"
 
 if [[ ! -f "$CONFIG_FILE" ]]; then
     echo "Error: Configuration file '$CONFIG_FILE' does not exist."
-    exit 1
+    return 1
 fi
 
 sed -i \
@@ -20,8 +20,8 @@ sed -i \
 if [[ $? -eq 0 ]]; then
     echo "Configuration file '$CONFIG_FILE' successfully updated."
     command rm -rfv ~/Desktop ~/Templates ~/Public
-    exit 0
+    return 0
 else
     echo "Error: File update failed."
-    exit 1
+    return 1
 fi

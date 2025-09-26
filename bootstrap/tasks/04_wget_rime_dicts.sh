@@ -5,7 +5,7 @@ set -euo pipefail
 # 检查是否需要跳过
 if [[ -d "$HOME/.local/share/fcitx5/rime/en_dicts" ]]; then
     echo "Script will not run again, skipping."
-    exit 0
+    return 0
 fi
 
 echo "Starting download of Rime input dictionary..."
