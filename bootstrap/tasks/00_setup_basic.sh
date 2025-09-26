@@ -2,26 +2,25 @@
 
 set -euo pipefail
 
-check_file_exists() {
-    echo "Verifying required files..."
+echo "Verifying required files..."
 
-    files=(
-        "fonts.tar.gz"
-        "nekoray.tar.gz"
-        "ssh.tar"
-    )
+files=(
+    "fonts.tar.gz"
+    "nekoray.tar.gz"
+    "ssh.tar"
+    "PFP.tar"
+)
 
-    files_dir="$HOME/pkgs"
+files_dir="$HOME/pkgs"
 
-    for file in "${files[@]}"; do
-        if [[ ! -f "$files_dir/$file" ]]; then
-            echo "Error: Required file does not exist: $files_dir/$file"
-            return 1
-        fi
-    done
+for file in "${files[@]}"; do
+    if [[ ! -f "$files_dir/$file" ]]; then
+        echo "Error: Required file does not exist: $files_dir/$file"
+        return 1
+    fi
+done
 
-    echo "Required files verification complete."
-}
+echo "Required files verification complete."
 
 setup_basic() {
     if [[ -d "/opt/soft" ]]; then
@@ -83,6 +82,5 @@ unpack_file_to_path() {
     echo "Unpacking complete, all files are in place."
 }
 
-check_file_exists
 setup_basic
 unpack_file_to_path
