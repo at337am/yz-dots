@@ -37,3 +37,5 @@ flatpak --user override org.telegram.desktop \
 
 flatpak --user override io.mgba.mGBA \
     --filesystem=/data
+
+echo "Flatpak app permissions have been set."

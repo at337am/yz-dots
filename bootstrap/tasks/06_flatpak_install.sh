@@ -14,3 +14,5 @@ flatpak --user install -y flathub \
     io.mgba.mGBA \
     io.github.ungoogled_software.ungoogled_chromium \
     org.telegram.desktop
+
+echo "Flatpak app installation complete."
