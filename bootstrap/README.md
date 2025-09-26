@@ -35,10 +35,30 @@
 
 
 # ---------------- 启动 GUI 后 todo ----------------
-启动 nekoray
+## 启动 nekoray
 
-手动按顺序执行 yz-dots/bootstrap/gui 中的脚本
+## 手动按顺序执行 yz-dots/bootstrap/gui 中的脚本
 
-设定输入法 fcitx5-configtool
+## 设定输入法
 
-完成 config_baks_for_linux.tar 中的配置
+```bash
+fcitx5-configtool
+```
+
+## 配置 obsidian 缩放
+
+复制 flatpak 应用的 .desktop 文件到 ~/.local/share/applications:
+
+```bash
+cp -L ~/.local/share/flatpak/exports/share/applications/* ~/.local/share/applications
+```
+
+解决缩放问题, obsidian.desktop:
+
+```desktop
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=obsidian.sh --file-forwarding md.obsidian.Obsidian --force-device-scale-factor=1.4 @@u %U @@
+```
+
+## 解压 config_baks_for_linux.tar, 完成配置
+
+完成 浏览器设置
