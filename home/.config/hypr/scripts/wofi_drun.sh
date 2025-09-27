@@ -5,4 +5,4 @@ if pgrep -x wofi > /dev/null; then
     exit 0
 fi
 
-wofi --show drun
+wofi --show drun > ~/Downloads/wofi_drun.log 2>&1
