@@ -20,7 +20,7 @@ flatpak --user override org.localsend.localsend_app \
     --filesystem=xdg-videos \
     --filesystem=xdg-pictures \
     --filesystem=xdg-documents \
-    --filesystem=~/workspace \
+    --filesystem="$HOME/workspace" \
     --filesystem=/workspace \
     --filesystem=/data
 
@@ -28,7 +28,7 @@ flatpak --user override io.github.ungoogled_software.ungoogled_chromium \
     --filesystem=xdg-videos \
     --filesystem=xdg-pictures \
     --filesystem=xdg-documents \
-    --filesystem=~/workspace \
+    --filesystem="$HOME/workspace" \
     --filesystem=/workspace \
     --filesystem=/data
 
@@ -37,7 +37,7 @@ flatpak --user override org.telegram.desktop \
     --filesystem=xdg-videos \
     --filesystem=xdg-pictures \
     --filesystem=xdg-documents \
-    --filesystem=~/workspace \
+    --filesystem="$HOME/workspace" \
     --filesystem=/workspace \
     --filesystem=/data
 
