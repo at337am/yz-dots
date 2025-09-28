@@ -1,9 +1,6 @@
 # 回收站目录路径
 TRASH_DIR="/data/.trash"
 
-# 关机时, 关闭程序的脚本路径
-KILL_APPS_SCRIPT="$HOME/.config/hypr/scripts/kill_apps.sh"
-
 # ------------
 #  rm
 # ------------
@@ -304,48 +301,6 @@ pack() {
 
   # 所有打包操作完成后, 返回总体状态, 0 表示全部成功, 非0表示至少有失败
   return "$pack_failed"
-}
-
-# ------------
-#  byebye
-# ------------
-
-# 执行关闭程序的脚本后, 启动倒计时并最终关机
-# --- 无参数 ---
-byebye() {
-  # 设定倒计时持续秒数
-  local countdown=3
-
-  # 检查关闭程序脚本是否存在, 缺失则报错并退出
-  if [[ ! -f "$KILL_APPS_SCRIPT" ]]; then
-    printf "Error: Oops! Can't find kill script: %s\n" "$KILL_APPS_SCRIPT" >&2
-    return 1
-  fi
-
-  # 提示用户程序即将关闭
-  printf "Time to bid farewell to running apps...\n"
-
-  # 执行关闭程序的脚本
-  sh "$KILL_APPS_SCRIPT"
-
-  # 脚本执行完成后, 通知用户所有程序已关闭
-  printf "All clear! Apps have left the building.\n"
-  # 通知用户倒计时开始, 并提示可通过 Ctrl+C 取消关机
-  printf "Going dark in %d seconds. Press Ctrl+C to stay alive.\n" "$countdown"
-
-  local i
-
-  # 逐秒倒计时显示剩余时间, 允许用户中断操作
-  for i in $(seq "$countdown" -1 1); do
-    printf "\rT-minus %d seconds... Ctrl+C to cancel." "$i"
-    sleep 1
-  done
-
-  # 倒计时结束后打印关机提示信息
-  printf "\nLights out! Dream of code and bugs.\n"
-
-  # 使用 sudo 权限执行系统关机命令, 立即关闭系统电源
-  sudo shutdown -h now
 }
 
 # ------------
