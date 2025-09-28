@@ -33,6 +33,12 @@ flatpak --user override io.github.ungoogled_software.ungoogled_chromium \
     --filesystem=/data
 
 flatpak --user override org.telegram.desktop \
+    --filesystem=xdg-download \
+    --filesystem=xdg-videos \
+    --filesystem=xdg-pictures \
+    --filesystem=xdg-documents \
+    --filesystem=~/workspace \
+    --filesystem=/workspace \
     --filesystem=/data
 
 flatpak --user override io.mgba.mGBA \
