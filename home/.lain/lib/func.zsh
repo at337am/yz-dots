@@ -304,14 +304,14 @@ pack() {
 }
 
 # ------------
-#  fcp
+#  cpf
 # ------------
 
 # 复制一个或多个文件/目录到剪贴板, 以便直接粘贴
 # --- 1 个或以上参数 ---
-fcp() {
+cpf() {
   if [[ "$#" -eq 0 ]]; then
-    printf "Usage: fcp <file1> [file2] ...\n" >&2
+    printf "Usage: cpf <file1> [file2] ...\n" >&2
     return 1
   fi
 
