@@ -347,3 +347,36 @@ byebye() {
   # 使用 sudo 权限执行系统关机命令, 立即关闭系统电源
   sudo shutdown -h now
 }
+
+# ------------
+#  fcp
+# ------------
+
+# 复制一个或多个文件/目录到剪贴板, 以便直接粘贴
+# --- 1 个或以上参数 ---
+fcp() {
+  if [[ "$#" -eq 0 ]]; then
+    printf "Usage: fcp <file1> [file2] ...\n" >&2
+    return 1
+  fi
+
+  local uri_list=""
+
+  for file in "$@"; do
+    # 检查文件或目录是否存在
+    if [[ ! -e "$file" ]]; then
+        printf "Error: '%s' not found.\n" "$file" >&2
+        continue
+    fi
+
+    # 获取文件的绝对路径
+    local real_path=$(realpath "$file")
+    uri_list="${uri_list}file://${real_path}\n"
+  done
+
+  if [[ -n "$uri_list" ]]; then
+    printf "$uri_list" | wl-copy --type text/uri-list
+    printf "Copied to clipboard:\n"
+    printf "$uri_list"
+  fi
+}
