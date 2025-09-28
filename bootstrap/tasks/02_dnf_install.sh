@@ -251,9 +251,10 @@ fi
 # -------------------------------- #
 echo "Starting cleanup of unused packages..."
 
-sudo dnf -y remove vim-enhanced
-
-sudo dnf -y remove ccache
+sudo dnf -y remove \
+    vim-enhanced \
+    ccache \
+    wofi
 
 sudo dnf -y autoremove
 
