@@ -55,6 +55,9 @@ ln -sv "$DOTS_PATH/.config/rofi" ~/.config/rofi
 command rm -rf ~/.config/waybar
 ln -sv "$DOTS_PATH/.config/waybar" ~/.config/waybar
 
+command rm -rf ~/.config/yazi
+ln -sv "$DOTS_PATH/.config/yazi" ~/.config/yazi
+
 command rm -rf ~/.config/yt-dlp
 ln -sv "$DOTS_PATH/.config/yt-dlp" ~/.config/yt-dlp
 
