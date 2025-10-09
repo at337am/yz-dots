@@ -118,7 +118,6 @@ Telegram	telegram
 
 
 LLM	llm
-AI	ai
 Go	go
 Golang	golang
 Gemini	gemini
