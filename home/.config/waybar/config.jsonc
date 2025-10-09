@@ -20,8 +20,8 @@
 
     "clock": {
         "tooltip": false,
-        "format": "{:%Y-%m-%d %H:%M}"
-        // "format": "{:%y%m%d %H:%M}"
+        // "format": "{:%Y-%m-%d %H:%M}"
+        "format": "{:%y%m%d %H:%M}"
     },
 
     // 工作区
