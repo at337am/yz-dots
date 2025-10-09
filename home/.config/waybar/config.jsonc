@@ -12,11 +12,16 @@
 
     // 时钟
     "custom/clock": {
-        "exec": "LC_TIME=en_US.UTF-8 date '+%a %b %-d %-I:%M %p'",
-        // "exec": "LC_TIME=en_US.UTF-8 date '+%a, %b %-d, %-I:%M%P'",
+        "tooltip": false,
         "interval": 60,
-        "tooltip": false
+        "exec": "LC_TIME=en_US.UTF-8 date '+%a %b %-d %-I:%M %p'"
+        // "exec": "LC_TIME=en_US.UTF-8 date '+%a, %b %-d, %-I:%M%P'"
     },
+
+    // "clock": {
+    //     "tooltip": false,
+    //     "format": "{:%m/%d %H:%M}"
+    // },
 
     // 工作区
     "hyprland/workspaces": {
