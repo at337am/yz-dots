@@ -93,6 +93,9 @@ Telegram	telegram
 不就	bujiu
 西兰花	xilanhua
 西兰花	xlh
+诡辩论	gbl
+诡辩论	guibianlun
+话术	huashu
 
 毛时期	msq
 毛时期	maoshiqi
