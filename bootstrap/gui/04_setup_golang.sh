@@ -2,17 +2,17 @@
 
 set -euo pipefail
 
-echo "开始配置 Go 环境..."
+echo "Starting Go environment configuration..."
 
 go env -w GO111MODULE=on
 go env -w GOPROXY=https://goproxy.cn,direct
 
-echo "Go 环境配置完成"
+echo "Go environment configuration complete."
 
-echo "准备安装 skit..."
+echo "Preparing to install skit..."
 
 if [[ ! -d "$HOME/workspace/dev/skit" ]]; then
-    echo "错误: skit 目录不存在!"
+    echo "Error: skit directory does not exist!"
     exit 1
 fi
 

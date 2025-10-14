@@ -37,3 +37,6 @@ vim.opt.smartcase = true        -- 如果搜索模式包含大写字母，则不
 vim.opt.updatetime = 300        -- 将光标停止后的更新时间缩短 (默认 4000ms)
 vim.opt.timeoutlen = 500        -- 映射超时时间缩短 (默认 1000ms)
 vim.opt.ttimeoutlen = 10        -- <Esc> 键序列的超时时间 (如果需要更快响应 Esc)
+
+-- [[ 背景透明 ]]
+vim.cmd('hi Normal guibg=NONE ctermbg=NONE')

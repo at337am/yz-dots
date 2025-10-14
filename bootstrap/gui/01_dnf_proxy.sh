@@ -9,4 +9,4 @@ sudo tee "/etc/dnf/dnf.conf" > /dev/null <<EOF
 proxy=http://127.0.0.1:2080
 EOF
 
-echo "dnf 代理已设置"
+echo "DNF Proxy configured."

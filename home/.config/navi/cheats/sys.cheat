@@ -32,7 +32,7 @@ uname -r
 % system, disk, lsblk
 
 # 查看当前挂载情况
-lsblk -f
+lsblk -f | bat -p -l conf
 
 
 
@@ -46,7 +46,7 @@ sudo fdisk -l
 % system, disk, df
 
 # 显示已挂载的文件系统的磁盘空间使用情况
-df -hT
+df -hT | bat -p -l conf
 
 
 

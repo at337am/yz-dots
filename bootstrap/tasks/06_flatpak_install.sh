@@ -2,17 +2,17 @@
 
 set -e
 
-echo "设置 Flathub 仓库..."
+echo "Setting up Flathub repository..."
 
-flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-echo "开始安装..."
+echo "Starting installation..."
 
-flatpak install --user -y flathub \
+flatpak --user install -y flathub \
     md.obsidian.Obsidian \
     org.localsend.localsend_app \
     io.mgba.mGBA \
     io.github.ungoogled_software.ungoogled_chromium \
     org.telegram.desktop
 
-exit 0
+echo "Flatpak app installation complete."

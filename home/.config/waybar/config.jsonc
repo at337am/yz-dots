@@ -11,9 +11,17 @@
     "modules-right": ["tray", "pulseaudio", "backlight", "battery"],
 
     // 时钟
+    // "custom/clock": {
+    //     "tooltip": false,
+    //     "interval": 60,
+    //     "exec": "LC_TIME=en_US.UTF-8 date '+%a %b %-d %-I:%M %p'"
+    //     // "exec": "LC_TIME=en_US.UTF-8 date '+%a, %b %-d, %-I:%M%P'"
+    // },
+
     "clock": {
         "tooltip": false,
-        "format": "{:%a, %b %d %H:%M}"
+        // "format": "{:%Y-%m-%d %H:%M}"
+        "format": "{:%y%m%d %H:%M}"
     },
 
     // 工作区

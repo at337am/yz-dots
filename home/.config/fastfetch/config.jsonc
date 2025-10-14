@@ -34,11 +34,6 @@
             "key": "",
             "keyColor": "blue"
         },
-        {
-            "type": "uptime",
-            "key": "󱫞",
-            "keyColor": "blue"
-        },
         "break",
         {
             "type": "terminal",
@@ -51,18 +46,13 @@
             "keyColor": "magenta"
         },
         {
-            "type": "de",
+            "type": "wm",
             "key": "󱢅",
             "keyColor": "magenta"
         },
         {
-            "type": "wm",
-            "key": "󰿘",
-            "keyColor": "magenta"
-        },
-        {
-            "type": "battery",
-            "key": "",
+            "type": "uptime",
+            "key": "󱫞",
             "keyColor": "magenta"
         },
         "break",
@@ -82,21 +72,15 @@
             "keyColor": "green"
         },
         {
-            "type": "swap",
-            "key": "󰓡",
-            "keyColor": "green"
-
-        },
-        {
             "type": "disk",
             "key": "",
             "keyColor": "green"
-        },
-        "break",
-        {
-            "type": "colors",
-            "key": " ",
-            "symbol": "circle"
         }
+        // "break",
+        // {
+        //     "type": "colors",
+        //     "key": " ",
+        //     "symbol": "circle"
+        // }
     ]
 }

@@ -4,8 +4,8 @@ set -euo pipefail
 
 # 检查是否需要跳过
 if rpm -q hyprland &>/dev/null; then
-    echo "此脚本不再重复执行, 跳过"
-    exit 0
+    echo "Script will not run again, skipping."
+    return 0
 fi
 
 enable_copr_repo() {
@@ -14,13 +14,13 @@ enable_copr_repo() {
     local repo_pattern="${repo_owner}:${repo_project}" # 例如 "solopasha:hyprland"
 
     if dnf repolist | grep -q "$repo_pattern"; then
-        echo "${repo_pattern} 的 copr 仓库已启用, 跳过"
+        echo "COPR repository for ${repo_pattern} is already enabled, skipping."
     else
-        echo "正在启用 ${repo_pattern} 的 copr 仓库..."
+        echo "Enabling COPR repository for ${repo_pattern}..."
         if sudo dnf -y copr enable "${repo_owner}/${repo_project}"; then
-            echo "${repo_pattern} 的 copr 仓库已启用成功"
+            echo "COPR repository for ${repo_pattern} successfully enabled."
         else
-            echo "Error: 启用 ${repo_pattern} 的 copr 仓库失败!"
+            echo "Error: Failed to enable COPR repository for ${repo_pattern}!"
             return 1
         fi        
     fi
@@ -29,11 +29,11 @@ enable_copr_repo() {
 
 
 # -------------------------------- #
-echo “开始清理无用软件包...”
+echo "Starting cleanup of unused packages..."
 
 sudo dnf -y autoremove
 
-echo “无用软件包清理完成”
+echo "Unused package cleanup complete."
 # -------------------------------- #
 
 
@@ -43,9 +43,9 @@ echo “无用软件包清理完成”
 # 更多镜像地址: https://mirrors.rpmfusion.org/mm/publiclist
 
 if dnf repolist | grep -q "rpmfusion-free" && dnf repolist | grep -q "rpmfusion-nonfree"; then
-    echo "RPM Fusion 仓库已启用，跳过安装"
+    echo "RPM Fusion repositories already enabled, skipping."
 else
-    echo "开始安装 RPM Fusion 仓库..."
+    echo "Installing RPM Fusion repositories..."
 
     sudo dnf -y install \
         "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm" \
@@ -61,53 +61,54 @@ else
     #     "https://mirror.math.princeton.edu/pub/rpmfusion/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm" \
     #     "https://mirror.math.princeton.edu/pub/rpmfusion/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm"
 
-    echo "RPM Fusion 仓库已安装"
+    echo "RPM Fusion repositories successfully installed."
 fi
 
 enable_copr_repo "solopasha" "hyprland"
 enable_copr_repo "alternateved" "eza"
+enable_copr_repo "lihaohong" "yazi"
 
 # ------------------------------- REPO END -------------------------------
 
 
 
-echo "正在更新 DNF 缓存..."
+echo "Updating DNF metadata cache..."
 
 sudo dnf makecache
 
-echo "所有仓库已准备就绪"
+echo "All repositories are ready."
 
 
 
 # ------------------------------- INSTALL START -------------------------------
 # -------------------------------- #
-echo "开始安装基础软件组..."
+echo "Starting installation of base software group..."
 
 sudo dnf -y group install \
     "c-development" \
     "development-tools" \
     "multimedia"
 
-echo "基础软件组已安装完成"
+echo "Base software group installation complete."
 # -------------------------------- #
 
 
 
 # -------------------------------- #
-echo "开始卸载不需要的 libva-intel-media-driver..."
+echo "Removing redundant libva-intel-media-driver..."
 
 # 因为上面 multimedia 安装了旧的 libva-intel-media-driver
 # 需要先删除, 下面会安装新的 intel-media-driver 以适应 Intel 5 代以上的机型
 # 参考: https://github.com/devangshekhawat/Fedora-42-Post-Install-Guide?tab=readme-ov-file#hw-video-decoding-with-va-api
 sudo dnf -y remove libva-intel-media-driver
 
-echo "已卸载: libva-intel-media-driver"
+echo "Removed: libva-intel-media-driver"
 # -------------------------------- #
 
 
 
 # -------------------------------- #
-echo "开始安装图形与硬件加速相关的软件包..."
+echo "Installing graphics and hardware acceleration packages..."
 
 sudo dnf -y install \
     glx-utils \
@@ -117,13 +118,13 @@ sudo dnf -y install \
     mesa-vdpau-drivers \
     vulkan-tools
 
-echo "图形与硬件加速相关的软件包已安装完成"
+echo "Graphics and acceleration packages installed."
 # -------------------------------- #
 
 
 
 # -------------------------------- #
-echo "开始安装字体和鼠标指针主题..."
+echo "Installing fonts and cursor themes..."
 
 sudo dnf -y install \
     adwaita-sans-fonts.noarch \
@@ -131,13 +132,13 @@ sudo dnf -y install \
     google-noto-color-emoji-fonts \
     google-noto-sans-cjk-vf-fonts
 
-echo "字体和鼠标指针主题已安装完成"
+echo "Fonts and cursor themes installed."
 # -------------------------------- #
 
 
 
 # -------------------------------- #
-echo "开始安装常用软件包..."
+echo "Installing common packages..."
 
 sudo dnf -y install \
     adb \
@@ -176,15 +177,17 @@ sudo dnf -y install \
     tmux \
     uv \
     yt-dlp \
-    zsh
+    zsh \
+    obs-studio \
+    nano
 
-echo "常用软件包已安装完成"
+echo "Common packages installed."
 # -------------------------------- #
 
 
 
 # -------------------------------- #
-echo "开始安装 Hyprland 及相关软件包..."
+echo "Installing Hyprland and related packages..."
 
 sudo dnf -y install \
     cliphist \
@@ -202,40 +205,46 @@ sudo dnf -y install \
     slurp \
     waybar \
     wev \
-    wl-clipboard
+    wl-clipboard \
+    dbus-daemon \
+    langpacks-zh_CN \
+    yazi \
+    zathura \
+    zathura-plugins-all \
+    qalculate
 
-echo "Hyprland 及相关软件包已安装完成"
+echo "Hyprland and related packages installed."
 # -------------------------------- #
 
 
 
 # -------------------------------- #
-echo "开始安装 ACPI 事件守护进程和电源配置服务..."
+echo "Installing ACPI event daemon and power services..."
 
 sudo dnf -y install \
     acpid \
     power-profiles-daemon
 
-echo "ACPI 事件守护进程和电源配置服务已安装完成"
+echo "ACPI daemon and power services installed."
 # -------------------------------- #
 
 
 
 # -------------------------------- #
-echo “开始启用 ACPI 事件守护进程和电源配置服务...”
+echo "Enabling ACPI event daemon and power services..."
 
 if systemctl is-enabled --quiet power-profiles-daemon.service; then
-    echo "power-profiles-daemon.service 已启用, 跳过"
+    echo "power-profiles-daemon.service already enabled, skipping."
 else
     sudo systemctl enable --now power-profiles-daemon.service
-    echo "power-profiles-daemon.service 已启用"
+    echo "power-profiles-daemon.service enabled."
 fi
 
 if systemctl is-enabled --quiet acpid.service; then
-    echo "acpid.service 已启用, 跳过"
+    echo "acpid.service already enabled, skipping."
 else
     sudo systemctl enable --now acpid.service
-    echo "acpid.service 已启用"
+    echo "acpid.service enabled."
 fi
 # -------------------------------- #
 # ------------------------------- INSTALL END -------------------------------
@@ -243,11 +252,14 @@ fi
 
 
 # -------------------------------- #
-echo “开始清理无用软件包...”
+echo "Starting cleanup of unused packages..."
 
-sudo dnf -y remove vim
+sudo dnf -y remove \
+    vim-enhanced \
+    ccache \
+    wofi
 
 sudo dnf -y autoremove
 
-echo “无用软件包清理完成”
+echo "Unused package cleanup complete."
 # -------------------------------- #

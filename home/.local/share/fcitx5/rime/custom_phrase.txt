@@ -87,7 +87,21 @@ Telegram	telegram
 脚本	jb
 软件包	rjb
 有没有	ymy
-
+备份	beifen
+备份	beifeng
+备份	bf
+不就	bujiu
+西兰花	xilanhua
+西兰花	xlh
+诡辩论	gbl
+诡辩论	guibianlun
+话术	huashu
+克重	kezhong
+平替	pinti
+全键热插拔	quanjianrechaba
+全键	quanjian
+热插拔	rechaba
+高达	gaoda
 
 毛时期	msq
 毛时期	maoshiqi
@@ -107,13 +121,36 @@ Telegram	telegram
 《红太阳是怎样升起的：延安整风的来龙去脉》	hty
 《红太阳是怎样升起的：延安整风的来龙去脉》	htyszysqd
 《红太阳是怎样升起的：延安整风的来龙去脉》	hongtaiyangshizenyangshengqide
+习明泽	xmz
+习明泽	ximinze
+习明泽	ximingze
+习近平	xjp
+习近平	xijinpin
+习近平	xijingpin
+习近平	xijinping
+习近平	xijingping
+毛泽东	mzd
+毛泽东	maozedong
+毛泽东	maozedon
+李克强	likeqiang
+邓小平	dxp
+邓小平	dengxiaopin
+邓小平	dengxiaoping
+江泽民	jzm
+江泽民	jiangzemin
+江泽民	jiangzeming
+王沪宁	wanghunin
+王沪宁	wanghuning
+韩正	hanzhen
+韩正	hanzheng
+
+
 
 
 
 
 
 LLM	llm
-AI	ai
 Go	go
 Golang	golang
 Gemini	gemini

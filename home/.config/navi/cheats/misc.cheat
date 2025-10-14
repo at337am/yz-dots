@@ -68,3 +68,10 @@ sort a.txt | uniq -u
 
 # 显示每行出现次数
 sort a.txt | uniq -c
+
+
+
+% misc, at
+
+# 10 分钟后响铃
+echo "paplay /usr/share/sounds/freedesktop/stereo/complete.oga" | at now + 10 minutes
