@@ -43,7 +43,7 @@ Telegram	telegram
 会发生	huifashen
 会发生什么	hfssm
 高亮	gaoliang
-奇数	jishu
+技术	jishu
 偶数	oushu
 上面	smian
 上面	smia
