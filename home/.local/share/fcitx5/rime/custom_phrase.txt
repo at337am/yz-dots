@@ -106,6 +106,9 @@ Telegram	telegram
 快捷键	kuaijiejian
 快捷键	kuajiejian
 快捷键	kjj
+狼蛛	langzhu
+狼途	langtu
+铝坨坨	lvtuotuo
 
 毛时期	msq
 毛时期	maoshiqi
@@ -150,6 +153,8 @@ Telegram	telegram
 
 
 
+
+李知恩	lizhien
 
 
 
