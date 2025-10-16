@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if pgrep -x slurp > /dev/null; then
+    pkill -x slurp
+    exit 0
+fi
+
 output_dir="$HOME/Pictures/Screenshots"
 
 mkdir -p "$output_dir"
