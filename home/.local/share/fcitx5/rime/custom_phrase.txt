@@ -103,6 +103,9 @@ Telegram	telegram
 热插拔	rechaba
 高达	gaoda
 误触率	wuchulv
+快捷键	kuaijiejian
+快捷键	kuajiejian
+快捷键	kjj
 
 毛时期	msq
 毛时期	maoshiqi
