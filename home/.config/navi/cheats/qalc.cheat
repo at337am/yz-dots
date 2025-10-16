@@ -1,7 +1,7 @@
 % qalc
 
 # 更新汇率 (-e)
-qalc --exrates
+qalc -exrates
 
 
 
