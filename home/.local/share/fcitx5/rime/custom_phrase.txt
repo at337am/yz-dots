@@ -128,6 +128,13 @@ Telegram	telegram
 沪上阿姨	hushangayi
 奈雪的茶	naixuedecha
 奈雪	naixue
+瑞幸	ruixin
+瑞幸	ruixing
+星巴克	xinbake
+星巴克	xingbake
+星巴克	xbk
+
+
 
 
 
