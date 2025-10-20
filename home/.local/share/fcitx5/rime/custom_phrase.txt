@@ -200,3 +200,21 @@ code	code
 todo	todo
 Hyprland	hyprland
 Hyprland	hypr
+
+
+
+
+，	douhao
+。	juhao
+。	jvhao
+；	fenhao
+；	fenghao
+：	maohao
+！	gantanhao
+！	tanhao
+！	gth
+？	wenhao
+？	wenghao
+《》	shuminhao
+《》	shuminghao
+《》	smh	
