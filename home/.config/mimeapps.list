@@ -1,0 +1,12 @@
+[Default Applications]
+image/png=qimgv.desktop
+image/gif=qimgv.desktop
+image/jpeg=qimgv.desktop
+text/html=io.github.ungoogled_software.ungoogled_chromium.desktop
+video/mp4=mpv.desktop
+application/pdf=org.pwmt.zathura.desktop
+
+[Added Associations]
+image/jpeg=qimgv.desktop;
+image/png=qimgv.desktop;
+image/gif=qimgv.desktop;
