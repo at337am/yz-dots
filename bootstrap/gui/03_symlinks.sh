@@ -61,4 +61,7 @@ ln -sv "$DOTS_PATH/.config/yazi" ~/.config/yazi
 command rm -rf ~/.config/yt-dlp
 ln -sv "$DOTS_PATH/.config/yt-dlp" ~/.config/yt-dlp
 
+command rm -rf ~/.config/mimeapps.list
+ln -sv "$DOTS_PATH/.config/mimeapps.list" ~/.config/mimeapps.list
+
 echo "Symlinking complete."
