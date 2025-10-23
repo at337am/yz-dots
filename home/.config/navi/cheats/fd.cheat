@@ -38,7 +38,10 @@ fd -IH -e jpg -x echo {}
 
 
 
-% fd, find, for
+% fd, find, count
 
-# 统计 - 当前路径下 - 每个目录的子文件数量
+# 统计 - 当前路径下 - 每个子目录的子文件数量
 for dir in */; do echo -n "$dir: "; fd . "$dir" -t f | wc -l; done
+
+# 统计 - 当前路径下 - 所有子文件的数量
+fd . -t f | wc -l
