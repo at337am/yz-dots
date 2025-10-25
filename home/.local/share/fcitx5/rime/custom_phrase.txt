@@ -133,6 +133,9 @@ Telegram	telegram
 星巴克	xinbake
 星巴克	xingbake
 星巴克	xbk
+悠悠球	yyq
+悠悠球	youyouqiu
+悠悠球	yoyoqiu
 
 
 
