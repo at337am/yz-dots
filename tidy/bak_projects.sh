@@ -37,4 +37,4 @@ bak_notes
 bak_memos
 bak_dev
 
-printf "✅ projects 备份完成\n"
+printf "\nOK, Projects backup completed!\n"
