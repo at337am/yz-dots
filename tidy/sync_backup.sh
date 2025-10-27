@@ -26,4 +26,4 @@ sync_projects() {
 sync_docs
 sync_projects
 
-printf "\nOK, Synchronization completed!\n"
+printf "\nOK, Sync backup’s done!\n"
