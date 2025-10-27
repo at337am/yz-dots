@@ -9,7 +9,6 @@ sync_docs() {
         --delete \
         --delete-excluded \
         --exclude='*/.git' \
-        --exclude='*/.gitignore' \
         --exclude='notes/.obsidian' \
         "$HOME/Documents/" \
         "$target_dir/docs/"
