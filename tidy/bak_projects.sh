@@ -1,40 +1,30 @@
 #!/usr/bin/env bash
 
-bak_dir="/data/bak/projects"
+target_dir="/data/bak/syncs"
 
-mkdir -p "$bak_dir"
+mkdir -p "$target_dir"
 
-bak_notes() {
+sync_docs() {
     rsync -avh \
         --delete \
         --delete-excluded \
-        --exclude='.git' \
-        --exclude='.gitignore' \
-        --exclude='.obsidian' \
-        "$HOME/Documents/notes/" \
-        "$bak_dir/notes/"
+        --exclude='*/.git' \
+        --exclude='*/.gitignore' \
+        --exclude='notes/.obsidian' \
+        "$HOME/Documents/" \
+        "$target_dir/docs/"
 }
 
-bak_memos() {
-    rsync -avh \
-        --delete \
-        --delete-excluded \
-        --exclude='.git' \
-        "$HOME/Documents/memos/" \
-        "$bak_dir/memos/"
-}
-
-bak_dev() {
+sync_projects() {
     rsync -avh \
         --delete \
         --delete-excluded \
         --exclude='*/.git' \
         "$HOME/workspace/dev/" \
-        "$bak_dir/dev/"
+        "$target_dir/projects/"
 }
 
-bak_notes
-bak_memos
-bak_dev
+sync_docs
+sync_projects
 
-printf "\nOK, Projects backup completed!\n"
+printf "\nOK, Synchronization completed!\n"
