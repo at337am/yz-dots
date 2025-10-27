@@ -213,7 +213,8 @@ sudo dnf -y install \
     zathura \
     zathura-plugins-all \
     qalculate \
-    mediainfo
+    mediainfo \
+    pwgen
 
 echo "Hyprland and related packages installed."
 # -------------------------------- #
