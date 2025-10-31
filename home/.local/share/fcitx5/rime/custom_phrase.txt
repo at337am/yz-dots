@@ -139,7 +139,13 @@ Telegram	telegram
 名字	minzi
 名字	mingzi
 名字	mz
-
+前调	qiandiao
+中调	zhongdiao
+后调	houdiao
+蒂普提克	diputike
+宝格丽	baogeli
+古驰	guchi
+芦丹氏	ludanshi
 
 
 
