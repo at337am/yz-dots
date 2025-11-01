@@ -32,7 +32,7 @@ uname -r
 % system, disk, lsblk
 
 # 查看当前挂载情况
-lsblk -f | bat -p -l conf
+lsblk -fp | bat -p -l conf
 
 
 
