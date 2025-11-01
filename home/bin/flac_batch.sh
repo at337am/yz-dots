@@ -21,8 +21,8 @@ if [[ ! -d "$TARGET_DIR" ]]; then
     exit 1
 fi
 
-tmp_dir="tmp_flac_batch"
-mkdir -p "$tmp_dir"
+tmp_dir=$(mktemp -d)
+trap 'command rm -rf "$tmp_dir"' EXIT
 
 fd -HIi -e zip . "$TARGET_DIR" -x unzip {} -d "$tmp_dir/{/.}"
 
@@ -62,5 +62,3 @@ mkdir -p flac_batch_result
 
 fd -HIi -e flac . "$tmp_dir" -x \
     bash -c 'merge_flac_metadata "{}" "{.}.jpg" "{.}.lrc" "flac_batch_result/{/.}.flac"'
-
-command rm -rf "$tmp_dir"
