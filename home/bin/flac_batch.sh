@@ -26,7 +26,7 @@ mkdir -p "$tmp_dir"
 
 fd -HIi -e zip . "$TARGET_DIR" -x unzip {} -d "$tmp_dir/{/.}"
 
-printf "解压完成\n"
+printf "目录解压完毕\n"
 
 merge_flac_metadata() {
     local audio_file="$1"
