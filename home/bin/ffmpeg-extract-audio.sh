@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+# 检查所需依赖
+dependencies=("ffmpeg" "ffprobe")
+for cmd in "${dependencies[@]}"; do
+    if ! command -v "$cmd" &> /dev/null; then
+        printf "Error: 缺少依赖命令: %s\n" "$cmd" >&2
+        exit 1
+    fi
+done
+
 if [[ "$#" -ne 1 ]]; then
     printf "参数错误\n" >&2
     printf "用法: %s <视频文件>\n" "ffmpeg-extract-audio.sh" >&2
