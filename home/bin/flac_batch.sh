@@ -10,7 +10,7 @@ done
 
 if [[ "$#" -ne 1 ]]; then
     printf "参数错误\n" >&2
-    printf "用法: %s <目录>\n" "flac_batch.sh" >&2
+    printf "用法: %s <目录路径>\n" "flac_batch.sh" >&2
     exit 1
 fi
 
@@ -60,7 +60,11 @@ export -f merge_flac_metadata
 
 mkdir -p flac_batch_result
 
-fd -HIi -e flac . "$tmp_dir" -x \
+if fd -HIi -e flac . "$tmp_dir" -x \
     bash -c 'merge_flac_metadata "{}" "{.}.jpg" "{.}.lrc" "flac_batch_result/{/.}.flac"'
-
-printf "所有 flac 都已处理完成\n"
+then
+    printf "所有 flac 都已处理完成\n"
+else
+    printf "Error: 处理 flac 文件时发生错误\n" >&2
+    exit 1
+fi
