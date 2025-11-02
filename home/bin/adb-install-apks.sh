@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# 检查所需依赖
+if ! command -v adb &> /dev/null; then
+    printf "Error: 缺少依赖命令: adb\n" >&2
+    exit 1
+fi
+
 success=0
 fail=0
 

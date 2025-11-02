@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-# 检查依赖
-for cmd in fd unzip magick ffmpeg; do
+# 检查所需依赖
+dependencies=("ffmpeg" "magick" "fd" "unzip")
+for cmd in "${dependencies[@]}"; do
     if ! command -v "$cmd" &> /dev/null; then
         printf "Error: 缺少依赖命令: %s\n" "$cmd" >&2
         exit 1
