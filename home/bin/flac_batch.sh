@@ -62,3 +62,5 @@ mkdir -p flac_batch_result
 
 fd -HIi -e flac . "$tmp_dir" -x \
     bash -c 'merge_flac_metadata "{}" "{.}.jpg" "{.}.lrc" "flac_batch_result/{/.}.flac"'
+
+printf "所有 flac 都已处理完成\n"

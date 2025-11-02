@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if ! command -v ffmpeg &> /dev/null; then
+if ! command -v "ffmpeg" &> /dev/null; then
     printf "Error: 缺少依赖命令: ffmpeg\n" >&2
     exit 1
 fi
