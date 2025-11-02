@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-# 检查所需依赖
 if ! command -v ffmpeg &> /dev/null; then
     printf "Error: 缺少依赖命令: ffmpeg\n" >&2
     exit 1

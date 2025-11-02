@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if ! command -v git &> /dev/null; then
+    printf "Error: 缺少依赖命令: git\n" >&2
+    exit 1
+fi
+
 PROJECT_PATHS=(
     "$HOME/Documents/notes"
     "$HOME/workspace/dev/yz-dots"

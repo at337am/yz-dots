@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-# 检查所需依赖
 dependencies=("ffmpeg" "magick" "fd" "unzip")
 for cmd in "${dependencies[@]}"; do
     if ! command -v "$cmd" &> /dev/null; then

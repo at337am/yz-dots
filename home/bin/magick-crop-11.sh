@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if ! command -v magick &> /dev/null; then
+    printf "Error: 缺少依赖命令: magick\n" >&2
+    exit 1
+fi
+
 if [[ "$#" -ne 1 ]]; then
     printf "参数错误\n" >&2
     printf "用法: %s <图像文件>\n" "magick-crop-11.sh" >&2
