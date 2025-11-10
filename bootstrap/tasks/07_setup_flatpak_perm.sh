@@ -14,7 +14,7 @@ flatpak --user override --reset org.telegram.desktop
 flatpak --user override --reset io.mgba.mGBA
 
 # 2. 设置权限
-flatpak --user override md.obsidian.Obsidian --env=GTK_IM_MODULE=fcitx
+flatpak --user override md.obsidian.Obsidian --env=GTK_IM_MODULE=fcitx5
 
 flatpak --user override org.localsend.localsend_app \
     --filesystem=xdg-videos \

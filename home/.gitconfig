@@ -10,8 +10,8 @@
     br = branch
     co = checkout
     ci = commit
-    cm = commit -m
-    ca = commit --amend
+    cim = commit -m
+    cia = commit --amend
     wip = commit -m "WIP"
     aa = !git add --all && git status -bs
     aw = !git add --all && git commit -m "WIP"

@@ -44,6 +44,9 @@ width=120
 [app-name=clipboard]
 width=120
 
+[app-name=mistakes]
+width=120
+
 # 测试:
 # makoctl reload && notify-send "测试标题" "这是一个简洁的直角风格通知"
 # notify-send -u low "低级通知" "这是一个低级通知"

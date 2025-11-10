@@ -28,6 +28,9 @@
     "hyprland/workspaces": {
         "format": "{name}",
         "on-click": "activate"
+        // "persistent-workspaces": {
+        //     "*": 9
+        // }
     },
 
     // 窗口标题

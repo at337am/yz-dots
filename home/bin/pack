@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+# -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
+# 脚本用途：
+# 该脚本用于将指定的文件或目录打包为 tar 归档文件。
+# 功能说明：
+# 1. 默认生成不压缩的 .tar 文件，可使用 -z 或 --gzip 参数生成压缩归档 (.tar.gz)。
+# 2. 检查目标文件或目录是否存在，避免覆盖已有归档文件。
+# 3. 可一次处理多个文件或目录。
+# -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
+
+tar_options="-cf"
+extension=".tar"
+
+if [[ "$1" == "-z" || "$1" == "--gzip" ]]; then
+    tar_options="-czf"
+    extension=".tar.gz"
+    shift
+fi
+
+if [[ "$#" -eq 0 ]]; then
+    printf "Error: Invalid arguments.\n" >&2
+    printf "Usage: pack [-z|--gzip] <path>...\n" >&2
+    exit 1
+fi
+
+for item in "$@"; do
+    if [[ ! -e "$item" ]]; then
+        printf "\033[31mError: '%s' not found\033[0m\n" "$item" >&2
+        continue
+    fi
+
+    archive_name="$(basename -- "$item")${extension}"
+
+    if [[ -e "$archive_name" ]]; then
+        printf "\033[31mError: '%s' already exists\033[0m\n" "${archive_name}" >&2
+        continue
+    fi
+
+    if tar "${tar_options}" "${archive_name}" -- "$item"; then
+        printf "\033[32mPacked -> %s\033[0m\n" "${archive_name}"
+    else
+        printf "\033[31mError: Failed to pack '%s'\033[0m\n" "$item" >&2
+        continue
+    fi
+done

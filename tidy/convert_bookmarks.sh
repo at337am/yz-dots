@@ -8,4 +8,4 @@ md2pg "$bookmarks_path" --output-dir "$output_dir"
 
 cp -a "$output_dir/bookmarks.html" "$HOME/Downloads/"
 
-printf "Conversion Successful!\n"
+printf "Done.\n"

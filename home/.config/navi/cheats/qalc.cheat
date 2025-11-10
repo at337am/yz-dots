@@ -1,3 +1,10 @@
+% qalc
+
+# 更新汇率 (-e)
+qalc -exrates
+
+
+
 % qalc, date
 
 # x 周以后

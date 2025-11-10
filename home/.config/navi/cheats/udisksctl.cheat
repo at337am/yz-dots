@@ -1,0 +1,10 @@
+% udisksctl, disk
+
+# 挂载 U 盘
+udisksctl mount -b /dev/sda1
+
+# 卸载 U 盘
+udisksctl unmount -b /dev/sda1
+
+# 显示状态
+udisksctl status

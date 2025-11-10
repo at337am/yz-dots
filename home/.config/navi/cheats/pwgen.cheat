@@ -1,0 +1,4 @@
+% pwgen, passwd
+
+# 生成一个 24 位的超强度密码
+pwgen -syB 24 1

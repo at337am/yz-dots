@@ -66,7 +66,7 @@ fi
 
 enable_copr_repo "solopasha" "hyprland"
 enable_copr_repo "alternateved" "eza"
-enable_copr_repo "lihaohong" "yazi"
+enable_copr_repo "ecomaikgolf" "lf"
 
 # ------------------------------- REPO END -------------------------------
 
@@ -196,6 +196,7 @@ sudo dnf -y install \
     hyprland \
     hyprlock \
     hyprpaper \
+    hyprpicker \
     lxqt-policykit \
     mako \
     network-manager-applet \
@@ -208,10 +209,14 @@ sudo dnf -y install \
     wl-clipboard \
     dbus-daemon \
     langpacks-zh_CN \
-    yazi \
     zathura \
     zathura-plugins-all \
-    qalculate
+    qalculate \
+    mediainfo \
+    pwgen \
+    ffmpegthumbnailer \
+    thunar \
+    lf
 
 echo "Hyprland and related packages installed."
 # -------------------------------- #

@@ -4,7 +4,7 @@
 rpm -q <packagename>
 
 # 列出所有已安装的 RPM 软件包
-rpm -qa
+rpm -qa | fzf
 
 # 查询某个文件属于哪个 RPM 包
 rpm -qf ./index.theme

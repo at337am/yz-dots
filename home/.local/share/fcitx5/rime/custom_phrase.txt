@@ -30,6 +30,7 @@
 好吗	hm
 什么	sm
 不知道	bzd
+小红书	xiaohongshu
 小红书	xhs
 笑死我了	xswl
 有误	youwu
@@ -43,7 +44,7 @@ Telegram	telegram
 会发生	huifashen
 会发生什么	hfssm
 高亮	gaoliang
-奇数	jishu
+技术	jishu
 偶数	oushu
 上面	smian
 上面	smia
@@ -102,14 +103,74 @@ Telegram	telegram
 全键	quanjian
 热插拔	rechaba
 高达	gaoda
+误触率	wuchulv
+快捷键	kuaijiejian
+快捷键	kuajiejian
+快捷键	kjj
+狼蛛	langzhu
+狼途	langtu
+铝坨坨	lvtuotuo
+笑死	xsi
+刚刚	gg
+传输	chuanshu
+传输	cs
 
-毛时期	msq
+
+
+股民	gumin
+古茗	gumin
+古茗	guming
+茶百道	chabaidao
+霸王茶姬	bawangchaji
+霸王茶姬	bwcj
+蜜雪冰城	mixuebinchen
+蜜雪冰城	mixuebincheng
+蜜雪冰城	mixuebingcheng
+蜜雪冰城	mixuebingchen
+蜜雪冰城	mxbc
+雪王	xuewang
+沪上阿姨	hushangayi
+奈雪的茶	naixuedecha
+奈雪	naixue
+瑞幸	ruixin
+瑞幸	ruixing
+星巴克	xinbake
+星巴克	xingbake
+星巴克	xbk
+悠悠球	yyq
+悠悠球	youyouqiu
+悠悠球	yoyoqiu
+名字	minzi
+名字	mingzi
+名字	mz
+前调	qiandiao
+中调	zhongdiao
+后调	houdiao
+蒂普提克	diputike
+宝格丽	baogeli
+古驰	guchi
+芦丹氏	ludanshi
+氯雷他定	lltd
+氯雷他定	lvleitadin
+氯雷他定	lvleitading
+氯苯那敏	lbnm
+氯苯那敏	lvbennamin
+氯苯那敏	lvbennaming
+氯苯那敏	lvbengnaming
+马来酸氯苯那敏	mlslbnm
+马来酸氯苯那敏	malaisuanlvbennamin
+对乙酰氨基酚	dyxajf
+对乙酰氨基酚	duiyixiananjifen
+对乙酰氨基酚	duiyixiananjifeng
+右美沙芬	ymsfs
+右美沙芬	youmeishafen
+右美沙芬	youmeishafeng
+
+
+
 毛时期	maoshiqi
-邓时期	dsq
 邓时期	dengshiqi
-江时期	jsq
 江时期	jiangshiqi
-胡时期	hsq
 胡时期	hushiqi
 杨继绳	yangjishen
 杨继绳	yangjisheng
@@ -143,9 +204,14 @@ Telegram	telegram
 王沪宁	wanghuning
 韩正	hanzhen
 韩正	hanzheng
+何卫东	heweidon
+何卫东	heweidong
+张又侠	zhangyouxia
 
 
 
+
+李知恩	lizhien
 
 
 
@@ -161,3 +227,22 @@ code	code
 todo	todo
 Hyprland	hyprland
 Hyprland	hypr
+
+
+
+
+，	douhao
+。	juhao
+。	jvhao
+；	fenhao
+；	fenghao
+：	maohao
+！	gantanhao
+！	tanhao
+！	gth
+？	wenhao
+？	wenghao
+《》	shuminhao
+《》	shuminghao
+《》	smh
+、	dunhao

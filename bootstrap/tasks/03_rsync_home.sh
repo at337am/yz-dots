@@ -13,7 +13,7 @@ echo "Starting synchronization of all configurations..."
 
 SCRIPT_DIR=$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")
 
-SOURCE_PATH="$SCRIPT_DIR/../../home/"
+SOURCE_PATH="$SCRIPT_DIR/../../home"
 
 # --- 检查源目录是否存在 ---
 if [[ ! -d "$SOURCE_PATH" ]]; then
@@ -22,7 +22,7 @@ if [[ ! -d "$SOURCE_PATH" ]]; then
     return 1
 fi
 
-rsync -a "$SOURCE_PATH" ~/
+rsync -a "$SOURCE_PATH/" ~/
 
 echo "All configurations synchronized."
 # -------------------------------- #

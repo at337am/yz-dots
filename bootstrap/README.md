@@ -13,17 +13,23 @@
 
 安装完 fedroa 系统后 (插网线或者连接 wifi )
 
-先设置 dnf 代理: sudo vim /etc/dnf/dnf.conf, 或者执行脚本 gui/01_dnf_proxy.sh
+先设置 dnf 代理: `sudo vim /etc/dnf/dnf.conf`
 
-更新全部软件包 sudo dnf -y upgrade
+> 在 `[main]` 的下一行写入共享代理地址, 参考: `proxy=http://192.168.1.104:1082`
 
-重启电脑
+再更新全部软件包 `sudo dnf -y upgrade`
 
-使用 scp -r 上传 所有所需文件到 ~/ 目录下
+重启电脑后, 继续:
 
-就地解压 yz-dots, 然后执行 bootstrap.sh <代理地址>
+在另一台设备上使用 scp 将所有所需文件上传到 `~/` 路径下
 
-执行完成后都正常的话就可以重启进入 GUI 了
+> 参考: `scp -r FILES.TAR yz@192.168.1.101:~/`
+
+就地解压 yz-dots, 然后执行 bootstrap.sh "<共享代理地址>"
+
+> 参考: `./bootstrap.sh "http://192.168.1.104:1082"`
+
+执行完成后都正常的话, 最后重启, 就可以进入 GUI 了
 
 
 

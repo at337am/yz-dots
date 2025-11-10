@@ -1,0 +1,23 @@
+cmd file-open &{{
+    set -f
+    for f in $fx; do
+        case "$f" in
+            *.jpg|*.jpeg|*.png|*.gif|*.bmp|*.webp|*.svg)
+                qimgv "$f" >/dev/null 2>&1 &
+                ;;
+            *.mp4|*.mkv|*.avi|*.mov|*.webm|*.flv|*.mp3|*.flac|*.ogg)
+                mpv "$f" >/dev/null 2>&1 &
+                ;;
+            *)
+                xdg-open "$f" >/dev/null 2>&1 &
+                ;;
+        esac
+    done
+}}
+
+map <enter> file-open
+
+set previewer ~/.config/lf/preview.sh
+set preview true
+
+cmd open :

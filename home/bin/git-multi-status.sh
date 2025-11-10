@@ -1,5 +1,20 @@
 #!/usr/bin/env bash
 
+# -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
+# 脚本用途：
+# 该脚本用于批量检查多个 Git 仓库的工作区状态。
+# 功能说明：
+# 1. 遍历预设的项目目录列表。
+# 2. 检查每个目录是否为 Git 仓库。
+# 3. 输出仓库状态。
+# 4. 输出结果使用彩色标记，方便快速识别。
+# -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
+
+if ! command -v "git" &> /dev/null; then
+    printf "Error: 缺少依赖命令: git\n" >&2
+    exit 1
+fi
+
 PROJECT_PATHS=(
     "$HOME/Documents/notes"
     "$HOME/workspace/dev/yz-dots"
@@ -42,4 +57,4 @@ for dir in "${PROJECT_PATHS[@]}"; do
     )
 done
 
-printf "All checks complete\n"
+printf "All checks complete.\n"

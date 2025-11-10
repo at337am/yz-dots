@@ -1,0 +1,10 @@
+% metaflac, flac
+
+# 显示歌曲信息 (但排除封面信息)
+metaflac --list --except-block-type=PICTURE a
+
+# 删除某个标签 (例如 TITLE)
+metaflac --remove-tag=TITLE a
+
+# 新增某个标签 (例如 TITLE)
+metaflac --set-tag="TITLE=name" a

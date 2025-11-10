@@ -1,5 +1,23 @@
 #!/usr/bin/env bash
 
+# -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
+# 脚本用途：
+# 该脚本用于从指定视频文件中无损提取音频轨道。
+# 功能说明：
+# 1. 自动检测视频中的音频编码格式。
+# 2. 根据音频编码选择合适的输出格式（如 AAC -> m4a, PCM -> wav）。
+# 3. 使用 ffmpeg 提取音频而不改变原有编码，保留原始音质。
+# 4. 输出文件命名为原视频文件名加 "_audio" 后缀。
+# -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
+
+dependencies=("ffmpeg" "ffprobe")
+for cmd in "${dependencies[@]}"; do
+    if ! command -v "$cmd" &> /dev/null; then
+        printf "Error: 缺少依赖命令: %s\n" "$cmd" >&2
+        exit 1
+    fi
+done
+
 if [[ "$#" -ne 1 ]]; then
     printf "参数错误\n" >&2
     printf "用法: %s <视频文件>\n" "ffmpeg-extract-audio.sh" >&2

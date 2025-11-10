@@ -12,8 +12,9 @@ magick input.jpg -flip output_flip.png
 # 顺时针旋转 (指定度数)
 magick input.jpg -rotate 90 output_rotate.png
 
-# 生成纯色图片
-magick -size 1080x1080 xc:"#ffffff" output.png
+# 生成一张纯色图片
+magick -size 1920x1080 "xc:#000000" solid_color.png
+
 
 
 % magick, img, blur

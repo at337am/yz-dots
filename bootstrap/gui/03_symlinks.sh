@@ -2,14 +2,24 @@
 
 set -euo pipefail
 
-echo "Starting symbolic linking for selected configurations..."
+confirm() {
+    local prompt=${1:-"Do you want to continue?"}
+    read -p "$prompt [y/N]: " choice
+    case "${choice,,}" in
+        y|yes) return 0 ;;
+        *) return 1 ;;
+    esac
+}
+
+if ! confirm "Are you sure you want to reset Symlinks?"; then
+    printf "Operation cancelled. Exiting...\n"
+    exit 1
+fi
 
 DOTS_PATH="$HOME/workspace/dev/yz-dots/home"
 
-if [[ ! -d "$DOTS_PATH" ]]; then
-    echo "Error: yz-dots/home directory does not exist!"
-    exit 1
-fi
+command rm -rf ~/tidy
+ln -sv "$HOME/workspace/dev/yz-dots/tidy" ~/tidy
 
 command rm -rf ~/bin
 ln -sv "$DOTS_PATH/bin" ~/bin
@@ -24,6 +34,9 @@ command rm -rf ~/.cache/fastfetch
 command rm -rf ~/.config/fastfetch
 ln -sv "$DOTS_PATH/.config/fastfetch" ~/.config/fastfetch
 
+command rm -rf ~/.config/fcitx5
+ln -sv "$DOTS_PATH/.config/fcitx5" ~/.config/fcitx5
+
 command rm -rf ~/.config/fd
 ln -sv "$DOTS_PATH/.config/fd" ~/.config/fd
 
@@ -32,6 +45,9 @@ ln -sv "$DOTS_PATH/.config/hypr" ~/.config/hypr
 
 command rm -rf ~/.config/kitty
 ln -sv "$DOTS_PATH/.config/kitty" ~/.config/kitty
+
+command rm -rf ~/.config/lf
+ln -sv "$DOTS_PATH/.config/lf" ~/.config/lf
 
 command rm -rf ~/.config/mako
 ln -sv "$DOTS_PATH/.config/mako" ~/.config/mako
@@ -55,10 +71,10 @@ ln -sv "$DOTS_PATH/.config/rofi" ~/.config/rofi
 command rm -rf ~/.config/waybar
 ln -sv "$DOTS_PATH/.config/waybar" ~/.config/waybar
 
-command rm -rf ~/.config/yazi
-ln -sv "$DOTS_PATH/.config/yazi" ~/.config/yazi
-
 command rm -rf ~/.config/yt-dlp
 ln -sv "$DOTS_PATH/.config/yt-dlp" ~/.config/yt-dlp
 
-echo "Symlinking complete."
+command rm -rf ~/.config/mimeapps.list
+ln -sv "$DOTS_PATH/.config/mimeapps.list" ~/.config/mimeapps.list
+
+printf "Done.\n"

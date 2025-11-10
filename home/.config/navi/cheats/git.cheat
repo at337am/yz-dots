@@ -11,8 +11,7 @@ git push --force-with-lease
 git update-index --no-skip-worktree other/todo.md
 
 # 恢复跟踪 - 目录 - 所有内容修改
-$ dirname: fd --max-depth 1 --hidden --type d | fzf
-git ls-files -z <dirname> | xargs -0 git update-index --no-skip-worktree
+git ls-files -z .obsidian | xargs -0 git update-index --no-skip-worktree
 
 
 
@@ -22,5 +21,4 @@ git ls-files -z <dirname> | xargs -0 git update-index --no-skip-worktree
 git update-index --skip-worktree other/todo.md
 
 # 忽略 - 目录 - 所有内容修改
-$ dirname: fd --max-depth 1 --hidden --type d | fzf
-git ls-files -z <dirname> | xargs -0 git update-index --skip-worktree
+git ls-files -z .obsidian | xargs -0 git update-index --skip-worktree

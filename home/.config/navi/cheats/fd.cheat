@@ -1,4 +1,4 @@
-% find, fd, doc
+% fd, find
 
 # 包含被忽略的文件 (--no-ignore)
 fd -I
@@ -14,7 +14,7 @@ fd -d 1
 
 
 
-% find, fd, mv
+% fd, find, mv
 
 # 给所有文件名加上前缀
 fd -IH -t f -x echo {} xxx_{/}
@@ -24,14 +24,24 @@ fd -IH -e JPG -x echo {} {.}.jpg
 
 
 
-% find, fd, png
+% fd, find, png
 
-# 查找所有 PNG 图像文件
+# 查找 - 所有 PNG 图像文件
 fd -IH -e png -x echo {}
 
 
 
-% find, fd, jpg
+% fd, find, jpg
 
-# 查找所有 JPG 图像文件
+# 查找 - 所有 JPG 图像文件
 fd -IH -e jpg -x echo {}
+
+
+
+% fd, find, count
+
+# 统计 - 当前路径下 - 每个子目录的子文件数量
+for dir in */; do echo -n "$dir: "; fd . "$dir" -t f | wc -l; done
+
+# 统计 - 当前路径下 - 所有子文件的数量
+fd . -t f | wc -l
