@@ -38,7 +38,7 @@ trap 'command rm -rf "$tmp_dir"' EXIT
 
 fd -HIi -e zip . "$TARGET_DIR" -x unzip -q {} -d "$tmp_dir/{/.}"
 
-printf "目录解压完毕\n"
+printf "flac 源文件解压完毕, 准备处理封面和歌词...\n"
 
 merge_flac_metadata() {
     local audio_file="$1"
@@ -48,9 +48,7 @@ merge_flac_metadata() {
     local temp_cover_file
 
     # 创建一个临时文件名
-    # 使用 trap 确保脚本退出时临时文件被删除
-    temp_cover_file=$(mktemp --suffix=.jpg)
-    trap 'command rm -f "$temp_cover_file"' EXIT
+    temp_cover_file=$(mktemp "$tmp_dir/cover.XXXXXX.jpg")
 
     magick "$cover_file" -resize 1440x -quality 92 "$temp_cover_file"
 
@@ -95,8 +93,9 @@ merge_flac_metadata() {
     fi
 }
 
-# 导出函数, 使 fd 命令对子进程可见
+# 导出函数和变量, 使 fd 命令的子进程可见
 export -f merge_flac_metadata
+export tmp_dir
 
 mkdir -p flac_batch_result
 
