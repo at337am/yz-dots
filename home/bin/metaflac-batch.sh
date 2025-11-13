@@ -52,6 +52,7 @@ merge_flac_metadata() {
 
     magick "$cover_file" -resize 1440x -quality 92 "$temp_cover_file"
 
+    # --------- 方式一: 使用 metaflac ---------
     # 默认情况下, metaflac 会尽量利用填充块 (padding), 以避免在元数据大小发生变化时重写整个文件
     # 使用 `--dont-use-padding` 选项可以告诉 metaflac 不使用填充块, 每次修改都会直接重写文件
 
@@ -66,6 +67,7 @@ merge_flac_metadata() {
     --set-tag-from-file="LYRICS=$lyrics_file" \
     "$output_file"
 
+    # --------- 方式二: 使用 ffmpeg ---------
     # ffmpeg -hide_banner -loglevel error \
     #     -i "$audio_file" \
     #     -i "$temp_cover_file" \
