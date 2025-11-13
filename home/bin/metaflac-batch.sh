@@ -54,9 +54,7 @@ merge_flac_metadata() {
 
     magick "$cover_file" -resize 1440x -quality 92 "$temp_cover_file"
 
-    if flac -s --test "$audio_file"; then
-        printf "文件完好: [%s], 使用 metaflac 处理...\n" "$audio_file"
-
+    if flac --totally-silent --test "$audio_file"; then
         # 默认情况下, metaflac 会尽量利用填充块 (padding), 以避免在元数据大小发生变化时重写整个文件
         # 使用 `--dont-use-padding` 选项可以告诉 metaflac 不使用填充块, 每次修改都会直接重写文件
 
@@ -70,9 +68,14 @@ merge_flac_metadata() {
         --import-picture-from="$temp_cover_file" \
         --set-tag-from-file="LYRICS=$lyrics_file" \
         "$output_file"
-    else
-        printf "文件损坏或元数据错误: [%s], 尝试使用 ffmpeg 修复并处理...\n" "$audio_file"
 
+        if [[ -f "$output_file" ]]; then
+            printf "\033[32m[metaflac] OK -> %s\033[0m\n" "$output_file"
+        else
+            printf "\033[31m[metaflac] Failed -> %s\033[0m\n" "$output_file" >&2
+            return 1
+        fi
+    else
         ffmpeg -hide_banner -loglevel error \
             -i "$audio_file" \
             -i "$temp_cover_file" \
@@ -82,13 +85,13 @@ merge_flac_metadata() {
             -disposition:v attached_pic \
             -metadata "LYRICS=$(cat "$lyrics_file")" \
             -y "$output_file"
-    fi
 
-    if [[ -f "$output_file" ]]; then
-        printf "\033[32mOK -> %s\033[0m\n" "$output_file"
-    else
-        printf "\033[31mFailed -> %s\033[0m\n" "$output_file" >&2
-        return 1
+        if [[ -f "$output_file" ]]; then
+            printf "\033[33m[ffmpeg] OK -> %s\033[0m\n" "$output_file"
+        else
+            printf "\033[31m[ffmpeg] Failed -> %s\033[0m\n" "$output_file" >&2
+            return 1
+        fi
     fi
 }
 
