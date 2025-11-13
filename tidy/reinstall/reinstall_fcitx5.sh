@@ -33,7 +33,7 @@ command rm -rf ~/.local/share/fcitx5
 command rm -rf ~/.config/fcitx5
 command rm -rf ~/.config/fcitx
 
-printf "删除并清理完成，准备重新安装...\n"
+printf "删除并清理完成, 准备重新安装...\n"
 
 sleep 1
 
