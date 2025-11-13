@@ -14,7 +14,7 @@ fi
 
 if [[ "$#" -ne 1 ]]; then
     printf "Error: Invalid argument.\n" >&2
-    printf "Usage: %s <path-to-wallpaper>\n" "set-wallpaper.sh" >&2
+    printf "Usage: %s <path-to-wallpaper>\n" "$(basename "$0")" >&2
     exit 1
 fi
 

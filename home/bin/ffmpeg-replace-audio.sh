@@ -17,7 +17,7 @@ fi
 
 if [[ "$#" -ne 2 ]]; then
     printf "参数错误\n" >&2
-    printf "用法: %s <视频文件> <音频文件>\n" "ffmpeg-replace-audio.sh" >&2
+    printf "用法: %s <视频文件> <音频文件>\n" "$(basename "$0")" >&2
     exit 1
 fi
 

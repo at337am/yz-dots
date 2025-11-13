@@ -16,7 +16,7 @@ if ! command -v "ffmpeg" &> /dev/null; then
 fi
 
 usage() {
-    printf "用法: %s [-e jpg|png] <视频路径>\n" "ffmpeg-extract-frames.sh" >&2
+    printf "用法: %s [-e jpg|png] <视频路径>\n" "$(basename "$0")" >&2
     exit 1
 }
 

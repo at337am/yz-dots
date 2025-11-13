@@ -17,7 +17,7 @@ fi
 
 if [[ "$#" -eq 0 ]]; then
     printf "参数错误\n" >&2
-    printf "用法: %s <file>...\n" "aps" >&2
+    printf "用法: %s <file>...\n" "$(basename "$0")" >&2
     exit 1
 fi
 

@@ -22,7 +22,7 @@ done
 
 if [[ "$#" -ne 1 ]]; then
     printf "参数错误\n" >&2
-    printf "用法: %s <目录路径>\n" "flac_batch.sh" >&2
+    printf "用法: %s <目录路径>\n" "$(basename "$0")" >&2
     exit 1
 fi
 
@@ -93,7 +93,7 @@ merge_flac_metadata() {
     fi
 }
 
-# 导出函数和变量, 使 fd 命令的子进程可见
+# 导出函数和变量, 使 fd -x 的子进程可见
 export -f merge_flac_metadata
 export tmp_dir
 
