@@ -10,7 +10,7 @@
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
 
 if ! command -v "wl-copy" &> /dev/null; then
-    printf "Error: 缺少依赖命令: wl-copy\n" >&2
+    printf "Error: Missing dependency: wl-copy\n" >&2
     exit 1
 fi
 
