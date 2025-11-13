@@ -2,8 +2,6 @@
 
 set -euo pipefail
 
-echo "Verifying required files..."
-
 files=(
     "fonts.tar.gz"
     "nekoray.tar.gz"
@@ -24,11 +22,9 @@ echo "Required files verification complete."
 
 setup_basic() {
     if [[ -d "/opt/soft" ]]; then
-        echo "Skipping: setup_basic()"
+        echo "Skip: setup_basic()"
         return 0
     fi
-
-    echo "Starting basic setup..."
 
     # 关闭防火墙
     sudo systemctl stop firewalld
@@ -64,11 +60,9 @@ setup_basic() {
 
 unpack_file_to_path() {
     if [[ -d "/opt/soft/nekoray" ]]; then
-        echo "Skipping: unpack_file_to_path()"
+        echo "Skip: unpack_file_to_path()"
         return 0
     fi
-
-    echo "Unpacking required files to specified location..."
 
     tar -zxf "$files_dir/fonts.tar.gz" -C ~/.local/share/
 

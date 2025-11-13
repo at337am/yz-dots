@@ -7,7 +7,7 @@ mimetype=$(file --mime-type -b "$filepath")
 case "$mimetype" in
 
     text/* | application/json | application/javascript)
-        bat --color=always --paging=never --style=plain --terminal-width="$width" "$filepath"
+        bat -n -P --color=always --terminal-width="$width" --wrap=character "$filepath"
         ;;
 
     *)

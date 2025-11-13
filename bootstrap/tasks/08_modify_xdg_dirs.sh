@@ -18,8 +18,8 @@ sed -i \
     "$CONFIG_FILE"
 
 if [[ $? -eq 0 ]]; then
+    command rm -rf ~/Desktop ~/Templates ~/Public
     echo "Configuration file '$CONFIG_FILE' successfully updated."
-    command rm -rfv ~/Desktop ~/Templates ~/Public
     return 0
 else
     echo "Error: File update failed."

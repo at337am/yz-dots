@@ -184,7 +184,12 @@ mkmv() {
   fi
 }
 
-# 禁用 r 命令
+# 禁用一些自带的命令，防止误触
+
 r() {
   printf "zsh: r command disabled\n"
+}
+
+fc() {
+  printf "zsh: fc command disabled\n"
 }

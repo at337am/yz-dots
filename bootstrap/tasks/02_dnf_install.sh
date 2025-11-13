@@ -4,7 +4,7 @@ set -euo pipefail
 
 # 检查是否需要跳过
 if rpm -q hyprland &>/dev/null; then
-    echo "Script will not run again, skipping."
+    echo "Skip: dnf_install.sh"
     return 0
 fi
 

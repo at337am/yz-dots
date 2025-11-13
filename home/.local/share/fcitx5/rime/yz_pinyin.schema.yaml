@@ -1,0 +1,70 @@
+schema:
+  schema_id: yz_pinyin
+  name: 越洲
+  version: "201129"
+
+switches:
+  - name: ascii_mode
+    reset: 1    # 0: 默认中文  1: 默认英文
+    states: [ 中文, 西文 ]
+
+# 输入法引擎
+engine:
+  # 处理器: 负责原始按键输入的预处理
+  processors:
+    - ascii_composer
+    - key_binder
+    - speller
+    - selector
+    - navigator
+    - express_editor
+
+  # 分词器: 把用户输入的字符流拆分成候选单元（音节或词）
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+
+  # 转换器: 把分词后的候选单元转换成实际候选词
+  translators:
+    - punct_translator
+    - table_translator@custom_phrase
+    - script_translator
+
+  # 过滤器: 对转换结果进行后处理、去重、排序等操作
+  filters:
+    - uniquifier    # 去掉重复候选
+
+# 拼写规则
+speller:
+  alphabet: zyxwvutsrqponmlkjihgfedcba
+  delimiter: " '"
+  algebra:
+    - abbrev/^([a-z]).+$/$1/
+    - abbrev/^([zcs]h).+$/$1/
+    - derive/ao$/oa/
+    - derive/en$/eng/
+    - derive/eng$/en/
+    - derive/in$/ing/
+    - derive/ing$/in/
+    - derive/on$/ong/
+    - derive/ong$/on/
+
+# 使用 "yz_pinyin.dict.yaml" 中定义的词库
+translator:
+  dictionary: yz_pinyin
+
+# 自定义词库
+custom_phrase:
+  dictionary: ""
+  user_dict: custom_phrase
+  db_class: stabledb
+  enable_completion: false
+  enable_sentence: false
+  initial_quality: 1
+
+# 按键绑定器
+key_binder:
+  import_preset: default

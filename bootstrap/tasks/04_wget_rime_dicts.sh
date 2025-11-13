@@ -3,21 +3,20 @@
 set -euo pipefail
 
 # 检查是否需要跳过
-if [[ -d "$HOME/.local/share/fcitx5/rime/en_dicts" ]]; then
-    echo "Script will not run again, skipping."
+if [[ -f "$HOME/.local/share/fcitx5/rime/cn_dicts/base.dict.yaml" ]]; then
+    echo "Skip: wget_rime_dicts.sh"
     return 0
 fi
 
-echo "Starting download of Rime input dictionary..."
+# 拉取 rime-ice 词库
+wget -O /tmp/all_dicts.zip \
+    https://github.com/iDvel/rime-ice/releases/latest/download/all_dicts.zip
 
-wget -O ~/.local/share/fcitx5/rime/all_dicts.zip \
-    https://github.com/iDvel/rime-ice/releases/latest/download/all_dicts.zip && \
-unzip ~/.local/share/fcitx5/rime/all_dicts.zip -d ~/.local/share/fcitx5/rime/
+unzip /tmp/all_dicts.zip -d /tmp/all_dicts
 
-echo "Rime dictionary download complete."
+cp -a /tmp/all_dicts/cn_dicts ~/.local/share/fcitx5/rime
 
-echo "Cleaning up temporary files..."
+command rm -rf /tmp/all_dicts.zip
+command rm -rf /tmp/all_dicts
 
-command rm -rfv ~/.local/share/fcitx5/rime/all_dicts.zip
-
-echo "Temporary file cleanup complete."
+echo "Rime dictionaries downloaded."

@@ -7,8 +7,8 @@ fi
 
 cliphist list | rofi -dmenu -i -p "clipboard" | cliphist decode | wl-copy
 
-# todo
-# if cliphist list | rofi -dmenu -p "Clipboard" | cliphist decode | wl-copy; then
+# todo: fix 取消时, 依然提示 Copied
+# if cliphist list | rofi -dmenu -p "clipboard" | cliphist decode | wl-copy; then
 #     notify-send -a "clipboard" \
 #                 -u low \
 #                 -h string:x-dunst-stack-tag:volume_notif \

@@ -1,148 +1,96 @@
-# Rime table
-# coding: utf-8
-#@/db_name	custom_phrase.txt
-#@/db_type	tabledb
-#
-# 自定义短语
-# 可为方案增加一些要置顶的词汇及短语，例如邮箱、手机号、常用短语等等。编码可以随便起，不限于拼音。
-#
-# 适用于全拼。双拼默认为 custom_phrase_double.txt 需要手动创建，并更改上面的 db_name 为 custom_phrase_double.txt
-#
-# 以下固定的词汇及顺序纯属个人偏好，仅作示例，
-# 可以增加自己的 .txt 文件，并在方案的 custom_phrase/user_dict 指定为自己的文件。
-#
-# 以 Tab 分割：词汇<Tab>编码<Tab>权重
-#
-# 这个文件内的字词会占据最高权重（即排在候选项的最前面，因为指定了高权重 custom_phrase/initial_quality: 99）。
-# 但不与其他翻译器互相造词，如果使用了完整编码，那么这个字或词将无法参与造词，即自造词无法被记住。
-# 所以只建议固定非完整拼音的编码，如果需求是置顶指定拼音的候选项，请参考方案中的 pin_cand_filter。
-#
-# 最下面的英文是因为一些常用单词的第一候选项被纠错覆盖了，如 Amazon 被纠错为「a ma zong 阿妈粽」，期望的 Amazon 跑到第二个候选项了，所以这里给它固定死喽。
-#
-# version: "2024-03-12"
-#
-# 此行之后不能写注释
+# 以 Tab 分隔
+
+李知恩	lizhien
+李圣经	lishenjin
+李圣经	lishengjing
 
 
 
 好	h
-吗	m
 好吗	hm
-什么	sm
-不知道	bzd
-小红书	xiaohongshu
-小红书	xhs
+笑死	xs
 笑死我了	xswl
-有误	youwu
-是什么	ssm
-是什么意思	ssmys
+刚刚	gg
+知道了	zdl
+什么	sm
+这是什么	zssm
+不知道	bzd
+小红书	xhs
+何意味	hyw
+什么情况	smqk
+什么情况	smqinkuang
+何意味	heyiwei
+是怎么	shizenme
 最佳实践	zjsj
-最佳实践	zuijiashijian
-Telegram	tg
-Telegram	telegram
 会发生	hfs
-会发生	huifashen
 会发生什么	hfssm
+上面	smian
+上面	smia
+怎么	zm
+禁用	jy
+这些	zx
+最新	zuix
+安装	anz
+是怎么	szm
+脚本	jb
+软件包	rjb
+知道	zhidao
+找到	zhaodao
+你知道	nizhidao
+你知道吗	nizhidaoma
+笑死	xiaosi
+笑死我了	xiaosiwole
+有误	youwu
+最佳实践	zuijiashijian
+会发生	huifasheng
 高亮	gaoliang
 技术	jishu
 偶数	oushu
-上面	smian
-上面	smia
 连接	lianjie
 触发	chufa
-进度条	jdt
-进度条	jingdutiao
 进度条	jindutiao
-怎么	zm
-禁用	jy
 禁用	jinyong
-禁用	jingyong
-静音	jinyin
-静音	jinying
-静音	jingying
-这些	zx
-这些	zhxie
+静音	jingyin
 这些	zhexie
 注销	zhuxiao
-最新	zuix
 最新	zuixin
-最新	zuixng
-最新	zuixing
-执行	zhxin
-执行	zhixin
-执行	zhixng
 执行	zhixing
-直接	zhjie
 直接	zhijie
-安装	anz
 安装	anzhuang
 按照	anzhao
 校验	jiaoyan
 矫正	jiaozhen
-正经	zhenjing
-正经	zhenjin
-什么情况	smqk
-什么情况	smqinkuang
-是怎么	szm
-是怎么	shizm
-脚本	jb
-软件包	rjb
-有没有	ymy
+正经	zhengjing
 备份	beifen
-备份	beifeng
-备份	bf
+名字	mingzi
 不就	bujiu
-西兰花	xilanhua
-西兰花	xlh
-诡辩论	gbl
 诡辩论	guibianlun
-话术	huashu
 克重	kezhong
-平替	pinti
+平替	pingti
 全键热插拔	quanjianrechaba
 全键	quanjian
 热插拔	rechaba
 高达	gaoda
 误触率	wuchulv
 快捷键	kuaijiejian
-快捷键	kuajiejian
-快捷键	kjj
 狼蛛	langzhu
 狼途	langtu
 铝坨坨	lvtuotuo
-笑死	xsi
-刚刚	gg
 传输	chuanshu
-传输	cs
-
-
-
+中英文	zhongyingwen
+小红书	xiaohongshu
 股民	gumin
-古茗	gumin
 古茗	guming
 茶百道	chabaidao
 霸王茶姬	bawangchaji
-霸王茶姬	bwcj
-蜜雪冰城	mixuebinchen
-蜜雪冰城	mixuebincheng
 蜜雪冰城	mixuebingcheng
-蜜雪冰城	mixuebingchen
-蜜雪冰城	mxbc
 雪王	xuewang
 沪上阿姨	hushangayi
 奈雪的茶	naixuedecha
 奈雪	naixue
-瑞幸	ruixin
 瑞幸	ruixing
-星巴克	xinbake
 星巴克	xingbake
-星巴克	xbk
-悠悠球	yyq
 悠悠球	youyouqiu
-悠悠球	yoyoqiu
-名字	minzi
-名字	mingzi
-名字	mz
 前调	qiandiao
 中调	zhongdiao
 后调	houdiao
@@ -150,21 +98,6 @@ Telegram	telegram
 宝格丽	baogeli
 古驰	guchi
 芦丹氏	ludanshi
-氯雷他定	lltd
-氯雷他定	lvleitadin
-氯雷他定	lvleitading
-氯苯那敏	lbnm
-氯苯那敏	lvbennamin
-氯苯那敏	lvbennaming
-氯苯那敏	lvbengnaming
-马来酸氯苯那敏	mlslbnm
-马来酸氯苯那敏	malaisuanlvbennamin
-对乙酰氨基酚	dyxajf
-对乙酰氨基酚	duiyixiananjifen
-对乙酰氨基酚	duiyixiananjifeng
-右美沙芬	ymsfs
-右美沙芬	youmeishafen
-右美沙芬	youmeishafeng
 
 
 
@@ -172,73 +105,41 @@ Telegram	telegram
 邓时期	dengshiqi
 江时期	jiangshiqi
 胡时期	hushiqi
-杨继绳	yangjishen
 杨继绳	yangjisheng
 高华	gaohua
 杨显惠	yangxianhui
 夹边沟	jiabiangou
-记事	jishi
+记事	jishic
 夹边沟记事	jiabiangoujishi
-《红太阳是怎样升起的：延安整风的来龙去脉》	hty
-《红太阳是怎样升起的：延安整风的来龙去脉》	htyszysqd
 《红太阳是怎样升起的：延安整风的来龙去脉》	hongtaiyangshizenyangshengqide
-习明泽	xmz
-习明泽	ximinze
 习明泽	ximingze
-习近平	xjp
-习近平	xijinpin
-习近平	xijingpin
 习近平	xijinping
-习近平	xijingping
-毛泽东	mzd
 毛泽东	maozedong
-毛泽东	maozedon
 李克强	likeqiang
-邓小平	dxp
-邓小平	dengxiaopin
 邓小平	dengxiaoping
-江泽民	jzm
 江泽民	jiangzemin
-江泽民	jiangzeming
-王沪宁	wanghunin
 王沪宁	wanghuning
-韩正	hanzhen
 韩正	hanzheng
-何卫东	heweidon
 何卫东	heweidong
 张又侠	zhangyouxia
 
 
 
-
-李知恩	lizhien
-
-
-
-
-LLM	llm
-Go	go
-Golang	golang
+Telegram	tg
 Gemini	gemini
 ChatGPT	chatgpt
-Amazon	amazon
-NASA	nasa
 code	code
 todo	todo
-Hyprland	hyprland
-Hyprland	hypr
-
+todo	tood
 
 
 
 ，	douhao
 。	juhao
-。	jvhao
+：	maohao
 ；	fenhao
 ；	fenghao
-：	maohao
 ！	gantanhao
-！	tanhao
 ！	gth
 ？	wenhao
 ？	wenghao
@@ -246,3 +147,6 @@ Hyprland	hypr
 《》	shuminghao
 《》	smh
 、	dunhao
+（）	kuohao
+“”	yinhao
+“”	yinghao

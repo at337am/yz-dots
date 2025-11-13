@@ -1,0 +1,4 @@
+% fcitx5, rime
+
+# 打开 fcitx5 GUI 配置
+fcitx5-configtool

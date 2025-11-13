@@ -1,0 +1,11 @@
+# 使用的是「雾凇拼音」的词库
+
+---
+name: yz_pinyin
+version: "201129"
+import_tables:
+  - cn_dicts/8105
+  - cn_dicts/41448
+  - cn_dicts/base
+  - cn_dicts/ext
+...

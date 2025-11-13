@@ -45,12 +45,6 @@
 
 ## 手动按顺序执行 yz-dots/bootstrap/gui 中的脚本
 
-## 设定输入法
-
-```bash
-fcitx5-configtool
-```
-
 ## 配置 obsidian 缩放
 
 复制 flatpak 应用的 .desktop 文件到 ~/.local/share/applications:

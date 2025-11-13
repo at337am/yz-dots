@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 bak_path="/data/bak/restore/obsidian_config.tar.gz"
-old_bak_path="/data/bak/restore/old/obsidian_config_$(date "+%s").tar.gz"
+old_bak_path="/data/bak/restore/old/obsidian_config_bak_$(date +"%y%m%d_%H%M%S").tar.gz"
 
 restore() {
 	if [[ ! -f "$bak_path" ]]; then

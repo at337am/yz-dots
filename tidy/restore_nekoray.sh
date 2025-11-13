@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 bak_path="/data/bak/restore/nekoray.tar.gz"
-old_bak_path="/data/bak/restore/old/nekoray_$(date "+%s").tar.gz"
+old_bak_path="/data/bak/restore/old/nekoray_bak_$(date +"%y%m%d_%H%M%S").tar.gz"
 
 restore() {
 	if [[ ! -f "$bak_path" ]]; then
