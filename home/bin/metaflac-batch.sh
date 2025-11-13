@@ -10,7 +10,7 @@
 # 处理完成的文件会统一输出到 flac_batch_result 目录。
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
 
-dependencies=("ffmpeg" "magick" "fd" "unzip")
+dependencies=("metaflac" "magick" "fd" "unzip")
 for cmd in "${dependencies[@]}"; do
     if ! command -v "$cmd" &> /dev/null; then
         printf "Error: 缺少依赖命令: %s\n" "$cmd" >&2
