@@ -10,7 +10,9 @@
 # 处理完成的文件会统一输出到 flac_batch_result 目录。
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
 
-dependencies=("metaflac" "magick" "fd" "unzip")
+set -euo pipefail
+
+dependencies=("metaflac" "magick" "ffmpeg" "fd" "unzip")
 for cmd in "${dependencies[@]}"; do
     if ! command -v "$cmd" &> /dev/null; then
         printf "Error: 缺少依赖命令: %s\n" "$cmd" >&2
@@ -48,37 +50,46 @@ merge_flac_metadata() {
     # 创建一个临时文件名
     # 使用 trap 确保脚本退出时临时文件被删除
     temp_cover_file=$(mktemp --suffix=.jpg)
-    trap 'command rm -f "$temp_cover_file"' RETURN
+    trap 'command rm -f "$temp_cover_file"' EXIT
 
     magick "$cover_file" -resize 1440x -quality 92 "$temp_cover_file"
 
-    # --------- 方式一: 使用 metaflac ---------
-    # 默认情况下, metaflac 会尽量利用填充块 (padding), 以避免在元数据大小发生变化时重写整个文件
-    # 使用 `--dont-use-padding` 选项可以告诉 metaflac 不使用填充块, 每次修改都会直接重写文件
+    if flac -s --test "$audio_file"; then
+        printf "文件完好: [%s], 使用 metaflac 处理...\n" "$audio_file"
 
-    # 移除旧封面, 生成一个干净的目标文件, 这一步是唯一需要单独执行的主要操作
-    metaflac --dont-use-padding --remove --block-type=PICTURE --output-name="$output_file" "$audio_file"
+        # 默认情况下, metaflac 会尽量利用填充块 (padding), 以避免在元数据大小发生变化时重写整个文件
+        # 使用 `--dont-use-padding` 选项可以告诉 metaflac 不使用填充块, 每次修改都会直接重写文件
 
-    # 在新创建的 output_file 上, 一次性地移除旧歌词, 导入新封面, 导入新歌词
-    metaflac \
-    --dont-use-padding \
-    --remove-tag=LYRICS \
-    --import-picture-from="$temp_cover_file" \
-    --set-tag-from-file="LYRICS=$lyrics_file" \
-    "$output_file"
+        # 移除旧封面, 生成一个干净的目标文件, 这一步是唯一需要单独执行的主要操作
+        metaflac --dont-use-padding --remove --block-type=PICTURE --output-name="$output_file" "$audio_file"
 
-    # --------- 方式二: 使用 ffmpeg ---------
-    # ffmpeg -hide_banner -loglevel error \
-    #     -i "$audio_file" \
-    #     -i "$temp_cover_file" \
-    #     -map 0:a \
-    #     -map 1:v \
-    #     -c copy \
-    #     -disposition:v attached_pic \
-    #     -metadata "LYRICS=$(cat "$lyrics_file")" \
-    #     -y "$output_file"
+        # 在新创建的 output_file 上, 一次性地移除旧歌词, 导入新封面, 导入新歌词
+        metaflac \
+        --dont-use-padding \
+        --remove-tag=LYRICS \
+        --import-picture-from="$temp_cover_file" \
+        --set-tag-from-file="LYRICS=$lyrics_file" \
+        "$output_file"
+    else
+        printf "文件损坏或元数据错误: [%s], 尝试使用 ffmpeg 修复并处理...\n" "$audio_file"
 
-    printf "已处理 -> %s\n" "$output_file"
+        ffmpeg -hide_banner -loglevel error \
+            -i "$audio_file" \
+            -i "$temp_cover_file" \
+            -map 0:a \
+            -map 1:v \
+            -c copy \
+            -disposition:v attached_pic \
+            -metadata "LYRICS=$(cat "$lyrics_file")" \
+            -y "$output_file"
+    fi
+
+    if [[ -f "$output_file" ]]; then
+        printf "\033[32mOK -> %s\033[0m\n" "$output_file"
+    else
+        printf "\033[31mFailed -> %s\033[0m\n" "$output_file" >&2
+        return 1
+    fi
 }
 
 # 导出函数, 使 fd 命令对子进程可见
@@ -89,7 +100,7 @@ mkdir -p flac_batch_result
 if fd -HIi -e flac . "$tmp_dir" -x \
     bash -c 'merge_flac_metadata "{}" "{.}.jpg" "{.}.lrc" "flac_batch_result/{/.}.flac"'
 then
-    printf "所有 flac 都已处理完成\n"
+    printf "Done.\n"
 else
     printf "Error: 处理 flac 文件时发生错误\n" >&2
     exit 1
