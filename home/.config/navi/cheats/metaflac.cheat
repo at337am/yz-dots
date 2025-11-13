@@ -1,5 +1,8 @@
 % metaflac, flac
 
+# 显示歌曲信息
+metaflac --list a
+
 # 显示歌曲信息 (但排除封面信息)
 metaflac --list --except-block-type=PICTURE a
 

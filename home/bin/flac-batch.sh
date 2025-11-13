@@ -52,20 +52,34 @@ merge_flac_metadata() {
 
     magick "$cover_file" -resize 1440x -quality 92 "$temp_cover_file"
 
-    ffmpeg -hide_banner -loglevel error \
-        -i "$audio_file" \
-        -i "$temp_cover_file" \
-        -map 0:a \
-        -map 1:v \
-        -c copy \
-        -disposition:v attached_pic \
-        -metadata "LYRICS=$(cat "$lyrics_file")" \
-        -y "$output_file"
+    # 从源文件复制，并移除所有已存在的图片块，生成一个干净的目标文件
+    # 这一步是唯一需要单独执行的主要操作
+    metaflac --remove --block-type=PICTURE --output-name="$output_file" "$audio_file"
+
+    # 在新创建的 output_file 上，一次性地移除旧歌词、导入新封面、导入新歌词
+    metaflac \
+    --remove-tag=LYRICS \
+    --import-picture-from="$temp_cover_file" \
+    --set-tag-from-file="LYRICS=$lyrics_file" \
+    "$output_file"
+
+    # todo: 填充区操作, 节省空间? 对比一下完整操作后, 不使用填充区和不使用填充区的大小差别
+    # --dont-use-padding
+
+    # ffmpeg -hide_banner -loglevel error \
+    #     -i "$audio_file" \
+    #     -i "$temp_cover_file" \
+    #     -map 0:a \
+    #     -map 1:v \
+    #     -c copy \
+    #     -disposition:v attached_pic \
+    #     -metadata "LYRICS=$(cat "$lyrics_file")" \
+    #     -y "$output_file"
 
     printf "已处理 -> %s\n" "$output_file"
 }
 
-# 导出函数, 使其对子进程可见
+# 导出函数, 使 fd 命令对子进程可见
 export -f merge_flac_metadata
 
 mkdir -p flac_batch_result
