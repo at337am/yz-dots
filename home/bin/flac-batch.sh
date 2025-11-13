@@ -52,19 +52,19 @@ merge_flac_metadata() {
 
     magick "$cover_file" -resize 1440x -quality 92 "$temp_cover_file"
 
-    # 从源文件复制，并移除所有已存在的图片块，生成一个干净的目标文件
-    # 这一步是唯一需要单独执行的主要操作
-    metaflac --remove --block-type=PICTURE --output-name="$output_file" "$audio_file"
+    # 默认情况下, metaflac 会尽量利用填充块 (padding), 以避免在元数据大小发生变化时重写整个文件
+    # 使用 `--dont-use-padding` 选项可以告诉 metaflac 不使用填充块, 每次修改都会直接重写文件
 
-    # 在新创建的 output_file 上，一次性地移除旧歌词、导入新封面、导入新歌词
+    # 移除旧封面, 生成一个干净的目标文件, 这一步是唯一需要单独执行的主要操作
+    metaflac --dont-use-padding --remove --block-type=PICTURE --output-name="$output_file" "$audio_file"
+
+    # 在新创建的 output_file 上, 一次性地移除旧歌词, 导入新封面, 导入新歌词
     metaflac \
+    --dont-use-padding \
     --remove-tag=LYRICS \
     --import-picture-from="$temp_cover_file" \
     --set-tag-from-file="LYRICS=$lyrics_file" \
     "$output_file"
-
-    # todo: 填充区操作, 节省空间? 对比一下完整操作后, 不使用填充区和不使用填充区的大小差别
-    # --dont-use-padding
 
     # ffmpeg -hide_banner -loglevel error \
     #     -i "$audio_file" \
