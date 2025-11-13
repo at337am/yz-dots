@@ -34,7 +34,7 @@ fi
 tmp_dir=$(mktemp -d)
 trap 'command rm -rf "$tmp_dir"' EXIT
 
-fd -HIi -e zip . "$TARGET_DIR" -x unzip {} -d "$tmp_dir/{/.}"
+fd -HIi -e zip . "$TARGET_DIR" -x unzip -q {} -d "$tmp_dir/{/.}"
 
 printf "目录解压完毕\n"
 
