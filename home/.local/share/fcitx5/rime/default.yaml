@@ -38,7 +38,7 @@ ascii_composer:
   # noop            屏蔽快捷键，不切换中英，但不要屏蔽 CapsLock
   switch_key:
     Shift_L: clear
-    Shift_R: clear
+    Shift_R: noop
     Control_L: noop
     Control_R: noop
     Caps_Lock: clear
