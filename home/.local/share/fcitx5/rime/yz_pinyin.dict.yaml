@@ -8,4 +8,5 @@ import_tables:
   - cn_dicts/41448
   - cn_dicts/base
   - cn_dicts/ext
+  - cn_dicts/tencent
 ...
