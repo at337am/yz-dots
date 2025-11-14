@@ -63,6 +63,9 @@ ln -s "$DOTS_PATH/.config/nvim" ~/.config/nvim
 command rm -rf ~/.config/rofi
 ln -s "$DOTS_PATH/.config/rofi" ~/.config/rofi
 
+command rm -rf ~/.config/Thunar
+ln -s "$DOTS_PATH/.config/Thunar" ~/.config/Thunar
+
 command rm -rf ~/.config/waybar
 ln -s "$DOTS_PATH/.config/waybar" ~/.config/waybar
 
