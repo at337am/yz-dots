@@ -36,7 +36,10 @@ command rm -rf ~/.lain/themes/powerlevel10k.tar.gz
 
 # 软链接 alias
 command rm -rf ~/.lain/lib/aliases.zsh
+command rm -rf ~/.lain/lib/func.zsh
+
 ln -s "$DOTS_PATH/.lain/lib/aliases.zsh" ~/.lain/lib/aliases.zsh
+ln -s "$DOTS_PATH/.lain/lib/func.zsh" ~/.lain/lib/func.zsh
 
 # 设置权限
 chmod 600 ~/.zshrc

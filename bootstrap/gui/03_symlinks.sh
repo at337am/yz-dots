@@ -24,17 +24,12 @@ DOTS_PATH="$HOME/workspace/dev/yz-dots/home"
 command rm -rf ~/bin
 ln -s "$DOTS_PATH/bin" ~/bin
 
-command rm -rf ~/.lain/lib/aliases.zsh
-ln -s "$DOTS_PATH/.lain/lib/aliases.zsh" ~/.lain/lib/aliases.zsh
-
-command rm -rf ~/.lain/lib/func.zsh
-ln -s "$DOTS_PATH/.lain/lib/func.zsh" ~/.lain/lib/func.zsh
-
 command rm -rf ~/.config/cava
 ln -s "$DOTS_PATH/.config/cava" ~/.config/cava
 
-command rm -rf ~/.cache/fastfetch
-command rm -rf ~/.config/fastfetch
+command rm -rf \
+        ~/.config/fastfetch \
+        ~/.cache/fastfetch
 ln -s "$DOTS_PATH/.config/fastfetch" ~/.config/fastfetch
 
 command rm -rf ~/.config/fd
@@ -76,6 +71,15 @@ ln -s "$DOTS_PATH/.config/yt-dlp" ~/.config/yt-dlp
 
 command rm -rf ~/.config/mimeapps.list
 ln -s "$DOTS_PATH/.config/mimeapps.list" ~/.config/mimeapps.list
+
+
+# ------------ zsh START ------------
+command rm -rf ~/.lain/lib/aliases.zsh
+command rm -rf ~/.lain/lib/func.zsh
+
+ln -s "$DOTS_PATH/.lain/lib/aliases.zsh" ~/.lain/lib/aliases.zsh
+ln -s "$DOTS_PATH/.lain/lib/func.zsh" ~/.lain/lib/func.zsh
+# ------------ zsh END ------------
 
 
 # ------------ fcitx5 START ------------
