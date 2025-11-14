@@ -4,15 +4,14 @@
 李圣经	lishenjin
 李圣经	lishengjing
 
-么	me
-没	me
-美	me
-每	me
-梅	me
-霉	me
-了	l
+
+
 好	h
+了	l
+吗	m
+好了	hl
 好吗	hm
+好了吗	hlm
 笑死	xs
 笑死我了	xswl
 刚刚	gg
