@@ -19,11 +19,11 @@
 
 /* 边框圆角 */
 window {
-    border-radius: 10px;
+    border-radius: 14px;
 }
 inputbar,
 element {
-    border-radius: 6px;
+    border-radius: 8px;
 }
 
 /* 边框颜色 */
