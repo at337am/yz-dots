@@ -13,12 +13,12 @@ font=Adwaita Sans SemiBold 12
 # 文字水平居中
 text-alignment=center
 
-width=300
-height=375
+width=320
+height=240
 margin=12
 padding=12
 border-size=2
-border-radius=4
+border-radius=14
 
 background-color=#F5F5F5f2
 border-color=#48CFCBf2
@@ -29,7 +29,8 @@ text-color=#424242
 default-timeout=1000
 anchor=center
 margin=360,0,0,0
-width=150
+width=160
+height=120
 
 # 重要通知
 [urgency=critical]
@@ -40,17 +41,20 @@ default-timeout=0
 
 [app-name=microphone]
 width=120
+height=90
 
 [app-name=clipboard]
 width=120
+height=90
 
 [app-name=mistakes]
 width=120
+height=90
 
 # 测试:
-# makoctl reload && notify-send "测试标题" "这是一个简洁的直角风格通知"
-# notify-send -u low "低级通知" "这是一个低级通知"
-# notify-send -u critical "紧急！" "这是一个紧急通知"
+# makoctl reload && notify-send "测试标题" "这是一个默认风格通知"
+# makoctl reload && notify-send -u low "低级通知" "这是一个低级通知"
+# makoctl reload && notify-send -u critical "紧急！" "这是一个紧急通知"
 
 # 只有当 Firefox 发送的通知标题中包含 "Download" 时才触发
 # [app-name=Firefox summary="*Download*"]
