@@ -56,6 +56,7 @@ speller:
     # - derive/in$/ing/
     # - derive/on$/ong/
     - derive/^mei$/me/
+    - derive/^zai$/zia/
     - derive/^hui$/hiu/
     - derive/uan$/aun/
     - derive/ang$/nag/
