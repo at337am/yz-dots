@@ -11,7 +11,7 @@ flatpak --user override --reset md.obsidian.Obsidian
 flatpak --user override --reset org.localsend.localsend_app
 flatpak --user override --reset io.github.ungoogled_software.ungoogled_chromium
 flatpak --user override --reset org.telegram.desktop
-flatpak --user override --reset io.mgba.mGBA
+# flatpak --user override --reset io.mgba.mGBA
 
 # 2. 设置权限
 flatpak --user override md.obsidian.Obsidian --env=GTK_IM_MODULE=fcitx5
@@ -41,7 +41,7 @@ flatpak --user override org.telegram.desktop \
     --filesystem=/workspace \
     --filesystem=/data
 
-flatpak --user override io.mgba.mGBA \
-    --filesystem=/data
+# flatpak --user override io.mgba.mGBA \
+#     --filesystem=/data
 
 echo "Flatpak app permissions have been set."

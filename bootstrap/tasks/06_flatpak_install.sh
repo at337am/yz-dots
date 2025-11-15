@@ -7,8 +7,9 @@ flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flath
 flatpak --user install -y flathub \
     md.obsidian.Obsidian \
     org.localsend.localsend_app \
-    io.mgba.mGBA \
     io.github.ungoogled_software.ungoogled_chromium \
     org.telegram.desktop
+
+# flatpak --user install -y flathub io.mgba.mGBA
 
 echo "Flatpak app installation complete."
