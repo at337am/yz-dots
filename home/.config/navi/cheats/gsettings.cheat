@@ -6,6 +6,12 @@ gsettings get org.gnome.desktop.interface font-name
 # 查看当前的文本缩放因子
 gsettings get org.gnome.desktop.interface text-scaling-factor
 
+# 查看当前光标主题
+gsettings get org.gnome.desktop.interface cursor-theme
+
+# 查看当前光标大小
+gsettings get org.gnome.desktop.interface cursor-size
+
 
 
 % gsettings, gtk, set
@@ -15,3 +21,9 @@ gsettings set org.gnome.desktop.interface font-name 'Adwaita Sans 12'
 
 # 设置文本缩放因子
 gsettings set org.gnome.desktop.interface text-scaling-factor 1.0
+
+# 设置光标主题
+gsettings set org.gnome.desktop.interface cursor-theme 'Breeze_Light'
+
+# 设置光标大小
+gsettings set org.gnome.desktop.interface cursor-size 24
