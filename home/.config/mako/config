@@ -40,6 +40,12 @@ margin=360,0,0,0
 width=160
 height=120
 
+[app-name=screenshot]
+anchor=center
+margin=360,0,0,0
+width=160
+height=120
+
 [app-name=microphone]
 anchor=center
 margin=360,0,0,0
