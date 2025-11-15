@@ -1,10 +1,14 @@
-% gsettings, gtk, get
+% gsettings, gtk, get, font
 
 # 查看当前的字体设置
 gsettings get org.gnome.desktop.interface font-name
 
 # 查看当前的文本缩放因子
 gsettings get org.gnome.desktop.interface text-scaling-factor
+
+
+
+% gsettings, gtk, get, cursor
 
 # 查看当前光标主题
 gsettings get org.gnome.desktop.interface cursor-theme
@@ -14,7 +18,14 @@ gsettings get org.gnome.desktop.interface cursor-size
 
 
 
-% gsettings, gtk, set
+% gsettings, gtk, get, icon
+
+# 查看当前图标主题
+gsettings set org.gnome.desktop.interface icon-theme
+
+
+
+% gsettings, gtk, set, font
 
 # 设置字体和字号
 gsettings set org.gnome.desktop.interface font-name 'Adwaita Sans 12'
@@ -22,8 +33,19 @@ gsettings set org.gnome.desktop.interface font-name 'Adwaita Sans 12'
 # 设置文本缩放因子
 gsettings set org.gnome.desktop.interface text-scaling-factor 1.0
 
+
+
+% gsettings, gtk, set, cursor
+
 # 设置光标主题
 gsettings set org.gnome.desktop.interface cursor-theme 'Breeze_Light'
 
 # 设置光标大小
 gsettings set org.gnome.desktop.interface cursor-size 24
+
+
+
+% gsettings, gtk, set, icon
+
+# 设置图标主题
+gsettings set org.gnome.desktop.interface icon-theme 'Papirus'

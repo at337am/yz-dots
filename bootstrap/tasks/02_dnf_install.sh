@@ -124,15 +124,16 @@ echo "Graphics and acceleration packages installed."
 
 
 # -------------------------------- #
-echo "Installing fonts and cursor themes..."
+echo "Installing fonts and themes..."
 
 sudo dnf -y install \
     adwaita-sans-fonts.noarch \
-    breeze-cursor-theme \
     google-noto-color-emoji-fonts \
-    google-noto-sans-cjk-vf-fonts
+    google-noto-sans-cjk-vf-fonts \
+    breeze-cursor-theme \
+    papirus-icon-theme
 
-echo "Fonts and cursor themes installed."
+echo "Fonts and themes installed."
 # -------------------------------- #
 
 
