@@ -130,6 +130,7 @@ sudo dnf -y install \
     adwaita-sans-fonts.noarch \
     google-noto-color-emoji-fonts \
     google-noto-sans-cjk-vf-fonts \
+    glib2 \
     breeze-cursor-theme \
     papirus-icon-theme
 

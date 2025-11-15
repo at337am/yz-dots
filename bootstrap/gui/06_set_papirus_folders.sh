@@ -10,18 +10,21 @@ if ! rpm -q papirus-icon-theme &>/dev/null; then
     sudo dnf -y install papirus-icon-theme
 fi
 
-if ! command -v "papirus-folders" &> /dev/null; then
-    wget -qO- https://git.io/papirus-folders-install | sh
-fi
-
 if ! command -v "gsettings" &> /dev/null; then
     sudo dnf -y install glib2
 fi
 
+if ! command -v "papirus-folders" &> /dev/null; then
+    wget -qO- https://git.io/papirus-folders-install | sh
+fi
+
+# 卸载 papirus-folders 脚本: 
+# wget -qO- https://git.io/papirus-folders-install | env uninstall=true sh
+
 # 更改 folder 配色
 papirus-folders -C nordic --theme Papirus
 
-# 设置 icon 主题
+# 设置图标主题
 gsettings set org.gnome.desktop.interface icon-theme 'Papirus'
 
 printf "Done.\n"
