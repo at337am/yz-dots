@@ -28,7 +28,7 @@ gsettings set org.gnome.desktop.interface icon-theme
 % gsettings, gtk, set, font
 
 # 设置字体和字号
-gsettings set org.gnome.desktop.interface font-name 'Adwaita Sans 12'
+gsettings set org.gnome.desktop.interface font-name 'Inter 12'
 
 # 设置文本缩放因子
 gsettings set org.gnome.desktop.interface text-scaling-factor 1.0

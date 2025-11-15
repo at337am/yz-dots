@@ -8,7 +8,7 @@ format=%s\n%b
 layer=overlay
 anchor=top-right
 
-font=Adwaita Sans SemiBold 12
+font=Inter SemiBold 12
 
 # 文字水平居中
 text-alignment=center
