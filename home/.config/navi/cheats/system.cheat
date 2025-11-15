@@ -64,7 +64,7 @@ fc-cache -fv
 
 
 
-% system, font, fzf
+% system, font, search
 
 # 查找已安装的字体
 fc-list : family | fzf
