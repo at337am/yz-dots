@@ -127,7 +127,7 @@ echo "Graphics and acceleration packages installed."
 echo "Installing fonts and themes..."
 
 sudo dnf -y install \
-    adwaita-sans-fonts.noarch \
+    rsms-inter-fonts \
     google-noto-color-emoji-fonts \
     google-noto-sans-cjk-vf-fonts \
     glib2 \
