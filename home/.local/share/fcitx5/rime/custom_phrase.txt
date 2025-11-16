@@ -12,6 +12,7 @@
 好了	hl
 好吗	hm
 好了吗	hlm
+话	hua
 笑死	xs
 笑死我了	xswl
 刚刚	gg
@@ -103,7 +104,6 @@
 宝格丽	baogeli
 古驰	guchi
 芦丹氏	ludanshi
-爱乐压	aileya
 
 
 
