@@ -1,7 +1,16 @@
 % gsettings, gtk, get, font
 
-# 查看当前的字体设置
+# 查看当前的字体样式
 gsettings get org.gnome.desktop.interface font-name
+
+# 查看当前的微调
+gsettings get org.gnome.desktop.interface font-hinting
+
+# 查看当前的字体抗锯齿
+gsettings get org.gnome.desktop.interface font-antialiasing
+
+# 查看当前的子像素顺序
+gsettings get org.gnome.desktop.interface font-rgba-order
 
 # 查看当前的文本缩放因子
 gsettings get org.gnome.desktop.interface text-scaling-factor
@@ -29,6 +38,15 @@ gsettings set org.gnome.desktop.interface icon-theme
 
 # 设置字体和字号
 gsettings set org.gnome.desktop.interface font-name 'Inter 12'
+
+# 设置字体微调
+gsettings set org.gnome.desktop.interface font-hinting 'medium'
+
+# 设置字体抗锯齿
+gsettings set org.gnome.desktop.interface font-antialiasing 'rgba'
+
+# 设置子像素顺序
+gsettings set org.gnome.desktop.interface font-rgba-order 'rgb'
 
 # 设置文本缩放因子
 gsettings set org.gnome.desktop.interface text-scaling-factor 1.0
