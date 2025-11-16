@@ -60,6 +60,7 @@ speller:
     - derive/^hui$/hiu/
     - derive/uan$/aun/
     - derive/ang$/nag/
+    - derive/ou$/o/
 
 # 使用 "yz_pinyin.dict.yaml" 中定义的词库
 translator:
