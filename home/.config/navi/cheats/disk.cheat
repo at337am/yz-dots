@@ -1,13 +1,13 @@
 % disk, du
 
 # 列出当前路径下的文件/目录大小 (深度 1)
-du -h --all --max-depth=1 .
+du -ah -d 1 .
 
 # 列出当前路径下的文件/目录大小 (深度 1) - 显示实际数据量, 而非数据块
-du -h --all --max-depth=1 --apparent-size .
+du -ah -d 1 --apparent-size .
 
 # 只显示当前路径的总磁盘占用大小
-du -h --summarize .
+du -sh .
 
 
 
