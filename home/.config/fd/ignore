@@ -1,8 +1,9 @@
 .git/
 .ssh/
 .local/share/icons/
-.local/share/klipper/
 .local/share/fcitx5/
+.local/share/fonts/
+.local/share/themes/
 .vscode/
 .config/Code/
 .mozilla/
@@ -20,9 +21,6 @@ go/pkg/
 /srv/
 /afs/
 
-.local/share/fonts/
-/home/mjj/.local/share/icons/
-/home/mjj/.local/share/fonts/
 /usr/share/icons/
 /usr/share/doc/
-
+/usr/share/themes/
