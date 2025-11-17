@@ -27,10 +27,23 @@ gsettings get org.gnome.desktop.interface cursor-size
 
 
 
-% gsettings, gtk, get, icon
+% gsettings, gtk, get, icon-theme
 
 # 查看当前图标主题
-gsettings set org.gnome.desktop.interface icon-theme
+gsettings get org.gnome.desktop.interface icon-theme
+
+
+
+% gsettings, gtk, get, gtk-theme
+
+# 查看当前的 GTK 主题
+gsettings get org.gnome.desktop.interface gtk-theme
+
+
+
+
+
+
 
 
 
@@ -56,14 +69,21 @@ gsettings set org.gnome.desktop.interface text-scaling-factor 1.0
 % gsettings, gtk, set, cursor
 
 # 设置光标主题
-gsettings set org.gnome.desktop.interface cursor-theme 'Breeze_Light'
+gsettings set org.gnome.desktop.interface cursor-theme 'name'
 
 # 设置光标大小
 gsettings set org.gnome.desktop.interface cursor-size 24
 
 
 
-% gsettings, gtk, set, icon
+% gsettings, gtk, set, icon-theme
 
 # 设置图标主题
-gsettings set org.gnome.desktop.interface icon-theme 'Papirus'
+gsettings set org.gnome.desktop.interface icon-theme 'name'
+
+
+
+% gsettings, gtk, set, gtk-theme
+
+# 设置 GTK 主题
+gsettings set org.gnome.desktop.interface gtk-theme 'name'
