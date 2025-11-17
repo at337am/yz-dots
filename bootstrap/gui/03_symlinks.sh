@@ -2,20 +2,6 @@
 
 set -euo pipefail
 
-confirm() {
-    local prompt=${1:-"Do you want to continue?"}
-    read -p "$prompt [y/N]: " choice
-    case "${choice,,}" in
-        y|yes) return 0 ;;
-        *) return 1 ;;
-    esac
-}
-
-if ! confirm "Are you sure you want to reset symlinks?"; then
-    printf "Operation cancelled. Exiting...\n"
-    exit 1
-fi
-
 command rm -rf ~/tidy
 ln -s "$HOME/workspace/dev/yz-dots/tidy" ~/tidy
 
@@ -102,6 +88,4 @@ ln -s "$DOTS_PATH/.config/fcitx5" ~/.config/fcitx5
 # ------------ fcitx5 END ------------
 
 
-
-
-printf "Done.\n"
+echo "Symlinks completed."

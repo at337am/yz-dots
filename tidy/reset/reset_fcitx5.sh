@@ -30,7 +30,7 @@ rsync -a --delete \
         ~/.local/share/fcitx5/
 
 # 拉取 rime-ice 词库
-source ~/workspace/dev/yz-dots/bootstrap/tasks/04_wget_rime_dicts.sh
+source ~/workspace/dev/yz-dots/bootstrap/tasks/05_wget_rime_dicts.sh
 
 # ----------
 

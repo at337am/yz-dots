@@ -3,7 +3,7 @@
 set -euo pipefail
 
 # 检查是否需要跳过
-if [[ -f "$HOME/.local/share/fcitx5/rime/cn_dicts/base.dict.yaml" ]]; then
+if [[ -d "$HOME/.local/share/fcitx5/rime/cn_dicts" ]]; then
     echo "Skip: wget_rime_dicts.sh"
     return 0
 fi
