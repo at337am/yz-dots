@@ -11,15 +11,12 @@ confirm() {
     esac
 }
 
-if ! confirm "Are you sure you want to all reset?"; then
+if ! confirm "Are you sure you want to reset home?"; then
     printf "Operation cancelled. Exiting...\n"
     exit 1
 fi
 
-
 DOTS_PATH="$HOME/workspace/dev/yz-dots/home"
-
-# todo 排除 zsh 的 p10k 主题
 
 # rsync -avh --dry-run --itemize-changes --exclude='.lain/themes' "$DOTS_PATH/" ~/
 rsync -a --exclude='.lain/themes' "$DOTS_PATH/" ~/
@@ -29,3 +26,5 @@ source ~/workspace/dev/yz-dots/bootstrap/tasks/04_set_permissions.sh
 
 # 重新软链接
 source ~/workspace/dev/yz-dots/bootstrap/gui/03_symlinks.sh
+
+printf "Done.\n"
