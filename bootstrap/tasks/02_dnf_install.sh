@@ -217,7 +217,8 @@ sudo dnf -y install \
     ffmpegthumbnailer \
     thunar \
     lf \
-    7zip
+    7zip \
+    duf
 
 echo "Hyprland and related packages installed."
 # -------------------------------- #

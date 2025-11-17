@@ -2,8 +2,6 @@
 
 set -euo pipefail
 
-echo "Starting cloning of all projects to specified locations..."
-
 git clone git@github.com:at337am/notes.git ~/Documents/notes
 
 git clone git@github.com:at337am/yz-dots.git ~/workspace/dev/yz-dots
