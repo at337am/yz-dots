@@ -29,27 +29,6 @@ uname -r
 
 
 
-% system, disk, lsblk
-
-# 查看当前挂载情况
-lsblk -fp | bat -p -l conf
-
-
-
-% system, disk, fdisk
-
-# 列出所有磁盘及其分区的详细信息
-sudo fdisk -l
-
-
-
-% system, disk, df
-
-# 显示已挂载的文件系统的磁盘空间使用情况
-df -hT | bat -p -l conf
-
-
-
 % system, htop, pgrep
 
 # 监控指定名称的进程
