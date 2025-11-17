@@ -2,8 +2,9 @@
 
 set -euo pipefail
 
-# 1. 撤销权限
+# todo: global 全局权限
 
+# --------------------- 重置权限 ---------------------
 # 或者直接去这里删除:
 # command rm -rfv ~/.local/share/flatpak/overrides
 
@@ -13,7 +14,7 @@ flatpak --user override --reset io.github.ungoogled_software.ungoogled_chromium
 flatpak --user override --reset org.telegram.desktop
 # flatpak --user override --reset io.mgba.mGBA
 
-# 2. 设置权限
+# --------------------- 设置权限 ---------------------
 flatpak --user override md.obsidian.Obsidian --env=GTK_IM_MODULE=fcitx5
 
 flatpak --user override org.localsend.localsend_app \
