@@ -130,9 +130,7 @@ sudo dnf -y install \
     rsms-inter-fonts \
     google-noto-color-emoji-fonts \
     google-noto-sans-cjk-vf-fonts \
-    glib2 \
-    breeze-cursor-theme \
-    papirus-icon-theme
+    breeze-cursor-theme
 
 echo "Fonts and themes installed."
 # -------------------------------- #
