@@ -6,6 +6,4 @@ cargo install cargo-cache
 
 cargo install xh
 
-cargo install bottom
-
 printf "Done.\n"
