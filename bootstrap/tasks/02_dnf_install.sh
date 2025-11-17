@@ -218,7 +218,8 @@ sudo dnf -y install \
     thunar \
     lf \
     7zip \
-    duf
+    duf \
+    hyperfine
 
 echo "Hyprland and related packages installed."
 # -------------------------------- #
