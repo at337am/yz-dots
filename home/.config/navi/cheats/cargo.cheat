@@ -1,0 +1,20 @@
+% cargo, rust
+
+# 列出已安装的所有程序
+cargo install --list
+
+# 删除指定程序
+cargo uninstall xxx
+
+
+
+% cargo-cache, rust
+
+# 显示缓存信息
+cargo-cache --info
+
+# 模拟清理缓存
+cargo-cache --autoclean --dry-run
+
+# 清理缓存
+cargo-cache --autoclean
