@@ -20,6 +20,8 @@ alias mm='nvim ~/workspace/tmp/mm_$(date +"%y%m%d_%H%M%S").md'
 alias cnt='printf "dirs: %s  symlinks: %s  files: %s\n" "$(fd -IH -t d -d 1 | wc -l)" "$(fd -IH -t l -d 1 | wc -l)" "$(fd -IH -t f -d 1 | wc -l)"'
 alias code='code --ozone-platform-hint=auto > /dev/null 2>&1'
 alias du1='du -ah -d 1 .'
+alias r='printf "zsh: r command disabled\n"'
+alias fc='printf "zsh: fc command disabled\n"'
 
 # base
 alias _='sudo '
@@ -32,7 +34,6 @@ alias 6='cd -6'
 alias 7='cd -7'
 alias 8='cd -8'
 alias 9='cd -9'
-alias history='fc -lf 1'
 
 # docker
 alias dstopall='sudo docker stop $(sudo docker ps -q)'
