@@ -9,7 +9,7 @@ fi
 
 workspaces=$(hyprctl workspaces -j | jq -r 'sort_by(.id) | .[] | select(.name | startswith("special:") | not) | "\(.id)\t\(.lastwindowtitle)"')
 
-chosen_index=$(echo -e "$workspaces" | rofi -dmenu -i -p "workspaces" -format 'i' -no-show-icons -kb-accept-entry 'Return')
+chosen_index=$(echo -e "$workspaces" | rofi -dmenu -i -p "workspaces" -format 'i' -no-show-icons -kb-accept-entry 'Return' -theme ~/.config/rofi/themes/switch_workspace.rasi)
 
 if [ -z "$chosen_index" ]; then
     exit 0
