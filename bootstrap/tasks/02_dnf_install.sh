@@ -67,7 +67,6 @@ fi
 enable_copr_repo "solopasha" "hyprland"
 enable_copr_repo "alternateved" "eza"
 enable_copr_repo "ecomaikgolf" "lf"
-enable_copr_repo "atim" "bottom"
 
 # ------------------------------- REPO END -------------------------------
 
@@ -220,8 +219,7 @@ sudo dnf -y install \
     lf \
     7zip \
     duf \
-    hyperfine \
-    bottom
+    hyperfine
 
 echo "Hyprland and related packages installed."
 # -------------------------------- #
