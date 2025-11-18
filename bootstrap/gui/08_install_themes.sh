@@ -48,3 +48,6 @@ git clone --depth 1 https://github.com/vinceliuice/Tela-icon-theme.git "$tmp_dir
     cd "$tmp_dir/Tela-icon-theme"
     ./install.sh grey -d ~/.local/share/icons
 )
+
+# 最后设置主题
+~/.config/hypr/scripts/gsettings.sh
