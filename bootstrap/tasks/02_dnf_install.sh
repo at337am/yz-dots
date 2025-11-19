@@ -219,7 +219,8 @@ sudo dnf -y install \
     lf \
     7zip \
     duf \
-    hyperfine
+    hyperfine \
+    wayland-devel
 
 echo "Hyprland and related packages installed."
 # -------------------------------- #
