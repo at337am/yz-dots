@@ -10,4 +10,6 @@ import_tables:
   - cn_dicts/ext
   - cn_dicts/tencent
   - cn_dicts/others
+
+  - en_dicts/en
 ...
