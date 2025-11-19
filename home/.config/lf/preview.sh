@@ -11,7 +11,7 @@ mimetype=$(file --mime-type -b "$filepath")
 case "$mimetype" in
     image/*)
         echo "--- Image Metadata (ExifTool) ---"
-        exiftool "$filepath" 
+        exiftool "$filepath"
         ;;
 
     video/* | audio/*)
