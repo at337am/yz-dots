@@ -18,8 +18,6 @@ fi
 
 pkill -9 fcitx5 || true
 
-sleep 2
-
 sudo dnf -y remove \
     fcitx5 \
     fcitx5-configtool \
