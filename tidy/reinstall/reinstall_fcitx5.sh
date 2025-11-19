@@ -4,7 +4,7 @@ set -euo pipefail
 
 confirm() {
     local prompt=${1:-"Do you want to continue?"}
-    read -p "$prompt [y/N]: " choice
+    read -r -p "$prompt [y/N]: " choice
     case "${choice,,}" in
         y|yes) return 0 ;;
         *) return 1 ;;
