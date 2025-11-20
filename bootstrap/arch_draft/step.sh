@@ -132,20 +132,19 @@ reboot
 
 
 # ------------------ 之后 ------------------
-# 到这一步, bootstrap 脚本可以从这里开始书写
 
 # nmcli 连接网络
 
-# 使用 另一台手机上传所需文件
+# 使用 另一台手机 scp -r 上传所需文件
 
-# 设置代理
+# 设置 env 代理
 
+# 执行 脚本
+
+# bootstrap 脚本从这里开始书写
+
+
+
+
+# END:
 chsh -s /usr/bin/zsh
-
-# 配置自动启动 hyprland
-sudo -E pacman -S uwsm
-
-# nvim ~/.zprofile:
-if uwsm check may-start; then
-    exec uwsm start hyprland.desktop
-fi

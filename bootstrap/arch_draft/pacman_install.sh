@@ -120,6 +120,9 @@ sudo -E pacman -S --needed \
     xdg-desktop-portal-hyprland \
     xdg-desktop-portal-gtk \
     xdg-desktop-portal \
+    uwsm \
+    libnewt
+
 
 
 # 启动服务:
