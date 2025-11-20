@@ -17,7 +17,7 @@ configs["rime"]="$HOME/.local/share/fcitx5/rime"
 
 configs["tidy"]="$HOME/workspace/dev/yz-dots/tidy"
 configs["home-bin"]="$HOME/workspace/dev/yz-dots/home/bin"
-configs["arch"]="$HOME/workspace/dev/yz-dots"
+configs["arch_bootstrap"]="$HOME/workspace/dev/yz-dots"
 
 config_choice=$(printf "%s\n" "${!configs[@]}" | rofi -dmenu -i -p "config" -theme ~/.config/rofi/themes/edit_config.rasi)
 
