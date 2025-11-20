@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+# wow ~
 
 # arch 安装指南: https://wiki.archlinuxcn.org/wiki/安装指南
 
