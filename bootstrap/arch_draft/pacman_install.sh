@@ -124,7 +124,3 @@ sudo -E pacman -S --needed \
     uwsm \
     libnewt
 
-
-
-# 启动服务:
-# systemctl --user enable --now pipewire pipewire-pulse wireplumber
