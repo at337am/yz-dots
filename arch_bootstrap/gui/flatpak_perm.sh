@@ -21,16 +21,17 @@ flatpak --user override --reset org.telegram.desktop
 
 
 
+# --------------------- 全局权限 ---------------------
 
-# --------------------- 设置权限 ---------------------
-
-# 全局
 flatpak --user override --filesystem=xdg-config/gtk-3.0
 flatpak --user override --filesystem=xdg-config/gtk-4.0
+flatpak --user override --socket=wayland
 
-# App
-# flatpak --user override md.obsidian.Obsidian --env=GTK_IM_MODULE=fcitx5
-flatpak --user override md.obsidian.Obsidian --socket=wayland
+
+
+# --------------------- App 权限 ---------------------
+
+
 
 flatpak --user override org.localsend.localsend_app \
     --filesystem=xdg-videos \
@@ -57,9 +58,14 @@ flatpak --user override org.telegram.desktop \
     --filesystem=/workspace \
     --filesystem=/data
 
+
+
 # bak:
+
+# flatpak --user override md.obsidian.Obsidian --env=GTK_IM_MODULE=fcitx5
+# flatpak --user override md.obsidian.Obsidian --socket=wayland
+
 # flatpak --user override --reset io.mgba.mGBA
-# flatpak --user override io.mgba.mGBA \
-#     --filesystem=/data
+# flatpak --user override io.mgba.mGBA --filesystem=/data
 
 printf "Done.\n"
