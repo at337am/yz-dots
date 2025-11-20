@@ -3,6 +3,7 @@
 set -euo pipefail
 
 # 安装完软件包后执行此脚本
+# 这些都是是一次性配置脚本, 一般只需要执行一次就行了, 没必要重复利用
 
 # todo 这里开头要检查每个命令的依赖
 
@@ -15,5 +16,4 @@ systemctl --user enable --now pipewire pipewire-pulse wireplumber
 
 # 关闭文件管理器的 "最近打开"
 gsettings set org.gnome.desktop.privacy remember-recent-files false
-
 rm -f ~/.local/share/recently-used.xbel
