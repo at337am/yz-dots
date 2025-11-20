@@ -5,7 +5,9 @@ set -euo pipefail
 # Orchis gtk theme: https://github.com/vinceliuice/Orchis-theme
 # Tela-icon-theme: https://github.com/vinceliuice/Tela-icon-theme
 
-sudo -E pacman -S gnome-themes-extra gtk-engine-murrine sassc
+# yay -S gtk-engine-murrine
+
+sudo -E pacman -S gnome-themes-extra sassc
 
 tmp_dir=$(mktemp -d)
 trap 'command rm -rf "$tmp_dir"' EXIT
