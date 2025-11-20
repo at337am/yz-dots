@@ -116,8 +116,10 @@ sudo -E pacman -S --needed \
     duf \
     hyperfine \
     xdg-user-dirs \
-    wl-clip-persist
-
+    wl-clip-persist \
+    xdg-desktop-portal-hyprland \
+    xdg-desktop-portal-gtk \
+    xdg-desktop-portal \
 
 
 # 启动服务:
