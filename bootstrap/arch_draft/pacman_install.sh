@@ -83,7 +83,9 @@ sudo -E pacman -S --needed \
     wget \
     yt-dlp \
     zsh \
-    7zip
+    7zip \
+    cargo-cache \
+    xh
 
 # hyprland 相关:
 sudo -E pacman -S --needed \
@@ -111,7 +113,8 @@ sudo -E pacman -S --needed \
     lf \
     duf \
     hyperfine \
-    xdg-user-dirs
+    xdg-user-dirs \
+    wl-clip-persist
 
 
 
