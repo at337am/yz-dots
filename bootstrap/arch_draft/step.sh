@@ -106,11 +106,10 @@ visudo
 # 安装引导程序 GRUB
 pacman -S grub efibootmgr
 
+# 将 GRUB 安装到硬盘的 ESP 分区上
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
-
 # 生成配置文件
 grub-mkconfig -o /boot/grub/grub.cfg
-
 
 
 
@@ -120,24 +119,26 @@ pacman -S intel-ucode mesa vulkan-intel intel-media-driver
 grub-mkconfig -o /boot/grub/grub.cfg
 
 
-# 安装 NetworkManager 和 SSH
+# 安装网络服务和 ssh, 方便重启后可以连接 wifi
 pacman -S networkmanager openssh
 # 启动服务
 systemctl enable --now NetworkManager.service
 systemctl enable --now sshd.service
 
 
-# 退出 chroot, 按下 ctrl + D, 最后重启
+# 最后退出 chroot 环境, 重启
+exit
 reboot
 
 
-
 # ------------------ 之后 ------------------
+# 到这一步, bootstrap 脚本可以从这里开始书写
 
 # nmcli 连接网络
-# 设置代理
 
-# 执行脚本: pacman_install.sh
+# 使用 另一台手机上传所需文件
+
+# 设置代理
 
 chsh -s /usr/bin/zsh
 
