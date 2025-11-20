@@ -4,6 +4,8 @@ set -euo pipefail
 
 # todo 好像 flatpak 命令语法不太标准? 看看别人的
 
+
+
 # --------------------- 重置权限 ---------------------
 # 或者直接去这里删除:
 # command rm -rfv ~/.local/share/flatpak/overrides
@@ -16,6 +18,9 @@ flatpak --user override --reset md.obsidian.Obsidian
 flatpak --user override --reset org.localsend.localsend_app
 flatpak --user override --reset io.github.ungoogled_software.ungoogled_chromium
 flatpak --user override --reset org.telegram.desktop
+
+
+
 
 # --------------------- 设置权限 ---------------------
 
