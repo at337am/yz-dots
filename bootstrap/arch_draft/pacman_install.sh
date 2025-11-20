@@ -1,25 +1,46 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 # todo:
 # breeze-cursor ?
-# qt5, qt6 ?
 # zathura, zathura-plugins-all ?
-# aur -> qimgv-git
 # 安装 Yay: https://wiki.archlinuxcn.org/wiki/Yay
 
-# sudo 用户执行 pacman 时, 不会识别 env 代理, 可以使用 -E 临时代理, 比如: sudo -E pacman -Syu
-# 设置 pacman 永久代理:
-# 编辑文件: /etc/pacman.conf 加上代理参数 -x:
-# XferCommand = /usr/bin/curl -x http://127.0.0.1:2080 -L -C - -f -o %o %u
+# 音频驱动、固件和音频服务
+sudo -E pacman -S --needed \
+    sof-firmware \
+    alsa-firmware \
+    alsa-ucm-conf \
+    pipewire \
+    pipewire-jack \
+    pipewire-pulse \
+    pipewire-alsa \
+    wireplumber
+
+# 图形界面配置相关
+sudo -E pacman -S --needed \
+    gtk3 \
+    gtk4 \
+    qt5-base \
+    qt5-svg \
+    qt5-wayland \
+    qt5-x11extras \
+    qt6-base \
+    qt6-svg \
+    qt6-wayland \
+    nwg-look \
+    qt5ct \
+    qt6ct
 
 # 字体:
-sudo pacman -S \
+sudo -E pacman -S --needed \
     noto-fonts-cjk \
     noto-fonts-emoji \
     inter-font
 
 # 常用软件:
-sudo pacman -S \
+sudo -E pacman -S --needed \
     android-tools \
     bat \
     catimg \
@@ -44,22 +65,28 @@ sudo pacman -S \
     imagemagick \
     just \
     kitty \
+    less \
     mpv \
     nano \
     navi \
     neovim \
+    nmap \
     obs-studio \
     ripgrep \
+    rsync \
     rust \
     tealdeer \
     tmux \
+    unzip \
     uv \
+    vi \
+    wget \
     yt-dlp \
     zsh \
-    7zip \
+    7zip
 
 # hyprland 相关:
-sudo pacman -S \
+sudo -E pacman -S --needed \
     cliphist \
     grim \
     hypridle \
@@ -85,3 +112,8 @@ sudo pacman -S \
     duf \
     hyperfine \
     xdg-user-dirs
+
+
+
+# 启动服务:
+systemctl --user enable --now pipewire pipewire-pulse wireplumber

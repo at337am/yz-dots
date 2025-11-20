@@ -14,6 +14,7 @@
 好了	hl
 好吗	hm
 好了吗	hlm
+么	me
 话	hua
 命令	ml
 笑死	xs
