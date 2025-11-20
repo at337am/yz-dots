@@ -113,6 +113,10 @@ sudo -E pacman -S --needed \
     pwgen \
     ffmpegthumbnailer \
     thunar \
+    tumbler \
+    gvfs \
+    udisks2 \
+    thunar-volman \
     lf \
     duf \
     hyperfine \
