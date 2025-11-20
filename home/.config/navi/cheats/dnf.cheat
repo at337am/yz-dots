@@ -1,4 +1,4 @@
-% pkg, dnf, rpm, search
+% dnf, rpm, search
 
 # 查询软件包版本信息 (检查是否已安装)
 rpm -q <packagename>
@@ -14,14 +14,14 @@ rpm -ql <packagename>
 
 
 
-% pkg, dnf
+% dnf
 
 # 更新本地的软件包缓存
 sudo dnf makecache
 
 
 
-% pkg, dnf, repo
+% dnf, repo
 
 # 列出已启用的仓库
 dnf repolist
@@ -34,14 +34,14 @@ ls /etc/yum.repos.d/
 
 
 
-% pkg, dnf, history
+% dnf, history
 
 # 显示 DNF 的命令历史记录 (最近 30 条)
 dnf history list | head -n 30
 
 
 
-% pkg, dnf, search
+% dnf, search
 
 # 查看命令由哪个软件包提供
 dnf provides <cliname>
@@ -51,7 +51,7 @@ sudo dnf repoquery --requires <packagename>
 
 
 
-% pkg, dnf, clean
+% dnf, clean
 
 # 清理缓存
 sudo dnf clean all
@@ -61,27 +61,10 @@ sudo dnf autoremove
 
 
 
-% pkg, dnf, group
+% dnf, group
 
 # 列出可用组
 dnf group list
 
 # 查看组中的工具
 dnf group info "组名"
-
-
-
-% pkg, flatpak
-
-# 显示 Flatpak 仓库信息
-flatpak remotes -d
-
-
-
-% pkg, flatpak, delete
-
-# 卸载 Flatpak App 并删除用户数据 (指定 App)
-flatpak uninstall --delete-data xxx
-
-# 清理残留依赖
-flatpak uninstall --unused
