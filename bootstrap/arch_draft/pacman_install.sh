@@ -83,4 +83,5 @@ sudo pacman -S \
     thunar \
     lf \
     duf \
-    hyperfine
+    hyperfine \
+    xdg-user-dirs

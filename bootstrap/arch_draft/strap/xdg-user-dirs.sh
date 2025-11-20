@@ -18,7 +18,7 @@ sed -i \
     "$CONFIG_FILE"
 
 if [[ $? -eq 0 ]]; then
-    command rm -rf ~/Desktop ~/Templates ~/Public
+    rm -rf ~/Desktop ~/Templates ~/Public
     echo "Configuration file '$CONFIG_FILE' successfully updated."
     return 0
 else
