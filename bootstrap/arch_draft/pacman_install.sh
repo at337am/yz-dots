@@ -33,7 +33,7 @@ sudo pacman -S \
     fcitx5-gtk \
     fcitx5-qt \
     fcitx5-rime \
-    fd-find \
+    fd \
     ffmpeg \
     figlet \
     flatpak \

@@ -14,35 +14,36 @@ iwctl
 timedatectl
 
 # 建立硬盘分区
-fdisk -l
+# 先使用 fdisk -l 查看硬盘名称, 比如是: /dev/nvme0n1
 cfdisk /dev/nvme0n1
 # 选择一个空闲的分区, 进行以下操作:
 # New 新建一个 1G 的分区, 比如 /dev/nvme0n1p7, 然后把 type 改为 EFI
 # 再选择剩下的分区, 比如 /dev/nvme0n1p8, 然后把 type 改为 filesystem
 # 选择 write 写入, 输入 yes 确定
 # 最后 quite 退出
+# 使用 fdisk -l 查看是否成功
 
 # 格式化 EFI 分区
-mkfs.fat -F 32 /dev/nvme0n1/p7
+mkfs.fat -F 32 /dev/nvme0n1p7
 
 # 格式化 根分区
-mkfs.ext4 /dev/nvme0n1/p8
+mkfs.ext4 /dev/nvme0n1p8
 
 # 挂载根分区
-mount /dev/nvme0n1/p8 /mnt
+mount /dev/nvme0n1p8 /mnt
 
 # 挂载 EFI 分区
 mkdir /mnt/boot
-mount /dev/nvme0n1/p7 /mnt/boot
+mount /dev/nvme0n1p7 /mnt/boot
 
 # 再次查看一下
-fdisk -l
+lsblk -pf
 
 # ------------------ 开始安装系统 ------------------
 
 # 设置代理
-export http_proxy='http://192.168.9.104:1082'
-export https_proxy='http://192.168.9.104:1082'
+export http_proxy=http://192.168.9.104:1082
+export https_proxy=http://192.168.9.104:1082
 
 # 检查是否代理成功 (返回 200)
 curl -I https://www.google.com
@@ -92,7 +93,7 @@ nvim /etc/hostname
 passwd
 
 # 创建用户, 设置密码:
-useradd -m -G wheel -s /bin/bash yz
+useradd -m -G wheel yz
 passwd yz
 
 # 设置用户 sudo 权限:
