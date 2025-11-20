@@ -49,13 +49,6 @@ alias drmi='sudo docker rmi'
 alias dvp='sudo docker volume prune'
 alias dlg='sudo docker logs'
 
-# systemctl
-alias s_status='sudo systemctl status'
-alias s_restart='sudo systemctl restart'
-alias s_stop='sudo systemctl stop'
-alias s_start='sudo systemctl start'
-alias s_enable='sudo systemctl enable'
-
 # tmux
 alias tls='tmux ls'
 alias tn='tmux new'
