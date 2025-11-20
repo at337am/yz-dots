@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
+# todo 好像 flatpak 命令语法不太标准? 看看别人的
+
 # --------------------- 重置权限 ---------------------
 # 或者直接去这里删除:
 # command rm -rfv ~/.local/share/flatpak/overrides
@@ -22,7 +24,8 @@ flatpak --user override --filesystem=xdg-config/gtk-3.0
 flatpak --user override --filesystem=xdg-config/gtk-4.0
 
 # App
-flatpak --user override md.obsidian.Obsidian --env=GTK_IM_MODULE=fcitx5
+# flatpak --user override md.obsidian.Obsidian --env=GTK_IM_MODULE=fcitx5
+flatpak --user override md.obsidian.Obsidian --socket=wayland
 
 flatpak --user override org.localsend.localsend_app \
     --filesystem=xdg-videos \
