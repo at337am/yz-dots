@@ -22,9 +22,9 @@ DOTS_PATH="$HOME/workspace/dev/yz-dots/home"
 rsync -a --exclude='.lain/themes' "$DOTS_PATH/" ~/
 
 # 设置文件权限
-source ~/workspace/dev/yz-dots/bootstrap/tasks/04_set_permissions.sh
+source ~/workspace/dev/yz-dots/fedora_bootstrap/tasks/04_set_permissions.sh
 
 # 重新软链接
-source ~/workspace/dev/yz-dots/bootstrap/gui/03_symlinks.sh
+source ~/workspace/dev/yz-dots/fedora_bootstrap/gui/03_symlinks.sh
 
 printf "Done.\n"
