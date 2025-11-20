@@ -155,7 +155,7 @@ sudo dnf -y install \
     fcitx5-gtk \
     fcitx5-qt \
     fcitx5-rime \
-    fd-find \
+    fd \
     ffmpeg \
     figlet \
     flatpak \
@@ -166,10 +166,10 @@ sudo dnf -y install \
     just \
     kitty \
     mpv \
+    nano \
     navi \
     neovim \
-    p7zip \
-    pandoc \
+    obs-studio \
     qimgv \
     ripgrep \
     rust \
@@ -178,8 +178,7 @@ sudo dnf -y install \
     uv \
     yt-dlp \
     zsh \
-    obs-studio \
-    nano
+    7zip \
 
 echo "Common packages installed."
 # -------------------------------- #
@@ -217,7 +216,6 @@ sudo dnf -y install \
     ffmpegthumbnailer \
     thunar \
     lf \
-    7zip \
     duf \
     hyperfine \
     wayland-devel

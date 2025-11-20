@@ -139,16 +139,59 @@ reboot
 # 设置代理
 
 # 中文字体:
-sudo pacman -S noto-fonts-cjk noto-fonts-emoji
+# todo:
+# breeze-cursor ?
+sudo pacman -S noto-fonts-cjk noto-fonts-emoji inter-font
 
 # hyprland 和 必备的软件
+# todo:
+# aur: qimgv-git
 sudo pacman -S \
-    hyprland \
+    android-tools \
+    bat \
+    catimg \
+    cava \
+    chafa \
+    cmatrix \
+    eza \
+    fastfetch \
+    fcitx5 \
+    fcitx5-configtool \
+    fcitx5-gtk \
+    fcitx5-qt \
+    fcitx5-rime \
+    fd-find \
+    ffmpeg \
+    figlet \
+    flatpak \
+    fzf \
+    git \
+    go \
+    htop \
+    imagemagick \
+    just \
+    kitty \
+    mpv \
+    nano \
+    navi \
+    neovim \
+    obs-studio \
+    ripgrep \
+    rust \
+    tealdeer \
+    tmux \
+    uv \
+    yt-dlp \
     zsh \
-    git
-
+    7zip \
 
 chsh -s /usr/bin/zsh
+
+sudo pacman -S \
+    hyprland \
+
+
+
 
 # 配置自动启动 hyprland
 sudo pacman -S uwsm
