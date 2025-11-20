@@ -132,69 +132,17 @@ reboot
 
 
 
-
 # ------------------ 之后 ------------------
 
 # nmcli 连接网络
 # 设置代理
 
-# 中文字体:
-# todo:
-# breeze-cursor ?
-sudo pacman -S noto-fonts-cjk noto-fonts-emoji inter-font
-
-# hyprland 和 必备的软件
-# todo:
-# aur: qimgv-git
-sudo pacman -S \
-    android-tools \
-    bat \
-    catimg \
-    cava \
-    chafa \
-    cmatrix \
-    eza \
-    fastfetch \
-    fcitx5 \
-    fcitx5-configtool \
-    fcitx5-gtk \
-    fcitx5-qt \
-    fcitx5-rime \
-    fd-find \
-    ffmpeg \
-    figlet \
-    flatpak \
-    fzf \
-    git \
-    go \
-    htop \
-    imagemagick \
-    just \
-    kitty \
-    mpv \
-    nano \
-    navi \
-    neovim \
-    obs-studio \
-    ripgrep \
-    rust \
-    tealdeer \
-    tmux \
-    uv \
-    yt-dlp \
-    zsh \
-    7zip \
+# 执行脚本: pacman_install.sh
 
 chsh -s /usr/bin/zsh
 
-sudo pacman -S \
-    hyprland \
-
-
-
-
 # 配置自动启动 hyprland
-sudo pacman -S uwsm
+sudo -E pacman -S uwsm
 
 # nvim ~/.zprofile:
 if uwsm check may-start; then
