@@ -70,7 +70,6 @@ hwclock --systohc
 pacman -S neovim vi
 
 # 生成 Locale
-
 nvim /etc/locale.gen
 # 编辑文件, 取消以下两个注释:
 # en_US.UTF-8 UTF-8
