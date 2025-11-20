@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 
-# https://wiki.archlinuxcn.org/wiki/安装指南
+# arch 安装指南: https://wiki.archlinuxcn.org/wiki/安装指南
+# pacman 官方存储库: https://archlinux.org/packages
 
 # 放大显示字体, 恢复直接运行 setfont
 setfont ter-132b
-
-
 
 # 连接网络
 # https://wiki.archlinuxcn.org/wiki/Iwd#iwctl
@@ -39,6 +38,8 @@ mount /dev/nvme0n1/p7 /mnt/boot
 # 再次查看一下
 fdisk -l
 
+# ------------------ 开始安装系统 ------------------
+
 # 设置代理
 export http_proxy='http://192.168.9.104:1082'
 export https_proxy='http://192.168.9.104:1082'
@@ -48,18 +49,16 @@ curl -I https://www.google.com
 
 
 # 安装必需的软件包
-pacstrap -K /mnt base linux linux-firmware nano 
+pacstrap -K /mnt base linux linux-firmware
 # mesa vulkan-intel intel-media-driver man-db man-pages texinfo ??
 
 
+# ------------------ 配置系统 ------------------
 # 生成 fstab 文件
 genfstab -U /mnt > /mnt/etc/fstab
 
-# chroot 到新安装的系统
+# 进入挂载的系统环境
 arch-chroot /mnt
-
-
-
 
 # 设置时区
 ln -sf /usr/share/zoneinfo/Asia/Taipei /etc/localtime
@@ -128,5 +127,33 @@ systemctl enable --now NetworkManager.service
 systemctl enable --now sshd.service
 
 
-# 后续安装中文字体:
+# 退出 chroot, 按下 ctrl + D, 最后重启
+reboot
+
+
+
+
+# ------------------ 之后 ------------------
+
+# nmcli 连接网络
+# 设置代理
+
+# 中文字体:
 sudo pacman -S noto-fonts-cjk noto-fonts-emoji
+
+# hyprland 和 必备的软件
+sudo pacman -S \
+    hyprland \
+    zsh \
+    git
+
+
+chsh -s /usr/bin/zsh
+
+# 配置自动启动 hyprland
+sudo pacman -S uwsm
+
+# nvim ~/.zprofile:
+if uwsm check may-start; then
+    exec uwsm start hyprland.desktop
+fi
