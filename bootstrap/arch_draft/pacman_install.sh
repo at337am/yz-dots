@@ -87,7 +87,8 @@ sudo -E pacman -S --needed \
     zsh \
     7zip \
     cargo-cache \
-    xh
+    xh \
+    base-devel
 
 # hyprland 相关:
 sudo -E pacman -S --needed \
@@ -126,4 +127,4 @@ sudo -E pacman -S --needed \
 
 
 # 启动服务:
-systemctl --user enable --now pipewire pipewire-pulse wireplumber
+# systemctl --user enable --now pipewire pipewire-pulse wireplumber
