@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
+# pacman 官方仓库: https://archlinux.org/packages
+
 # todo:
 # breeze-cursor ?
 # zathura, zathura-plugins-all ?

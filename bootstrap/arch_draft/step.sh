@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 # arch 安装指南: https://wiki.archlinuxcn.org/wiki/安装指南
-# pacman 官方存储库: https://archlinux.org/packages
 
 # 放大显示字体, 恢复直接运行 setfont
 setfont ter-132b
