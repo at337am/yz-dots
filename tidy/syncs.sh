@@ -51,21 +51,6 @@ syncs_proj(){
     command rm -rf syncs_proj
 }
 
-# syncs_proj(){
-#     mkdir -p ~/Downloads/syncs_proj
-
-#     cp -a \
-#     "$TARGET_DIR/dev" \
-#     "$TARGET_DIR/Documents" \
-#     ~/Downloads/syncs_proj
-
-#     tar -cf \
-#     "~/Downloads/syncs_proj_$(date +"%y%m%d_%H%M%S").tar" \
-#     -C ~/Downloads syncs_proj
-
-#     command rm -rf ~/Downloads/syncs_proj
-# }
-
 # 迁移, 打包所有内容
 syncs_migration() {
     tar -cf "$HOME/Downloads/syncs_migration_$(date +"%y%m%d_%H%M%S").tar" -C /data/bak/ syncs
@@ -81,7 +66,7 @@ elif [[ "$#" -eq 1 && "$1" == "--mig" ]]; then
     syncs_migration
 else
     printf "参数错误\n" >&2
-    printf "用法: %s [-p|--mig]\n" "$(basename "$0")" >&2
+    printf "用法: %s [-p | --mig]\n" "$(basename "$0")" >&2
     exit 1
 fi
 
