@@ -12,7 +12,7 @@ restore() {
 		exit 1
 	fi
 
-	command rm -rfv /opt/soft/nekoray
+	command rm -rf /opt/soft/nekoray
 
 	tar -zxf "$bak_path" -C /opt/soft/
 
