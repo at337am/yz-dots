@@ -66,19 +66,19 @@ pack_one() {
 
 if [[ "$#" -eq 0 ]]; then
     mirroring
-elif [[ "$#" -eq 1 && "$1" == "--proj" ]]; then
+elif [[ "$#" -eq 1 && "$1" == "proj" ]]; then
     mirroring
     pack_proj
-elif [[ "$#" -eq 1 && "$1" == "--fonts" ]]; then
+elif [[ "$#" -eq 1 && "$1" == "fonts" ]]; then
     mirroring
     pack_one "fonts"
-elif [[ "$#" -eq 1 && "$1" == "--pfp" ]]; then
+elif [[ "$#" -eq 1 && "$1" == "PFP" ]]; then
     mirroring
     pack_one "PFP"
-elif [[ "$#" -eq 1 && "$1" == "--restore" ]]; then
+elif [[ "$#" -eq 1 && "$1" == "restore" ]]; then
     mirroring
     pack_one "restore"
-elif [[ "$#" -eq 1 && "$1" == "--all" ]]; then
+elif [[ "$#" -eq 1 && "$1" == "all" ]]; then
     mirroring
     pack_all
 else
