@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
 
-# 之后在重新写 bootstrap 脚本时，全部用统一用 ./ 执行不要用 source
+# 需求: 
+# 基础逻辑: 直接执行, 同步文档和项目到本地, 不做任何处理
+# 加参数 bak: 执行一遍基础逻辑, 并打包起来到 ~/Downloads 目录
+# 加参数 mig: 执行 基础逻辑 + 复杂逻辑, 并打包到 ~/Downloads 目录
 
 # todo:
 
@@ -11,49 +14,41 @@
 # ~/Documents
 # /data/restore
 
-
-
-
 # ~/workspace/dev/yz-dots
 
 
-
-# 执行 Migration 表示所有数据进行迁移
-# 执行 bak 表示备份日常数据
+mkdir -p ~/Downloads/syncs_migration
 
 PFP_PATH="$HOME/Pictures"
 
-mkdir 
-
 migration() {
-
-    
 }
 
-target_dir="/data/bak/syncs"
+TARGET_DIR="/data/bak/syncs"
 
-mkdir -p "$target_dir"
+mkdir -p "$TARGET_DIR"
 
-sync_projects() {
-    rsync -a --delete \
-        "$HOME/Documents/" \
-        "$target_dir/Documents/"
-
+sync_dev() {
     rsync -a --delete \
         "$HOME/workspace/dev/" \
-        "$target_dir/dev/"
+        "$TARGET_DIR/dev/"
 }
 
-pack_projects() {
+sync_documents() {
+    rsync -a --delete \
+        "$HOME/Documents/" \
+        "$TARGET_DIR/Documents/"
+}
+
+backup() {
     tar -cf "$HOME/Downloads/syncs_bak_$(date +"%y%m%d_%H%M%S").tar" -C /data/bak/ syncs
 }
 
-
-
 if [[ "$#" -eq 0 ]]; then
-    sync_projects
+    sync_dev
+    sync_documents
 elif [[ "$#" -eq 1 && "$1" == "bak" ]]; then
-    pack_projects
+    backup
 else
     printf "参数错误\n" >&2
     printf "用法: syncs.sh [bak]\n" >&2
