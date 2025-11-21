@@ -2,13 +2,14 @@
 
 set -euo pipefail
 
+# todo 支持给每个小的项目进行打包备份
+
 # 需要同步的源路径
 dev_path="$HOME/workspace/dev"
 documents_path="$HOME/Documents"
 fonts_path="$HOME/.local/share/fonts"
 pfp_path="$HOME/Pictures/PFP"
 restore_path="/data/misc/restore"
-yz_dots_path="$HOME/workspace/dev/yz-dots"
 
 source_dirs=(
     "$dev_path"
@@ -16,7 +17,6 @@ source_dirs=(
     "$fonts_path"
     "$pfp_path"
     "$restore_path"
-    "$yz_dots_path"
 )
 
 # 路径检查
