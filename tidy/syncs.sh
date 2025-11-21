@@ -74,8 +74,10 @@ syncs_migration() {
 if [[ "$#" -eq 0 ]]; then
     data_mirroring
 elif [[ "$#" -eq 1 && "$1" == "-p" ]]; then
+    data_mirroring
     syncs_proj
 elif [[ "$#" -eq 1 && "$1" == "--mig" ]]; then
+    data_mirroring
     syncs_migration
 else
     printf "参数错误\n" >&2
