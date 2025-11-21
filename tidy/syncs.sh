@@ -8,21 +8,15 @@
 
 # todo:
 
-# ~/.ssh
+# ~/Documents
+# ~/workspace/dev
+
 # ~/.local/share/fonts
 # ~/Pictures/PFP
-# ~/Documents
 # /data/restore
-
 # ~/workspace/dev/yz-dots
 
 
-mkdir -p ~/Downloads/syncs_migration
-
-PFP_PATH="$HOME/Pictures"
-
-migration() {
-}
 
 TARGET_DIR="/data/bak/syncs"
 
@@ -40,9 +34,40 @@ sync_documents() {
         "$TARGET_DIR/Documents/"
 }
 
+sync_fonts() {
+    rsync -a --delete \
+        "$HOME/.local/share/fonts/" \
+        "$TARGET_DIR/fonts/"
+}
+
+sync_pfp() {
+    rsync -a --delete \
+        "$HOME/Pictures/PFP/" \
+        "$TARGET_DIR/PFP/"
+}
+
+sync_restore() {
+    rsync -a --delete \
+        "/data/restore/" \
+        "$TARGET_DIR/restore/"
+}
+
+sync_yz_dots() {
+    rsync -a --delete \
+        "$HOME/workspace/dev/yz-dots/" \
+        "$TARGET_DIR/yz-dots/"
+}
+
 backup() {
     tar -cf "$HOME/Downloads/syncs_bak_$(date +"%y%m%d_%H%M%S").tar" -C /data/bak/ syncs
 }
+
+
+migration() {
+    
+}
+
+
 
 if [[ "$#" -eq 0 ]]; then
     sync_dev
