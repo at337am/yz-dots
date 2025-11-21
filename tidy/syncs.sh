@@ -52,7 +52,7 @@ syncs_proj(){
     mkdir -p ~/Downloads/syncs_proj
     cp -a ./dev ./Documents ~/Downloads/syncs_proj
     cd ~/Downloads
-    tar -cf syncs_proj_$(date +"%y%m%d_%H%M%S").tar syncs_proj
+    tar -cf "syncs_proj_$(date +"%y%m%d_%H%M%S").tar" syncs_proj
     command rm -rf syncs_proj
 }
 
