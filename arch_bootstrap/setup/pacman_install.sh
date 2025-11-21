@@ -68,6 +68,7 @@ sudo -E pacman -S --needed \
     just \
     kitty \
     less \
+    man-db \
     mpv \
     nano \
     navi \
