@@ -2,8 +2,6 @@
 
 set -euo pipefail
 
-# todo 支持给每个小的项目进行打包备份
-
 # 需要同步的源路径
 dev_path="$HOME/workspace/dev"
 documents_path="$HOME/Documents"
@@ -41,10 +39,11 @@ mirroring() {
     done
 }
 
-# 迁移, 打包所有内容
+# 为迁移做准备, 打包所有内容
 pack_all() {
     local timestamp=$(date +"%y%m%d_%H%M%S")
     tar -cf "$HOME/Downloads/syncs_migration_${timestamp}.tar" -C /data/bak/ syncs
+    printf "The migration has been packed into ~/Downloads.\n"
 }
 
 # 日常备份, 打包 proj 项目
@@ -55,6 +54,7 @@ pack_proj(){
     cd ~/Downloads
     tar -cf "proj_bak_$(date +"%y%m%d_%H%M%S").tar" proj_bak
     command rm -rf proj_bak
+    printf "proj packed and ready in ~/Downloads.\n"
 }
 
 # 打包某个单独的内容
@@ -62,6 +62,7 @@ pack_one() {
     local name="$1"
     local timestamp=$(date +"%y%m%d_%H%M%S")
     tar -cf "$HOME/Downloads/${name}_bak_${timestamp}.tar" -C "$TARGET_DIR" "$name"
+    printf "%s packed and ready in ~/Downloads.\n" "$name"
 }
 
 if [[ "$#" -eq 0 ]]; then
@@ -69,15 +70,9 @@ if [[ "$#" -eq 0 ]]; then
 elif [[ "$#" -eq 1 && "$1" == "proj" ]]; then
     mirroring
     pack_proj
-elif [[ "$#" -eq 1 && "$1" == "fonts" ]]; then
+elif [[ "$#" -eq 1 && "$1" =~ ^(fonts|PFP|restore)$ ]]; then
     mirroring
-    pack_one "fonts"
-elif [[ "$#" -eq 1 && "$1" == "PFP" ]]; then
-    mirroring
-    pack_one "PFP"
-elif [[ "$#" -eq 1 && "$1" == "restore" ]]; then
-    mirroring
-    pack_one "restore"
+    pack_one "$1"
 elif [[ "$#" -eq 1 && "$1" == "all" ]]; then
     mirroring
     pack_all
