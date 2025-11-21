@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-bak_path="/data/bak/restore/nekoray.tar.gz"
-old_bak_path="/data/bak/restore/old/nekoray_bak_$(date +"%y%m%d_%H%M%S").tar.gz"
+bak_path="/data/restore/nekoray.tar.gz"
+old_bak_path="/data/restore/old/nekoray_bak_$(date +"%y%m%d_%H%M%S").tar.gz"
 
 restore() {
 	if [[ ! -f "$bak_path" ]]; then
@@ -21,7 +21,7 @@ restore() {
 }
 
 bak() {
-	mkdir -p /data/bak/restore/old/
+	mkdir -p /data/restore/old/
 
 	pkill -15 nekoray || printf "nekoray 未运行，跳过终止步骤\n"
 

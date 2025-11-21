@@ -49,7 +49,7 @@ setup_basic() {
     sudo chown -R $(whoami):$(id -gn) /workspace
     ln -s /workspace ~/workspace
 
-    sudo mkdir -p /data/bak/restore /data/hello /data/misc/tgboom
+    sudo mkdir -p /data/bak /data/hello /data/restore /data/misc/tgboom
     sudo chown -R $(whoami):$(id -gn) /data
 
     sudo mkdir -p /opt/soft /opt/venvs

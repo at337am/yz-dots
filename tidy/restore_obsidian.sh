@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-bak_path="/data/bak/restore/obsidian_config.tar.gz"
-old_bak_path="/data/bak/restore/old/obsidian_config_bak_$(date +"%y%m%d_%H%M%S").tar.gz"
+bak_path="/data/restore/obsidian_config.tar.gz"
+old_bak_path="/data/restore/old/obsidian_config_bak_$(date +"%y%m%d_%H%M%S").tar.gz"
 
 restore() {
 	if [[ ! -f "$bak_path" ]]; then
@@ -19,7 +19,7 @@ restore() {
 # obsidian config 备份流程:
 # 先恢复跟踪 -> 使用脚本重置 -> 改配置 -> git 提交 -> 运行此备份脚本 -> 最后忽略跟踪
 bak() {
-	mkdir -p /data/bak/restore/old/
+	mkdir -p /data/restore/old/
 
 	if [[ -f "$bak_path" ]]; then
 		mv -v "$bak_path" "$old_bak_path"
