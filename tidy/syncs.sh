@@ -2,11 +2,6 @@
 
 set -euo pipefail
 
-# 需求: 
-# 基础逻辑: 直接执行, 同步文档和项目到本地, 不做任何处理
-# 加参数 bak: 执行一遍基础逻辑, 并打包起来到 ~/Downloads 目录
-# 加参数 mig: 执行 基础逻辑 + 复杂逻辑, 并打包到 ~/Downloads 目录
-
 # 需要同步的源路径
 dev_path="$HOME/workspace/dev"
 documents_path="$HOME/Documents"
