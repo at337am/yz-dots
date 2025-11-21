@@ -4,13 +4,11 @@ target_dir="/data/bak/syncs"
 
 mkdir -p "$target_dir"
 
-sync_docs() {
+sync_projects() {
     rsync -a --delete \
         "$HOME/Documents/" \
-        "$target_dir/docs/"
-}
+        "$target_dir/Documents/"
 
-sync_projects() {
     rsync -a --delete \
         "$HOME/workspace/dev/" \
         "$target_dir/projects/"
@@ -21,7 +19,6 @@ bak_syncs() {
 }
 
 if [[ "$#" -eq 0 ]]; then
-    sync_docs
     sync_projects
 elif [[ "$#" -eq 1 && "$1" == "bak" ]]; then
     bak_syncs
