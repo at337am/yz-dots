@@ -42,7 +42,7 @@ data_mirroring() {
 }
 
 # 日常备份, 打包 proj 项目
-syncs_proj(){
+pack_proj(){
     cd "$TARGET_DIR"
     mkdir -p ~/Downloads/syncs_proj
     cp -a ./dev ./Documents ~/Downloads/syncs_proj
@@ -52,7 +52,7 @@ syncs_proj(){
 }
 
 # 迁移, 打包所有内容
-syncs_migration() {
+pack_migration() {
     tar -cf "$HOME/Downloads/syncs_migration_$(date +"%y%m%d_%H%M%S").tar" -C /data/bak/ syncs
 }
 
@@ -60,10 +60,16 @@ if [[ "$#" -eq 0 ]]; then
     data_mirroring
 elif [[ "$#" -eq 1 && "$1" == "-p" ]]; then
     data_mirroring
-    syncs_proj
+    pack_proj
+# elif [[ "$#" -eq 1 && "$1" == "--mig" ]]; then
+#     data_mirroring
+# elif [[ "$#" -eq 1 && "$1" == "--mig" ]]; then
+#     data_mirroring
+# elif [[ "$#" -eq 1 && "$1" == "--mig" ]]; then
+#     data_mirroring
 elif [[ "$#" -eq 1 && "$1" == "--mig" ]]; then
     data_mirroring
-    syncs_migration
+    pack_migration
 else
 	printf "Error: Invalid arguments.\n" >&2
     printf "Usage: %s [-p | --mig]\n" "$(basename "$0")" >&2
