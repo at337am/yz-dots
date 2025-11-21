@@ -48,24 +48,33 @@ data_mirroring() {
 
 # 日常备份, 打包 proj 项目
 syncs_proj(){
-    (
-        cd ~/Downloads
-        mkdir -p syncs_proj
-        cp -a "$dev_path" syncs_proj
-        cp -a "$documents_path" syncs_proj
-        tar -cf "syncs_proj_$(date +"%y%m%d_%H%M%S").tar" syncs_proj
-        command rm -rf syncs_proj
-    )
+    cd "$TARGET_DIR"
+    mkdir -p ~/Downloads/syncs_proj
+    cp -a ./dev ./Documents ~/Downloads/syncs_proj
+    cd ~/Downloads
+    tar -cf syncs_proj_$(date +"%y%m%d_%H%M%S").tar syncs_proj
+    command rm -rf syncs_proj
 }
 
-    # tar -cf "$HOME/Downloads/syncs_bak_$(date +"%y%m%d_%H%M%S").tar" -C /data/bak/ syncs
+# syncs_proj(){
+#     mkdir -p ~/Downloads/syncs_proj
+
+#     cp -a \
+#     "$TARGET_DIR/dev" \
+#     "$TARGET_DIR/Documents" \
+#     ~/Downloads/syncs_proj
+
+#     tar -cf \
+#     "~/Downloads/syncs_proj_$(date +"%y%m%d_%H%M%S").tar" \
+#     -C ~/Downloads syncs_proj
+
+#     command rm -rf ~/Downloads/syncs_proj
+# }
 
 # 迁移, 打包所有内容
 syncs_migration() {
-    TARGET_DIR
+    tar -cf "$HOME/Downloads/syncs_migration_$(date +"%y%m%d_%H%M%S").tar" -C /data/bak/ syncs
 }
-
-
 
 if [[ "$#" -eq 0 ]]; then
     data_mirroring
