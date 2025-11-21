@@ -1,5 +1,13 @@
 #!/usr/bin/env bash
 
+
+# todo:
+
+# 执行 Migration 表示所有数据进行迁移
+# 执行 bak 表示备份日常数据
+
+
+
 target_dir="/data/bak/syncs"
 
 mkdir -p "$target_dir"
