@@ -65,8 +65,8 @@ elif [[ "$#" -eq 1 && "$1" == "--mig" ]]; then
     data_mirroring
     syncs_migration
 else
-    printf "参数错误\n" >&2
-    printf "用法: %s [-p | --mig]\n" "$(basename "$0")" >&2
+	printf "Error: Invalid arguments.\n" >&2
+    printf "Usage: %s [-p | --mig]\n" "$(basename "$0")" >&2
     exit 1
 fi
 
