@@ -43,7 +43,8 @@ mirroring() {
 
 # 迁移, 打包所有内容
 pack_all() {
-    tar -cf "$HOME/Downloads/syncs_migration_$(date +"%y%m%d_%H%M%S").tar" -C /data/bak/ syncs
+    local timestamp=$(date +"%y%m%d_%H%M%S")
+    tar -cf "$HOME/Downloads/syncs_migration_${timestamp}.tar" -C /data/bak/ syncs
 }
 
 # 日常备份, 打包 proj 项目
@@ -56,30 +57,11 @@ pack_proj(){
     command rm -rf proj_bak
 }
 
-# 日常备份, 打包字体
-pack_fonts() {
-    cd "$TARGET_DIR"
-    cp -a fonts ~/Downloads
-    cd ~/Downloads
-    tar -cf "fonts_bak_$(date +"%y%m%d_%H%M%S").tar" fonts
-    command rm -rf fonts
-}
-
-# 日常备份, 打包照片
-pack_pfp() {
-    cd "$TARGET_DIR"
-    cp -a PFP ~/Downloads
-    cd ~/Downloads
-    tar -cf "PFP_bak_$(date +"%y%m%d_%H%M%S").tar" PFP
-    command rm -rf PFP
-}
-
-pack_restore() {
-    cd "$TARGET_DIR"
-    cp -a restore ~/Downloads
-    cd ~/Downloads
-    tar -cf "restore_bak_$(date +"%y%m%d_%H%M%S").tar" restore
-    command rm -rf restore
+# 打包某个单独的内容
+pack_one() {
+    local name="$1"
+    local timestamp=$(date +"%y%m%d_%H%M%S")
+    tar -cf "$HOME/Downloads/${name}_bak_${timestamp}.tar" -C "$TARGET_DIR" "$name"
 }
 
 if [[ "$#" -eq 0 ]]; then
@@ -89,13 +71,13 @@ elif [[ "$#" -eq 1 && "$1" == "--proj" ]]; then
     pack_proj
 elif [[ "$#" -eq 1 && "$1" == "--fonts" ]]; then
     mirroring
-    pack_fonts
+    pack_one "fonts"
 elif [[ "$#" -eq 1 && "$1" == "--pfp" ]]; then
     mirroring
-    pack_pfp
+    pack_one "PFP"
 elif [[ "$#" -eq 1 && "$1" == "--restore" ]]; then
     mirroring
-    pack_restore
+    pack_one "restore"
 elif [[ "$#" -eq 1 && "$1" == "--all" ]]; then
     mirroring
     pack_all
