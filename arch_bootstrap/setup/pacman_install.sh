@@ -128,5 +128,3 @@ sudo -E pacman -S --needed \
     libnewt \
     jq \
     exiftool
-
-# todo 下载哪个 xdg-desktop-portal-gnome 还是 gtk, 决定
