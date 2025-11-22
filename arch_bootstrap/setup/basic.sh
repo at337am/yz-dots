@@ -7,6 +7,34 @@ set -euo pipefail
 
 # todo 这里开头要检查每个命令的依赖
 
+# 设置 sudo 过期时间为 60 分钟
+echo 'Defaults    timestamp_timeout=60' | sudo tee -a /etc/sudoers
+echo 'Defaults    !tty_tickets' | sudo tee -a /etc/sudoers
+
+
+# 设置免密关机
+echo "$(whoami) ALL=(ALL) NOPASSWD: /usr/sbin/shutdown" | sudo tee -a /etc/sudoers
+
+
+
+# 创建相关目录结构
+mkdir -p ~/.config
+mkdir -p ~/.local/share
+mkdir -p ~/Pictures
+
+sudo mkdir -p /workspace/dev /workspace/tmp
+sudo chown -R $(whoami):$(id -gn) /workspace
+ln -s /workspace ~/workspace
+
+sudo mkdir -p /data/bak /data/hello /data/misc/restore /data/misc/tgboom
+sudo chown -R $(whoami):$(id -gn) /data
+
+sudo mkdir -p /opt/soft /opt/venvs
+sudo chown -R $(whoami):$(id -gn) /opt/soft /opt/venvs
+
+echo "Basic setup complete."
+
+
 
 go env -w GO111MODULE=on
 go env -w GOPROXY=https://goproxy.cn,direct
