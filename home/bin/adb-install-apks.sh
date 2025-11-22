@@ -9,6 +9,8 @@
 # 3. 对每个 APK 安装结果进行统计，输出成功和失败数量。
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
 
+set -euo pipefail
+
 if ! command -v "adb" &> /dev/null; then
     printf "Error: 缺少依赖命令: adb\n" >&2
     exit 1

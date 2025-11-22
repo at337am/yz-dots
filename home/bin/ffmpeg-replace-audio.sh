@@ -10,6 +10,8 @@
 # 4. 自动根据视频和音频长度裁剪，保证输出文件长度与最短流一致。
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
 
+set -euo pipefail
+
 if ! command -v "ffmpeg" &> /dev/null; then
     printf "Error: 缺少依赖命令: ffmpeg\n" >&2
     exit 1

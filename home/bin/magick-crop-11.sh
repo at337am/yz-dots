@@ -10,6 +10,8 @@
 # 4. 输出文件命名为“原文件名_1x1.png”。
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
 
+set -euo pipefail
+
 if ! command -v "magick" &> /dev/null; then
     printf "Error: 缺少依赖命令: magick\n" >&2
     exit 1

@@ -10,6 +10,8 @@
 # 4. 对每个文件提供进度提示，未找到的文件会输出错误信息。
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
 
+set -euo pipefail
+
 if ! command -v "adb" &> /dev/null; then
     printf "Error: Missing dependency: adb\n" >&2
     exit 1

@@ -10,6 +10,8 @@
 # 4. 输出文件按序号命名，如 output_0001.jpg 或 output_0001.png。
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
 
+set -euo pipefail
+
 if ! command -v "ffmpeg" &> /dev/null; then
     printf "Error: 缺少依赖命令: ffmpeg\n" >&2
     exit 1

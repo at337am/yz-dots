@@ -7,6 +7,8 @@
 # 输出结果按视频时长从短到长排序，方便快速查看和比较视频长度。
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
 
+set -euo pipefail
+
 dependencies=("mediainfo" "fd")
 for cmd in "${dependencies[@]}"; do
     if ! command -v "$cmd" &> /dev/null; then

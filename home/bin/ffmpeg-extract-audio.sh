@@ -10,6 +10,8 @@
 # 4. 输出文件命名为原视频文件名加 "_audio" 后缀。
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
 
+set -euo pipefail
+
 dependencies=("ffmpeg" "ffprobe")
 for cmd in "${dependencies[@]}"; do
     if ! command -v "$cmd" &> /dev/null; then

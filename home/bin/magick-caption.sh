@@ -10,6 +10,8 @@
 # 4. 使用 ImageMagick 的 magick 命令处理，生成带文字的输出图像，命名为“原文件名_caption.png”。
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
 
+set -euo pipefail
+
 if ! command -v "magick" &> /dev/null; then
     printf "Error: 缺少依赖命令: magick\n" >&2
     exit 1
