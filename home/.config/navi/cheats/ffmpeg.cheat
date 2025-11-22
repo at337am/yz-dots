@@ -12,14 +12,7 @@ ffmpeg -i input.mp4 -c:v copy -an noaudio.mp4
 
 
 
-% ffmpeg, flac
+% ffmpeg, video
 
-# 将 封面 和 歌词 写入音乐文件
-ffmpeg -i [input.flac] \
-    -i [封面.jpg] \
-    -map 0:a \
-    -map 1:v \
-    -c copy \
-    -disposition:v attached_pic \
-    -metadata "LYRICS=$(cat [合并歌词.lrc])" \
-    -y [output.flac]
+# 调整视频播放速度 (1.25x)
+ffmpeg -i input.mp4 -vf "setpts=PTS/1.25" -af "atempo=1.25" -c:v libx264 -crf 18 -preset slow -c:a aac -b:a 256k output.mp4
