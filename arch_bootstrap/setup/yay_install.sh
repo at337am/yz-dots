@@ -2,7 +2,9 @@
 
 set -euo pipefail
 
-# 此脚本最好在 go_install.sh 之后执行
+# yay - wiki: https://wiki.archlinuxcn.org/wiki/Yay
+
+# 此脚本最好在 go_install.sh 之后执行, 因为 yay 需要使用 go 编译
 
 install_yay() {
     tmp_dir=$(mktemp -d)

@@ -7,7 +7,6 @@ set -euo pipefail
 # todo:
 # breeze-cursor ?
 # zathura, zathura-plugins-all ?
-# 安装 Yay: https://wiki.archlinuxcn.org/wiki/Yay
 
 # 音频驱动、固件和音频服务
 sudo -E pacman -S --needed \
@@ -76,7 +75,6 @@ sudo -E pacman -S --needed \
     nmap \
     obs-studio \
     ripgrep \
-    rsync \
     rust \
     tealdeer \
     tmux \
