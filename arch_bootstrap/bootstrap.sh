@@ -2,18 +2,32 @@
 
 set -euo pipefail
 
-# todo 这里检查所需文件是否存在, 比如 ssh
+scripts=(
+    "setup/base.sh"
+    "setup/pacman_install.sh"
+    "setup/xdg-user-dirs.sh"
+    "setup/rsync_home.sh"
+    "setup/symlinks.sh"
+    "setup/fcitx5.sh"
+    "setup/install_themes.sh"
+    "setup/configuration.sh"
+    "setup/yay_install.sh"
+)
 
-setup/base.sh
-setup/pacman_install.sh
-setup/xdg-user-dirs.sh
-setup/rsync_home.sh
-setup/symlinks.sh
-setup/fcitx5.sh
-setup/install_themes.sh
-setup/configuration.sh
-setup/yay_install.sh
+for run in "${scripts[@]}"; do
+    name=$(basename "$run")
 
+    if [[ ! -f "$run" ]]; then
+        printf "Error: Script '%s' not found. Exiting.\n" "$name"
+        exit 1
+    fi
+
+    printf "-=> Running: %s\n" "$name"
+    "$run"
+    printf "-=> Completed: %s\n" "$name"
+done
 
 # finish
 chsh -s /usr/bin/zsh
+
+printf "You’re amazing! Go ahead and enjoy your Arch Linux.\n"
