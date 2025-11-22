@@ -70,6 +70,7 @@ hwclock --systohc
 pacman -S neovim vi
 
 # 生成 Locale
+# 这个目的是告诉系统, 需要生成哪些语言包
 nvim /etc/locale.gen
 # 编辑文件, 取消以下两个注释:
 # en_US.UTF-8 UTF-8
@@ -79,6 +80,7 @@ nvim /etc/locale.gen
 locale-gen
 
 # 设置系统默认语言
+# 这个目的是告诉系统, 默认使用哪一个语言
 nvim /etc/locale.conf
 # 在创建 /etc/locale.conf 文件时，只写入英文设置:
 # LANG=en_US.UTF-8
