@@ -13,3 +13,7 @@ setup/fcitx5.sh
 setup/install_themes.sh
 setup/configuration.sh
 setup/yay_install.sh
+
+
+# finish
+chsh -s /usr/bin/zsh
