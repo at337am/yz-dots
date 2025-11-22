@@ -54,3 +54,6 @@ for f in "${video_files[@]}"; do
 done
 
 printf "Done.\n"
+
+# todo:
+# feat 支持处理单个文件
