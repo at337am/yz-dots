@@ -2,6 +2,11 @@
 
 set -euo pipefail
 
+if ! command -v "rsync" &> /dev/null; then
+    printf "Error: Missing dependency: rsync\n" >&2
+    exit 1
+fi
+
 DOTS_PATH="$HOME/workspace/dev/yz-dots/home"
 
 # 执行同步

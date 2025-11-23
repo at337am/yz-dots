@@ -2,6 +2,11 @@
 
 set -euo pipefail
 
+if ! command -v "xdg-user-dirs-update" &> /dev/null; then
+    printf "Error: Missing dependency: xdg-user-dirs-update\n" >&2
+    exit 1
+fi
+
 LC_ALL=C xdg-user-dirs-update --force
 
 CONFIG_FILE="$HOME/.config/user-dirs.dirs"
