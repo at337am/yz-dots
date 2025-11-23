@@ -2,6 +2,14 @@
 
 set -euo pipefail
 
+dependencies=("ffmpeg" "ffprobe")
+for cmd in "${dependencies[@]}"; do
+    if ! command -v "$cmd" &> /dev/null; then
+        printf "Error: Missing dependency: %s\n" "$cmd" >&2
+        exit 1
+    fi
+done
+
 # 拉取 rime-ice 词库
 wget -O /tmp/all_dicts.zip \
     https://github.com/iDvel/rime-ice/releases/latest/download/all_dicts.zip
