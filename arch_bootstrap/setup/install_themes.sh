@@ -47,11 +47,11 @@ cursor_theme
 
 # 最后设置主题
 
-gset="$HOME/.config/hypr/scripts/auto/gsettings.sh"
+script="$HOME/.config/hypr/scripts/auto/gsettings.sh"
 
-if [[ ! -f "$gset" ]]; then
-    printf "Error: $gset does not exist.\n" >&2
+if [[ ! -f "$script" ]]; then
+    printf "Error: %s does not exist.\n" "$script" >&2
     exit 1
 fi
 
-"$gset"
+"$script"
