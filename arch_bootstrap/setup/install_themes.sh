@@ -5,7 +5,16 @@
 
 set -euo pipefail
 
-# 依赖 (gtk-engine-murrine 是 gtk2 的, 现在似乎已经不需要了)
+# 依赖检查
+dependencies=("yay" "git")
+for cmd in "${dependencies[@]}"; do
+    if ! command -v "$cmd" &> /dev/null; then
+        printf "Error: Missing dependency: %s\n" "$cmd" >&2
+        exit 1
+    fi
+done
+
+# 安装依赖 (gtk-engine-murrine 是 gtk2 的, 现在似乎已经不需要了)
 sudo -E pacman -S --needed --noconfirm \
     gnome-themes-extra \
     sassc
@@ -46,7 +55,6 @@ icon_themes
 cursor_theme
 
 # 最后设置主题
-
 script="$HOME/.config/hypr/scripts/auto/gsettings.sh"
 
 if [[ ! -f "$script" ]]; then

@@ -2,6 +2,7 @@
 
 set -euo pipefail
 
+# 依赖检查
 if ! command -v "xdg-user-dirs-update" &> /dev/null; then
     printf "Error: Missing dependency: xdg-user-dirs-update\n" >&2
     exit 1

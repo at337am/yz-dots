@@ -2,6 +2,7 @@
 
 set -euo pipefail
 
+# 依赖检查
 if ! command -v "rsync" &> /dev/null; then
     printf "Error: Missing dependency: rsync\n" >&2
     exit 1

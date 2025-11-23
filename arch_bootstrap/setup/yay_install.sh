@@ -6,6 +6,16 @@
 
 set -euo pipefail
 
+# 依赖检查
+dependencies=("go" "git")
+for cmd in "${dependencies[@]}"; do
+    if ! command -v "$cmd" &> /dev/null; then
+        printf "Error: Missing dependency: %s\n" "$cmd" >&2
+        exit 1
+    fi
+done
+
+# 构建并安装 yay
 install_yay() {
     tmp_dir=$(mktemp -d)
     trap 'command rm -rf "$tmp_dir"' EXIT
