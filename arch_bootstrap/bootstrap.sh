@@ -9,9 +9,9 @@ scripts=(
     "setup/rsync_home.sh"
     "setup/symlinks.sh"
     "setup/fcitx5.sh"
-    "setup/install_themes.sh"
     "setup/configuration.sh"
     "setup/yay_install.sh"
+    "setup/install_themes.sh"
 )
 
 for run in "${scripts[@]}"; do

@@ -11,11 +11,8 @@ install_yay() {
     trap 'command rm -rf "$tmp_dir"' EXIT
 
     git clone https://aur.archlinux.org/yay.git "$tmp_dir/yay"
-
-    (
-        cd "$tmp_dir/yay"
-        makepkg -si
-    )
+    cd "$tmp_dir/yay"
+    makepkg -si
 }
 
 if ! command -v "yay" &> /dev/null; then
