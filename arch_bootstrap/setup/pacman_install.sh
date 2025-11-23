@@ -44,6 +44,7 @@ sudo -E pacman -S --needed \
 sudo -E pacman -S --needed \
     android-tools \
     bat \
+    bc \
     catimg \
     cava \
     chafa \
