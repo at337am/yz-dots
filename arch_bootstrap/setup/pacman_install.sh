@@ -122,4 +122,8 @@ sudo -E pacman -S --needed --noconfirm \
     uwsm \
     libnewt \
     jq \
-    exiftool
+    exiftool \
+    zathura \
+    zathura-pdf-mupdf \
+    tesseract-data-eng \
+    tesseract-data-chi_sim
