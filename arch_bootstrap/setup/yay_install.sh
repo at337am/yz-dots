@@ -25,7 +25,6 @@ fi
 
 yay -S --needed \
     visual-studio-code-bin \
-    qimgv-git \
-    xcursor-breeze
+    qimgv-git
 
 printf "Done.\n"
