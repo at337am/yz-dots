@@ -17,7 +17,7 @@ scripts=(
 # 路径检查
 for path in "${scripts[@]}"; do
     if [[ ! -f "$path" ]]; then
-        printf "Error: $path does not exist.\n" >&2
+        printf "Error: %s does not exist.\n" "$path" >&2
         exit 1
     fi
 done

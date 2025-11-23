@@ -26,5 +26,3 @@ fi
 yay -S --needed \
     visual-studio-code-bin \
     qimgv-git
-
-printf "Done.\n"

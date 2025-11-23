@@ -59,20 +59,6 @@ configure_ssh_keys() {
     tar -xf "$ssh_path/ssh.tar" -C ~/
 }
 
-confirm() {
-    local prompt=${1:-"Do you want to continue?"}
-    read -r -p "$prompt [y/N]: " choice
-    case "${choice,,}" in
-        y|yes) return 0 ;;
-        *) return 1 ;;
-    esac
-}
-
-if ! confirm "Are you sure you want to run this script?"; then
-    printf "Operation cancelled. Exiting...\n"
-    exit 1
-fi
-
 system_init
 create_path
 migration

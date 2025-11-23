@@ -7,8 +7,8 @@ LC_ALL=C xdg-user-dirs-update --force
 CONFIG_FILE="$HOME/.config/user-dirs.dirs"
 
 if [[ ! -f "$CONFIG_FILE" ]]; then
-    echo "Error: Configuration file '$CONFIG_FILE' does not exist."
-    return 1
+    printf "Error: %s does not exist.\n" "$CONFIG_FILE" >&2
+    exit 1
 fi
 
 sed -i \
@@ -17,11 +17,9 @@ sed -i \
     -e 's#XDG_PUBLICSHARE_DIR="$HOME/Public"#XDG_PUBLICSHARE_DIR="$HOME"#' \
     "$CONFIG_FILE"
 
-if [[ $? -eq 0 ]]; then
-    rm -rf ~/Desktop ~/Templates ~/Public
-    echo "Configuration file '$CONFIG_FILE' successfully updated."
-    return 0
-else
-    echo "Error: File update failed."
-    return 1
+if [[ $? -ne 0 ]]; then
+    printf "Error: File update failed.\n" >&2
+    exit 1
 fi
+
+rm -rf ~/Desktop ~/Templates ~/Public

@@ -12,5 +12,3 @@ cp -a /tmp/all_dicts/cn_dicts ~/.local/share/fcitx5/rime
 
 command rm -rf /tmp/all_dicts.zip
 command rm -rf /tmp/all_dicts
-
-echo "Rime dictionaries downloaded."
