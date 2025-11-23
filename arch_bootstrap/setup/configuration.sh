@@ -4,6 +4,15 @@
 
 set -euo pipefail
 
+# 依赖检查
+dependencies=("gsettings" "go")
+for cmd in "${dependencies[@]}"; do
+    if ! command -v "$cmd" &> /dev/null; then
+        printf "Error: Missing dependency: %s\n" "$cmd" >&2
+        exit 1
+    fi
+done
+
 go env -w GO111MODULE=on
 go env -w GOPROXY=https://goproxy.cn,direct
 
