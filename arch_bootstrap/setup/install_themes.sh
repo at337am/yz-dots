@@ -36,6 +36,9 @@ cursor_theme() {
     yay -S --needed xcursor-breeze
 }
 
+# 刷新字体
+fc-cache -f
+
 gtk_themes
 icon_themes
 cursor_theme

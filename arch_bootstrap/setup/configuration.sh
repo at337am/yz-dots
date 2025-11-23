@@ -4,10 +4,6 @@ set -euo pipefail
 
 # 安装完软件包后执行此脚本
 
-# todo 这里开头要检查每个命令的依赖
-
-fc-cache -f
-
 go env -w GO111MODULE=on
 go env -w GOPROXY=https://goproxy.cn,direct
 
