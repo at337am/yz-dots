@@ -20,7 +20,7 @@ source_dirs=(
 # 路径检查
 for path in "${source_dirs[@]}"; do
     if [[ ! -d "$path" ]]; then
-        printf "Error: $path is not a directory.\n" >&2
+        printf "Error: %s is not a directory.\n" "$path" >&2
         exit 1
     fi
 done

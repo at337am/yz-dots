@@ -5,7 +5,15 @@ set -euo pipefail
 syncs_path="$HOME/syncs"
 ssh_path="$HOME/ssh.tar"
 
-# todo 这里检查所需文件是否存在, 比如 ssh
+if [[ ! -d "$syncs_path" ]]; then
+    printf "Error: %s does not exist.\n" "$syncs_path" >&2
+    exit 1
+fi
+
+if [[ ! -f "$ssh_path" ]]; then
+    printf "Error: %s does not exist.\n" "$ssh_path" >&2
+    exit 1
+fi
 
 if ! command -v "rsync" &> /dev/null; then
     printf "Error: Missing dependency: rsync\n" >&2
