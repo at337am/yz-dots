@@ -2,6 +2,11 @@
 
 set -euo pipefail
 
+if ! command -v "rsync" &> /dev/null; then
+    printf "Error: Missing dependency: rsync\n" >&2
+    exit 1
+fi
+
 syncs_path="$HOME/syncs"
 ssh_path="$HOME/ssh.tar"
 
@@ -12,11 +17,6 @@ fi
 
 if [[ ! -f "$ssh_path" ]]; then
     printf "Error: %s does not exist.\n" "$ssh_path" >&2
-    exit 1
-fi
-
-if ! command -v "rsync" &> /dev/null; then
-    printf "Error: Missing dependency: rsync\n" >&2
     exit 1
 fi
 
