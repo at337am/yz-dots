@@ -14,8 +14,15 @@ scripts=(
     "setup/install_themes.sh"
 )
 
-# todo 检查每个脚本是否存在
+# 路径检查
+for path in "${scripts[@]}"; do
+    if [[ ! -f "$path" ]]; then
+        printf "Error: $path does not exist.\n" >&2
+        exit 1
+    fi
+done
 
+# 依次执行每个脚本
 for run in "${scripts[@]}"; do
     name=$(basename "$run")
     printf "-=> Running: %s\n" "$name"
