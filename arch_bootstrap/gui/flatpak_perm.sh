@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-# todo 好像 flatpak 命令语法不太标准? 看看别人的
+# todo 好像 flatpak 命令语法顺序不太标准? 看看别人的
 
 
 
