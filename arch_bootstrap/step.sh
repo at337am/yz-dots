@@ -126,6 +126,8 @@ pacman -S networkmanager openssh
 systemctl enable --now NetworkManager.service
 systemctl enable --now sshd.service
 
+# 提前安装 rsync, 方便后续处理
+pacman -S rsync
 
 # 最后退出 chroot 环境, 重启
 exit
