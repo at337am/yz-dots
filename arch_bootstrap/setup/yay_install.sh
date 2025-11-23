@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
+# 此脚本要在 configuration.sh 之后执行, 因为 yay 是使用 go 拉取依赖和编译的
+
+# wiki: https://wiki.archlinuxcn.org/wiki/Yay
+
 set -euo pipefail
-
-# yay - wiki: https://wiki.archlinuxcn.org/wiki/Yay
-
-# 此脚本最好在 go_install.sh 之后执行, 因为 yay 需要使用 go 编译
 
 install_yay() {
     tmp_dir=$(mktemp -d)

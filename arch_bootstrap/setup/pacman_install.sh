@@ -2,13 +2,7 @@
 
 set -euo pipefail
 
-# pacman 官方仓库: https://archlinux.org/packages
-
-# todo:
-# breeze-cursor ?
-# zathura, zathura-plugins-all ?
-
-# 音频驱动、固件和音频服务
+# 音频驱动, 固件, 音频服务
 sudo -E pacman -S --needed --noconfirm \
     sof-firmware \
     alsa-firmware \
@@ -34,13 +28,13 @@ sudo -E pacman -S --needed --noconfirm \
     qt5ct \
     qt6ct
 
-# 字体:
+# 字体
 sudo -E pacman -S --needed --noconfirm \
     noto-fonts-cjk \
     noto-fonts-emoji \
     inter-font
 
-# 常用软件:
+# 常用软件
 sudo -E pacman -S --needed --noconfirm \
     android-tools \
     bat \
@@ -90,7 +84,7 @@ sudo -E pacman -S --needed --noconfirm \
     xh \
     base-devel
 
-# hyprland 相关:
+# hyprland 相关
 sudo -E pacman -S --needed --noconfirm \
     cliphist \
     grim \

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+# 一些杂项配置
 
-# 安装完软件包后执行此脚本
+set -euo pipefail
 
 go env -w GO111MODULE=on
 go env -w GOPROXY=https://goproxy.cn,direct

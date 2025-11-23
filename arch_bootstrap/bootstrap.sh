@@ -14,14 +14,10 @@ scripts=(
     "setup/install_themes.sh"
 )
 
+# todo 检查每个脚本是否存在
+
 for run in "${scripts[@]}"; do
     name=$(basename "$run")
-
-    if [[ ! -f "$run" ]]; then
-        printf "Error: Script '%s' not found. Exiting.\n" "$name"
-        exit 1
-    fi
-
     printf "-=> Running: %s\n" "$name"
     "$run"
     printf "-=> Completed: %s\n" "$name"
