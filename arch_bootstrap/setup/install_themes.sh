@@ -8,7 +8,7 @@ set -euo pipefail
 # 依赖
 # gtk-engine-murrine 是 gtk2 的, 现在似乎已经不需要了
 # yay -S gtk-engine-murrine
-sudo -E pacman -S gnome-themes-extra sassc
+sudo -E pacman --noconfirm -S gnome-themes-extra sassc
 
 tmp_dir=$(mktemp -d)
 trap 'command rm -rf "$tmp_dir"' EXIT

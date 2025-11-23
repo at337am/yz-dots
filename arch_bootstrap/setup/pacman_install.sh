@@ -9,7 +9,7 @@ set -euo pipefail
 # zathura, zathura-plugins-all ?
 
 # 音频驱动、固件和音频服务
-sudo -E pacman -S --needed \
+sudo -E pacman --noconfirm -S --needed \
     sof-firmware \
     alsa-firmware \
     alsa-ucm-conf \
@@ -20,7 +20,7 @@ sudo -E pacman -S --needed \
     wireplumber
 
 # 图形界面配置相关
-sudo -E pacman -S --needed \
+sudo -E pacman --noconfirm -S --needed \
     gtk3 \
     gtk4 \
     qt5-base \
@@ -35,13 +35,13 @@ sudo -E pacman -S --needed \
     qt6ct
 
 # 字体:
-sudo -E pacman -S --needed \
+sudo -E pacman --noconfirm -S --needed \
     noto-fonts-cjk \
     noto-fonts-emoji \
     inter-font
 
 # 常用软件:
-sudo -E pacman -S --needed \
+sudo -E pacman --noconfirm -S --needed \
     android-tools \
     bat \
     bc \
@@ -91,7 +91,7 @@ sudo -E pacman -S --needed \
     base-devel
 
 # hyprland 相关:
-sudo -E pacman -S --needed \
+sudo -E pacman --noconfirm -S --needed \
     cliphist \
     grim \
     hypridle \

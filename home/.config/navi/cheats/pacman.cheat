@@ -22,10 +22,10 @@ pacman -Q
 pacman -Qi xxx
 
 # 清理未安装的软件包
-sudo pacman -Sc
+sudo pacman --noconfirm -Sc
 
 # 清理所有缓存
-sudo pacman -Scc
+sudo pacman --noconfirm -Scc
 
 # 修复损坏的软件包数据库
 sudo pacman -Syyu
