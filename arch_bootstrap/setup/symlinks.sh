@@ -86,6 +86,3 @@ ln -s "$DOTS_PATH/.local/share/fcitx5/rime/yz_pinyin.dict.yaml" ~/.local/share/f
 ln -s "$DOTS_PATH/.local/share/fcitx5/themes" ~/.local/share/fcitx5/themes
 ln -s "$DOTS_PATH/.config/fcitx5" ~/.config/fcitx5
 # ------------ fcitx5 END ------------
-
-
-echo "Symlinks completed."
