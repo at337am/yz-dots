@@ -7,8 +7,10 @@ ssh_path="$HOME/ssh.tar"
 
 # todo 这里检查所需文件是否存在, 比如 ssh
 
-# 安装所需依赖
-sudo -E pacman -S --needed --noconfirm rsync
+if ! command -v "rsync" &> /dev/null; then
+    printf "Error: Missing dependency: rsync\n" >&2
+    exit 1
+fi
 
 system_init() {
     # todo: 设置硬件时钟为 UTC
