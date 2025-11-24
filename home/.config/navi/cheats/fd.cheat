@@ -1,15 +1,9 @@
 % fd, find
 
-# 包含被忽略的文件 (--no-ignore)
-fd -I
+# 查找指定文件 (包含忽略, 包含隐藏, 不区分大小写)
+fd -IHi
 
-# 包含隐藏文件 (--hidden)
-fd -H
-
-# 不区分大小写 (--ignore-case)
-fd -i
-
-# 指定遍历深度 (--max-depth) 为 1
+# 指定查找深度为 1 (--max-depth 1)
 fd -d 1
 
 

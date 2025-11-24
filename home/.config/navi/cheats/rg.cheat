@@ -1,6 +1,6 @@
 % grep, rg, search
 
-# 搜索内容 (包含忽略文件, 不区分大小写, 包含隐藏)
+# 搜索内容 (包含忽略, 不区分大小写, 包含隐藏)
 rg --no-ignore -i.
 
 # 只列出匹配的文件名 (--files-with-matches)
@@ -9,7 +9,7 @@ rg -l
 # 每个匹配结果单独占一行输出 (--only-matching)
 rg -o
 
-# 指定遍历深度为 1
+# 指定查找深度为 1
 rg --max-depth 1
 
 
