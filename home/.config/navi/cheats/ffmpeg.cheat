@@ -1,16 +1,13 @@
 % ffmpeg, clip
 
-# 模糊裁剪
+# 模糊裁剪 (不准确的时间位置)
 ffmpeg -ss 00:00:30 -i input.mp4 -t 00:00:10 -c copy -avoid_negative_ts make_zero clip.mp4
 
-# 精确裁剪 (慢, 保持画质尽可能无损)
+# 精确裁剪 (慢, 常用, 保持画质尽可能无损)
 ffmpeg -ss 00:00:30 -i input.mp4 -t 00:00:10 -c:v libx264 -crf 18 -preset slow -c:a copy clip.mp4
 
-# 精确裁剪 (快)
+# 精确裁剪 (快, 体积会很大)
 ffmpeg -ss 00:00:30 -i input.mp4 -t 00:00:10 -c:v libx264 -crf 18 -preset ultrafast -c:a copy clip.mp4
-
-# 精确裁剪 (最慢, 最高质量, 适合社交媒体发布)
-ffmpeg -ss 00:00:30 -i input.mp4 -t 00:00:10 -c:v libx264 -crf 18 -preset veryslow -pix_fmt yuv420p -c:a copy clip.mp4
 
 
 
