@@ -33,9 +33,9 @@ done
 # 依次执行每个脚本
 for run in "${scripts[@]}"; do
     name=$(basename "$run")
-    printf "-=> Running: %s\n" "$name"
+    echo "-=> Running: $name"
     "$run"
-    printf "-=> Completed: %s\n" "$name"
+    echo "-=> Completed: $name"
 done
 
 printf "Done.\n"
