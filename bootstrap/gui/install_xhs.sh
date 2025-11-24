@@ -50,6 +50,6 @@ cd /opt/soft/XHS-Downloader
 uv sync
 
 rm -rf /data/misc/xhs_dl
-ln -s /opt/soft/XHS-Downloader/Download /data/misc/xhs_dl
+ln -sv /opt/soft/XHS-Downloader/Download /data/misc/xhs_dl
 
 printf "Done.\n"

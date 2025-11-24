@@ -9,7 +9,7 @@ scripts=(
     "setup/rsync_home.sh"
     "setup/path_perms.sh"
     "setup/symlinks.sh"
-    "setup/fcitx5.sh"
+    "setup/wget_dicts.sh"
     "setup/configuration.sh"
     "setup/yay_install.sh"
     "setup/install_themes.sh"
