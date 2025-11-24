@@ -11,13 +11,20 @@ for cmd in "${dependencies[@]}"; do
     fi
 done
 
+TARGET="$HOME/.local/share/fcitx5/rime"
+
+if [[ ! -d "$TARGET" ]]; then
+    printf "Error: %s does not exist.\n" "$TARGET" >&2
+    exit 1
+fi
+
 # 拉取 rime-ice 词库
 wget -O /tmp/all_dicts.zip \
     https://github.com/iDvel/rime-ice/releases/latest/download/all_dicts.zip
 
 unzip /tmp/all_dicts.zip -d /tmp/all_dicts
 
-cp -a /tmp/all_dicts/cn_dicts ~/.local/share/fcitx5/rime
+cp -a /tmp/all_dicts/cn_dicts "$TARGET"
 
 rm -rf /tmp/all_dicts.zip
 rm -rf /tmp/all_dicts

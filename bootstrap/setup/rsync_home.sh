@@ -10,6 +10,11 @@ fi
 
 DOTS_PATH="$HOME/workspace/dev/yz-dots/home"
 
+if [[ ! -d "$DOTS_PATH" ]]; then
+    printf "Error: %s does not exist.\n" "$DOTS_PATH" >&2
+    exit 1
+fi
+
 # 执行同步
 rsync -a "$DOTS_PATH/" ~/
 
