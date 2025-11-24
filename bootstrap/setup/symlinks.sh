@@ -54,6 +54,9 @@ ln -sv "$DOTS_PATH/.config/fastfetch" ~/.config/fastfetch
 rm -rf ~/.config/fd
 ln -sv "$DOTS_PATH/.config/fd" ~/.config/fd
 
+rm -rf ~/.config/fontconfig
+ln -sv "$DOTS_PATH/.config/fontconfig" ~/.config/fontconfig
+
 rm -rf ~/.config/hypr
 ln -sv "$DOTS_PATH/.config/hypr" ~/.config/hypr
 
