@@ -18,13 +18,13 @@ if [[ ! -d "$TARGET" ]]; then
     exit 1
 fi
 
+tmp_dir=$(mktemp -d)
+trap 'rm -rf "$tmp_dir"' EXIT
+
 # 拉取 rime-ice 词库
-wget -O /tmp/all_dicts.zip \
+wget -O "$tmp_dir/all_dicts.zip" \
     https://github.com/iDvel/rime-ice/releases/latest/download/all_dicts.zip
 
-unzip /tmp/all_dicts.zip -d /tmp/all_dicts
+unzip "$tmp_dir/all_dicts.zip" -d "$tmp_dir/all_dicts"
 
-cp -a /tmp/all_dicts/cn_dicts "$TARGET"
-
-rm -rf /tmp/all_dicts.zip
-rm -rf /tmp/all_dicts
+cp -a "$tmp_dir/all_dicts/cn_dicts" "$TARGET"
