@@ -26,21 +26,21 @@ fi
 
 for item in "$@"; do
     if [[ ! -e "$item" ]]; then
-        printf "\033[31mError: '%s' not found\033[0m\n" "$item" >&2
+        printf "\033[31mError: %s does not exist\033[0m\n" "$item" >&2
         continue
     fi
 
     archive_name="$(basename -- "$item")${extension}"
 
     if [[ -e "$archive_name" ]]; then
-        printf "\033[31mError: '%s' already exists\033[0m\n" "${archive_name}" >&2
+        printf "\033[31mError: %s already exists\033[0m\n" "${archive_name}" >&2
         continue
     fi
 
     if tar "${tar_options}" "${archive_name}" -- "$item"; then
         printf "\033[32mPacked -> %s\033[0m\n" "${archive_name}"
     else
-        printf "\033[31mError: Failed to pack '%s'\033[0m\n" "$item" >&2
+        printf "\033[31mError: Failed to pack %s\033[0m\n" "$item" >&2
         continue
     fi
 done

@@ -22,15 +22,15 @@ for cmd in "${dependencies[@]}"; do
 done
 
 if [[ "$#" -ne 1 ]]; then
-    printf "参数错误\n" >&2
-    printf "用法: %s <目录路径>\n" "$(basename "$0")" >&2
+    printf "Error: Invalid arguments.\n" >&2
+    printf "Usage: %s <dir>\n" "$(basename "$0")" >&2
     exit 1
 fi
 
 TARGET_DIR="$1"
 
 if [[ ! -d "$TARGET_DIR" ]]; then
-    printf "Error: 目录不存在: %s\n" "$TARGET_DIR" >&2
+    printf "Error: %s does not exist.\n" "$TARGET_DIR" >&2
     exit 1
 fi
 
