@@ -18,8 +18,8 @@ fi
 
 scripts=(
     "$HOME/workspace/dev/yz-dots/bootstrap/setup/rsync_home.sh"
-    "$HOME/workspace/dev/yz-dots/bootstrap/setup/path_perms.sh"
-    "$HOME/workspace/dev/yz-dots/bootstrap/setup/symlinks.sh"
+    # "$HOME/workspace/dev/yz-dots/bootstrap/setup/path_perms.sh"
+    # "$HOME/workspace/dev/yz-dots/bootstrap/setup/symlinks.sh"
 )
 
 # 路径检查
