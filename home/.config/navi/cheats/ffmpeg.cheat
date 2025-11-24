@@ -1,13 +1,16 @@
 % ffmpeg, clip
 
+# 模糊裁剪 (时间是对的, 但会有兼容问题, 适合快速预览)
+ffmpeg -ss 00:00:00 -i input.mp4 -t 00:00:10 -c copy clip.mp4
+
 # 模糊裁剪 (不准确的时间位置)
-ffmpeg -ss 00:00:30 -i input.mp4 -t 00:00:10 -c copy -avoid_negative_ts make_zero clip.mp4
+ffmpeg -ss 00:00:00 -i input.mp4 -t 00:00:10 -c copy -avoid_negative_ts make_zero clip.mp4
 
 # 精确裁剪 (慢, 常用, 保持画质尽可能无损)
-ffmpeg -ss 00:00:30 -i input.mp4 -t 00:00:10 -c:v libx264 -crf 18 -preset slow -c:a copy clip.mp4
+ffmpeg -ss 00:00:00 -i input.mp4 -t 00:00:10 -c:v libx264 -crf 18 -preset slow -c:a copy clip.mp4
 
 # 精确裁剪 (快, 体积会很大)
-ffmpeg -ss 00:00:30 -i input.mp4 -t 00:00:10 -c:v libx264 -crf 18 -preset ultrafast -c:a copy clip.mp4
+ffmpeg -ss 00:00:00 -i input.mp4 -t 00:00:10 -c:v libx264 -crf 18 -preset ultrafast -c:a copy clip.mp4
 
 
 
