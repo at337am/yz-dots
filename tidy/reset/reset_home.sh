@@ -2,29 +2,40 @@
 
 # set -euo pipefail
 
-# confirm() {
-#     local prompt=${1:-"Do you want to continue?"}
-#     read -r -p "$prompt [y/N]: " choice
-#     case "${choice,,}" in
-#         y|yes) return 0 ;;
-#         *) return 1 ;;
-#     esac
-# }
+confirm() {
+    local prompt=${1:-"Do you want to continue?"}
+    read -r -p "$prompt [y/N]: " choice
+    case "${choice,,}" in
+        y|yes) return 0 ;;
+        *) return 1 ;;
+    esac
+}
 
-# if ! confirm "Are you sure you want to reset home?"; then
-#     printf "Operation cancelled. Exiting...\n"
-#     exit 1
-# fi
+if ! confirm "Are you sure you want to reset home?"; then
+    printf "Operation cancelled. Exiting...\n"
+    exit 1
+fi
 
-# DOTS_PATH="$HOME/workspace/dev/yz-dots/home"
+scripts=(
+    "$HOME/workspace/dev/yz-dots/bootstrap/setup/rsync_home.sh"
+    "$HOME/workspace/dev/yz-dots/bootstrap/setup/path_perms.sh"
+    "$HOME/workspace/dev/yz-dots/bootstrap/setup/symlinks.sh"
+)
 
-# # rsync -avh --dry-run --itemize-changes --exclude='.lain/themes' "$DOTS_PATH/" ~/
-# rsync -a --exclude='.lain/themes' "$DOTS_PATH/" ~/
+# 路径检查
+for path in "${scripts[@]}"; do
+    if [[ ! -f "$path" ]]; then
+        printf "Error: %s does not exist.\n" "$path" >&2
+        exit 1
+    fi
+done
 
-# # 设置文件权限
-# source ~/workspace/dev/yz-dots/fedora_bootstrap/tasks/04_set_permissions.sh
+# 依次执行每个脚本
+for run in "${scripts[@]}"; do
+    name=$(basename "$run")
+    printf "-=> Running: %s\n" "$name"
+    "$run"
+    printf "-=> Completed: %s\n" "$name"
+done
 
-# # 重新软链接
-# source ~/workspace/dev/yz-dots/fedora_bootstrap/gui/03_symlinks.sh
-
-# printf "Done.\n"
+printf "Done.\n"
