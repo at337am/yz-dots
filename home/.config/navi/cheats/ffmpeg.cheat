@@ -14,13 +14,6 @@ ffmpeg -ss 00:00:00 -i input.mp4 -t 01:30 -c:v libx264 -crf 18 -preset ultrafast
 
 
 
-% ffmpeg, audio
-
-# 去除音频流
-ffmpeg -i input.mp4 -c:v copy -an noaudio.mp4
-
-
-
 % ffmpeg, video
 
 # 调整视频播放速度 (1.25x)
