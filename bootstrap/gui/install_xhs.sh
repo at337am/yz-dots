@@ -20,11 +20,15 @@ fi
 rm -rf /opt/soft/XHS-Downloader
 rm -rf /data/misc/xhs_dl
 
-# ------------- start -------------
 
-# 下载对应的 python 3.12 版本
+
+# ------------- 下载 python 3.12 -------------
+
 yay -S --needed python312 --cleanafter
 
+
+
+# ------------- 拉取项目 -------------
 tmp_dir=$(mktemp -d)
 trap 'rm -rf "$tmp_dir"' EXIT
 
