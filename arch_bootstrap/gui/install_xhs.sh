@@ -3,7 +3,7 @@
 set -euo pipefail
 
 # 下载对应的 python 3.12 版本
-yay -S --needed python312 --noconfirm --cleanafter
+yay -S --needed python312 --cleanafter
 
 tmp_dir=$(mktemp -d)
 trap 'rm -rf "$tmp_dir"' EXIT
@@ -33,3 +33,5 @@ uv pip compile requirements.txt -o uv.lock
 uv pip sync uv.lock
 
 ln -sf /opt/soft/XHS-Downloader/Download /data/misc/xhs_dl
+
+printf "Done.\n"
