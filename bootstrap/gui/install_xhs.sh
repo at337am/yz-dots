@@ -24,7 +24,7 @@ rm -rf /data/misc/xhs_dl
 
 # ------------- 下载 python 3.12 -------------
 
-yay -S --needed python312 --cleanafter
+# yay -S --needed python312 --cleanafter
 
 
 
@@ -44,7 +44,10 @@ cd /opt/soft/XHS-Downloader/
 
 rm -f uv.lock
 
-uv venv -p python3.12 .venv
+# uv venv -p python3.12 .venv
+
+# 这一步会自动下载 Python 3.12 (如果没安装) 并创建 .venv 目录
+uv venv --python 3.12
 
 source .venv/bin/activate
 
