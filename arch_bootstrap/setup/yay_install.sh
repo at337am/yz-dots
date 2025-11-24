@@ -18,7 +18,7 @@ done
 # 构建并安装 yay
 install_yay() {
     tmp_dir=$(mktemp -d)
-    trap 'command rm -rf "$tmp_dir"' EXIT
+    trap 'rm -rf "$tmp_dir"' EXIT
 
     git clone https://aur.archlinux.org/yay.git "$tmp_dir/yay"
     cd "$tmp_dir/yay"

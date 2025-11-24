@@ -34,7 +34,7 @@ if [[ ! -d "$TARGET_DIR" ]]; then
 fi
 
 tmp_dir=$(mktemp -d)
-trap 'command rm -rf "$tmp_dir"' EXIT
+trap 'rm -rf "$tmp_dir"' EXIT
 
 fd -HIi -e zip . "$TARGET_DIR" -x unzip -q {} -d "$tmp_dir/{/.}"
 

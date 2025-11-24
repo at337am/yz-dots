@@ -20,7 +20,7 @@ sudo -E pacman -S --needed --noconfirm \
     sassc
 
 tmp_dir=$(mktemp -d)
-trap 'command rm -rf "$tmp_dir"' EXIT
+trap 'rm -rf "$tmp_dir"' EXIT
 
 mkdir -p ~/.local/share/themes
 mkdir -p ~/.local/share/icons
