@@ -65,6 +65,16 @@ pack_one() {
     printf "%s packed and ready in ~/Downloads.\n" "$name"
 }
 
+usage() {
+    printf "\nUsage: %s [OPTION]\n\nOPTIONS:\n" "$(basename "$0")" >&2
+
+    printf "  proj      - 打包 dev 和 Documents\n" >&2
+    printf "  all       - 打包所有内容 (迁移)\n" >&2
+    printf "  fonts     - 打包 fonts\n" >&2
+    printf "  PFP       - 打包 PFP\n" >&2
+    printf "  restore   - 打包 restore\n" >&2
+}
+
 if [[ "$#" -eq 0 ]]; then
     mirroring
 elif [[ "$#" -eq 1 && "$1" == "proj" ]]; then
@@ -77,8 +87,8 @@ elif [[ "$#" -eq 1 && "$1" == "all" ]]; then
     mirroring
     pack_all
 else
-	printf "Error: Invalid arguments.\n" >&2
-    printf "Usage: %s [-p | --mig]\n" "$(basename "$0")" >&2
+    printf "Error: Invalid arguments.\n" >&2
+    usage
     exit 1
 fi
 
