@@ -31,7 +31,7 @@ VID_PATH="$1"
 
 # 检查输入文件是否存在
 if [[ ! -f "$VID_PATH" ]]; then
-    printf "Error: 视频文件不存在: %s\n" "$VID_PATH" >&2
+    printf "Error: %s does not exist.\n" "$VID_PATH" >&2
     exit 1
 fi
 
