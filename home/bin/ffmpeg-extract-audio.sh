@@ -12,10 +12,11 @@
 
 set -euo pipefail
 
+# 依赖检查
 dependencies=("ffmpeg" "ffprobe")
 for cmd in "${dependencies[@]}"; do
     if ! command -v "$cmd" &> /dev/null; then
-        printf "Error: 缺少依赖命令: %s\n" "$cmd" >&2
+        printf "Error: Missing dependency: %s\n" "$cmd" >&2
         exit 1
     fi
 done

@@ -19,6 +19,7 @@
 
 set -euo pipefail
 
+# 依赖检查
 if ! command -v "ffmpeg" &> /dev/null; then
     printf "Error: Missing dependency: ffmpeg\n" >&2
     exit 1
