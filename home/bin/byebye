@@ -14,9 +14,9 @@ countdown=3
 # 提示用户程序即将关闭
 printf "Time to bid farewell to running apps...\n"
 
-pkill -9 obsidian
-pkill -15 Telegram
-pkill -15 nekoray
+pkill -9 -x obsidian
+pkill -15 -x Telegram
+pkill -15 -x nekoray
 
 # 脚本执行完成后, 通知用户所有程序已关闭
 # 倒计时开始, 并提示可通过 Ctrl+C 取消关机
