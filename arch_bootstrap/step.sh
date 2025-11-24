@@ -108,7 +108,7 @@ visudo
 pacman -S grub efibootmgr
 
 # 将 GRUB 安装到硬盘的 ESP 分区上
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=Arch
 # 生成配置文件
 grub-mkconfig -o /boot/grub/grub.cfg
 
