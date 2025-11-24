@@ -30,9 +30,11 @@ sudo -E pacman -S --needed --noconfirm \
 
 # 字体
 sudo -E pacman -S --needed --noconfirm \
+    noto-fonts \
     noto-fonts-cjk \
     noto-fonts-emoji \
-    inter-font
+    inter-font \
+    ttf-fira-code
 
 # 常用软件
 sudo -E pacman -S --needed --noconfirm \

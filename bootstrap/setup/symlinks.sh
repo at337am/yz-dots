@@ -43,8 +43,8 @@ ln -sv "$DOTS_PATH/bin" ~/bin
 
 
 # ------------ CONFIG ------------
-rm -rf ~/.config/cava
-ln -sv "$DOTS_PATH/.config/cava" ~/.config/cava
+# rm -rf ~/.config/cava
+# ln -sv "$DOTS_PATH/.config/cava" ~/.config/cava
 
 rm -rf \
 	~/.config/fastfetch \
@@ -87,6 +87,9 @@ ln -sv "$DOTS_PATH/.config/Thunar" ~/.config/Thunar
 
 rm -rf ~/.config/waybar
 ln -sv "$DOTS_PATH/.config/waybar" ~/.config/waybar
+
+rm -rf ~/.config/xdg-desktop-portal
+ln -sv "$DOTS_PATH/.config/xdg-desktop-portal" ~/.config/xdg-desktop-portal
 
 rm -rf ~/.config/yt-dlp
 ln -sv "$DOTS_PATH/.config/yt-dlp" ~/.config/yt-dlp
