@@ -75,6 +75,11 @@ usage() {
     printf "  restore   - 打包 restore\n" >&2
 }
 
+if [[ "$#" -eq 1 && ("$1" == "-h" || "$1" == "--help") ]]; then
+    usage
+    exit 0
+fi
+
 if [[ "$#" -eq 0 ]]; then
     mirroring
 elif [[ "$#" -eq 1 && "$1" == "proj" ]]; then
