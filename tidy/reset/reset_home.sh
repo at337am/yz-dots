@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# set -euo pipefail
+set -euo pipefail
 
 confirm() {
     local prompt=${1:-"Do you want to continue?"}
@@ -16,7 +16,11 @@ if ! confirm "Are you sure you want to reset home?"; then
     exit 1
 fi
 
+rm -rf ~/.zsh_history
+rm -rf ~/.zcompdump
+rm -rf ~/.cache/p10k*
 rm -rf ~/.lain/themes
+
 ~/workspace/dev/yz-dots/bootstrap/setup/rsync_home.sh
 
 ~/workspace/dev/yz-dots/bootstrap/setup/path_perms.sh
