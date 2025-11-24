@@ -10,8 +10,14 @@ rm -rf ~/.local/share/nvim \
 
 DOTS_PATH="$HOME/workspace/dev/yz-dots/home"
 
+
+# ------------ HOME ------------
 ln -sf "$HOME/workspace/dev/yz-dots/tidy" ~/tidy
 ln -sf "$DOTS_PATH/bin" ~/bin
+
+
+
+# ------------ CONFIG ------------
 ln -sf "$DOTS_PATH/.config/cava" ~/.config/cava
 ln -sf "$DOTS_PATH/.config/fastfetch" ~/.config/fastfetch
 ln -sf "$DOTS_PATH/.config/fd" ~/.config/fd
@@ -30,13 +36,13 @@ ln -sf "$DOTS_PATH/.config/mimeapps.list" ~/.config/mimeapps.list
 
 
 
-# ------------ zsh START ------------
+# ------------ ZSH ------------
 ln -sf "$DOTS_PATH/.lain/lib/aliases.zsh" ~/.lain/lib/aliases.zsh
 ln -sf "$DOTS_PATH/.lain/lib/func.zsh" ~/.lain/lib/func.zsh
 
 
 
-# ------------ fcitx5 START ------------
+# ------------ FCITX5 ------------
 ln -sf "$DOTS_PATH/.local/share/fcitx5/rime/custom_phrase.txt" ~/.local/share/fcitx5/rime/custom_phrase.txt
 ln -sf "$DOTS_PATH/.local/share/fcitx5/rime/default.yaml" ~/.local/share/fcitx5/rime/default.yaml
 ln -sf "$DOTS_PATH/.local/share/fcitx5/rime/yz_pinyin.schema.yaml" ~/.local/share/fcitx5/rime/yz_pinyin.schema.yaml
