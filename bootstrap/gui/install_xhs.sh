@@ -49,6 +49,7 @@ cd /opt/soft/XHS-Downloader
 # 同步环境
 uv sync
 
-ln -sf /opt/soft/XHS-Downloader/Download /data/misc/xhs_dl
+rm -rf /data/misc/xhs_dl
+ln -s /opt/soft/XHS-Downloader/Download /data/misc/xhs_dl
 
 printf "Done.\n"
