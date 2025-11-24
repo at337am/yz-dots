@@ -2,6 +2,26 @@
 
 set -euo pipefail
 
+confirm() {
+    local prompt=${1:-"Do you want to continue?"}
+    read -r -p "$prompt [y/N]: " choice
+    case "${choice,,}" in
+        y|yes) return 0 ;;
+        *) return 1 ;;
+    esac
+}
+
+if ! confirm "Are you sure you want to install xhs?"; then
+    printf "Operation cancelled. Exiting...\n"
+    exit 1
+fi
+
+# 先清理
+rm -rf /opt/soft/XHS-Downloader
+rm -rf /data/misc/xhs_dl
+
+# ------------- start -------------
+
 # 下载对应的 python 3.12 版本
 yay -S --needed python312 --cleanafter
 
@@ -16,7 +36,7 @@ tar xvf "$tmp_dir/2.5.tar.gz" -C "$tmp_dir"
 mv "$tmp_dir/XHS-Downloader-2.5" "/opt/soft/XHS-Downloader"
 
 # 清理无用文件
-rm -rf /opt/soft/XHS-Downloader/{.github,static,LICENSE,Dockerfile,README_EN.md,README.md} || true
+# rm -rf /opt/soft/XHS-Downloader/{.github,static,LICENSE,Dockerfile,README_EN.md,README.md} || true
 
 # 进入项目所在目录, 创建并激活 3.12 的虚拟环境
 
