@@ -19,7 +19,7 @@ if ! command -v "ffmpeg" &> /dev/null; then
 fi
 
 usage() {
-    printf "用法: %s [-e jpg|png] <视频路径>\n" "$(basename "$0")" >&2
+    printf "Usage: %s [-e jpg|png] <video>\n" "$(basename "$0")" >&2
     exit 1
 }
 
@@ -43,7 +43,7 @@ shift $((OPTIND - 1))
 video_path="$1"
 
 if [[ "$#" -ne 1 ]]; then
-    printf "参数错误\n" >&2
+    printf "Error: Invalid arguments.\n" >&2
     usage
 fi
 

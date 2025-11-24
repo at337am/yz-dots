@@ -19,8 +19,8 @@ if ! command -v "magick" &> /dev/null; then
 fi
 
 if [[ "$#" -ne 1 ]]; then
-    printf "参数错误\n" >&2
-    printf "用法: %s <图像文件>\n" "$(basename "$0")" >&2
+    printf "Error: Invalid arguments.\n" >&2
+    printf "Usage: %s <image>\n" "$(basename "$0")" >&2
     exit 1
 fi
 
@@ -28,7 +28,7 @@ fi
 IMG_PATH="$1"
 
 if [[ ! -f "$IMG_PATH" ]]; then
-    printf "Error: 图像文件不存在: %s\n" "$IMG_PATH" >&2
+    printf "Error: %s does not exist.\n" "$IMG_PATH" >&2
     exit 1
 fi
 
