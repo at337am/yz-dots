@@ -31,15 +31,11 @@ trap 'rm -rf "$tmp_dir"' EXIT
 # 拉取项目源码:
 wget -O "$tmp_dir/2.5.tar.gz" https://github.com/JoeanAmier/XHS-Downloader/archive/refs/tags/2.5.tar.gz
 
-tar xvf "$tmp_dir/2.5.tar.gz" -C "$tmp_dir"
+tar -zxvf "$tmp_dir/2.5.tar.gz" -C "$tmp_dir"
 
 mv "$tmp_dir/XHS-Downloader-2.5" "/opt/soft/XHS-Downloader"
 
-# 清理无用文件
-# rm -rf /opt/soft/XHS-Downloader/{.github,static,LICENSE,Dockerfile,README_EN.md,README.md} || true
-
 # 进入项目所在目录, 创建并激活 3.12 的虚拟环境
-
 cd /opt/soft/XHS-Downloader/
 
 rm -f uv.lock
