@@ -9,6 +9,30 @@ if [[ ! -d "$DOTS_PATH" ]]; then
     exit 1
 fi
 
+fcitx5(){
+    rm -rf ~/.local/share/fcitx5/rime/custom_phrase.txt
+    rm -rf ~/.local/share/fcitx5/rime/default.yaml
+    rm -rf ~/.local/share/fcitx5/rime/yz_pinyin.schema.yaml
+    rm -rf ~/.local/share/fcitx5/rime/yz_pinyin.dict.yaml
+    rm -rf ~/.local/share/fcitx5/themes
+    rm -rf ~/.config/fcitx5
+
+    ln -sv "$DOTS_PATH/.local/share/fcitx5/rime/custom_phrase.txt" ~/.local/share/fcitx5/rime/custom_phrase.txt
+    ln -sv "$DOTS_PATH/.local/share/fcitx5/rime/default.yaml" ~/.local/share/fcitx5/rime/default.yaml
+    ln -sv "$DOTS_PATH/.local/share/fcitx5/rime/yz_pinyin.schema.yaml" ~/.local/share/fcitx5/rime/yz_pinyin.schema.yaml
+    ln -sv "$DOTS_PATH/.local/share/fcitx5/rime/yz_pinyin.dict.yaml" ~/.local/share/fcitx5/rime/yz_pinyin.dict.yaml
+    ln -sv "$DOTS_PATH/.local/share/fcitx5/themes" ~/.local/share/fcitx5/themes
+    ln -sv "$DOTS_PATH/.config/fcitx5" ~/.config/fcitx5
+}
+
+# 如果脚本只接收到一个参数, 并且这个参数的值为 fcitx5
+if [[ "$#" -eq 1 && "$1" == "fcitx5" ]]; then
+    fcitx5
+    exit 0
+fi
+
+
+
 # ------------ HOME ------------
 rm -rf ~/tidy
 ln -sv "$HOME/workspace/dev/yz-dots/tidy" ~/tidy
@@ -80,25 +104,4 @@ ln -sv "$DOTS_PATH/.lain/lib/aliases.zsh" ~/.lain/lib/aliases.zsh
 ln -sv "$DOTS_PATH/.lain/lib/func.zsh" ~/.lain/lib/func.zsh
 
 
-
-# ------------ FCITX5 ------------
-fcitx5(){
-    rm -rf ~/.local/share/fcitx5/rime/custom_phrase.txt
-    rm -rf ~/.local/share/fcitx5/rime/default.yaml
-    rm -rf ~/.local/share/fcitx5/rime/yz_pinyin.schema.yaml
-    rm -rf ~/.local/share/fcitx5/rime/yz_pinyin.dict.yaml
-    rm -rf ~/.local/share/fcitx5/themes
-    rm -rf ~/.config/fcitx5
-
-    ln -sv "$DOTS_PATH/.local/share/fcitx5/rime/custom_phrase.txt" ~/.local/share/fcitx5/rime/custom_phrase.txt
-    ln -sv "$DOTS_PATH/.local/share/fcitx5/rime/default.yaml" ~/.local/share/fcitx5/rime/default.yaml
-    ln -sv "$DOTS_PATH/.local/share/fcitx5/rime/yz_pinyin.schema.yaml" ~/.local/share/fcitx5/rime/yz_pinyin.schema.yaml
-    ln -sv "$DOTS_PATH/.local/share/fcitx5/rime/yz_pinyin.dict.yaml" ~/.local/share/fcitx5/rime/yz_pinyin.dict.yaml
-    ln -sv "$DOTS_PATH/.local/share/fcitx5/themes" ~/.local/share/fcitx5/themes
-    ln -sv "$DOTS_PATH/.config/fcitx5" ~/.config/fcitx5
-}
-
-# 只要参数数量为 0 或第一个参数是 fcitx5
-if [[ "$#" -eq 0 || "$1" == "fcitx5" ]]; then
-    fcitx5
-fi
+fcitx5

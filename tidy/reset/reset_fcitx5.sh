@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# set -euo pipefail
+set -euo pipefail
 
 confirm() {
     local prompt=${1:-"Do you want to continue?"}
@@ -34,4 +34,4 @@ rsync -a --delete \
 
 ~/workspace/dev/yz-dots/bootstrap/setup/symlinks.sh fcitx5
 
-# printf "Done.\n"
+printf "Done.\n"

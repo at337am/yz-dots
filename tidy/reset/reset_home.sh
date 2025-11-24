@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# 这个脚本会同步所有, 并且会重置 zsg, 但不会影响其它的
+
 set -euo pipefail
 
 confirm() {
