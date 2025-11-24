@@ -2,6 +2,7 @@
 
 set -euo pipefail
 
+# 依赖检查
 if ! command -v "uv" &> /dev/null; then
     printf "Error: Missing dependency: uv\n" >&2
     exit 1

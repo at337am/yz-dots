@@ -10,8 +10,9 @@
 # 4. 输出结果使用彩色标记，方便快速识别。
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
 
+# 依赖检查
 if ! command -v "git" &> /dev/null; then
-    printf "Error: 缺少依赖命令: git\n" >&2
+    printf "Error: Missing dependency: git\n" >&2
     exit 1
 fi
 

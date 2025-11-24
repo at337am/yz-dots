@@ -2,6 +2,12 @@
 
 set -euo pipefail
 
+# 依赖检查
+if ! command -v "just" &> /dev/null; then
+    printf "Error: Missing dependency: just\n" >&2
+    exit 1
+fi
+
 # git_clone() {
 #     mkdir -p ~/Downloads/git_clone_tmp
 #     cd ~/Downloads/git_clone_tmp

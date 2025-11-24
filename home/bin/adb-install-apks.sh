@@ -11,8 +11,9 @@
 
 set -euo pipefail
 
+# 依赖检查
 if ! command -v "adb" &> /dev/null; then
-    printf "Error: 缺少依赖命令: adb\n" >&2
+    printf "Error: Missing dependency: adb\n" >&2
     exit 1
 fi
 

@@ -2,6 +2,15 @@
 
 set -euo pipefail
 
+# 依赖检查
+dependencies=("uv" "wget")
+for cmd in "${dependencies[@]}"; do
+    if ! command -v "$cmd" &> /dev/null; then
+        printf "Error: Missing dependency: %s\n" "$cmd" >&2
+        exit 1
+    fi
+done
+
 confirm() {
     local prompt=${1:-"Do you want to continue?"}
     read -r -p "$prompt [y/N]: " choice

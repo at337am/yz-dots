@@ -2,6 +2,12 @@
 
 set -euo pipefail
 
+# 依赖检查
+if ! command -v "flatpak" &> /dev/null; then
+    printf "Error: Missing dependency: flatpak\n" >&2
+    exit 1
+fi
+
 # todo 好像 flatpak 命令语法顺序不太标准? 看看别人的
 
 
