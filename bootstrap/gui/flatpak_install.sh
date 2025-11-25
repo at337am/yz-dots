@@ -12,44 +12,40 @@ add_flathub() {
     flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 }
 
-# 必需的 App
-install_standard() {
-    flatpak install --user -y flathub \
-        md.obsidian.Obsidian \
-        io.github.ungoogled_software.ungoogled_chromium \
-        org.telegram.desktop
-}
-
-# 附加的 App
-install_extra() {
+install_app() {
     flatpak install --user -y flathub \
         io.github.efogdev.mpris-timer \
         com.discordapp.Discord
 }
 
-usage() {
-    printf "Usage: %s [extra]\n" "$(basename "$0")" >&2
+set_perms() {
+    # 先重置权限, 或者直接把这个删了: ~/.local/share/flatpak/overrides
+    flatpak override --user --reset
+
+    # 授权 GTK config 路径访问权限
+    flatpak override --user --filesystem=xdg-config/gtk-3.0
+    flatpak override --user --filesystem=xdg-config/gtk-4.0
+    flatpak override --user --socket=wayland
+    # flatpak override --user --filesystem=xdg-config/qt5ct
+    # flatpak override --user --filesystem=xdg-config/qt6ct
 }
 
-if [[ "$#" -eq 1 && ("$1" == "-h" || "$1" == "--help") ]]; then
-    usage
-    exit 0
-fi
-
-if [[ "$#" -eq 0 ]]; then
-    add_flathub
-    install_standard
-elif [[ "$#" -eq 1 && "$1" == "extra" ]]; then
-    add_flathub
-    install_extra
-else
-    printf "Error: Invalid arguments.\n" >&2
-    usage
-    exit 1
-fi
-
-# 暂时不需要了的
-# flatpak install --user flathub io.mgba.mGBA
-# flatpak install --user flathub org.localsend.localsend_app
+add_flathub
+install_app
+set_perms
 
 printf "Done.\n"
+
+
+
+# ------------ bak ------------
+# 
+# flatpak override --user io.github.ungoogled_software.ungoogled_chromium \
+#     --filesystem=xdg-videos \
+#     --filesystem=xdg-pictures \
+#     --filesystem=xdg-documents \
+#     --filesystem="$HOME/workspace" \
+#     --filesystem=/workspace \
+#     --filesystem=/data
+# 
+# ------------ bak ------------
