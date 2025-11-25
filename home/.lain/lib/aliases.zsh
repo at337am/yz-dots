@@ -2,10 +2,9 @@
 alias cl='reset'
 alias v='nvim'
 alias px='http_proxy=http://127.0.0.1:2080 https_proxy=http://127.0.0.1:2080'
-alias flatpak='px flatpak'
 alias mpv='px mpv'
-alias yt-dlp='px yt-dlp'
 alias yt='px yt-dlp'
+alias fpi='px flatpak --user install -y flathub'
 alias ryc='rsync -avh --progress'
 alias bn='bat -n'
 alias bd='bat -d'
@@ -20,7 +19,6 @@ alias cnt='printf "dirs: %s  symlinks: %s  files: %s\n" "$(fd -IH -t d -d 1 | wc
 alias du1='du -ah -d 1 .'
 alias r='printf "zsh: r command disabled\n"'
 alias fc='printf "zsh: fc command disabled\n"'
-alias fpi='flatpak --user install -y flathub'
 
 # base
 alias _='sudo'
