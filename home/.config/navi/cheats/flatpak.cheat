@@ -8,7 +8,7 @@ flatpak remotes -d
 % flatpak, delete
 
 # 卸载 Flatpak App 并删除用户数据 (指定 App)
-flatpak --user uninstall --delete-data xxx
+flatpak uninstall --user --delete-data xxx
 
 # 清理残留依赖
-flatpak --user uninstall --unused
+flatpak uninstall --user --unused

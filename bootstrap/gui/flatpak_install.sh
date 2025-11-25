@@ -9,12 +9,12 @@ if ! command -v "flatpak" &> /dev/null; then
 fi
 
 add_flathub() {
-    flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 }
 
 # 必需的 App
 install_standard() {
-    flatpak --user install -y flathub \
+    flatpak install --user -y flathub \
         md.obsidian.Obsidian \
         org.localsend.localsend_app \
         io.github.ungoogled_software.ungoogled_chromium \
@@ -23,7 +23,7 @@ install_standard() {
 
 # 附加的 App
 install_extra() {
-    flatpak --user install -y flathub \
+    flatpak install --user -y flathub \
         io.github.efogdev.mpris-timer \
         com.discordapp.Discord
 }
@@ -50,6 +50,6 @@ else
 fi
 
 # 暂时不需要了的
-# flatpak --user install -y flathub io.mgba.mGBA
+# flatpak install --user -y flathub io.mgba.mGBA
 
 printf "Done.\n"
