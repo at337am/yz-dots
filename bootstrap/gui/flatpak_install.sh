@@ -14,8 +14,7 @@ add_flathub() {
 
 install_app() {
     flatpak install --user -y flathub \
-        io.github.efogdev.mpris-timer \
-        com.discordapp.Discord
+        io.github.efogdev.mpris-timer
 }
 
 set_perms() {

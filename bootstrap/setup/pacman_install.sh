@@ -138,7 +138,13 @@ sudo -E pacman -S --needed --noconfirm \
     telegram-desktop
 
 
-# todo: discord ?
+
+# --------- 可选择的 ---------
+# 
+# discord
+# mgba-qt
+
+
 
 # --------- bak ---------
 # 
