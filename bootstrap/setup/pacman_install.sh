@@ -65,6 +65,7 @@ sudo -E pacman -S --needed --noconfirm \
     kitty \
     less \
     man-db \
+    texinfo \
     mpv \
     nano \
     navi \

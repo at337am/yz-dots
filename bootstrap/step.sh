@@ -1,42 +1,68 @@
-# wow ~
+# wow
 
 # arch 安装指南: https://wiki.archlinuxcn.org/wiki/安装指南
 
 # 放大显示字体, 恢复直接运行 setfont
 setfont ter-132b
 
-# 连接网络
+
+
+# ----------- 连接网络 -----------
+# 
 # https://wiki.archlinuxcn.org/wiki/Iwd#iwctl
+
 iwctl
+
+# 列出所有 WiFi 设备:
+> device list
+
+> device name set-property Powered on
+> adapter adapter set-property Powered on
+
+# 开始扫描网络: (这个命令不会输出任何内容)
+> station name scan
+
+# 列出所有可用的网络:
+> station name get-networks
+
+# 连接到一个网络: (这里会提示输入密码)
+> station name connect SSID
+
+# 连接后 ping 一下看看网络是否成功
 
 # 确保一下时间是正确的
 timedatectl
 
-# 建立硬盘分区
+
+
+#  --------------------- 建立硬盘分区 ---------------------
+
 # 先使用 fdisk -l 查看硬盘名称, 比如是: /dev/nvme0n1
 cfdisk /dev/nvme0n1
 # 选择一个空闲的分区, 进行以下操作:
-# New 新建一个 1G 的分区, 比如 /dev/nvme0n1p7, 然后把 type 改为 EFI
-# 再选择剩下的分区, 比如 /dev/nvme0n1p8, 然后把 type 改为 filesystem
+# New 新建一个 1G 的分区, 比如 /dev/nvme0n1p5, 然后把 type 改为 EFI
+# 再选择剩下的分区, 比如 /dev/nvme0n1p6, 然后把 type 改为 filesystem
 # 选择 write 写入, 输入 yes 确定
 # 最后 quite 退出
 # 使用 fdisk -l 查看是否成功
 
 # 格式化 EFI 分区
-mkfs.fat -F 32 /dev/nvme0n1p7
+mkfs.fat -F 32 /dev/nvme0n1p5
 
 # 格式化 根分区
-mkfs.ext4 /dev/nvme0n1p8
+mkfs.ext4 /dev/nvme0n1p6
 
 # 挂载根分区
-mount /dev/nvme0n1p8 /mnt
+mount /dev/nvme0n1p6 /mnt
 
 # 挂载 EFI 分区
 mkdir /mnt/boot
-mount /dev/nvme0n1p7 /mnt/boot
+mount /dev/nvme0n1p5 /mnt/boot
 
 # 再次查看一下
 lsblk -pf
+
+
 
 # ------------------ 开始安装系统 ------------------
 
@@ -47,10 +73,9 @@ export https_proxy=http://192.168.9.104:1082
 # 检查是否代理成功 (返回 200)
 curl -I https://www.google.com
 
-
 # 安装必需的软件包
 pacstrap -K /mnt base linux linux-firmware
-# mesa vulkan-intel intel-media-driver man-db man-pages texinfo ??
+
 
 
 # ------------------ 配置系统 ------------------
@@ -137,17 +162,10 @@ reboot
 # ------------------ 之后 ------------------
 
 # nmcli 连接网络
+nmcli connection add type wifi con-name "oishi-profile" ssid "oishi" wifi-sec.key-mgmt wpa-psk wifi-sec.psk "110110110"
 
 # 使用 另一台手机 scp -r 上传所需文件
 
 # 设置 env 代理
 
-# 执行 脚本
-
-# bootstrap 脚本从这里开始书写
-
-
-
-
-# END:
-chsh -s /usr/bin/zsh
+# 执行 bootstrap.sh 脚本
