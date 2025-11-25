@@ -20,7 +20,6 @@ fi
 flatpak override --user --reset
 
 flatpak override --user --reset md.obsidian.Obsidian
-flatpak override --user --reset org.localsend.localsend_app
 flatpak override --user --reset io.github.ungoogled_software.ungoogled_chromium
 flatpak override --user --reset org.telegram.desktop
 
@@ -30,21 +29,13 @@ flatpak override --user --reset org.telegram.desktop
 
 flatpak override --user --filesystem=xdg-config/gtk-3.0
 flatpak override --user --filesystem=xdg-config/gtk-4.0
+flatpak override --user --socket=wayland
 # flatpak override --user --filesystem=xdg-config/qt5ct
 # flatpak override --user --filesystem=xdg-config/qt6ct
-flatpak override --user --socket=wayland
 
 
 
 # ------------ App 权限 ------------
-
-flatpak override --user org.localsend.localsend_app \
-    --filesystem=xdg-videos \
-    --filesystem=xdg-pictures \
-    --filesystem=xdg-documents \
-    --filesystem="$HOME/workspace" \
-    --filesystem=/workspace \
-    --filesystem=/data
 
 flatpak override --user io.github.ungoogled_software.ungoogled_chromium \
     --filesystem=xdg-videos \
@@ -67,7 +58,14 @@ flatpak override --user org.telegram.desktop \
 
 # bak:
 
-# flatpak override --user --reset io.mgba.mGBA
 # flatpak override --user io.mgba.mGBA --filesystem=/data
+
+# flatpak override --user org.localsend.localsend_app \
+#     --filesystem=xdg-videos \
+#     --filesystem=xdg-pictures \
+#     --filesystem=xdg-documents \
+#     --filesystem="$HOME/workspace" \
+#     --filesystem=/workspace \
+#     --filesystem=/data
 
 printf "Done.\n"

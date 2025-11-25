@@ -16,7 +16,6 @@ add_flathub() {
 install_standard() {
     flatpak install --user -y flathub \
         md.obsidian.Obsidian \
-        org.localsend.localsend_app \
         io.github.ungoogled_software.ungoogled_chromium \
         org.telegram.desktop
 }
@@ -50,6 +49,7 @@ else
 fi
 
 # 暂时不需要了的
-# flatpak install --user -y flathub io.mgba.mGBA
+# flatpak install --user flathub io.mgba.mGBA
+# flatpak install --user flathub org.localsend.localsend_app
 
 printf "Done.\n"
