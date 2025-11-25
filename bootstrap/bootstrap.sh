@@ -7,6 +7,7 @@ scripts=(
     "setup/pacman_install.sh"
     "setup/xdg-user-dirs.sh"
     "setup/rsync_home.sh"
+    "setup/set_p10k_theme.sh"
     "setup/path_perms.sh"
     "setup/symlinks.sh"
     "setup/wget_dicts.sh"

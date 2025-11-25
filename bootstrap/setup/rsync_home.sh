@@ -17,7 +17,3 @@ fi
 
 # 执行同步
 rsync -a "$DOTS_PATH/" ~/
-
-# 解压 p10k 主题
-tar -zxf ~/.lain/themes/powerlevel10k.tar.gz -C ~/.lain/themes
-rm -rf ~/.lain/themes/powerlevel10k.tar.gz
