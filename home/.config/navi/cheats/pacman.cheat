@@ -40,10 +40,7 @@ pacman -Qi xxx
 
 % pacman, clean
 
-# 清理缓存 (只清理旧版本)
-sudo pacman --noconfirm -Sc
-
-# 清理缓存 (所有缓存)
+# 清理所有软件包缓存
 sudo pacman --noconfirm -Scc
 
 
