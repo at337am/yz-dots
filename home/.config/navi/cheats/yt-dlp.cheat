@@ -2,10 +2,3 @@
 
 # 临时忽略所有配置文件, 适合下载 IU LIVE (未指定 URL)
 yt-dlp --ignore-config -P . URL
-
-
-
-% mpv, lofi
-
-# 播放 youtube 音频
-mpv --no-video 'https://youtu.be/jfKfPfyJRdk'

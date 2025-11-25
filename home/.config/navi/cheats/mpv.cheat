@@ -1,0 +1,11 @@
+% mpv, lofi
+
+# 播放 youtube 音频
+mpv --no-video 'https://youtu.be/jfKfPfyJRdk'
+
+
+
+% mpv, images
+
+# 以幻灯片模式播放目录中的所有图片
+mpv --loop-file=no --image-display-duration=0.8 .
