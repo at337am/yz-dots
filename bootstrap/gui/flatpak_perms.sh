@@ -17,28 +17,28 @@ fi
 # 或者直接去这里删除:
 # command rm -rfv ~/.local/share/flatpak/overrides
 
-flatpak --user override --reset
+flatpak override --user --reset
 
-flatpak --user override --reset md.obsidian.Obsidian
-flatpak --user override --reset org.localsend.localsend_app
-flatpak --user override --reset io.github.ungoogled_software.ungoogled_chromium
-flatpak --user override --reset org.telegram.desktop
+flatpak override --user --reset md.obsidian.Obsidian
+flatpak override --user --reset org.localsend.localsend_app
+flatpak override --user --reset io.github.ungoogled_software.ungoogled_chromium
+flatpak override --user --reset org.telegram.desktop
 
 
 
 # ------------ 全局权限 ------------
 
-flatpak --user override --filesystem=xdg-config/gtk-3.0
-flatpak --user override --filesystem=xdg-config/gtk-4.0
-# flatpak --user override --filesystem=xdg-config/qt5ct
-# flatpak --user override --filesystem=xdg-config/qt6ct
-flatpak --user override --socket=wayland
+flatpak override --user --filesystem=xdg-config/gtk-3.0
+flatpak override --user --filesystem=xdg-config/gtk-4.0
+# flatpak override --user --filesystem=xdg-config/qt5ct
+# flatpak override --user --filesystem=xdg-config/qt6ct
+flatpak override --user --socket=wayland
 
 
 
 # ------------ App 权限 ------------
 
-flatpak --user override org.localsend.localsend_app \
+flatpak override --user org.localsend.localsend_app \
     --filesystem=xdg-videos \
     --filesystem=xdg-pictures \
     --filesystem=xdg-documents \
@@ -46,7 +46,7 @@ flatpak --user override org.localsend.localsend_app \
     --filesystem=/workspace \
     --filesystem=/data
 
-flatpak --user override io.github.ungoogled_software.ungoogled_chromium \
+flatpak override --user io.github.ungoogled_software.ungoogled_chromium \
     --filesystem=xdg-videos \
     --filesystem=xdg-pictures \
     --filesystem=xdg-documents \
@@ -54,7 +54,7 @@ flatpak --user override io.github.ungoogled_software.ungoogled_chromium \
     --filesystem=/workspace \
     --filesystem=/data
 
-flatpak --user override org.telegram.desktop \
+flatpak override --user org.telegram.desktop \
     --filesystem=xdg-download \
     --filesystem=xdg-videos \
     --filesystem=xdg-pictures \
@@ -67,7 +67,7 @@ flatpak --user override org.telegram.desktop \
 
 # bak:
 
-# flatpak --user override --reset io.mgba.mGBA
-# flatpak --user override io.mgba.mGBA --filesystem=/data
+# flatpak override --user --reset io.mgba.mGBA
+# flatpak override --user io.mgba.mGBA --filesystem=/data
 
 printf "Done.\n"
