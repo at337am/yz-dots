@@ -135,8 +135,10 @@ sudo -E pacman -S --needed --noconfirm \
 sudo -E pacman -S --needed --noconfirm \
     obs-studio \
     obsidian \
-    telegram-desktop \
-    discord
+    telegram-desktop
+
+
+# todo: discord ?
 
 # --------- bak ---------
 # 

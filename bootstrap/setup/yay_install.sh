@@ -36,4 +36,5 @@ fi
 yay -S --needed \
     visual-studio-code-bin \
     qimgv-git \
-    localsend-bin
+    localsend-bin \
+    ungoogled-chromium-bin
