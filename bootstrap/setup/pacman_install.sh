@@ -129,7 +129,8 @@ sudo -E pacman -S --needed --noconfirm \
     zathura \
     zathura-pdf-mupdf \
     tesseract-data-eng \
-    tesseract-data-chi_sim
+    tesseract-data-chi_sim \
+    qt6-multimedia-ffmpeg
 
 
 # --------- bak ---------
