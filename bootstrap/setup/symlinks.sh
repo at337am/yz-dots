@@ -25,7 +25,7 @@ fcitx5(){
     ln -sv "$DOTS_PATH/.config/fcitx5" ~/.config/fcitx5
 }
 
-# 如果脚本只接收到一个参数, 并且这个参数的值为 fcitx5
+# 如果脚本只接收到一个参数, 并且匹配
 if [[ "$#" -eq 1 && "$1" == "fcitx5" ]]; then
     fcitx5
     exit 0
