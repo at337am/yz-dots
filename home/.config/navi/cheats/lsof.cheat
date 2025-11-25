@@ -1,0 +1,14 @@
+% lsof
+
+# 查找谁在使用某个文件或目录
+lsof [path]
+
+
+
+% lsof, network
+
+# 查找占用某个端口的进程
+lsof -i :1129
+
+# 查看所有网络连接
+lsof -i
