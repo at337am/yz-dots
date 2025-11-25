@@ -30,8 +30,8 @@ flatpak --user override --reset org.telegram.desktop
 
 flatpak --user override --filesystem=xdg-config/gtk-3.0
 flatpak --user override --filesystem=xdg-config/gtk-4.0
-flatpak --user override --filesystem=xdg-config/qt5ct
-flatpak --user override --filesystem=xdg-config/qt6ct
+# flatpak --user override --filesystem=xdg-config/qt5ct
+# flatpak --user override --filesystem=xdg-config/qt6ct
 flatpak --user override --socket=wayland
 
 
