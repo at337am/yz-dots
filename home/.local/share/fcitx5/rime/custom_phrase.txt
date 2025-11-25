@@ -1,11 +1,8 @@
 # 以 Tab 分隔
 
-李知恩	lizhien
-李圣经	lishenjin
-李圣经	lishengjing
 
 
-
+时间	shijian
 挂载	guazai
 好	h
 了	l
@@ -141,6 +138,12 @@ ChatGPT	chatgpt
 code	code
 todo	todo
 todo	tood
+
+
+
+李知恩	lizhien
+李圣经	lishenjin
+李圣经	lishengjing
 
 
 
