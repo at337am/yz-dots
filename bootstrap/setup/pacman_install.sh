@@ -71,7 +71,6 @@ sudo -E pacman -S --needed --noconfirm \
     navi \
     neovim \
     nmap \
-    obs-studio \
     ripgrep \
     rust \
     tealdeer \
@@ -132,6 +131,12 @@ sudo -E pacman -S --needed --noconfirm \
     tesseract-data-chi_sim \
     qt6-multimedia-ffmpeg
 
+# 常用重量级 App
+sudo -E pacman -S --needed --noconfirm \
+    obs-studio \
+    obsidian \
+    telegram-desktop \
+    discord
 
 # --------- bak ---------
 # 

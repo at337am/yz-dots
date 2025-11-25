@@ -22,7 +22,7 @@ if [[ ! -f "$ssh_path" ]]; then
 fi
 
 system_init() {
-    # todo: 设置硬件时钟为 UTC
+    # 设置硬件时钟为 UTC, 可能不需要了
     # sudo timedatectl set-local-rtc '0'
 
     # 设置免密关机

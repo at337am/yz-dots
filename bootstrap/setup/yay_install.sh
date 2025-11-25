@@ -35,4 +35,5 @@ fi
 
 yay -S --needed \
     visual-studio-code-bin \
-    qimgv-git
+    qimgv-git \
+    localsend-bin
