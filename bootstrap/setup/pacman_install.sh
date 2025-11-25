@@ -130,3 +130,9 @@ sudo -E pacman -S --needed --noconfirm \
     zathura-pdf-mupdf \
     tesseract-data-eng \
     tesseract-data-chi_sim
+
+
+# --------- bak ---------
+# 
+# 目前不需要的, 监听 ACPI 事件 和 电源调度策略
+# sudo pacman -S acpid power-profiles-daemon
