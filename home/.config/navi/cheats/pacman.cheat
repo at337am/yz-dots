@@ -45,3 +45,10 @@ sudo pacman --noconfirm -Sc
 
 # 清理缓存 (所有缓存)
 sudo pacman --noconfirm -Scc
+
+
+
+% yay, clean
+
+# 清理不再需要的孤儿包
+yay -Yc
