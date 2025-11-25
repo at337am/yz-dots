@@ -14,21 +14,23 @@ setfont ter-132b
 iwctl
 
 # 列出所有 WiFi 设备:
-> device list
+device list
 
-> device name set-property Powered on
-> adapter adapter set-property Powered on
+# 如果设备或其相应的适配器已关闭, 请将其打开:
+# device name set-property Powered on
+# adapter adapter set-property Powered on
 
 # 开始扫描网络: (这个命令不会输出任何内容)
-> station name scan
+station <device_name> scan
 
 # 列出所有可用的网络:
-> station name get-networks
+station <device_name> get-networks
 
 # 连接到一个网络: (这里会提示输入密码)
-> station name connect SSID
+station <device_name> connect <wifi_name>
 
 # 连接后 ping 一下看看网络是否成功
+ping ...
 
 # 确保一下时间是正确的
 timedatectl
