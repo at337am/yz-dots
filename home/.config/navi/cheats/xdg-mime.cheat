@@ -1,4 +1,4 @@
-% xdg, mime, query
+% xdg, mime, search
 
 # 查询一个文件的 MIME 类型
 xdg-mime query filetype xxx
@@ -18,7 +18,7 @@ xdg-mime default qimgv.desktop image/jpeg
 
 
 
-% xdg, desktop, query
+% xdg, desktop, search
 
 # 查找 .desktop 文件
 ls /usr/share/applications | grep -i qimgv
