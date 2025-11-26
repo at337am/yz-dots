@@ -126,16 +126,16 @@ mkcd() {
 # 创建一个新目录, 并将一个或多个指定文件或目录移动到该目录中
 # 若新目录已存在, 则不执行
 mkmv() {
-    # 检查传入参数数量是否不少于两个, 若不足则提示错误并退出
+    # 检查参数
     if [[ "$#" -lt 2 ]]; then
-        printf "mkmv: Oops! At least two arguments are required.\n" >&2
+        printf "Error: Invalid arguments.\n" >&2
         printf "Usage: mkmv <path>... <new-dir>\n" >&2
         return 1
     fi
 
-    # 若在 ~ 路径下执行, 且位置参数 >= 3 个, 则报错退出, 防止误操作
+    # 禁止在 HOME 目录下批量移动
     if [[ "$PWD" == "$HOME" && "$#" -ge 3 ]]; then
-        printf "Error: For safety, batch moving of 2 or more items from the home directory '~' is prohibited.\n" >&2
+        printf "\033[31mmkmv: Do not bulk move under HOME!\033[0m\n" >&2
         return 1
     fi
 
@@ -164,7 +164,7 @@ mkmv() {
     # 创建目标目录（支持递归创建）, 并将所有源文件/目录移动到该目录中
     # 成功时打印操作结果, 否则提示失败原因（如权限不足）
     if mkdir -p "$new_dir" && mv -- "${paths[@]}" "$new_dir/"; then
-        printf "Created %s/ and moved %d item(s) inside.\n" "$new_dir" "${#paths[@]}"
+        printf "\033[32mmkmv: Created %s/ and moved %d item(s) inside.\033[0m\n" "$new_dir" "${#paths[@]}"
         return 0
     else
         printf "Error: Failed to create directory or move items. Check permissions.\n" >&2
