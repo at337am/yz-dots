@@ -18,9 +18,7 @@ fi
 
 # ----------
 
-pkill -9 fcitx5 || true
-
-sleep 1
+(pkill -9 fcitx5 && sleep 1.5) || true
 
 DOTS_PATH="/workspace/dev/yz-dots/home"
 
