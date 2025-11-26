@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# 这里都是程序的配置软链接
+
 set -euo pipefail
 
 DOTS_PATH="$HOME/workspace/dev/yz-dots/home"
@@ -31,18 +33,7 @@ if [[ "$#" -eq 1 && "$1" == "fcitx5" ]]; then
     exit 0
 fi
 
-
-
-# ------------ HOME ------------
-rm -rf ~/tidy
-ln -sv "$HOME/workspace/dev/yz-dots/tidy" ~/tidy
-
-rm -rf ~/bin
-ln -sv "$DOTS_PATH/bin" ~/bin
-
-
-
-# ------------ CONFIG ------------
+# ------------ .config ------------
 # rm -rf ~/.config/cava
 # ln -sv "$DOTS_PATH/.config/cava" ~/.config/cava
 

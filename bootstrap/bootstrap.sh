@@ -9,9 +9,9 @@ scripts=(
     "setup/rsync_home.sh"
     "setup/set_p10k_theme.sh"
     "setup/path_perms.sh"
-    "setup/symlinks.sh"
+    "setup/configure_symlinks.sh"
     "setup/wget_dicts.sh"
-    "setup/configuration.sh"
+    "setup/misc_settings.sh"
     "setup/yay_install.sh"
     "setup/install_themes.sh"
 )

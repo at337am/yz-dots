@@ -27,6 +27,6 @@ rm -rf ~/.lain/themes
 ~/workspace/dev/yz-dots/bootstrap/setup/set_p10k_theme.sh
 
 ~/workspace/dev/yz-dots/bootstrap/setup/path_perms.sh
-~/workspace/dev/yz-dots/bootstrap/setup/symlinks.sh
+~/workspace/dev/yz-dots/bootstrap/setup/configure_symlinks.sh
 
 printf "Done.\n"

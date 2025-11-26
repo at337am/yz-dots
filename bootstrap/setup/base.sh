@@ -8,6 +8,7 @@ if ! command -v "rsync" &> /dev/null; then
     exit 1
 fi
 
+# ---------------- 检查所需文件 START ----------------
 syncs_path="$HOME/syncs"
 ssh_path="$HOME/ssh.tar"
 
@@ -20,6 +21,7 @@ if [[ ! -f "$ssh_path" ]]; then
     printf "Error: %s does not exist.\n" "$ssh_path" >&2
     exit 1
 fi
+# ---------------- 检查所需文件 END ----------------
 
 system_init() {
     # 设置硬件时钟为 UTC, 可能不需要了
@@ -48,8 +50,6 @@ create_path() {
         /data \
         /opt/soft \
         /opt/venvs
-
-    ln -s /workspace ~/workspace
 }
 
 migration() {
@@ -70,7 +70,14 @@ configure_ssh_keys() {
     tar -xf "$ssh_path/ssh.tar" -C ~/
 }
 
+home_symlinks() {
+    ln -sv /workspace ~/workspace
+    ln -sv /workspace/dev/yz-dots/tidy ~/tidy
+    ln -sv /workspace/dev/yz-dots/home/bin ~/bin
+}
+
 system_init
 create_path
 migration
 configure_ssh_keys
+home_symlinks

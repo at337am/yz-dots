@@ -22,6 +22,6 @@ fi
 rm -rf ~/.lain/themes/powerlevel10k.tar.gz
 
 ~/workspace/dev/yz-dots/bootstrap/setup/path_perms.sh
-~/workspace/dev/yz-dots/bootstrap/setup/symlinks.sh
+~/workspace/dev/yz-dots/bootstrap/setup/configure_symlinks.sh
 
 printf "Done.\n"
