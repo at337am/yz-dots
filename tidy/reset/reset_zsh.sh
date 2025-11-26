@@ -18,17 +18,28 @@ if ! confirm "Are you sure you want to reset zsh?"; then
     exit 1
 fi
 
+DOTS_PATH="/workspace/dev/yz-dots/home"
+
+# 删除缓存
 rm -rf ~/.zsh_history
 rm -rf ~/.zcompdump
 rm -rf ~/.cache/p10k*
-rm -rf ~/.lain/themes
 
-DOTS_PATH="/workspace/dev/yz-dots/home"
+# 删除配置
+rm -rf ~/.lain
+rm -rf ~/.p10k.zsh
+rm -rf ~/.zprofile
+rm -rf ~/.zshrc
 
-# todo
+# 同步配置
+rsync -a \
+    "$DOTS_PATH/.lain" \
+    "$DOTS_PATH/.p10k.zsh" \
+    "$DOTS_PATH/.zprofile" \
+    "$DOTS_PATH/.zshrc" \
+    ~/
 
-
-/workspace/dev/yz-dots/bootstrap/setup/set_p10k_theme.sh
+/workspace/dev/yz-dots/bootstrap/setup/extract_p10k_theme.sh
 
 /workspace/dev/yz-dots/bootstrap/setup/path_perms.sh zsh
 /workspace/dev/yz-dots/bootstrap/setup/configure_symlinks.sh zsh
