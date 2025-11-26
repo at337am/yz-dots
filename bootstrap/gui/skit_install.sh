@@ -8,7 +8,7 @@ if ! command -v "just" &> /dev/null; then
     exit 1
 fi
 
-if [[ ! -d "$HOME/workspace/dev/skit" ]]; then
+if [[ ! -d "/workspace/dev/skit" ]]; then
     printf "Error: skit directory does not exist!" >&2
     exit 1
 fi
@@ -18,10 +18,10 @@ if [[ ! -d "/opt/soft" ]]; then
     exit 1
 fi
 
-cd "$HOME/workspace/dev/skit"
+cd "/workspace/dev/skit"
 just install-all
 
-cd "$HOME/workspace/dev/skit/hello-server"
+cd "/workspace/dev/skit/hello-server"
 just pkg
 mv hello-server /opt/soft
 

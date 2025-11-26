@@ -23,10 +23,10 @@ rm -rf ~/.zcompdump
 rm -rf ~/.cache/p10k*
 rm -rf ~/.lain/themes
 
-~/workspace/dev/yz-dots/bootstrap/setup/rsync_home.sh
-~/workspace/dev/yz-dots/bootstrap/setup/set_p10k_theme.sh
+/workspace/dev/yz-dots/bootstrap/setup/rsync_home.sh
+/workspace/dev/yz-dots/bootstrap/setup/set_p10k_theme.sh
 
-~/workspace/dev/yz-dots/bootstrap/setup/path_perms.sh
-~/workspace/dev/yz-dots/bootstrap/setup/configure_symlinks.sh
+/workspace/dev/yz-dots/bootstrap/setup/path_perms.sh
+/workspace/dev/yz-dots/bootstrap/setup/configure_symlinks.sh
 
 printf "Done.\n"

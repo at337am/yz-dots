@@ -30,8 +30,8 @@ rsync -a --delete \
         ~/.local/share/fcitx5/
 
 # 拉取 rime-ice 词库
-~/workspace/dev/yz-dots/bootstrap/setup/wget_dicts.sh
+/workspace/dev/yz-dots/bootstrap/setup/wget_dicts.sh
 
-~/workspace/dev/yz-dots/bootstrap/setup/configure_symlinks.sh fcitx5
+/workspace/dev/yz-dots/bootstrap/setup/configure_symlinks.sh fcitx5
 
 printf "Done.\n"
