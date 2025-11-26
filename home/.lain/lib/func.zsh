@@ -19,7 +19,7 @@ rm() {
 
   # 禁止在 HOME 目录下批量删除
   if [[ "$PWD" == "$HOME" && "$#" -ge 2 ]]; then
-    printf "Error: Do not remove files in bulk under HOME.\n" >&2
+    printf "\033[31mrm: Do not bulk remove under HOME!\033[0m\n" >&2
     return 1
   fi
 
@@ -51,14 +51,14 @@ rm() {
 
     # 使用 '--' 明确后续为路径参数
     if ! mv -- "$item" "$destination_path"; then
-      printf "Failed: '%s'. It may have been moved.\n" "$item" >&2
+      printf "\033[35mrm: '%s' may have been moved.\033[0m\n" "$item" >&2
       move_failed=1
 
       # 跳到下一个循环
       continue
     fi
 
-    printf "Moved: '%s' -> '%s'\n" "$item" "$destination_path"
+    printf "rm: %s -> %s\n" "$item" "$destination_path"
   done
 
   return $move_failed

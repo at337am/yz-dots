@@ -71,7 +71,7 @@ merge_flac_metadata() {
         if [[ -f "$output_file" ]]; then
             printf "\033[32m[metaflac] OK -> %s\033[0m\n" "$output_file"
         else
-            printf "\033[31m[metaflac] Failed -> %s\033[0m\n" "$output_file" >&2
+            printf "\033[31m[metaflac] ERR -> %s\033[0m\n" "$output_file" >&2
             return 1
         fi
     else
@@ -88,7 +88,7 @@ merge_flac_metadata() {
         if [[ -f "$output_file" ]]; then
             printf "\033[35m[ffmpeg] OK -> %s\033[0m\n" "$output_file"
         else
-            printf "\033[31m[ffmpeg] Failed -> %s\033[0m\n" "$output_file" >&2
+            printf "\033[31m[ffmpeg] ERR -> %s\033[0m\n" "$output_file" >&2
             return 1
         fi
     fi
