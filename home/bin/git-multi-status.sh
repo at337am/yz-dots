@@ -18,10 +18,10 @@ fi
 
 PROJECT_PATHS=(
     "$HOME/Documents/notes"
-    "$HOME/workspace/dev/yz-dots"
-    "$HOME/workspace/dev/skit"
-    "$HOME/workspace/dev/raindrop"
     "$HOME/Documents/memos"
+    "/workspace/dev/yz-dots"
+    "/workspace/dev/skit"
+    "/workspace/dev/raindrop"
 )
 
 C_BLUE="\033[0;34m"
