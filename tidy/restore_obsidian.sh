@@ -9,7 +9,7 @@ restore() {
 		exit 1
 	fi
 
-	command rm -rf ~/Documents/notes/.obsidian
+	rm -rf ~/Documents/notes/.obsidian
 
 	tar -zxf "$bak_path" -C ~/Documents/notes/
 

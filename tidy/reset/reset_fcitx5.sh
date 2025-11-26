@@ -27,15 +27,15 @@ sleep 1
 
 DOTS_PATH="/workspace/dev/yz-dots/home"
 
-# 同步配置
+# 同步 fcitx5 配置
 rsync -a --delete \
         "$DOTS_PATH/.local/share/fcitx5/" \
         ~/.local/share/fcitx5/
 
-# 拉取词库 (rime-ice) 到 fcitx5
+# 拉取词库
 /workspace/dev/yz-dots/bootstrap/setup/fetch_fcitx5_dict.sh
 
-# 软链接
+# 软链接配置
 /workspace/dev/yz-dots/bootstrap/setup/symlink_dotfiles.sh fcitx5
 
 printf "Done.\n"

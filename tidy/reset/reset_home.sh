@@ -18,10 +18,14 @@ if ! confirm "Are you sure you want to reset home?"; then
     exit 1
 fi
 
+# 同步所有配置
 /workspace/dev/yz-dots/bootstrap/setup/sync_dotfiles.sh
 rm -rf ~/.lain/themes/powerlevel10k.tar.gz
 
+# 软链接配置
 /workspace/dev/yz-dots/bootstrap/setup/symlink_dotfiles.sh
+
+# 设置路径权限
 /workspace/dev/yz-dots/bootstrap/setup/set_path_perms.sh
 
 printf "Done.\n"

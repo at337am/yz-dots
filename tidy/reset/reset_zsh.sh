@@ -31,7 +31,7 @@ rm -rf ~/.p10k.zsh
 rm -rf ~/.zprofile
 rm -rf ~/.zshrc
 
-# 同步配置
+# 同步 zsh 配置
 rsync -a \
     "$DOTS_PATH/.lain" \
     "$DOTS_PATH/.p10k.zsh" \
@@ -42,10 +42,10 @@ rsync -a \
 # 解压 p10k 主题
 /workspace/dev/yz-dots/bootstrap/setup/extract_p10k_theme.sh
 
-# 设置权限
-/workspace/dev/yz-dots/bootstrap/setup/set_path_perms.sh zsh
-
-# 软链接
+# 软链接配置
 /workspace/dev/yz-dots/bootstrap/setup/symlink_dotfiles.sh zsh
+
+# 设置路径权限
+/workspace/dev/yz-dots/bootstrap/setup/set_path_perms.sh zsh
 
 printf "Done.\n"

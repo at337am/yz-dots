@@ -3,17 +3,17 @@
 set -euo pipefail
 
 # 需要同步的源路径
-dev_path="/workspace/dev"
 documents_path="$HOME/Documents"
 fonts_path="$HOME/.local/share/fonts"
 pfp_path="$HOME/Pictures/PFP"
+dev_path="/workspace/dev"
 restore_path="/data/misc/restore"
 
 source_dirs=(
-    "$dev_path"
     "$documents_path"
     "$fonts_path"
     "$pfp_path"
+    "$dev_path"
     "$restore_path"
 )
 
