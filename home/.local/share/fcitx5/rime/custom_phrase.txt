@@ -2,6 +2,9 @@
 
 
 
+语法	yufa
+改进	gaijin
+改进	gaijing
 时间	shijian
 挂载	guazai
 好	h
