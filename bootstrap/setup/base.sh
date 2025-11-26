@@ -58,7 +58,7 @@ migration() {
     mkdir -p ~/.config
     mkdir -p ~/.local/share
 
-    rsync -a "$syncs_path/dev/" ~/workspace/
+    rsync -a "$syncs_path/dev/" /workspace/
     rsync -a "$syncs_path/Documents/" ~/Documents/
     rsync -a "$syncs_path/PFP/" ~/Pictures/PFP/
     rsync -a "$syncs_path/fonts/" ~/.local/share/fonts/

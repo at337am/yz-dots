@@ -4,7 +4,7 @@
 
 set -euo pipefail
 
-DOTS_PATH="$HOME/workspace/dev/yz-dots/home"
+DOTS_PATH="/workspace/dev/yz-dots/home"
 
 if [[ ! -d "$DOTS_PATH" ]]; then
     printf "Error: %s does not exist.\n" "$DOTS_PATH" >&2
