@@ -14,6 +14,7 @@ configs["mako"]="$HOME/.config/mako"
 configs["navi"]="$HOME/.config/navi"
 configs["kitty"]="$HOME/.config/kitty"
 configs["rime"]="$HOME/.local/share/fcitx5/rime"
+configs["fastfetch"]="$HOME/.config/fastfetch"
 configs["lain-bin"]="$HOME/.lain/bin"
 
 configs["tidy"]="/workspace/dev/yz-dots/tidy"
