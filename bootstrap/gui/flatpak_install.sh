@@ -43,7 +43,6 @@ printf "Done.\n"
 #     --filesystem=xdg-videos \
 #     --filesystem=xdg-pictures \
 #     --filesystem=xdg-documents \
-#     --filesystem="$HOME/workspace" \
 #     --filesystem=/workspace \
 #     --filesystem=/data
 # 
