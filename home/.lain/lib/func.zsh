@@ -1,12 +1,16 @@
-# 回收站目录路径
-TRASH_DIR="/data/.trash"
-
 # ------------
 #  rm
 # ------------
 
 # 用于替代系统默认的 rm 命令, 实现“回收站式删除”
 rm() {
+  # 检查环境变量
+  if [[ ! -n "${TRASH_DIR+1}" ]]; then
+      printf "Error: TRASH_DIR variable not set.\n" >&2
+      return 1
+  fi
+
+  # 检查参数
   if [[ "$#" -eq 0 ]]; then
     printf "Error: Invalid arguments.\n" >&2
     printf "Usage: rm <path>...\n" >&2
@@ -19,10 +23,10 @@ rm() {
     return 1
   fi
 
-  # 如果回收站目录不存在, 则尝试创建它
+  # 如果回收站目录不存在, 则创建它
   if [[ ! -d "$TRASH_DIR" ]]; then
     if ! mkdir -p "$TRASH_DIR"; then
-      printf "Error: Failed to create trash directory at '%s'.\n" "$TRASH_DIR" >&2
+      printf "Error: Failed to create the trash directory at '%s'.\n" "$TRASH_DIR" >&2
       return 1
     fi
   fi
@@ -33,7 +37,7 @@ rm() {
   for item in "$@"; do
     if [[ ! -e "$item" && ! -L "$item" ]]; then
       printf "Error: '%s' does not exist.\n" "$item" >&2
-      printf "Remove operation halted. No items were moved.\n" >&2
+      printf "No items were moved.\n" >&2
       return 1
     fi
   done
@@ -43,16 +47,18 @@ rm() {
   # 遍历所有参数进行移动
   for item in "$@"; do
     local base_name=$(basename -- "$item")
-    # 添加纳秒级时间戳防止文件名冲突
     local destination_path="${TRASH_DIR}/$(date +%y%m%d_%H%M%S_%N)_${base_name}"
-
-    printf "rm: '%s' -> '%s'\n" "$item" "$destination_path"
 
     # 使用 '--' 明确后续为路径参数
     if ! mv -- "$item" "$destination_path"; then
-      printf "Error: Failed to move '%s' to '%s'.\n" "$item" "$destination_path" >&2
+      printf "Failed: '%s'. It may have been moved.\n" "$item" >&2
       move_failed=1
+
+      # 跳到下一个循环
+      continue
     fi
+
+    printf "Moved: '%s' -> '%s'\n" "$item" "$destination_path"
   done
 
   return $move_failed
