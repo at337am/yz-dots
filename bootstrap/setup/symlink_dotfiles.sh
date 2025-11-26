@@ -12,9 +12,11 @@ if [[ ! -d "$DOTS_PATH" ]]; then
 fi
 
 zsh() {
+    rm -rf ~/.lain/bin
     rm -rf ~/.lain/lib/aliases.zsh
     rm -rf ~/.lain/lib/func.zsh
 
+    ln -sv "$DOTS_PATH/.lain/bin" ~/.lain/bin
     ln -sv "$DOTS_PATH/.lain/lib/aliases.zsh" ~/.lain/lib/aliases.zsh
     ln -sv "$DOTS_PATH/.lain/lib/func.zsh" ~/.lain/lib/func.zsh
 }
