@@ -18,8 +18,12 @@ fi
 
 # ----------
 
-pkill -15 fcitx5 || true
-sleep 1.5
+# 这里不知道为什么终端会卡住, 所以延迟执行
+sleep 0.2
+
+pkill -9 fcitx5 || true
+
+sleep 1
 
 DOTS_PATH="/workspace/dev/yz-dots/home"
 

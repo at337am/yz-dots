@@ -29,4 +29,4 @@ wget -O "$tmp_dir/all_dicts.zip" \
 unzip -q "$tmp_dir/all_dicts.zip" -d "$tmp_dir/all_dicts"
 
 # 移动词库到指定位置
-mv -v "$tmp_dir/all_dicts/cn_dicts" "$TARGET"
+mv "$tmp_dir/all_dicts/cn_dicts" "$TARGET"
