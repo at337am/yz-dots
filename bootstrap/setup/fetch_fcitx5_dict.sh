@@ -11,10 +11,10 @@ for cmd in "${dependencies[@]}"; do
     fi
 done
 
-TARGET="$HOME/.local/share/fcitx5/rime"
+destination_path="$HOME/.local/share/fcitx5/rime"
 
-if [[ ! -d "$TARGET" ]]; then
-    printf "Error: %s does not exist.\n" "$TARGET" >&2
+if [[ ! -d "$destination_path" ]]; then
+    printf "Error: %s does not exist.\n" "$destination_path" >&2
     exit 1
 fi
 
@@ -29,4 +29,4 @@ wget -O "$tmp_dir/all_dicts.zip" \
 unzip -q "$tmp_dir/all_dicts.zip" -d "$tmp_dir/all_dicts"
 
 # 移动词库到指定位置
-mv "$tmp_dir/all_dicts/cn_dicts" "$TARGET"
+mv "$tmp_dir/all_dicts/cn_dicts" "$destination_path"

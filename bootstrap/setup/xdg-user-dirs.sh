@@ -10,10 +10,10 @@ fi
 
 LC_ALL=C xdg-user-dirs-update --force
 
-CONFIG_FILE="$HOME/.config/user-dirs.dirs"
+config_file="$HOME/.config/user-dirs.dirs"
 
-if [[ ! -f "$CONFIG_FILE" ]]; then
-    printf "Error: %s does not exist.\n" "$CONFIG_FILE" >&2
+if [[ ! -f "$config_file" ]]; then
+    printf "Error: %s does not exist.\n" "$config_file" >&2
     exit 1
 fi
 
@@ -21,7 +21,7 @@ sed -i \
     -e 's#XDG_DESKTOP_DIR="$HOME/Desktop"#XDG_DESKTOP_DIR="$HOME"#' \
     -e 's#XDG_TEMPLATES_DIR="$HOME/Templates"#XDG_TEMPLATES_DIR="$HOME"#' \
     -e 's#XDG_PUBLICSHARE_DIR="$HOME/Public"#XDG_PUBLICSHARE_DIR="$HOME"#' \
-    "$CONFIG_FILE"
+    "$config_file"
 
 if [[ $? -ne 0 ]]; then
     printf "Error: File update failed.\n" >&2

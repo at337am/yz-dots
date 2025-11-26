@@ -16,4 +16,4 @@ if [[ ! -d "$DOTS_PATH" ]]; then
 fi
 
 # 执行同步
-rsync -a "$DOTS_PATH/" ~/
+rsync -a --exclude='bin' "$DOTS_PATH/" ~/
