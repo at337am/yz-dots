@@ -22,7 +22,7 @@ pkill -9 fcitx5 || true
 
 sleep 1
 
-DOTS_PATH="$HOME/workspace/dev/yz-dots/home"
+DOTS_PATH="/workspace/dev/yz-dots/home"
 
 # ----------
 rsync -a --delete \
