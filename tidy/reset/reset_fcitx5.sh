@@ -22,14 +22,17 @@ pkill -9 fcitx5 || true
 
 sleep 1
 
+DOTS_PATH="/workspace/dev/yz-dots/home"
+
 # 同步配置
 rsync -a --delete \
-        "/workspace/dev/yz-dots/home/.local/share/fcitx5/" \
+        "$DOTS_PATH/.local/share/fcitx5/" \
         ~/.local/share/fcitx5/
 
 # 拉取词库 (rime-ice) 到 fcitx5
 /workspace/dev/yz-dots/bootstrap/setup/fetch_fcitx5_dict.sh
 
+# 软链接
 /workspace/dev/yz-dots/bootstrap/setup/configure_symlinks.sh fcitx5
 
 printf "Done.\n"

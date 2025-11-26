@@ -39,9 +39,13 @@ rsync -a \
     "$DOTS_PATH/.zshrc" \
     ~/
 
+# 解压 p10k 主题
 /workspace/dev/yz-dots/bootstrap/setup/extract_p10k_theme.sh
 
+# 设置权限
 /workspace/dev/yz-dots/bootstrap/setup/path_perms.sh zsh
+
+# 软链接
 /workspace/dev/yz-dots/bootstrap/setup/configure_symlinks.sh zsh
 
 printf "Done.\n"
