@@ -43,9 +43,9 @@ rsync -a \
 /workspace/dev/yz-dots/bootstrap/setup/extract_p10k_theme.sh
 
 # 设置权限
-/workspace/dev/yz-dots/bootstrap/setup/path_perms.sh zsh
+/workspace/dev/yz-dots/bootstrap/setup/set_path_perms.sh zsh
 
 # 软链接
-/workspace/dev/yz-dots/bootstrap/setup/configure_symlinks.sh zsh
+/workspace/dev/yz-dots/bootstrap/setup/symlink_dotfiles.sh zsh
 
 printf "Done.\n"

@@ -18,10 +18,10 @@ if ! confirm "Are you sure you want to reset home?"; then
     exit 1
 fi
 
-/workspace/dev/yz-dots/bootstrap/setup/rsync_home.sh
+/workspace/dev/yz-dots/bootstrap/setup/sync_dotfiles.sh
 rm -rf ~/.lain/themes/powerlevel10k.tar.gz
 
-/workspace/dev/yz-dots/bootstrap/setup/path_perms.sh
-/workspace/dev/yz-dots/bootstrap/setup/configure_symlinks.sh
+/workspace/dev/yz-dots/bootstrap/setup/symlink_dotfiles.sh
+/workspace/dev/yz-dots/bootstrap/setup/set_path_perms.sh
 
 printf "Done.\n"

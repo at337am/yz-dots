@@ -36,6 +36,6 @@ rsync -a --delete \
 /workspace/dev/yz-dots/bootstrap/setup/fetch_fcitx5_dict.sh
 
 # 软链接
-/workspace/dev/yz-dots/bootstrap/setup/configure_symlinks.sh fcitx5
+/workspace/dev/yz-dots/bootstrap/setup/symlink_dotfiles.sh fcitx5
 
 printf "Done.\n"
