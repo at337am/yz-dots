@@ -2,7 +2,8 @@
 #  rm
 # ------------
 
-# 用于替代系统默认的 rm 命令, 实现“回收站式删除”
+# 用于替代默认的 rm 命令, 实现"回收站式删除"
+# 注意: 不要在 U 盘挂载目录使用, 直接 sudo rm 就行了
 rm() {
     # 检查环境变量
     if [[ ! -n "${TRASH_DIR+1}" ]]; then
@@ -23,17 +24,9 @@ rm() {
         return 1
     fi
 
-    # 如果回收站目录不存在, 则创建它
-    if [[ ! -d "$TRASH_DIR" ]]; then
-        if ! mkdir -p "$TRASH_DIR"; then
-            printf "Error: Failed to create the trash directory at '%s'.\n" "$TRASH_DIR" >&2
-            return 1
-        fi
-    fi
-
     local item
 
-    # 若指定路径不存在且不是符号链接, 则报错退出
+    # 检查参数指定的路径是否存在且不是符号链接
     for item in "$@"; do
         if [[ ! -e "$item" && ! -L "$item" ]]; then
             printf "Error: '%s' does not exist.\n" "$item" >&2
@@ -41,6 +34,14 @@ rm() {
             return 1
         fi
     done
+
+    # 检查回收站目录是否存在, 不存在则创建它
+    if [[ ! -d "$TRASH_DIR" ]]; then
+        if ! mkdir -p "$TRASH_DIR"; then
+            printf "Error: Failed to create the trash directory at '%s'.\n" "$TRASH_DIR" >&2
+            return 1
+        fi
+    fi
 
     local move_failed=0
 
@@ -81,19 +82,6 @@ cl_trash() {
     # 使用通配符 *(D) 以确保包含隐藏项（如以.开头的文件）
     command rm -rfv -- "${TRASH_DIR}/"*(D)
 }
-
-# ------------
-#  d
-# ------------
-
-d () {
-    if [[ -n "$1" ]]; then
-        dirs "$@"
-    else
-        dirs -v | head -n 10
-    fi
-}
-compdef _dirs d
 
 # ------------
 #  mkcd

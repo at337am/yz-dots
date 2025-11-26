@@ -20,8 +20,6 @@ alias r='printf "zsh: r command disabled\n"'
 alias fc='printf "zsh: fc command disabled\n"'
 
 # base
-alias ls='ls --color=auto'
-alias ll='ls -alh'
 alias _='sudo'
 alias 1='cd -1'
 alias 2='cd -2'
@@ -32,6 +30,9 @@ alias 6='cd -6'
 alias 7='cd -7'
 alias 8='cd -8'
 alias 9='cd -9'
+alias d='dirs -v | head -n 10'
+alias ls='ls --color=auto'
+alias ll='ls -alh'
 
 # docker
 alias dstopall='sudo docker stop $(sudo docker ps -q)'
