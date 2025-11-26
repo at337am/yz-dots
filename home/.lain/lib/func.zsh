@@ -13,9 +13,9 @@ rm() {
     return 1
   fi
 
-  # 若在 ~ 路径下执行, 且位置参数 >= 2 个, 则报错退出, 防止误删
+  # 禁止在 HOME 目录下批量删除
   if [[ "$PWD" == "$HOME" && "$#" -ge 2 ]]; then
-    printf "Error: For safety, batch deletion of 2 or more items from the home directory '~' is prohibited.\n" >&2
+    printf "Error: Do not remove files in bulk under HOME.\n" >&2
     return 1
   fi
 
@@ -33,21 +33,22 @@ rm() {
   for item in "$@"; do
     if [[ ! -e "$item" && ! -L "$item" ]]; then
       printf "Error: '%s' does not exist.\n" "$item" >&2
-      printf "Removal aborted.\n"
+      printf "Remove operation halted. No items were moved.\n" >&2
       return 1
     fi
   done
 
   local move_failed=0
 
-  # 遍历所有待删除的参数, 逐一处理
+  # 遍历所有参数进行移动
   for item in "$@"; do
     local base_name=$(basename -- "$item")
+    # 添加纳秒级时间戳防止文件名冲突
     local destination_path="${TRASH_DIR}/$(date +%y%m%d_%H%M%S_%N)_${base_name}"
 
-    printf "rm: '%s' -> %s\n" "$item" "$destination_path"
+    printf "rm: '%s' -> '%s'\n" "$item" "$destination_path"
 
-    # 使用 '--' 明确后续为路径参数, 防止误解析为选项
+    # 使用 '--' 明确后续为路径参数
     if ! mv -- "$item" "$destination_path"; then
       printf "Error: Failed to move '%s' to '%s'.\n" "$item" "$destination_path" >&2
       move_failed=1
