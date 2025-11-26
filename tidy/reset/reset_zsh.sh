@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# 这个脚本会同步所有, 并且会重置 zsh, 但不会影响其它的
+# 这个脚本会会重置 zsh
 
 set -euo pipefail
 
@@ -23,10 +23,14 @@ rm -rf ~/.zcompdump
 rm -rf ~/.cache/p10k*
 rm -rf ~/.lain/themes
 
-/workspace/dev/yz-dots/bootstrap/setup/rsync_home.sh
+DOTS_PATH="/workspace/dev/yz-dots/home"
+
+# todo
+
+
 /workspace/dev/yz-dots/bootstrap/setup/set_p10k_theme.sh
 
-/workspace/dev/yz-dots/bootstrap/setup/path_perms.sh
-/workspace/dev/yz-dots/bootstrap/setup/configure_symlinks.sh
+/workspace/dev/yz-dots/bootstrap/setup/path_perms.sh zsh
+/workspace/dev/yz-dots/bootstrap/setup/configure_symlinks.sh zsh
 
 printf "Done.\n"

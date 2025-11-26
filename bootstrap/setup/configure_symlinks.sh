@@ -11,6 +11,14 @@ if [[ ! -d "$DOTS_PATH" ]]; then
     exit 1
 fi
 
+zsh() {
+    rm -rf ~/.lain/lib/aliases.zsh
+    rm -rf ~/.lain/lib/func.zsh
+
+    ln -sv "$DOTS_PATH/.lain/lib/aliases.zsh" ~/.lain/lib/aliases.zsh
+    ln -sv "$DOTS_PATH/.lain/lib/func.zsh" ~/.lain/lib/func.zsh
+}
+
 fcitx5(){
     rm -rf ~/.local/share/fcitx5/rime/custom_phrase.txt
     rm -rf ~/.local/share/fcitx5/rime/default.yaml
@@ -27,7 +35,13 @@ fcitx5(){
     ln -sv "$DOTS_PATH/.config/fcitx5" ~/.config/fcitx5
 }
 
-# 如果脚本只接收到一个参数, 并且匹配
+# ------------- 如果脚本只接收到一个参数, 并且匹配 -------------
+
+if [[ "$#" -eq 1 && "$1" == "zsh" ]]; then
+    zsh
+    exit 0
+fi
+
 if [[ "$#" -eq 1 && "$1" == "fcitx5" ]]; then
     fcitx5
     exit 0
@@ -93,12 +107,6 @@ ln -sv "$DOTS_PATH/.config/mimeapps.list" ~/.config/mimeapps.list
 
 
 
-# ------------ ZSH ------------
-rm -rf ~/.lain/lib/aliases.zsh
-rm -rf ~/.lain/lib/func.zsh
-
-ln -sv "$DOTS_PATH/.lain/lib/aliases.zsh" ~/.lain/lib/aliases.zsh
-ln -sv "$DOTS_PATH/.lain/lib/func.zsh" ~/.lain/lib/func.zsh
-
+zsh
 
 fcitx5
