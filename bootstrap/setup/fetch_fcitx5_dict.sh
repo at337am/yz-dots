@@ -21,10 +21,12 @@ fi
 tmp_dir=$(mktemp -d)
 trap 'rm -rf "$tmp_dir"' EXIT
 
-# 拉取 rime-ice 词库
+# 拉取 rime-ice 词库到缓存路径
 wget -O "$tmp_dir/all_dicts.zip" \
     https://github.com/iDvel/rime-ice/releases/latest/download/all_dicts.zip
 
-unzip "$tmp_dir/all_dicts.zip" -d "$tmp_dir/all_dicts"
+# 静默解压
+unzip -q "$tmp_dir/all_dicts.zip" -d "$tmp_dir/all_dicts"
 
-cp -a "$tmp_dir/all_dicts/cn_dicts" "$TARGET"
+# 移动词库到指定位置
+mv -v "$tmp_dir/all_dicts/cn_dicts" "$TARGET"
