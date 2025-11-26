@@ -72,8 +72,8 @@ configure_ssh_keys() {
 
 home_symlinks() {
     ln -sv /workspace ~/workspace
-    ln -sv /workspace/dev/yz-dots/tidy ~/tidy
-    ln -sv /workspace/dev/yz-dots/home/bin ~/bin
+    ln -sv ~/workspace/dev/yz-dots/tidy ~/tidy
+    ln -sv ~/workspace/dev/yz-dots/home/bin ~/bin
 }
 
 system_init
