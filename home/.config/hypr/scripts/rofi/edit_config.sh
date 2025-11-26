@@ -15,9 +15,9 @@ configs["navi"]="$HOME/.config/navi"
 configs["kitty"]="$HOME/.config/kitty"
 configs["rime"]="$HOME/.local/share/fcitx5/rime"
 
-configs["tidy"]="$HOME/workspace/dev/yz-dots/tidy"
-configs["home-bin"]="$HOME/workspace/dev/yz-dots/home/bin"
-configs["bootstrap"]="$HOME/workspace/dev/yz-dots/bootstrap"
+configs["tidy"]="/workspace/dev/yz-dots/tidy"
+configs["home-bin"]="/workspace/dev/yz-dots/home/bin"
+configs["bootstrap"]="/workspace/dev/yz-dots/bootstrap"
 
 config_choice=$(printf "%s\n" "${!configs[@]}" | rofi -dmenu -i -p "config" -theme ~/.config/rofi/themes/edit_config.rasi)
 
