@@ -6,11 +6,9 @@ TRASH_DIR="/data/.trash"
 # ------------
 
 # 用于替代系统默认的 rm 命令, 实现“回收站式删除”
-# --- 1 个或以上参数 ---
 rm() {
-  # 若未提供任何参数, 则提示用户用法并退出
   if [[ "$#" -eq 0 ]]; then
-    printf "rm: Nothing to delete, buddy.\n" >&2
+    printf "Error: Invalid arguments.\n" >&2
     printf "Usage: rm <path>...\n" >&2
     return 1
   fi
@@ -25,42 +23,30 @@ rm() {
   if [[ ! -d "$TRASH_DIR" ]]; then
     if ! mkdir -p "$TRASH_DIR"; then
       printf "Error: Failed to create trash directory at '%s'.\n" "$TRASH_DIR" >&2
-      printf "Please check write permissions for the parent directory: '%s'.\n" "$(dirname "$TRASH_DIR")" >&2
       return 1
     fi
   fi
 
-  # 检查回收站目录是否可写
-  if [[ ! -w "$TRASH_DIR" ]]; then
-    printf "Error: Trash directory '%s' is not writable.\n" "$TRASH_DIR" >&2
-    return 1
-  fi
-
-  local move_failed=0  # 初始化失败标志, 用于记录是否有移动操作失败
   local item
+
+  # 若指定路径不存在且不是符号链接, 则报错退出
+  for item in "$@"; do
+    if [[ ! -e "$item" && ! -L "$item" ]]; then
+      printf "Error: '%s' does not exist.\n" "$item" >&2
+      printf "Removal aborted.\n"
+      return 1
+    fi
+  done
+
+  local move_failed=0
 
   # 遍历所有待删除的参数, 逐一处理
   for item in "$@"; do
-    # 若指定路径不存在且不是符号链接, 则跳过并报错
-    if [[ ! -e "$item" && ! -L "$item" ]]; then
-      printf "Error: Can't find '%s' — already gone?\n" "$item" >&2
-      move_failed=1
-      continue
-    fi
-
-    # 生成带时间戳的目标文件名, 避免重复并保留原始文件名信息
     local base_name=$(basename -- "$item")
     local destination_path="${TRASH_DIR}/$(date +%y%m%d_%H%M%S_%N)_${base_name}"
 
-    # 检查生成的路径是否与现有文件冲突, 若冲突则附加随机后缀以保证唯一性
-    if [[ -e "$destination_path" || -L "$destination_path" ]]; then
-      destination_path+=".$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 6)"
-    fi
+    printf "rm: '%s' -> %s\n" "$item" "$destination_path"
 
-    # 显示移动操作的信息, 便于用户追踪
-    printf "remove: %s -> %s\n" "$item" "$destination_path"
-
-    # 执行移动操作, 将目标文件/目录移动至回收站目录
     # 使用 '--' 明确后续为路径参数, 防止误解析为选项
     if ! mv -- "$item" "$destination_path"; then
       printf "Error: Failed to move '%s' to '%s'.\n" "$item" "$destination_path" >&2
@@ -68,7 +54,6 @@ rm() {
     fi
   done
 
-  # 根据是否存在失败的移动操作决定函数返回值
   return $move_failed
 }
 
@@ -77,7 +62,6 @@ rm() {
 # ------------
 
 # 用于清空自定义回收站目录中的所有内容
-# --- 无参数 ---
 cl_trash() {
   # 若回收站目录存在且为空, 则提示用户并结束函数
   if [[ -d "$TRASH_DIR" && -z "$(find "$TRASH_DIR" -mindepth 1 -print -quit)" ]]; then
@@ -95,7 +79,6 @@ cl_trash() {
 #  d
 # ------------
 
-# --- 无参数 ---
 d () {
   if [[ -n "$1" ]]; then
     dirs "$@"
@@ -111,7 +94,6 @@ compdef _dirs d
 
 # 创建一个新目录, 并进入该目录
 # 若新目录已存在, 则不执行
-# --- 1 个参数 ---
 mkcd() {
   # 如果未提供目录名称参数, 则提示错误并退出
   if [[ -z "$1" ]]; then
@@ -136,7 +118,6 @@ mkcd() {
 
 # 创建一个新目录, 并将一个或多个指定文件或目录移动到该目录中
 # 若新目录已存在, 则不执行
-# --- 2 个或以上参数 ---
 mkmv() {
   # 检查传入参数数量是否不少于两个, 若不足则提示错误并退出
   if [[ "$#" -lt 2 ]]; then
