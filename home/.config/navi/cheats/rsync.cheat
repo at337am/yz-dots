@@ -1,0 +1,13 @@
+% rsync
+
+# 同步 "整个源目录" 到目标目录 (类似于 cp -a)
+rsync -a source destination/
+
+# 同步 "源目录中的所有内容" 到目标目录
+rsync -a source/ destination/
+
+# 保持两个目录完全相同 (将会删除目标中多余的文件)
+rsync -a --delete source/ destination/
+
+# 排除源目录中的某些文件或目录
+rsync -a --exclude='dir/file.txt' source/ destination/
