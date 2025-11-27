@@ -35,6 +35,9 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 # GRUB_DEFAULT=saved
 # 启用保存默认项功能
 # GRUB_SAVEDEFAULT=true
+# 
+# 更新引导程序:
+# sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 # ----- bak -----
 # 
