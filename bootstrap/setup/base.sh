@@ -33,6 +33,9 @@ system_init() {
     # 设置 sudo 过期时间为 60 分钟
     echo 'Defaults    timestamp_timeout=60' | sudo tee -a /etc/sudoers
     echo 'Defaults    !tty_tickets' | sudo tee -a /etc/sudoers
+
+    # 使得 sudo 保留 env 代理
+    echo 'Defaults env_keep += "http_proxy https_proxy no_proxy HTTP_PROXY HTTPS_PROXY NO_PROXY"' | sudo tee -a /etc/sudoers
 }
 
 create_path() {

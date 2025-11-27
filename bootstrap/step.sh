@@ -125,8 +125,8 @@ passwd yz
 
 # 设置用户 sudo 权限:
 pacman -S sudo
-visudo
-# 取消注释:
+nvim /etc/sudoers   # 或者使用 visudo
+# 在文件中取消以下注释:
 # %wheel ALL=(ALL:ALL) ALL
 
 
