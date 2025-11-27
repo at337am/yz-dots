@@ -1,0 +1,10 @@
+% gpu-screen-recorder
+
+# 查看显示器名称
+gpu-screen-recorder --list-capture-options
+
+# 全屏录制 + 系统声音
+gpu-screen-recorder -w screen -f 60 -a default_output -o video.mp4
+
+# 全屏录制 + 系统声音 + 麦克风
+gpu-screen-recorder -w screen -f 60 -a default_output -a default_input -o video.mp4
