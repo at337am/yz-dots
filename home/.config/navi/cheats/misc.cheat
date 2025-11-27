@@ -10,8 +10,8 @@ fortune | cowsay
 # 异步滚动
 unimatrix -c red -s 96 -a
 
-# 下雨天 (按 T)
-terminal-rain --rain-color blue --lightning-color white
+# 下雨天 (按 T 切换)
+terminal-rain
 
 
 
