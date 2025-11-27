@@ -32,7 +32,6 @@ if pgrep -f "gpu-screen-recorder" > /dev/null; then
 fi
 
 # 依赖检查
-# todo 检查 hyprland portal
 dependencies=("gpu-screen-recorder" "notify-send")
 for cmd in "${dependencies[@]}"; do
     if ! command -v "$cmd" &> /dev/null; then
@@ -44,61 +43,41 @@ done
 output_file="$HOME/Videos/recorder_$(date +"%y%m%d_%H%M%S").mkv"
 mkdir -p "$HOME/Videos"
 
-# 区域录制
-if [[ "$1" == "region" ]]; then
-    notify "😎  REC"
+notify "😎  REC"
 
-    touch "$status_file"
-    refresh_waybar
+touch "$status_file"
 
-    # 混合音轨
-    timeout -s 2 -k 10s 3600 gpu-screen-recorder \
-                -w portal \
-                -f 60 \
-                -bm cbr \
-                -q 15000 \
-                -a "default_output|default_input" \
-                -v no \
-                -o "$output_file"
+refresh_waybar
 
-# 全屏录制
-elif [[ "$1" == "full" ]]; then
-    notify "😎  REC"
+# 混合音轨
+timeout -s 2 -k 10s 3600 gpu-screen-recorder \
+            -w screen \
+            -f 60 \
+            -bm cbr \
+            -q 15000 \
+            -a "default_output|default_input" \
+            -v no \
+            -o "$output_file"
 
-    touch "$status_file"
-    refresh_waybar
+# # 双音轨
+# timeout -s 2 -k 10s 3600 gpu-screen-recorder \
+#             -w screen \
+#             -f 60 \
+#             -bm cbr \
+#             -q 15000 \
+#             -a default_output -a default_input \
+#             -v no \
+#             -o "$output_file"
 
-    # 混合音轨
-    timeout -s 2 -k 10s 3600 gpu-screen-recorder \
-                -w screen \
-                -f 60 \
-                -bm cbr \
-                -q 15000 \
-                -a "default_output|default_input" \
-                -v no \
-                -o "$output_file"
-
-    # # 双音轨
-    # timeout -s 2 -k 10s 3600 gpu-screen-recorder \
-    #             -w screen \
-    #             -f 60 \
-    #             -bm cbr \
-    #             -q 15000 \
-    #             -a default_output -a default_input \
-    #             -v no \
-    #             -o "$output_file"
-
-    # # 只录制系统声音
-    # timeout -s 2 -k 10s 3600 gpu-screen-recorder \
-    #             -w screen \
-    #             -f 60 \
-    #             -bm cbr \
-    #             -q 15000 \
-    #             -a default_output \
-    #             -v no \
-    #             -o "$output_file"
-
-fi
+# # 只录制系统声音
+# timeout -s 2 -k 10s 3600 gpu-screen-recorder \
+#             -w screen \
+#             -f 60 \
+#             -bm cbr \
+#             -q 15000 \
+#             -a default_output \
+#             -v no \
+#             -o "$output_file"
 
 # 注意: 脚本大概率是没有 bug 的, 如果有的话, 就把 区域录制 的逻辑删掉吧, 脑子乱乱的
 # 如果长期都用不到 区域录制 的话, 也删除掉这个逻辑好了, 不然太难维护了
