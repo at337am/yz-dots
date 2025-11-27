@@ -3,6 +3,16 @@
 # 显示系统重启历史 (倒序输出)
 last reboot -F | tac
 
+# 显示所有登录记录
+last
+
+
+
+% system, user, who
+
+# 显示当前已登录的用户 (w)
+who
+
 
 
 % system, efibootmgr
