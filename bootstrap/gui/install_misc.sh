@@ -24,6 +24,18 @@ sudo pacman -S --needed --noconfirm \
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 
+
+# todo:
+# 
+# 配置 GRUB 记住你上一次的选择:
+# 
+# sudo nvim /etc/default/grub
+# 
+# 将默认项设置为“已保存的项”
+# GRUB_DEFAULT=saved
+# 启用保存默认项功能
+# GRUB_SAVEDEFAULT=true
+
 # ----- bak -----
 # 
 # sudo pacman -S mgba-qt
