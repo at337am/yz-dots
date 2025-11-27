@@ -23,20 +23,20 @@ if [[ ! -f "$ssh_path" ]]; then
 fi
 # ---------------- 检查所需文件 END ----------------
 
-system_init() {
-    # 设置硬件时钟为 UTC, 可能不需要了
-    # sudo timedatectl set-local-rtc '0'
+# system_init() {
+#     # 设置硬件时钟为 UTC, 可能不需要了
+#     # sudo timedatectl set-local-rtc '0'
 
-    # 设置免密关机
-    echo "$(whoami) ALL=(ALL) NOPASSWD: /usr/sbin/shutdown" | sudo tee -a /etc/sudoers
+#     # 设置免密关机
+#     echo "$(whoami) ALL=(ALL) NOPASSWD: /usr/sbin/shutdown" | sudo tee -a /etc/sudoers
 
-    # 设置 sudo 过期时间为 60 分钟
-    echo 'Defaults    timestamp_timeout=60' | sudo tee -a /etc/sudoers
-    echo 'Defaults    !tty_tickets' | sudo tee -a /etc/sudoers
+#     # 设置 sudo 过期时间为 60 分钟
+#     echo 'Defaults    timestamp_timeout=60' | sudo tee -a /etc/sudoers
+#     echo 'Defaults    !tty_tickets' | sudo tee -a /etc/sudoers
 
-    # 使得 sudo 保留 env 代理
-    echo 'Defaults env_keep += "http_proxy https_proxy no_proxy HTTP_PROXY HTTPS_PROXY NO_PROXY"' | sudo tee -a /etc/sudoers
-}
+#     # 使得 sudo 保留 env 代理
+#     echo 'Defaults env_keep += "http_proxy https_proxy no_proxy HTTP_PROXY HTTPS_PROXY NO_PROXY"' | sudo tee -a /etc/sudoers
+# }
 
 create_path() {
     sudo mkdir -p \
@@ -78,7 +78,7 @@ home_symlinks() {
     ln -sv /workspace/dev/yz-dots/tidy ~/tidy
 }
 
-system_init
+# system_init
 create_path
 migration
 configure_ssh_keys
