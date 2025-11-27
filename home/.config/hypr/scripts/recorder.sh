@@ -15,13 +15,6 @@ notify() {
                 "$1"
 }
 
-# 检查参数, 必须有一个参数, 且必须是 full 或 region
-if [[ "$#" -ne 1 ]] || ([[ "$1" != "full" && "$1" != "region" ]]); then
-    printf "Error: Invalid arguments.\n" >&2
-    printf "Usage: %s <region|full>\n" "$(basename "$0")" >&2
-    exit 1
-fi
-
 trap 'rm -f "$status_file"; refresh_waybar' EXIT
 
 # 检查是否已经在运行

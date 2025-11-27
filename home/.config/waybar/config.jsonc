@@ -49,7 +49,7 @@
         "format": "{}",
         "signal": 8,
         "exec": "$HOME/.config/waybar/scripts/check_recorder.sh",
-        "on-click": "$HOME/.config/hypr/scripts/recorder.sh full" 
+        "on-click": "$HOME/.config/hypr/scripts/recorder.sh"
     },
 
     // 音量
