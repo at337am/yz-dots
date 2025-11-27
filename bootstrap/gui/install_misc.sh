@@ -4,6 +4,12 @@
 
 set -euo pipefail
 
+# 依赖检查
+if ! command -v "yay" &> /dev/null; then
+    printf "Error: Missing dependency: yay\n" >&2
+    exit 1
+fi
+
 yay -S --needed \
     unimatrix-git \
     terminal-rain-lightning
