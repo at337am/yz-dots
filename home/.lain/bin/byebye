@@ -31,4 +31,4 @@ done
 
 printf "\nLights out! Dream of code and bugs.\n"
 
-sudo shutdown -h now
+systemctl poweroff
