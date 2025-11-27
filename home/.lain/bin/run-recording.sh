@@ -15,7 +15,7 @@ if killall -0 "gpu-screen-recorder" 2>/dev/null; then
 fi
 
 mkdir -p "$output_dir"
-output_file="$output_dir/recording_$(date +"%y%m%d_%H%M%S").mp4"
+output_file="$output_dir/recording_$(date +"%y%m%d_%H%M%S").mkv"
 
 # 发送录制通知
 notify-send -a "recording" \
