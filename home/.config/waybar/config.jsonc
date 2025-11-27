@@ -10,14 +10,6 @@
 
     "modules-right": ["custom/recorder", "tray", "pulseaudio", "backlight", "battery"],
 
-    // 时钟
-    // "custom/clock": {
-    //     "tooltip": false,
-    //     "interval": 60,
-    //     "exec": "LC_TIME=en_US.UTF-8 date '+%a %b %-d %-I:%M %p'"
-    //     // "exec": "LC_TIME=en_US.UTF-8 date '+%a, %b %-d, %-I:%M%P'"
-    // },
-
     "clock": {
         "tooltip": false,
         // "format": "{:%Y-%m-%d %H:%M}"
@@ -50,14 +42,16 @@
         "spacing": 15,
         "reverse-direction": true   // 倒序
     },
-    // 自定义录屏脚本显示
+
+    // 自定义录屏脚本提示
     "custom/recorder": {
         "format": "{}",
         "signal": 8,
-        "exec": "if [[ -f /tmp/recording_status ]]; then echo '🔴 REC'; else echo ''; fi",
+        "exec": "if [[ -f /tmp/recording_status ]]; then echo ' REC'; else echo ''; fi",
         "tooltip": false,
         "on-click": "/workspace/dev/yz-dots/home/.config/hypr/scripts/recorder.sh full" 
     },
+
     // 音量
     "pulseaudio": {
         "tooltip": false,

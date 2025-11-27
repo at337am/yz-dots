@@ -32,7 +32,7 @@ if pgrep -f "gpu-screen-recorder" > /dev/null; then
     # -2 相当于 Ctrl + C
     pkill -2 -f "gpu-screen-recorder"
 
-    notify "REC Stop"
+    notify "STOP REC"
 
     # 这里可以不用这两个, 因为 exit 0 会自动触发 trap 来做这两件事, 但没关系
     rm -f "$status_file"
@@ -47,11 +47,11 @@ output_file="$output_dir/recorder_$(date +"%y%m%d_%H%M%S").mkv"
 # 区域录制
 if [[ "$1" == "region" ]]; then
     if ! GEOMETRY=$(slurp -f '%wx%h+%x+%y'); then
-        notify "REC Canceled"
+        notify "Cancel"
         exit 0
     fi
 
-    notify "REC Start"
+    notify "REC"
 
     touch "$status_file"
     refresh_waybar
@@ -67,7 +67,7 @@ if [[ "$1" == "region" ]]; then
                 -o "$output_file"
 # 全屏录制
 elif [[ "$1" == "full" ]]; then
-    notify "REC Start"
+    notify "REC"
 
     touch "$status_file"
     refresh_waybar
