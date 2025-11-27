@@ -7,10 +7,10 @@ output_dir="$HOME/Videos"
 # 检查是否已经在运行, 或者 pgrep -f
 if killall -0 "gpu-screen-recorder" 2>/dev/null; then
     notify-send -a "recording" \
-            # -u low \
-            -h string:x-dunst-stack-tag:volume_notif \
-            "录制失败" \
-            "GPU Screen Recorder 已经在运行中！"
+                -u low \
+                -h string:x-dunst-stack-tag:volume_notif \
+                "already recording"
+    printf "recording in progress.\n"
     exit 1
 fi
 
