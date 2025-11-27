@@ -24,10 +24,6 @@ if pgrep -f "gpu-screen-recorder" > /dev/null; then
 
     notify "STOP REC"
 
-    # 这里可以不用这两个, 因为 exit 0 会自动触发 trap 来做这两件事, 但没关系
-    rm -f "$status_file"
-    refresh_waybar
-
     exit 0
 fi
 
@@ -78,6 +74,3 @@ timeout -s 2 -k 10s 3600 gpu-screen-recorder \
 #             -a default_output \
 #             -v no \
 #             -o "$output_file"
-
-# 注意: 脚本大概率是没有 bug 的, 如果有的话, 就把 区域录制 的逻辑删掉吧, 脑子乱乱的
-# 如果长期都用不到 区域录制 的话, 也删除掉这个逻辑好了, 不然太难维护了
