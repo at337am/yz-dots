@@ -50,6 +50,7 @@
         "spacing": 15,
         "reverse-direction": true   // 倒序
     },
+    // 自定义录屏脚本显示
     "custom/recorder": {
         "format": "{}",
         "signal": 8,
@@ -71,6 +72,7 @@
         "format": "󰃠 {percent}%"
     },
 
+    // 电量
     "battery": {
         "tooltip": false,
         "interval": 60, // 每60秒更新一次信息

@@ -54,7 +54,7 @@ window#waybar {
 }
 
 #custom-recorder {
-    color: #f38ba8; /* 红色 */
+    color: #f38ba8;
     padding: 0 10px;
     animation-name: blink;
     animation-duration: 1s;
