@@ -38,14 +38,9 @@ if pgrep -f "gpu-screen-recorder" > /dev/null; then
     exit 0
 fi
 
-# 检查是否在正在选择区域, 如果是, 则杀死再退出 (杀死后上一个进程也会触发取消通知)
-if pgrep -x slurp > /dev/null; then
-    pkill -x slurp
-    exit 0
-fi
-
 # 依赖检查
-dependencies=("gpu-screen-recorder" "slurp" "notify-send")
+# todo 检查 hyprland portal
+dependencies=("gpu-screen-recorder" "notify-send")
 for cmd in "${dependencies[@]}"; do
     if ! command -v "$cmd" &> /dev/null; then
         printf "Error: Missing dependency: %s\n" "$cmd" >&2
@@ -58,11 +53,6 @@ mkdir -p "$HOME/Videos"
 
 # 区域录制
 if [[ "$1" == "region" ]]; then
-    if ! GEOMETRY=$(slurp -f '%wx%h+%x+%y'); then
-        notify "REC Canc."
-        exit 0
-    fi
-
     notify "😎  REC"
 
     touch "$status_file"
@@ -70,25 +60,13 @@ if [[ "$1" == "region" ]]; then
 
     # 混合音轨
     timeout -s 2 -k 10s 3600 gpu-screen-recorder \
-                -w region \
-                -region "$GEOMETRY" \
+                -w portal \
                 -f 60 \
                 -bm cbr \
                 -q 15000 \
                 -a "default_output|default_input" \
                 -v no \
                 -o "$output_file"
-
-    # 只录制系统声音
-    # timeout -s 2 -k 10s 3600 gpu-screen-recorder \
-    #             -w region \
-    #             -region "$GEOMETRY" \
-    #             -f 60 \
-    #             -bm cbr \
-    #             -q 15000 \
-    #             -a default_output \
-    #             -v no \
-    #             -o "$output_file"
 
 # 全屏录制
 elif [[ "$1" == "full" ]]; then
