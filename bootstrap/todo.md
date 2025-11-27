@@ -1,10 +1,8 @@
 # todo
 
 - step 过程中, 解决 keymaps 导致 错误 echo KEYMAP=us > /etc/vconsole.conf
-
-- 需要一种方式实现用脚本的方式让 yay 走代理
 - pacman_install 需要提前指定各个依赖, 防止在执行时提示选择依赖, 这个需要在虚拟机测试好
-- discord ??
+
 
 ---
 
