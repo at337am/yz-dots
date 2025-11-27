@@ -5,14 +5,10 @@ fortune | cowsay
 
 
 
-% misc, cmatrix
+% misc, cmatrix, terminal-rain
 
 # 异步滚动
 unimatrix -c red -s 96 -a
-
-
-
-% misc, terminal-rain
 
 # 下雨天 (按 T)
 terminal-rain --rain-color blue --lightning-color white
