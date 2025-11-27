@@ -34,7 +34,7 @@ default-timeout=0
 background-color=#ff8282d9
 
 # --- 需要覆盖配置的 app ---
-[app-name=recording]
+[app-name=recorder]
 anchor=center
 margin=360,0,0,0
 width=180
