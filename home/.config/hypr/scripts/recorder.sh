@@ -57,8 +57,6 @@ if [[ "$1" == "region" ]]; then
     touch "$status_file"
     refresh_waybar
 
-                # 如果只想录制系统声音的话:
-                # -a default_output \
     # 混合音轨
     timeout -s 2 -k 10s 3600 gpu-screen-recorder \
                 -w region \
@@ -69,17 +67,24 @@ if [[ "$1" == "region" ]]; then
                 -a "default_output|default_input" \
                 -v no \
                 -o "$output_file"
+
+    # 只录制系统声音
+    # timeout -s 2 -k 10s 3600 gpu-screen-recorder \
+    #             -w region \
+    #             -region "$GEOMETRY" \
+    #             -f 60 \
+    #             -bm cbr \
+    #             -q 15000 \
+    #             -a default_output \
+    #             -v no \
+    #             -o "$output_file"
+
 # 全屏录制
 elif [[ "$1" == "full" ]]; then
     notify "😎  REC"
 
     touch "$status_file"
     refresh_waybar
-
-                # 如果只想录制系统声音的话:
-                # -a default_output \
-                # 如果要开启 双音轨的话:
-                # -a default_output -a default_input \
 
     # 混合音轨
     timeout -s 2 -k 10s 3600 gpu-screen-recorder \
@@ -90,6 +95,26 @@ elif [[ "$1" == "full" ]]; then
                 -a "default_output|default_input" \
                 -v no \
                 -o "$output_file"
+
+    # # 双音轨
+    # timeout -s 2 -k 10s 3600 gpu-screen-recorder \
+    #             -w screen \
+    #             -f 60 \
+    #             -bm cbr \
+    #             -q 15000 \
+    #             -a default_output -a default_input \
+    #             -v no \
+    #             -o "$output_file"
+
+    # # 只录制系统声音
+    # timeout -s 2 -k 10s 3600 gpu-screen-recorder \
+    #             -w screen \
+    #             -f 60 \
+    #             -bm cbr \
+    #             -q 15000 \
+    #             -a default_output \
+    #             -v no \
+    #             -o "$output_file"
 
 else
     usage
