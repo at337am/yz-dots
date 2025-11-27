@@ -38,6 +38,13 @@ pacman -Qi xxx
 
 
 
+% pacman, search, kernel
+
+# 列出所有已安装的内核版本
+pacman -Q | grep -E '^linux(|-lts|-zen|-hardened) '
+
+
+
 % pacman, clean
 
 # 清理所有软件包缓存

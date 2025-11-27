@@ -15,14 +15,7 @@ uptime -p
 
 
 
-% system, kernel, rpm
-
-# 列出所有已安装的内核版本
-rpm -q kernel
-
-
-
-% system, kernel, uname
+% system, uname, kernel
 
 # 显示当前运行的内核版本
 uname -r
