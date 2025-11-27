@@ -92,8 +92,8 @@ ln -sv "$DOTS_PATH/.config/nvim" ~/.config/nvim
 rm -rf ~/.config/rofi
 ln -sv "$DOTS_PATH/.config/rofi" ~/.config/rofi
 
-rm -rf ~/.config/Thunar
-ln -sv "$DOTS_PATH/.config/Thunar" ~/.config/Thunar
+# rm -rf ~/.config/Thunar
+# ln -sv "$DOTS_PATH/.config/Thunar" ~/.config/Thunar
 
 rm -rf ~/.config/waybar
 ln -sv "$DOTS_PATH/.config/waybar" ~/.config/waybar
