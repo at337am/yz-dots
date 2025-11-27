@@ -93,7 +93,7 @@ ln -sf /usr/share/zoneinfo/Asia/Taipei /etc/localtime
 # 同步当前的系统时间到硬件时钟
 hwclock --systohc
 
-# 安装一下 nvim 和 vi 编辑器
+# 安装一下 nvim 和 vi 编辑器, 最好两个都要安装!
 pacman -S neovim vi
 
 # 生成 Locale
