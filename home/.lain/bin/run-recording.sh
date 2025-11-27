@@ -23,7 +23,14 @@ notify-send -a "recording" \
             -h string:x-dunst-stack-tag:volume_notif \
             "Start recording..."
 
-gpu-screen-recorder -w screen -f 60 -a "default_output|default_input" -o "$output_file"
+# 全屏录制, 60帧, 速率控制 CBR, 码率 15000, 混合音频, 减少输出信息
+gpu-screen-recorder -w screen \
+                    -f 60 \
+                    -bm cbr \
+                    -q 15000 \
+                    -a "default_output|default_input" \
+                    -v no \
+                    -o "$output_file"
 
 # 发送录制结束的通知
 notify-send -a "recording" \
