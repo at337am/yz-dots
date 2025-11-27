@@ -138,15 +138,5 @@ sudo pacman -S --needed --noconfirm \
     discord
 
 
-
-# --------- 可选择的 ---------
-# 
-# mgba-qt
-# obs-studio
-
-
-
-# --------- bak ---------
-# 
-# 目前不需要的, 监听 ACPI 事件 和 电源调度策略
+# 目前不需要 监听 ACPI 事件 和 电源调度策略
 # sudo pacman -S acpid power-profiles-daemon

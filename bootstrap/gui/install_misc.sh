@@ -22,3 +22,9 @@ sudo pacman -S --needed --noconfirm \
 
 # 更新引导程序
 sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+
+# ----- bak -----
+# 
+# sudo pacman -S mgba-qt
+# sudo pacman -S obs-studio
