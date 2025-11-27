@@ -14,7 +14,6 @@ if [[ "$#" -ne 1 ]]; then
     exit 1
 fi
 
-
 # 发送通知
 notify() {
     notify-send -a "recorder" \
