@@ -117,7 +117,7 @@
   # typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE="%F{$grey}%n@%m%f"
 
   # custom, 普通用户, 显示效果: host
-  # typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE="%F{$green}%m%f"
+  # typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE="%F{$grey}%m%f"
 
   # Show previous command duration only if it's >= 5s.
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=5
