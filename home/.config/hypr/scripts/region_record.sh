@@ -1,19 +1,23 @@
 #!/usr/bin/env bash
 
+# 区域录制
+
 set -euo pipefail
 
-output_dir="$HOME/Videos"
+# 检查是否已经在运行
+if pgrep -f "gpu-screen-recorder" > /dev/null; then
 
-# 检查是否已经在运行, 或者 pgrep -f
-if killall -0 "gpu-screen-recorder" 2>/dev/null; then
+    # -2 相当于 Ctrl + C
+    pkill -2 -f "gpu-screen-recorder"
+
     notify-send -a "recorder" \
                 -u low \
                 -h string:x-dunst-stack-tag:volume_notif \
-                "Already recording."
-    printf "recording in progress.\n"
-    exit 1
+                "Stop recording"
+    exit 0
 fi
 
+output_dir="$HOME/Videos"
 mkdir -p "$output_dir"
 output_file="$output_dir/recorder_$(date +"%y%m%d_%H%M%S").mkv"
 
@@ -44,11 +48,3 @@ gpu-screen-recorder \
             -a "default_output|default_input" \
             -v no \
             -o "$output_file"
-
-# 发送录制结束的通知
-notify-send -a "recorder" \
-            -u low \
-            -h string:x-dunst-stack-tag:volume_notif \
-            "Stop recording"
-
-printf "Done.\n"

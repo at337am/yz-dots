@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# 全屏录制
+
 set -euo pipefail
 
 output_dir="$HOME/Videos"
