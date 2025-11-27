@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# 自定义 /etc/sudoers.d/ 中的配置
+
 set -euo pipefail
 
 config='# Set sudo timeout to 30 minutes
