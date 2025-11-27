@@ -7,16 +7,13 @@ refresh_waybar() {
     pkill -SIGRTMIN+8 waybar
 }
 
-trap 'rm -f "$status_file"; refresh_waybar' EXIT
-
-# 依赖检查
-dependencies=("gpu-screen-recorder" "slurp" "notify-send")
-for cmd in "${dependencies[@]}"; do
-    if ! command -v "$cmd" &> /dev/null; then
-        printf "Error: Missing dependency: %s\n" "$cmd" >&2
-        exit 1
-    fi
-done
+# 发送通知
+notify() {
+    notify-send -a "recorder" \
+                -u low \
+                -h string:x-dunst-stack-tag:volume_notif \
+                "$1"
+}
 
 # 检查参数, 必须有一个参数, 且必须是 full 或 region
 if [[ "$#" -ne 1 ]] || ([[ "$1" != "full" && "$1" != "region" ]]); then
@@ -25,19 +22,7 @@ if [[ "$#" -ne 1 ]] || ([[ "$1" != "full" && "$1" != "region" ]]); then
     exit 1
 fi
 
-# 检查是否在选择区域, 如果是, 则杀死再退出 (杀死后上一个进程也会触发取消通知)
-if pgrep -x slurp > /dev/null; then
-    pkill -x slurp
-    exit 0
-fi
-
-# 发送通知
-notify() {
-    notify-send -a "recorder" \
-                -u low \
-                -h string:x-dunst-stack-tag:volume_notif \
-                "$1"
-}
+trap 'rm -f "$status_file"; refresh_waybar' EXIT
 
 # 检查是否已经在运行
 if pgrep -f "gpu-screen-recorder" > /dev/null; then
@@ -52,6 +37,21 @@ if pgrep -f "gpu-screen-recorder" > /dev/null; then
 
     exit 0
 fi
+
+# 检查是否在正在选择区域, 如果是, 则杀死再退出 (杀死后上一个进程也会触发取消通知)
+if pgrep -x slurp > /dev/null; then
+    pkill -x slurp
+    exit 0
+fi
+
+# 依赖检查
+dependencies=("gpu-screen-recorder" "slurp" "notify-send")
+for cmd in "${dependencies[@]}"; do
+    if ! command -v "$cmd" &> /dev/null; then
+        printf "Error: Missing dependency: %s\n" "$cmd" >&2
+        exit 1
+    fi
+done
 
 output_file="$HOME/Videos/recorder_$(date +"%y%m%d_%H%M%S").mkv"
 mkdir -p "$HOME/Videos"
