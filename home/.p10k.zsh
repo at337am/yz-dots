@@ -46,16 +46,17 @@
   local green='#81E7AF'
   local blue='#A8CBE2'
 
+  # 注释掉下面左右两个 newline 就变成显示在一行 prompt 了 
   # Left prompt segments.
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
     context                   # user@host
     dir                       # current directory
+    virtualenv                # python virtual environment
     vcs                       # git status
     command_execution_time    # previous command duration
     # =========================[ Line #2 ]=========================
     newline                   # \n
-    virtualenv                # python virtual environment
     prompt_char               # prompt symbol
   )
 
