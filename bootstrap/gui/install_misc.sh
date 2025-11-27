@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 
+# 安装一些杂项 (不是很重要的东西)
+
 set -euo pipefail
+
+yay -S --needed \
+    unimatrix-git \
+    terminal-rain-lightning
 
 # 额外安装一个 LTS 版本的内核 作为备用
 # 后续若不需要了, 直接运行 -Rns 卸载即可

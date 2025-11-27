@@ -38,5 +38,4 @@ yay -S --needed \
     qimgv-git \
     localsend-bin \
     ungoogled-chromium-bin \
-    gpu-screen-recorder \
-    unimatrix-git
+    gpu-screen-recorder
