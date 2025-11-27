@@ -15,9 +15,15 @@ usage() {
     printf "Usage: %s <region|full>\n" "$(basename "$0")" >&2
 }
 
+# todo 需求, 直接在这里强行 验证参数是否正确
 if [[ "$#" -ne 1 ]]; then
     usage
     exit 1
+fi
+
+if pgrep -x slurp > /dev/null; then
+    pkill -x slurp
+    exit 0
 fi
 
 # 发送通知
