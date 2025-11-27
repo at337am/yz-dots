@@ -21,7 +21,7 @@ notify() {
 case "$1" in
     "area-save")
         geometry=$(slurp)
-        if [ -n "$geometry" ]; then
+        if [[ -n "$geometry" ]]; then
             grim -g "$geometry" "$file_path"
             notify "SC Saved"
         else
@@ -34,7 +34,7 @@ case "$1" in
         ;;
     "area-copy")
         geometry=$(slurp)
-        if [ -n "$geometry" ]; then
+        if [[ -n "$geometry" ]]; then
             grim -g "$geometry" - | wl-copy -t image/png
             notify "SC Copied"
         else
