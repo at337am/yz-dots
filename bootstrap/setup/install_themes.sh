@@ -15,7 +15,7 @@ for cmd in "${dependencies[@]}"; do
 done
 
 # 安装依赖 (gtk-engine-murrine 是 gtk2 的, 现在似乎已经不需要了)
-sudo -E pacman -S --needed --noconfirm \
+sudo pacman -S --needed --noconfirm \
     gnome-themes-extra \
     sassc
 

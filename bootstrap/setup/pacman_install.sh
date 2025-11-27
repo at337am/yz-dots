@@ -3,7 +3,7 @@
 set -euo pipefail
 
 # 音频驱动, 固件, 音频服务
-sudo -E pacman -S --needed --noconfirm \
+sudo pacman -S --needed --noconfirm \
     sof-firmware \
     alsa-firmware \
     alsa-ucm-conf \
@@ -14,7 +14,7 @@ sudo -E pacman -S --needed --noconfirm \
     wireplumber
 
 # 图形界面配置相关
-sudo -E pacman -S --needed --noconfirm \
+sudo pacman -S --needed --noconfirm \
     gtk3 \
     gtk4 \
     qt5-base \
@@ -29,7 +29,7 @@ sudo -E pacman -S --needed --noconfirm \
     qt6ct
 
 # 字体
-sudo -E pacman -S --needed --noconfirm \
+sudo pacman -S --needed --noconfirm \
     noto-fonts \
     noto-fonts-cjk \
     noto-fonts-emoji \
@@ -37,7 +37,7 @@ sudo -E pacman -S --needed --noconfirm \
     ttf-fira-code
 
 # 常用软件
-sudo -E pacman -S --needed --noconfirm \
+sudo pacman -S --needed --noconfirm \
     android-tools \
     bat \
     bc \
@@ -87,7 +87,7 @@ sudo -E pacman -S --needed --noconfirm \
     base-devel
 
 # hyprland 相关
-sudo -E pacman -S --needed --noconfirm \
+sudo pacman -S --needed --noconfirm \
     cliphist \
     grim \
     hypridle \
@@ -132,7 +132,7 @@ sudo -E pacman -S --needed --noconfirm \
     qt6-multimedia-ffmpeg
 
 # 常用重量级 App
-sudo -E pacman -S --needed --noconfirm \
+sudo pacman -S --needed --noconfirm \
     obs-studio \
     obsidian \
     telegram-desktop

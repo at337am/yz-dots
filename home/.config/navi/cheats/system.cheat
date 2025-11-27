@@ -5,6 +5,13 @@ last reboot -F | tac
 
 
 
+% system, efibootmgr
+
+# 查看当前正在使用的启动项
+efibootmgr
+
+
+
 % system, uptime
 
 # 显示系统启动时间
