@@ -5,6 +5,12 @@ if pgrep -x rofi > /dev/null; then
     exit 0
 fi
 
+# 依赖检查
+if ! command -v "code" &> /dev/null; then
+    printf "Error: Missing dependency: code\n" >&2
+    exit 1
+fi
+
 declare -A configs
 configs["hypr"]="$HOME/.config/hypr"
 configs["rofi"]="$HOME/.config/rofi"
@@ -31,4 +37,4 @@ config_path=${configs[$config_choice]}
 
 real_path=$(readlink -f "$config_path")
 
-command code "$real_path" --ozone-platform-hint=auto > /dev/null 2>&1
+code "$real_path"
