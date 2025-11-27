@@ -2,7 +2,7 @@
 
 output_dir="$HOME/Videos"
 status_file="/tmp/recording_status"
-trap 'rm -f "$status_file"' EXIT
+trap 'rm -f "$status_file"; refresh_waybar' EXIT
 
 usage() {
     printf "Error: Invalid arguments.\n" >&2
@@ -22,15 +22,21 @@ notify() {
                 "$1"
 }
 
+# 定义一个刷新 Waybar 的函数
+refresh_waybar() {
+    pkill -SIGRTMIN+8 waybar
+}
+
 # 检查是否已经在运行
 if pgrep -f "gpu-screen-recorder" > /dev/null; then
-
     # -2 相当于 Ctrl + C
     pkill -2 -f "gpu-screen-recorder"
 
-    rm -f "$status_file"
-
     notify "REC Stop"
+
+    # 这里可以不用这两个, 因为 exit 0 会自动触发 trap 来做这两件事, 但没关系
+    rm -f "$status_file"
+    refresh_waybar
 
     exit 0
 fi
@@ -48,8 +54,9 @@ if [[ "$1" == "region" ]]; then
     notify "REC Start"
 
     touch "$status_file"
+    refresh_waybar
 
-    gpu-screen-recorder \
+    timeout -s 2 -k 10s 3600 gpu-screen-recorder \
                 -w region \
                 -region "$GEOMETRY" \
                 -f 60 \
@@ -63,8 +70,9 @@ elif [[ "$1" == "full" ]]; then
     notify "REC Start"
 
     touch "$status_file"
+    refresh_waybar
 
-    gpu-screen-recorder \
+    timeout -s 2 -k 10s 3600 gpu-screen-recorder \
                 -w screen \
                 -f 60 \
                 -bm cbr \

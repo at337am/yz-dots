@@ -52,3 +52,19 @@ window#waybar {
 #battery.critical:not(.plugged) {
     color: #FF8282;
 }
+
+#custom-recorder {
+    color: #f38ba8; /* 红色 */
+    padding: 0 10px;
+    animation-name: blink;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        color: #ffffff;
+    }
+}

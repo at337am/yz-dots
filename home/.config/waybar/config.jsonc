@@ -8,7 +8,7 @@
 
     "modules-center": ["hyprland/window"],
 
-    "modules-right": ["tray", "pulseaudio", "backlight", "battery"],
+    "modules-right": ["custom/recorder", "tray", "pulseaudio", "backlight", "battery"],
 
     // 时钟
     // "custom/clock": {
@@ -50,7 +50,13 @@
         "spacing": 15,
         "reverse-direction": true   // 倒序
     },
-
+    "custom/recorder": {
+        "format": "{}",
+        "signal": 8,
+        "exec": "if [[ -f /tmp/recording_status ]]; then echo '🔴 REC'; else echo ''; fi",
+        "tooltip": false,
+        "on-click": "/workspace/dev/yz-dots/home/.config/hypr/scripts/recorder.sh full" 
+    },
     // 音量
     "pulseaudio": {
         "tooltip": false,
