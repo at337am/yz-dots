@@ -1,10 +1,23 @@
-% gpu-screen-recorder
+% gpu-screen-recorder, search
 
 # 查看显示器名称
 gpu-screen-recorder --list-capture-options
 
+# 查看音频设备
+gpu-screen-recorder --list-audio-devices
+
+
+
+% gpu-screen-recorder, recording
+
+# 最简单的全屏录制 (无音频)
+gpu-screen-recorder -w screen -f 60 -o video.mp4
+
 # 全屏录制 + 系统声音
 gpu-screen-recorder -w screen -f 60 -a default_output -o video.mp4
 
-# 全屏录制 + 系统声音 + 麦克风
+# 全屏录制 + 系统声音 + 麦克风 (双音轨)
 gpu-screen-recorder -w screen -f 60 -a default_output -a default_input -o video.mp4
+
+# 全屏录制 + 系统声音 + 麦克风 (混合音轨)
+gpu-screen-recorder -w screen -f 60 -a "default_output|default_input" -o video.mp4
