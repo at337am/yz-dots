@@ -1,26 +1,31 @@
 #!/usr/bin/env bash
 
-output_dir="$HOME/Videos"
 status_file="/tmp/recorder_status"
 
-# 定义一个刷新 Waybar 的函数
+# 向 waybar 发送刷新信号
 refresh_waybar() {
     pkill -SIGRTMIN+8 waybar
 }
 
 trap 'rm -f "$status_file"; refresh_waybar' EXIT
 
-usage() {
+# 依赖检查
+dependencies=("gpu-screen-recorder" "slurp" "notify-send")
+for cmd in "${dependencies[@]}"; do
+    if ! command -v "$cmd" &> /dev/null; then
+        printf "Error: Missing dependency: %s\n" "$cmd" >&2
+        exit 1
+    fi
+done
+
+# 检查参数, 必须有一个参数, 且必须是 full 或 region
+if [[ "$#" -ne 1 ]] || ([[ "$1" != "full" && "$1" != "region" ]]); then
     printf "Error: Invalid arguments.\n" >&2
     printf "Usage: %s <region|full>\n" "$(basename "$0")" >&2
-}
-
-# todo 需求, 直接在这里强行 验证参数是否正确
-if [[ "$#" -ne 1 ]]; then
-    usage
     exit 1
 fi
 
+# 检查是否在选择区域, 如果是, 则杀死再退出 (杀死后上一个进程也会触发取消通知)
 if pgrep -x slurp > /dev/null; then
     pkill -x slurp
     exit 0
@@ -48,8 +53,8 @@ if pgrep -f "gpu-screen-recorder" > /dev/null; then
     exit 0
 fi
 
-mkdir -p "$output_dir"
-output_file="$output_dir/recorder_$(date +"%y%m%d_%H%M%S").mkv"
+output_file="$HOME/Videos/recorder_$(date +"%y%m%d_%H%M%S").mkv"
+mkdir -p "$HOME/Videos"
 
 # 区域录制
 if [[ "$1" == "region" ]]; then
@@ -122,7 +127,4 @@ elif [[ "$1" == "full" ]]; then
     #             -v no \
     #             -o "$output_file"
 
-else
-    usage
-    exit 1
 fi
