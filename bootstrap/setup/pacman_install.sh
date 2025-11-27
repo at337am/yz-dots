@@ -133,16 +133,16 @@ sudo pacman -S --needed --noconfirm \
 
 # 常用重量级 App
 sudo pacman -S --needed --noconfirm \
-    obs-studio \
     obsidian \
-    telegram-desktop
+    telegram-desktop \
+    discord
 
 
 
 # --------- 可选择的 ---------
 # 
-# discord
 # mgba-qt
+# obs-studio
 
 
 

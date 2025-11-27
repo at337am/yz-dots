@@ -5,7 +5,7 @@ set -euo pipefail
 output_dir="$HOME/Videos"
 
 # 检查是否已经在运行, 或者 pgrep -f
-if killall -0 "gpu-screen-recorder" > /dev/null; then
+if killall -0 "gpu-screen-recorder" 2>/dev/null; then
     notify-send -a "recording" \
             # -u low \
             -h string:x-dunst-stack-tag:volume_notif \

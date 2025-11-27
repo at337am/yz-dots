@@ -37,4 +37,5 @@ yay -S --needed \
     visual-studio-code-bin \
     qimgv-git \
     localsend-bin \
-    ungoogled-chromium-bin
+    ungoogled-chromium-bin \
+    gpu-screen-recorder

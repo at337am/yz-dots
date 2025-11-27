@@ -46,6 +46,12 @@ margin=360,0,0,0
 width=160
 height=120
 
+[app-name=recording]
+anchor=center
+margin=360,0,0,0
+width=180
+height=150
+
 [app-name=microphone]
 anchor=center
 margin=360,0,0,0
