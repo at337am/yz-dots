@@ -45,11 +45,11 @@
 
     // 自定义录屏脚本提示
     "custom/recorder": {
+        "tooltip": false,
         "format": "{}",
         "signal": 8,
-        "exec": "if [[ -f /tmp/recording_status ]]; then echo ' REC'; else echo ''; fi",
-        "tooltip": false,
-        "on-click": "/workspace/dev/yz-dots/home/.config/hypr/scripts/recorder.sh full" 
+        "exec": "$HOME/.config/waybar/scripts/check_recorder.sh",
+        "on-click": "$HOME/.config/hypr/scripts/recorder.sh full" 
     },
 
     // 音量

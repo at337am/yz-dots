@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
 
 output_dir="$HOME/Videos"
-status_file="/tmp/recording_status"
+status_file="/tmp/recorder_status"
+
+# 定义一个刷新 Waybar 的函数
+refresh_waybar() {
+    pkill -SIGRTMIN+8 waybar
+}
+
 trap 'rm -f "$status_file"; refresh_waybar' EXIT
 
 usage() {
@@ -20,11 +26,6 @@ notify() {
                 -u low \
                 -h string:x-dunst-stack-tag:volume_notif \
                 "$1"
-}
-
-# 定义一个刷新 Waybar 的函数
-refresh_waybar() {
-    pkill -SIGRTMIN+8 waybar
 }
 
 # 检查是否已经在运行
@@ -56,6 +57,8 @@ if [[ "$1" == "region" ]]; then
     touch "$status_file"
     refresh_waybar
 
+                # 如果只想录制系统声音的话:
+                # -a default_output \
     timeout -s 2 -k 10s 3600 gpu-screen-recorder \
                 -w region \
                 -region "$GEOMETRY" \
@@ -72,6 +75,8 @@ elif [[ "$1" == "full" ]]; then
     touch "$status_file"
     refresh_waybar
 
+                # 如果只想录制系统声音的话:
+                # -a default_output \
     timeout -s 2 -k 10s 3600 gpu-screen-recorder \
                 -w screen \
                 -f 60 \
