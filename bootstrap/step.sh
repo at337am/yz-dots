@@ -135,6 +135,7 @@ nvim /etc/sudoers   # 或者使用 visudo
 pacman -S grub efibootmgr
 
 # 将 GRUB 安装到硬盘的 ESP 分区上
+# 这一步会在 /boot/EFI 下生成一个文件 Arch/grubx64.efi
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=Arch
 # 生成配置文件
 grub-mkconfig -o /boot/grub/grub.cfg
