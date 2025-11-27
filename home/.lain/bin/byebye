@@ -14,6 +14,7 @@ countdown=3
 # 提示用户程序即将关闭
 printf "Time to bid farewell to running apps...\n"
 
+pkill -2 -f "gpu-screen-recorder"
 pkill -9 -x obsidian
 pkill -15 -x Telegram
 pkill -15 -x nekoray
