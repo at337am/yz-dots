@@ -52,13 +52,14 @@ if [[ "$1" == "region" ]]; then
         exit 0
     fi
 
-    notify "REC"
+    notify "😎  REC"
 
     touch "$status_file"
     refresh_waybar
 
                 # 如果只想录制系统声音的话:
                 # -a default_output \
+    # 混合音轨
     timeout -s 2 -k 10s 3600 gpu-screen-recorder \
                 -w region \
                 -region "$GEOMETRY" \
@@ -70,13 +71,17 @@ if [[ "$1" == "region" ]]; then
                 -o "$output_file"
 # 全屏录制
 elif [[ "$1" == "full" ]]; then
-    notify "REC"
+    notify "😎  REC"
 
     touch "$status_file"
     refresh_waybar
 
                 # 如果只想录制系统声音的话:
                 # -a default_output \
+                # 如果要开启 双音轨的话:
+                # -a default_output -a default_input \
+
+    # 混合音轨
     timeout -s 2 -k 10s 3600 gpu-screen-recorder \
                 -w screen \
                 -f 60 \
