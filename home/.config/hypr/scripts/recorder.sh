@@ -43,7 +43,7 @@ done
 output_file="$HOME/Videos/recorder_$(date +"%y%m%d_%H%M%S").mkv"
 mkdir -p "$HOME/Videos"
 
-notify "😎    REC"
+notify "😎   REC"
 
 touch "$status_file"
 
