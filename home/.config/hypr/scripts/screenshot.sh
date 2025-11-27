@@ -25,7 +25,7 @@ case "$1" in
             grim -g "$geometry" "$file_path"
             notify "SC Saved"
         else
-            notify "Cancel"
+            notify "SC Canc."
         fi
         ;;
     "full-save")
@@ -38,7 +38,7 @@ case "$1" in
             grim -g "$geometry" - | wl-copy -t image/png
             notify "SC Copied"
         else
-            notify "Cancel"
+            notify "SC Canc."
         fi
         ;;
     "full-copy")

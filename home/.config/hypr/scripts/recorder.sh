@@ -59,7 +59,7 @@ mkdir -p "$HOME/Videos"
 # 区域录制
 if [[ "$1" == "region" ]]; then
     if ! GEOMETRY=$(slurp -f '%wx%h+%x+%y'); then
-        notify "Cancel"
+        notify "REC Canc."
         exit 0
     fi
 
@@ -128,3 +128,5 @@ elif [[ "$1" == "full" ]]; then
     #             -o "$output_file"
 
 fi
+
+# 注意: 脚本大概率是没有 bug 的, 如果有的话, 就把 区域截图 的逻辑删掉吧, 脑子乱乱的, 重构一下
