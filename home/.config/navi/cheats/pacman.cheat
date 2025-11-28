@@ -47,15 +47,15 @@ pacman -Q | grep -E '^linux(|-lts|-zen|-hardened) '
 
 % pacman, search, history
 
-# 列出安装和删除历史
-grep -E " installed | removed " /var/log/pacman.log
+# 列出历史操作记录 (安装, 删除, 更新)
+grep -E " installed | removed | upgraded" /var/log/pacman.log
 
 
 
 % pacman, clean
 
 # 清理所有软件包缓存
-sudo pacman --noconfirm -Scc
+sudo pacman -Scc --noconfirm
 
 
 
@@ -63,3 +63,6 @@ sudo pacman --noconfirm -Scc
 
 # 清理不再需要的孤儿包
 yay -Yc
+
+# 清理所有软件包缓存
+yay -Scc --noconfirm
