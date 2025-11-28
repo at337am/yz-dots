@@ -45,8 +45,6 @@ sudo cp -a /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
 
 echo "$mirrors" | sudo tee /etc/pacman.d/mirrorlist
 
-cat /etc/pacman.d/mirrorlist
-
 sudo pacman -Syyu --noconfirm
 
 printf "Done.\n"
