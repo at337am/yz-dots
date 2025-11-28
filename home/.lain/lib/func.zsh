@@ -165,7 +165,7 @@ mkmv() {
 # ------------
 
 d() {
-    if [[ "$#" -ne 1 ]]; then
+    if [[ "$#" -ne 0 ]]; then
         return 1
     fi
 
