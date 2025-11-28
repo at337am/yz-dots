@@ -7,6 +7,7 @@ exit 1
 
 
 # 放大显示字体, 恢复直接运行 setfont
+# setfont 命令只在当前的 Live 会话中生效
 setfont ter-132b
 
 
