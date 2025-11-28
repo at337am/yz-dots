@@ -1,7 +1,7 @@
 # todo
 
 - step 过程中, 解决 keymaps 导致 错误 echo KEYMAP=us > /etc/vconsole.conf
-- pacman_install 需要提前指定各个依赖, 防止在执行时提示选择依赖, 这个需要在虚拟机测试好
+- pacman_install 提前指定各个依赖, 尽量防止在执行时提示选择依赖, 在虚拟机测试好, 可以拷贝 /var/log/pacman.log
 
 
 ---

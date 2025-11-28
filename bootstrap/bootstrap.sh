@@ -5,6 +5,7 @@ set -euo pipefail
 scripts=(
     "setup/base.sh"
     "setup/configure_sudo.sh"
+    "setup/pacman_mirrorlist.sh"
     "setup/pacman_install.sh"
     "setup/xdg-user-dirs.sh"
     "setup/sync_dotfiles.sh"
