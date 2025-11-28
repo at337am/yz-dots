@@ -1,5 +1,7 @@
 # wow
 
+exit 1
+
 # arch 安装指南: https://wiki.archlinuxcn.org/wiki/安装指南
 
 # 放大显示字体, 恢复直接运行 setfont
