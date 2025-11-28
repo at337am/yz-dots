@@ -73,7 +73,7 @@ rm() {
 cl_trash() {
     # 若回收站目录存在且为空, 则提示用户并结束函数
     if [[ -d "$TRASH_DIR" && -z "$(find "$TRASH_DIR" -mindepth 1 -print -quit)" ]]; then
-        printf "Trash is clean\n"
+        printf "Trash is clean.\n"
         return 0
     fi
 
