@@ -1,15 +1,17 @@
-# wow
+# 
+# arch 安装指南: https://wiki.archlinuxcn.org/wiki/安装指南
+# 
 
 exit 1
 
-# arch 安装指南: https://wiki.archlinuxcn.org/wiki/安装指南
+
 
 # 放大显示字体, 恢复直接运行 setfont
 setfont ter-132b
 
 
 
-# ----------- 连接网络 -----------
+# ------>>> 连接网络 <<<------
 # 
 # https://wiki.archlinuxcn.org/wiki/Iwd#iwctl
 
@@ -39,7 +41,7 @@ timedatectl
 
 
 
-#  --------------------- 建立硬盘分区 ---------------------
+# ------>>> 建立硬盘分区 <<<------
 
 # 先使用 fdisk -l 查看硬盘名称, 比如是: /dev/nvme0n1
 cfdisk /dev/nvme0n1
@@ -68,7 +70,7 @@ lsblk -pf
 
 
 
-# ------------------ 开始安装系统 ------------------
+# ------>>> 开始安装系统 <<<------
 
 # 设置代理
 export http_proxy=http://192.168.9.104:1082
@@ -82,7 +84,7 @@ pacstrap -K /mnt base linux linux-firmware
 
 
 
-# ------------------ 配置系统 ------------------
+# ------>>> 配置系统 <<<------
 # 生成 fstab 文件
 genfstab -U /mnt > /mnt/etc/fstab
 
@@ -164,13 +166,33 @@ exit
 reboot
 
 
-# ------------------ 之后 ------------------
 
-# nmcli 连接网络
+# ------>>> 重启到新的系统后 <<<------
+
+# 连接网络
 nmcli connection add type wifi con-name "oishi-profile" ssid "oishi" wifi-sec.key-mgmt wpa-psk wifi-sec.psk "110110110"
 
-# 使用 另一台手机 scp -r 上传所需文件
+# 在另一台设备上使用 scp -r 将所需文件上传到 ~/ 下
+# 所需文件:
+- ssh.tar
+- syncs_migration_xxx.tar
+- manual_config_bak.tar
 
-# 设置 env 代理
+# 设置 env 代理, 可以使用下面这个命令检查是否连接成功
+curl -I https://www.google.com
 
-# 执行 bootstrap.sh 脚本
+# 解压 syncs_migration_xxx.tar, 开始执行 bootstrap.sh
+
+# 执行完毕后重启, 进入 GUI
+
+
+
+# ------>>> 进入 GUI 后 <<<------
+
+# 启动 nekoray
+
+# 手动按顺序执行 gui 中的脚本
+
+# 解压 manual_config_bak.tar, 完成配置
+
+# 完成 浏览器设置
