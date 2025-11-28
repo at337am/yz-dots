@@ -84,7 +84,8 @@ sudo pacman -S --needed --noconfirm \
     7zip \
     cargo-cache \
     xh \
-    base-devel
+    base-devel \
+    tree
 
 # hyprland 相关
 sudo pacman -S --needed --noconfirm \
