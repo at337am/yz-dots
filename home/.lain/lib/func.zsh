@@ -164,11 +164,10 @@ mkmv() {
 #  d
 # ------------
 
-d () {
-  if [[ -n "$1" ]]; then
-    dirs "$@"
-  else
+d() {
+    if [[ "$#" -ne 1 ]]; then
+        return 1
+    fi
+
     dirs -v | head -n 10
-  fi
 }
-compdef _dirs d
