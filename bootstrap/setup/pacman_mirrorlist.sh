@@ -47,6 +47,6 @@ echo "$mirrors" | sudo tee /etc/pacman.d/mirrorlist
 
 cat /etc/pacman.d/mirrorlist
 
-sudo pacman -Syyu
+sudo pacman -Syyu --noconfirm
 
 printf "Done.\n"
