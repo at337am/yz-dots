@@ -10,36 +10,19 @@ if ! command -v "yay" &> /dev/null; then
     exit 1
 fi
 
-yay -S --needed \
-    unimatrix-git \
-    terminal-rain-lightning
-
-# 额外安装一个 LTS 版本的内核 作为备用
-# 后续若不需要了, 直接运行 -Rns 卸载即可
+# 额外安装一个 LTS 版本的内核 作为备用, 后续若不需要了, 直接运行 -Rns 卸载即可
 sudo pacman -S --needed --noconfirm \
     linux-lts \
     linux-lts-headers
 
-# 更新引导程序
+# 别忘了更新引导程序
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 
+yay -S --needed \
+    unimatrix-git \
+    terminal-rain-lightning
 
-# todo:
-# 
-# 配置 GRUB 记住你上一次的选择:
-# 
-# sudo nvim /etc/default/grub
-# 
-# 将默认项设置为“已保存的项”
-# GRUB_DEFAULT=saved
-# 启用保存默认项功能
-# GRUB_SAVEDEFAULT=true
-# 禁用子菜单
-# GRUB_DISABLE_SUBMENU=y
-# 
-# 更新引导程序:
-# sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 # ----- bak -----
 # 
