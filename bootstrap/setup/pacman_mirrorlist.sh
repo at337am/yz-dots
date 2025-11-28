@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+# 镜像地址生成器: https://archlinux.org/mirrorlist
 
-# 备份当前镜像列表
-sudo cp -a /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
+set -euo pipefail
 
 mirrors='#
 # Arch Linux repository mirrorlist
@@ -40,6 +39,9 @@ Server = https://www.miraa.jp/archlinux/$repo/os/$arch
 Server = http://mirror.rain.ne.jp/archlinux/$repo/os/$arch
 Server = https://mirror.rain.ne.jp/archlinux/$repo/os/$arch
 '
+
+# 备份当前镜像列表
+sudo cp -a /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
 
 echo "$mirrors" | sudo tee /etc/pacman.d/mirrorlist
 
