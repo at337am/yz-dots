@@ -37,7 +37,7 @@ fi
 
 for source in "$@"; do
     if [[ -e "$source" ]]; then
-        printf "\033[34mPushing '%s' to %s...\033[0m\n" "$source" "$target_dir"
+        printf "\033[32mPushing '%s' to %s...\033[0m\n" "$source" "$target_dir"
         adb push "$source" "$target_dir"
     else
         printf "\033[31mError: '%s' does not exist\033[0m\n" "$source" >&2
