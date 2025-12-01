@@ -1,6 +1,8 @@
 # 以 Tab 分隔
 
 
+
+你党	nidang
 这么写	zhmexie
 这么写	zhemexie
 怎么写	zmxie
