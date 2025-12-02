@@ -23,14 +23,14 @@ case "$1" in
         geometry=$(slurp)
         if [[ -n "$geometry" ]]; then
             grim -g "$geometry" "$file_path"
-            notify "SC Saved"
+            # notify "SC Saved"
         else
             notify "SC Canc."
         fi
         ;;
     "full-save")
         grim "$file_path"
-        notify "SC Saved"
+        # notify "SC Saved"
         ;;
     "area-copy")
         geometry=$(slurp)
