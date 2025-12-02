@@ -48,6 +48,7 @@ for f in "${video_files[@]}"; do
         -ss 00:00:09 \
         -i "$f" \
         -vframes 1 \
+        -pix_fmt yuvj420p \
         -q:v 2 \
         -y "$output_dir/${base_name%.*}_thumb.jpg"
 
