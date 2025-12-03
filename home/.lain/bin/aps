@@ -37,7 +37,8 @@ fi
 
 for source in "$@"; do
     if [[ -e "$source" ]]; then
-        printf "\033[32mPushing '%s' to %s...\033[0m\n" "$source" "$target_dir"
+        file_size=$(du -sh --apparent-size "$source" | awk '{print $1}')
+        printf "\033[32mPushing '%s' [Size: %s] to %s...\033[0m\n" "$source" "$file_size" "$target_dir"
         adb push "$source" "$target_dir"
     else
         printf "\033[31mError: '%s' does not exist\033[0m\n" "$source" >&2
@@ -45,3 +46,5 @@ for source in "$@"; do
 done
 
 printf "Done.\n"
+
+notify-send "ADB push" "all files have been transferred."
