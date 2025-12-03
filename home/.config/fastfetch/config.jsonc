@@ -12,69 +12,69 @@
         "separator",
         {
             "type": "os",
-            "key": " OS",
+            "key": "OS",
             "keyColor": "blue"
         },
         {
             "type": "kernel",
-            "key": " Kernel",
+            "key": "Kernel",
             "keyColor": "blue"
         },
         {
             "type": "packages",
-            "key": " Packages",
+            "key": "Packages",
             "keyColor": "blue"
         },
         "break",
         {
             "type": "terminal",
-            "key": " Terminal",
+            "key": "Terminal",
             "keyColor": "magenta"
         },
         {
             "type": "shell",
-            "key": "󱆃 Shell",
+            "key": "Shell",
             "keyColor": "magenta"
         },
         {
             "type": "wm",
-            "key": "󱢅 WM",
+            "key": "WM",
             "keyColor": "magenta"
         },
         {
             "type": "uptime",
-            "key": "󱫞 Uptime",
+            "key": "Uptime",
             "keyColor": "magenta"
         },
         {
             "type": "battery",
-            "key": " Battery",
+            "key": "Battery",
             "keyColor": "magenta"
         },
         "break",
         {
             "type": "cpu",
-            "key": " CPU",
+            "key": "CPU",
             "keyColor": "green"
         }, 
         {
             "type": "gpu",
-            "key": " GPU",
+            "key": "GPU",
             "keyColor": "green"
         },
         {
             "type": "display",
-            "key": "󰃠 Display",
+            "key": "Display",
             "keyColor": "green"
         },
         {
             "type": "memory",
-            "key": " Memory",
+            "key": "Memory",
             "keyColor": "green"
         },
         {
             "type": "disk",
-            "key": " Disk",
+            "key": "Disk",
             "keyColor": "green"
         },
         "break",
