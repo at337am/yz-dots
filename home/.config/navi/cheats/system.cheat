@@ -39,13 +39,6 @@ uname -r
 
 
 
-% system, htop, pgrep
-
-# 监控指定名称的进程
-htop -p $(pgrep <ProcessName>)
-
-
-
 % system, font
 
 # 刷新字体缓存
