@@ -26,6 +26,14 @@ if [[ "$#" -eq 0 ]]; then
     exit 1
 fi
 
+# 检查参数指定的路径是否存在且不是符号链接
+for item in "$@"; do
+    if [[ ! -e "$item" && ! -L "$item" ]]; then
+        printf "Error: '%s' does not exist.\n" "$item" >&2
+        exit 1
+    fi
+done
+
 target_count=$#
 output_dir="."
 
@@ -42,11 +50,6 @@ if [[ "$target_count" -gt 1 ]]; then
 fi
 
 for item in "$@"; do
-    if [[ ! -e "$item" ]]; then
-        printf "\033[31mError: %s does not exist\033[0m\n" "$item" >&2
-        continue
-    fi
-
     # 获取基础文件名
     base_name="$(basename -- "$item")"
     archive_name="${base_name}${extension}"

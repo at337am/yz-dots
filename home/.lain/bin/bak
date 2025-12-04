@@ -25,10 +25,6 @@ for file in "$@"; do
 
     backup_file="${file}_$(date +%y%m%d_%H%M%S_%N).bak"
 
-    if [[ -e "$backup_file" || -L "$backup_file" ]]; then
-        backup_file+=".$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 6)"
-    fi
-
     if cp -a -- "$file" "$backup_file"; then
         printf "\033[32mBacked up -> %s\033[0m\n" "$backup_file"
     else
