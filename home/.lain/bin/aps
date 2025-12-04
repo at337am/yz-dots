@@ -38,10 +38,11 @@ fi
 for source in "$@"; do
     if [[ -e "$source" ]]; then
         file_size=$(du -sh --apparent-size "$source" | awk '{print $1}')
-        printf "\033[32mPushing '%s' [Size: %s] to %s...\033[0m\n" "$source" "$file_size" "$target_dir"
+        printf "\033[34mPushing: %s  Size: %s\033[0m\n" "$source" "$file_size"
         adb push "$source" "$target_dir"
+        printf "\n"
     else
-        printf "\033[31mError: '%s' does not exist\033[0m\n" "$source" >&2
+        printf "\033[31mError: '%s' does not exist.\033[0m\n" "$source" >&2
     fi
 done
 
