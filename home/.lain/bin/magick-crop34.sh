@@ -35,7 +35,7 @@ fi
 # 定义输出路径
 dirname=$(dirname "$IMG_PATH")
 filename=$(basename "${IMG_PATH%.*}")
-output_path="${dirname}/${filename}_3x4.png"
+output_path="${dirname}/${filename}_crop34.png"
 
 # --- 开始执行 ---
 
