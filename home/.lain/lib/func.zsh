@@ -80,7 +80,7 @@ mkcd() {
         return 1
     fi
 
-    if [[ -e "$1" ]]; then
+    if [[ -e "$1" || -L "$1" ]]; then
         printf "Error: '%s' already exists.\n" "$1" >&2
         return 1
     fi
