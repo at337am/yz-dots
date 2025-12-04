@@ -3,5 +3,5 @@
 status_file="/tmp/recorder_status"
 
 if [[ -f "$status_file" ]]; then
-    echo "🩷 REC"
+    echo "🩵 REC"
 fi
