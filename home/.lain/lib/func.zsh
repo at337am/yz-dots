@@ -1,7 +1,3 @@
-# ------------
-#  rm
-# ------------
-
 # 用于替代默认的 rm 命令, 实现"回收站式删除"
 # 注意: 不要在 U 盘挂载目录使用, 直接 sudo rm 就行了
 rm() {
@@ -65,27 +61,15 @@ rm() {
     return $move_failed
 }
 
-# ------------
-#  cl_trash
-# ------------
-
 # 用于清空自定义回收站目录中的所有内容
 cl_trash() {
-    # 若回收站目录存在且为空, 则提示用户并结束函数
     if [[ -d "$TRASH_DIR" && -z "$(find "$TRASH_DIR" -mindepth 1 -print -quit)" ]]; then
         printf "Trash is clean.\n"
         return 0
     fi
 
-    # 强制并递归删除回收站目录中的所有文件和隐藏文件
-    # command 表示调用系统原始的 rm 命令
-    # 使用通配符 *(D) 以确保包含隐藏项（如以.开头的文件）
     command rm -rfv -- "${TRASH_DIR}/"*(D)
 }
-
-# ------------
-#  mkcd
-# ------------
 
 # 创建一个新目录, 并进入该目录
 # 若新目录已存在, 则不执行
@@ -96,19 +80,13 @@ mkcd() {
         return 1
     fi
 
-    # 判断目标目录是否已存在, 若存在则报错并退出
     if [[ -e "$1" ]]; then
         printf "Error: '%s' already exists.\n" "$1" >&2
         return 1
     fi
 
-    # 创建指定目录（若不存在则自动递归创建）, 成功后立即进入该目录
     mkdir -p -- "$1" && cd -- "$1"
 }
-
-# ------------
-#  mkmv
-# ------------
 
 # 创建一个新目录, 并将一个或多个指定文件或目录移动到该目录中
 # 若新目录已存在, 则不执行
@@ -148,8 +126,7 @@ mkmv() {
         fi
     done
 
-    # 创建目标目录（支持递归创建）, 并将所有源文件/目录移动到该目录中
-    # 成功时打印操作结果, 否则提示失败原因（如权限不足）
+    # 创建目标目录 (支持递归创建), 并将所有源文件/目录移动到该目录中
     if mkdir -p "$new_dir" && mv -- "${paths[@]}" "$new_dir/"; then
         printf "\033[32mmkmv: Created %s/ and moved %d item(s) inside.\033[0m\n" "$new_dir" "${#paths[@]}"
         return 0
@@ -158,10 +135,6 @@ mkmv() {
         return 1
     fi
 }
-
-# ------------
-#  bak
-# ------------
 
 # 备份一个文件
 bak() {
@@ -178,19 +151,8 @@ bak() {
         return 1
     fi
 
-    local backup_file="${source_file}_$(date +%y%m%d_%H%M%S_%N).bak"
-
-    if cp -a -- "$source_file" "$backup_file"; then
-        printf "\033[32mBacked up -> %s\033[0m\n" "$backup_file"
-    else
-        printf "\033[31mError: Failed to backup '%s'\033[0m\n" "$source_file" >&2
-        return 1
-    fi
+    cp -a -- "$source_file" "${source_file}_$(date +%y%m%d_%H%M%S_%N).bak"
 }
-
-# ------------
-#  d
-# ------------
 
 d() {
     if [[ "$#" -ne 0 ]]; then
