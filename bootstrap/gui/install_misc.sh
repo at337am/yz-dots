@@ -18,7 +18,7 @@ sudo pacman -S --needed --noconfirm \
 # 别忘了更新引导程序
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
-
+# 一些有趣的东西
 yay -S --needed \
     unimatrix-git \
     terminal-rain-lightning
