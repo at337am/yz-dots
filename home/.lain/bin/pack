@@ -34,10 +34,10 @@ for item in "$@"; do
     fi
 done
 
-target_count=$#
 output_dir="."
 
-if [[ "$target_count" -gt 1 ]]; then
+# 若有多个目标, 则输出到新的目录中
+if [[ "$#" -gt 1 ]]; then
     dir_name="packed_result"
 
     if mkdir -p "$dir_name"; then
