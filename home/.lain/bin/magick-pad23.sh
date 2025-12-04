@@ -29,10 +29,11 @@ output_path="${dirname}/${filename}_pad23.png"
 
 # --- 开始执行 ---
 
+# 0.85 或 0.88
 magick "$IMG_PATH" \
     -background white \
     -gravity center \
-    -extent "%[fx:w/0.9]x%[fx:(w/0.9)*1.5]" \
+    -extent "%[fx:w/0.85]x%[fx:(w/0.85)*1.5]" \
     "$output_path"
 
 # 最后输出完成信息
