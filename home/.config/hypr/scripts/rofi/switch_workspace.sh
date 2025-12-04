@@ -5,9 +5,7 @@ if pgrep -x rofi > /dev/null; then
     exit 0
 fi
 
-# rofi -show window -show-icons -window-format '{t}'
-
-workspaces=$(hyprctl workspaces -j | jq -r 'sort_by(.id) | .[] | select(.name | startswith("special:") | not) | "\(.id)\t\(.lastwindowtitle)"')
+workspaces=$(hyprctl workspaces -j | jq -r 'sort_by(.id) | .[] | "\(.name)\t\(.lastwindowtitle)"')
 
 chosen_index=$(echo -e "$workspaces" | rofi -dmenu -i -p "workspaces" -format 'i' -no-show-icons -kb-accept-entry 'Return' -theme ~/.config/rofi/themes/switch_workspace.rasi)
 
@@ -16,6 +14,7 @@ if [ -z "$chosen_index" ]; then
 fi
 
 target_line=$(echo -e "$workspaces" | sed -n "$((chosen_index + 1))p")
-workspace_id=$(echo "$target_line" | awk '{print $1}')
 
-hyprctl dispatch workspace "$workspace_id"
+workspace_name=$(echo "$target_line" | cut -f1)
+
+hyprctl dispatch workspace "$workspace_name"
