@@ -90,16 +90,15 @@ cl_trash() {
 # 创建一个新目录, 并进入该目录
 # 若新目录已存在, 则不执行
 mkcd() {
-    # 如果未提供目录名称参数, 则提示错误并退出
-    if [[ -z "$1" ]]; then
-        printf "mkcd: Nothing to create, buddy.\n" >&2
+    if [[ "$#" -ne 1 ]]; then
+        printf "Error: Invalid arguments.\n" >&2
         printf "Usage: mkcd <new-dir>\n" >&2
         return 1
     fi
 
     # 判断目标目录是否已存在, 若存在则报错并退出
     if [[ -e "$1" ]]; then
-        printf "Error: Target '%s' already exists.\n" "$1" >&2
+        printf "Error: '%s' already exists.\n" "$1" >&2
         return 1
     fi
 
@@ -156,6 +155,35 @@ mkmv() {
         return 0
     else
         printf "Error: Failed to create directory or move items. Check permissions.\n" >&2
+        return 1
+    fi
+}
+
+# ------------
+#  bak
+# ------------
+
+# 备份一个文件
+bak() {
+    if [[ "$#" -ne 1 ]]; then
+        printf "Error: Invalid arguments.\n" >&2
+        printf "Usage: bak <file>\n" >&2
+        return 1
+    fi
+
+    local source_file="$1"
+
+    if [[ ! -f "$source_file" && ! -L "$source_file" ]]; then
+        printf "\033[31mError: '%s' is not a regular file\033[0m\n" "$source_file" >&2
+        return 1
+    fi
+
+    local backup_file="${source_file}_$(date +%y%m%d_%H%M%S_%N).bak"
+
+    if cp -a -- "$source_file" "$backup_file"; then
+        printf "\033[32mBacked up -> %s\033[0m\n" "$backup_file"
+    else
+        printf "\033[31mError: Failed to backup '%s'\033[0m\n" "$source_file" >&2
         return 1
     fi
 }
