@@ -37,7 +37,7 @@ case "$1" in
         notify-send -a "volume" \
                     -u low \
                     -h string:x-dunst-stack-tag:volume_notif \
-                    "😪   ${target}%"
+                    "🍁  ${target}%"
 
         wpctl set-volume $SINK "${target}%"
         ;;
@@ -54,7 +54,7 @@ case "$1" in
         notify-send -a "volume" \
                     -u low \
                     -h string:x-dunst-stack-tag:volume_notif \
-                    "😪   ${target}%"
+                    "🍁  ${target}%"
 
         wpctl set-volume $SINK "${target}%"
         ;;
@@ -69,7 +69,7 @@ case "$1" in
             notify-send -a "volume" \
                         -u low \
                         -h string:x-dunst-stack-tag:volume_notif \
-                        "🙉   Muted"
+                        "🙉  Muted"
         else
             notify-send -a "volume" \
                         -u low \
