@@ -26,11 +26,11 @@ if [[ "$#" -eq 0 ]]; then
     exit 1
 fi
 
-target_count="$#"
+target_count=$#
 output_dir="."
 
 if [[ "$target_count" -gt 1 ]]; then
-    dir_name="packed_$(date +%Y%m%d_%H%M%S)"
+    dir_name="packed_result"
 
     if mkdir -p "$dir_name"; then
         output_dir="$dir_name"
