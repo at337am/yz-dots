@@ -23,8 +23,11 @@ yay -S --needed \
     unimatrix-git \
     terminal-rain-lightning
 
+sudo pacman -S --needed --noconfirm \
+    obs-studio
+
+
 
 # ----- bak -----
 # 
 # sudo pacman -S mgba-qt
-# sudo pacman -S obs-studio
