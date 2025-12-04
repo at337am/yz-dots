@@ -16,3 +16,10 @@ fd -t f --exclude 'SHA256SUMS' -x sha256sum {} > SHA256SUMS
 
 # 校验哈希
 sha256sum -c SHA256SUMS
+
+
+
+% sha256sum, sort
+
+# 找出重复的哈希值
+sha256sum *png | sort | uniq -w 64 -d
