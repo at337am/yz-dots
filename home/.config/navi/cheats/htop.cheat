@@ -1,4 +1,0 @@
-% htop, pgrep
-
-# 显示指定名称的进程
-htop -p $(pgrep "hello")
