@@ -8,4 +8,4 @@ mpv --no-video 'https://youtu.be/jfKfPfyJRdk'
 % mpv, images
 
 # 以幻灯片模式播放目录中的所有图片
-mpv --loop-file=no --image-display-duration=0.8 .
+mpv --image-display-duration=0.8 .
