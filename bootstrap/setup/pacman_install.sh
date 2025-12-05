@@ -11,7 +11,8 @@ sudo pacman -S --needed --noconfirm \
     pipewire-jack \
     pipewire-pulse \
     pipewire-alsa \
-    wireplumber
+    wireplumber \
+    libva-utils
 
 # 图形界面配置相关
 sudo pacman -S --needed --noconfirm \
