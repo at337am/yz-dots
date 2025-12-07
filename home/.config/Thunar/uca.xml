@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon></icon>
+	<name>Copy Path</name>
+	<submenu></submenu>
+	<unique-id>1763502027299580-1</unique-id>
+	<command>echo -n %f | wl-copy</command>
+	<description>Copy the absolute path to the clipboard</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+</actions>

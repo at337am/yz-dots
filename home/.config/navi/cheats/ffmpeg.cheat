@@ -1,25 +1,23 @@
 % ffmpeg, clip
 
-# 截取单个视频片段
-ffmpeg -ss 00:00:30 -i input.mp4 -t 00:00:10 -c copy clip.mp4
+# 模糊裁剪 (时间是对的, 但会有兼容问题, 适合快速预览)
+ffmpeg -ss 00:00:00 -i input.mp4 -t 01:30 -c copy clip.mp4
+
+# 模糊裁剪 (不准确的时间位置)
+ffmpeg -ss 00:00:00 -i input.mp4 -t 01:30 -c copy -avoid_negative_ts make_zero clip.mp4
+
+# 精确裁剪 (慢, 体积小, 画质会更好一些)
+ffmpeg -ss 00:00:00 -i input.mp4 -t 01:30 -c:v libx264 -crf 18 -preset slow -c:a copy clip.mp4
+
+# 精确裁剪 (快, 体积会很大)
+ffmpeg -ss 00:00:00 -i input.mp4 -t 01:30 -c:v libx264 -crf 18 -preset ultrafast -c:a copy clip.mp4
+
+# 将视频循环 5 次
+ffmpeg -stream_loop 4 -i input.mp4 -c copy output.mp4
 
 
 
-% ffmpeg, audio
+% ffmpeg, video
 
-# 去除音频流
-ffmpeg -i input.mp4 -c:v copy -an noaudio.mp4
-
-
-
-% ffmpeg, flac
-
-# 将 封面 和 歌词 写入音乐文件
-ffmpeg -i [input.flac] \
-    -i [封面.jpg] \
-    -map 0:a \
-    -map 1:v \
-    -c copy \
-    -disposition:v attached_pic \
-    -metadata "LYRICS=$(cat [合并歌词.lrc])" \
-    -y [output.flac]
+# 调整视频播放速度 (1.25x)
+ffmpeg -i input.mp4 -vf "setpts=PTS/1.25" -af "atempo=1.25" -c:v libx264 -crf 18 -preset slow -c:a aac -b:a 256k output.mp4

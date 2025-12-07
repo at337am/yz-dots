@@ -1,0 +1,7 @@
+% fastfetch
+
+# 指定操作系统 logo
+fastfetch --logo nixos
+
+# 指定图片 logo
+fastfetch --logo-type kitty --logo [images] --logo-width 32

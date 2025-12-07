@@ -1,0 +1,25 @@
+% sha256sum
+
+# 生成单个文件的哈希
+sha256sum a.txt > a.txt.sha256
+
+
+
+% sha256sum, fd
+
+# 在当前路径下, 遍历所有文件并生成哈希清单 SHA256SUMS
+fd -IH -t f --exclude 'SHA256SUMS' -x sha256sum {} > SHA256SUMS
+
+
+
+% sha256sum, check
+
+# 校验哈希
+sha256sum -c SHA256SUMS
+
+
+
+% sha256sum, search
+
+# 找出重复的哈希值
+sha256sum *png | sort | uniq -w 64 -d

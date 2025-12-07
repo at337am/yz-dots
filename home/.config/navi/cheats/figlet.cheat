@@ -1,0 +1,4 @@
+% figlet
+
+# 生成 ASCII 字体
+figlet "hello"

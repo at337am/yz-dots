@@ -1,0 +1,10 @@
+% tar
+
+# 查看归档内容
+tar -tf xxx
+
+# 查看归档内容 (详细)
+tar -tvf xxx
+
+# 将归档解压到指定目录
+tar -xvf xxx -C xxx

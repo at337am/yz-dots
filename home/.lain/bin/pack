@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+
+# -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
+# 脚本用途：
+# 该脚本用于将指定的文件或目录打包为 tar 归档文件。
+# 功能说明：
+# 1. 默认生成不压缩的 .tar 文件，可使用 -z 或 --gzip 参数生成压缩归档 (.tar.gz)。
+# 2. 检查目标文件或目录是否存在，避免覆盖已有归档文件。
+# 3. 若只有一个目标，在当前目录生成；若有多个目标，自动新建目录并打包到其中。
+# -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
+
+tar_options="-cf"
+extension=".tar"
+
+# 处理选项参数
+if [[ "$1" == "-z" || "$1" == "--gzip" ]]; then
+    tar_options="-czf"
+    extension=".tar.gz"
+    shift
+fi
+
+# 检查剩余参数
+if [[ "$#" -eq 0 ]]; then
+    printf "Error: Invalid arguments.\n" >&2
+    printf "Usage: %s [-z|--gzip] <path>...\n" "$(basename "$0")" >&2
+    exit 1
+fi
+
+# 检查参数指定的路径是否存在且不是符号链接
+for item in "$@"; do
+    if [[ ! -e "$item" && ! -L "$item" ]]; then
+        printf "Error: '%s' does not exist.\n" "$item" >&2
+        exit 1
+    fi
+done
+
+output_dir="."
+
+# 若有多个目标, 则输出到新的目录中
+if [[ "$#" -gt 1 ]]; then
+    dir_name="packed_result"
+
+    if mkdir -p "$dir_name"; then
+        output_dir="$dir_name"
+        printf "Output directory created: %s\n" "$output_dir"
+    else
+        printf "\033[31mError: Failed to create output directory %s\033[0m\n" "$dir_name" >&2
+        exit 1
+    fi
+fi
+
+for item in "$@"; do
+    # 获取基础文件名
+    base_name="$(basename -- "$item")"
+    archive_name="${base_name}${extension}"
+
+    full_output_path="${output_dir}/${archive_name}"
+
+    if [[ -e "$full_output_path" ]]; then
+        printf "\033[31mError: %s already exists\033[0m\n" "${full_output_path}" >&2
+        continue
+    fi
+
+    # 执行打包命令
+    if tar "${tar_options}" "${full_output_path}" -- "$item"; then
+        printf "\033[32mPacked -> %s\033[0m\n" "${full_output_path}"
+    else
+        printf "\033[31mError: Failed to pack %s\033[0m\n" "$item" >&2
+        continue
+    fi
+done

@@ -1,4 +1,7 @@
-# Autostart Hyprland on TTY1 login
-if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
-    exec dbus-run-session Hyprland
+# I hope your heart is always free.
+#
+if uwsm check may-start; then
+    export LANG=zh_CN.UTF-8
+    export LANGUAGE=zh_CN:en_US
+    exec uwsm start hyprland.desktop
 fi

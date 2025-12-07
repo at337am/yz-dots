@@ -1,13 +1,37 @@
 # 以 Tab 分隔
 
-李知恩	lizhien
-李圣经	lishenjin
-李圣经	lishengjing
 
 
-
+可能	kn
+情况	qk
+合集	heji
+语法	yufa
+全称	quanchen
+成为	chenwei
+成为	chengwei
+真实	zhengshi
+真实	zhenshi
+你党	nidang
+这么写	zhmexie
+这么写	zhemexie
+怎么写	zmxie
+这个	zhege
+这个	zhge
+语法	yufa
+改进	gaijin
+改进	gaijing
+时间	shijian
+挂载	guazai
 好	h
+了	l
+了	le
+吗	m
+好了	hl
 好吗	hm
+好了吗	hlm
+么	me
+话	hua
+命令	ml
 笑死	xs
 笑死我了	xswl
 刚刚	gg
@@ -15,6 +39,7 @@
 什么	sm
 这是什么	zssm
 不知道	bzd
+有没有	ymy
 小红书	xhs
 何意味	hyw
 什么情况	smqk
@@ -131,6 +156,12 @@ ChatGPT	chatgpt
 code	code
 todo	todo
 todo	tood
+
+
+
+李知恩	lizhien
+李圣经	lishenjin
+李圣经	lishengjing
 
 
 

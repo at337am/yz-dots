@@ -1,0 +1,58 @@
+% disk, du
+
+# 列出当前路径下的文件/目录大小 (深度 1)
+du -ah -d 1 .
+
+# 列出当前路径下的文件/目录大小 (深度 1) - 显示实际数据量, 而非数据块
+du -ah -d 1 --apparent-size .
+
+# 只显示当前路径的总磁盘占用大小
+du -sh .
+
+
+
+% disk, lsblk
+
+# 列出所有块设备以及文件系统信息 (包含未挂载的设备)
+lsblk -pf
+
+
+
+% disk, fdisk
+
+# 列出所有磁盘及其分区表 (包含未挂载的设备)
+sudo fdisk -l
+
+
+
+% disk, df
+
+# 显示磁盘空间使用情况 (仅显示已挂载) - df
+df -hT
+
+
+
+% disk, duf
+
+# 显示磁盘空间使用情况 (仅显示已挂载) - duf
+duf
+
+
+
+% disk, udisksctl
+
+# 挂载 U 盘
+udisksctl mount -b /dev/sda1
+
+# 卸载 U 盘
+udisksctl unmount -b /dev/sda1
+
+# 显示状态
+udisksctl status
+
+
+
+% disk, fuser
+
+# 显示挂载目录被哪些进程占用
+sudo fuser -v /run/media/yz/EUNU

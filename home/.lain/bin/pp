@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+# -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
+# 脚本用途：
+# 该脚本用于在 Hyprland 环境下设置桌面壁纸。
+# 用户需提供一个 JPG 或 PNG 格式的图片文件路径作为参数。
+# 脚本会检查依赖、验证文件是否存在及格式，并将指定图片设置为当前桌面壁纸。
+# -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
+
+# 依赖检查
+if ! command -v "hyprctl" &> /dev/null; then
+    printf "Error: Missing dependency: hyprctl\n" >&2
+    exit 1
+fi
+
+if [[ "$#" -ne 1 ]]; then
+    printf "Error: Invalid argument.\n" >&2
+    printf "Usage: %s <path-to-wallpaper>\n" "$(basename "$0")" >&2
+    exit 1
+fi
+
+if [[ ! -f "$1" ]]; then
+    printf "Error: %s does not exist.\n" "$1" >&2
+    exit 1
+fi
+
+# 检查文件扩展名是否为 jpg 或 png
+if (shopt -s nocasematch; [[ ! "$1" =~ \.(jpg|jpeg|png)$ ]]); then
+    printf "Error: Invalid file type. Only JPG and PNG are supported: %s\n" "$1" >&2
+    exit 1
+fi
+shopt -u nocasematch
+
+WALLPAPER_PATH=$(realpath "$1")
+
+hyprctl hyprpaper preload "$WALLPAPER_PATH"
+hyprctl hyprpaper wallpaper ",$WALLPAPER_PATH"
+
+printf "Wallpaper has been changed to: %s\n" "$WALLPAPER_PATH"

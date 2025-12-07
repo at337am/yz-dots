@@ -1,0 +1,13 @@
+% gpu-screen-recorder
+
+# 列出可用窗口/屏幕/名称
+gpu-screen-recorder --list-capture-options
+
+# 列出音频设备
+gpu-screen-recorder --list-audio-devices
+
+# 显示系统支持的编码器、捕获方式等
+gpu-screen-recorder --info
+
+# 列出已运行可录音的应用
+gpu-screen-recorder --list-application-audio

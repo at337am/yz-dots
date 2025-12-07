@@ -14,6 +14,7 @@ window#waybar {
 #clock,
 #workspaces,
 #window,
+#custom-recorder,
 #tray,
 #pulseaudio,
 #backlight,
@@ -43,6 +44,7 @@ window#waybar {
     color: #e5e5e5;
 }
 
+#battery.charging,
 #battery.plugged {
     color: #81E7AF;
 }
@@ -51,4 +53,19 @@ window#waybar {
 #battery.warning:not(.plugged),
 #battery.critical:not(.plugged) {
     color: #FF8282;
+}
+
+#custom-recorder {
+    color: #e5e5e5;
+    animation-name: blink;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        color: rgba(0, 0, 0, 0);
+    }
 }

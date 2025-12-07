@@ -1,0 +1,40 @@
+% gsettings, gtk, get, font
+
+# 查看当前的字体样式
+gsettings get org.gnome.desktop.interface font-name
+
+# 查看当前的微调
+gsettings get org.gnome.desktop.interface font-hinting
+
+# 查看当前的字体抗锯齿
+gsettings get org.gnome.desktop.interface font-antialiasing
+
+# 查看当前的子像素顺序
+gsettings get org.gnome.desktop.interface font-rgba-order
+
+# 查看当前的文本缩放因子
+gsettings get org.gnome.desktop.interface text-scaling-factor
+
+
+
+% gsettings, gtk, get, cursor
+
+# 查看当前光标主题
+gsettings get org.gnome.desktop.interface cursor-theme
+
+# 查看当前光标大小
+gsettings get org.gnome.desktop.interface cursor-size
+
+
+
+% gsettings, gtk, get, icon-theme
+
+# 查看当前图标主题
+gsettings get org.gnome.desktop.interface icon-theme
+
+
+
+% gsettings, gtk, get, gtk-theme
+
+# 查看当前的 GTK 主题
+gsettings get org.gnome.desktop.interface gtk-theme

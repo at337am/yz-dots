@@ -37,7 +37,7 @@ case "$1" in
         notify-send -a "volume" \
                     -u low \
                     -h string:x-dunst-stack-tag:volume_notif \
-                    "Volume: ${target}%"
+                    "🍁  ${target}%"
 
         wpctl set-volume $SINK "${target}%"
         ;;
@@ -54,7 +54,7 @@ case "$1" in
         notify-send -a "volume" \
                     -u low \
                     -h string:x-dunst-stack-tag:volume_notif \
-                    "Volume: ${target}%"
+                    "🍁  ${target}%"
 
         wpctl set-volume $SINK "${target}%"
         ;;
@@ -71,12 +71,10 @@ case "$1" in
                         -h string:x-dunst-stack-tag:volume_notif \
                         "🙉  Muted"
         else
-            # 获取当前音量用于显示
-            volume=$(get_volume)
             notify-send -a "volume" \
                         -u low \
                         -h string:x-dunst-stack-tag:volume_notif \
-                        "Unmute ($volume%)"
+                        "Unmute"
         fi
         ;;
 esac

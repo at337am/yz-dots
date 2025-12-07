@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+# -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
+# 脚本用途：
+# 该脚本用于将一个或多个本地文件路径以 URI 形式复制到 Wayland 剪贴板。
+# 功能说明：
+# 1. 验证输入文件是否为普通文件。
+# 2. 将文件路径转换为绝对 URI（file://）格式。
+# 3. 将生成的 URI 列表复制到剪贴板，并在终端输出。
+# -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
+
+if ! command -v "wl-copy" &> /dev/null; then
+    printf "Error: Missing dependency: wl-copy\n" >&2
+    exit 1
+fi
+
+if [[ "$#" -eq 0 ]]; then
+    printf "Error: Invalid arguments.\n" >&2
+    printf "Usage: %s <file>...\n" "$(basename "$0")" >&2
+    exit 1
+fi
+
+uri_list=""
+
+for file in "$@"; do
+    if [[ ! -f "$file" ]]; then
+        printf "\033[31mError: '%s' is not a regular file.\033[0m\n" "$file" >&2
+        exit 1
+    fi
+
+    # 获取文件的绝对路径
+    real_path=$(realpath "$file")
+    uri_list="${uri_list}file://${real_path}\n"
+done
+
+if [[ -n "$uri_list" ]]; then
+    printf "$uri_list" | wl-copy --type text/uri-list
+    printf "Copied:\n"
+    printf "$uri_list"
+fi

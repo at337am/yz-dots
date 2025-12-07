@@ -1,13 +1,7 @@
-% grep, rg, doc
+% grep, rg, search
 
-# 包含被忽略的文件
-rg --no-ignore
-
-# 包含隐藏文件 (--hidden)
-rg -.
-
-# 不区分大小写 (--ignore-case)
-rg -i
+# 搜索内容 (包含忽略, 不区分大小写, 包含隐藏)
+rg --no-ignore -i.
 
 # 只列出匹配的文件名 (--files-with-matches)
 rg -l
@@ -15,7 +9,7 @@ rg -l
 # 每个匹配结果单独占一行输出 (--only-matching)
 rg -o
 
-# 指定遍历深度为 1
+# 指定查找深度为 1
 rg --max-depth 1
 
 
@@ -23,5 +17,4 @@ rg --max-depth 1
 % grep, rg, count
 
 # 统计某个文件中, 匹配的个数
-$ filename: fd --no-ignore --hidden --type f | fzf
-rg --no-ignore --hidden -o "https:" <filename> | wc -l
+rg --no-ignore --hidden -o "xxx" [filename] | wc -l

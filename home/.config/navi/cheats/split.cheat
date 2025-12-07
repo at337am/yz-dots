@@ -1,0 +1,4 @@
+% split
+
+# 将一个文件拆分为多个分片 (指定数量和输出名)
+split -d -n 4 input.tar input.tar_part_

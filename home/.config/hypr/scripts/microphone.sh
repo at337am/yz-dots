@@ -16,10 +16,10 @@ if is_mic_muted; then
     notify-send -a "microphone" \
                 -u low \
                 -h string:x-dunst-stack-tag:volume_notif \
-                "🫢  Mic Off"
+                "Mic Off"
 else
     notify-send -a "microphone" \
                 -u low \
                 -h string:x-dunst-stack-tag:volume_notif \
-                "😍  Mic On"
+                "Mic On"
 fi

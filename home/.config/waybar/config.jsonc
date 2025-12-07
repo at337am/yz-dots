@@ -8,15 +8,7 @@
 
     "modules-center": ["hyprland/window"],
 
-    "modules-right": ["tray", "pulseaudio", "backlight", "battery"],
-
-    // 时钟
-    // "custom/clock": {
-    //     "tooltip": false,
-    //     "interval": 60,
-    //     "exec": "LC_TIME=en_US.UTF-8 date '+%a %b %-d %-I:%M %p'"
-    //     // "exec": "LC_TIME=en_US.UTF-8 date '+%a, %b %-d, %-I:%M%P'"
-    // },
+    "modules-right": ["custom/recorder", "tray", "pulseaudio", "backlight", "battery"],
 
     "clock": {
         "tooltip": false,
@@ -51,6 +43,15 @@
         "reverse-direction": true   // 倒序
     },
 
+    // 自定义录屏脚本提示
+    "custom/recorder": {
+        "tooltip": false,
+        "format": "{}",
+        "signal": 8,
+        "exec": "$HOME/.config/waybar/scripts/check_recorder.sh",
+        "on-click": "$HOME/.config/hypr/scripts/recorder.sh"
+    },
+
     // 音量
     "pulseaudio": {
         "tooltip": false,
@@ -65,6 +66,7 @@
         "format": "󰃠 {percent}%"
     },
 
+    // 电量
     "battery": {
         "tooltip": false,
         "interval": 60, // 每60秒更新一次信息
@@ -73,9 +75,8 @@
             "critical": 15
         },
         "format": "{icon} {capacity}%",
-        // "format-charging": " {capacity}%", // 充电状态时
-        "format-plugged": "󰂄 {capacity}%", // 已连接电源, 但电池没有在“充电中” 的情况下被触发, 比如电池已充满的时候
-        // "format-alt": "{icon} {time}", // 右键点击时，显示剩余充满时间 (充电中), 左键点击时显示剩余可使用时间 (未充电)
+        "format-charging": "󰂄 {capacity}%", // 已接上电源, 且电池正在充电
+        "format-plugged": " {capacity}%",  // 已接上电源, 但不一定在充电中, 比如电池已充满的时候, 或在阈值的时候
         "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"] // 从低到高的电量图标 (fa-battery-empty to fa-battery-full)
     }
 }

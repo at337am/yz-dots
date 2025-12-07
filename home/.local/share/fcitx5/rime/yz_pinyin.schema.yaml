@@ -42,15 +42,25 @@ speller:
   alphabet: zyxwvutsrqponmlkjihgfedcba
   delimiter: " '"
   algebra:
+    # 缩写规则
     - abbrev/^([a-z]).+$/$1/
     - abbrev/^([zcs]h).+$/$1/
+
+    # 派生规则
+    - derive/^([nl])ve$/$1ue/
     - derive/ao$/oa/
-    - derive/en$/eng/
     - derive/eng$/en/
-    - derive/in$/ing/
     - derive/ing$/in/
-    - derive/on$/ong/
     - derive/ong$/on/
+    # - derive/en$/eng/
+    # - derive/in$/ing/
+    # - derive/on$/ong/
+    - derive/^mei$/me/
+    - derive/^zai$/zia/
+    - derive/^hui$/hiu/
+    - derive/uan$/aun/
+    - derive/ang$/nag/
+    - derive/ou$/o/
 
 # 使用 "yz_pinyin.dict.yaml" 中定义的词库
 translator:

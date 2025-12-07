@@ -1,1 +1,0 @@
-../../bootstrap/gui/03_symlinks.sh

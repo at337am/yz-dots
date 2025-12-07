@@ -1,0 +1,59 @@
+% system, last
+
+# 显示系统重启历史 (倒序输出)
+last reboot -F | tac
+
+# 显示所有登录记录
+last
+
+
+
+% system, user, who
+
+# 显示当前已登录的用户 (w)
+who
+
+
+
+% system, efibootmgr
+
+# 查看当前正在使用的启动项
+efibootmgr
+
+
+
+% system, uptime
+
+# 显示系统启动时间
+uptime -s
+
+# 显示系统运行时间
+uptime -p
+
+
+
+% system, uname, kernel
+
+# 显示当前运行的内核版本
+uname -r
+
+
+
+% system, font
+
+# 刷新字体缓存
+fc-cache -fv
+
+
+
+% system, font, search
+
+# 查找已安装的字体
+fc-list : family | fzf
+
+
+
+% system, language
+
+# 查看当前系统语言
+locale

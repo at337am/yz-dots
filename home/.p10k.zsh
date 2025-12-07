@@ -46,16 +46,17 @@
   local green='#81E7AF'
   local blue='#A8CBE2'
 
+  # 注释掉下面左右两个 newline 就变成显示在一行 prompt 了 
   # Left prompt segments.
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
     context                   # user@host
     dir                       # current directory
+    virtualenv                # python virtual environment
     vcs                       # git status
     command_execution_time    # previous command duration
     # =========================[ Line #2 ]=========================
     newline                   # \n
-    virtualenv                # python virtual environment
     prompt_char               # prompt symbol
   )
 
@@ -116,7 +117,7 @@
   # typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE="%F{$grey}%n@%m%f"
 
   # custom, 普通用户, 显示效果: host
-  # typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE="%F{$green}%m%f"
+  # typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE="%F{$grey}%m%f"
 
   # Show previous command duration only if it's >= 5s.
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=5
@@ -152,13 +153,13 @@
   # Show '*' when there are staged, unstaged or untracked files.
   typeset -g POWERLEVEL9K_VCS_DIRTY_ICON='*'
   # Show '⇣' if local branch is behind remote.
-  typeset -g POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON=':'
+  typeset -g POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON=':⇣'
   # Show '⇡' if local branch is ahead of remote.
-  typeset -g POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON=':'
+  typeset -g POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON=':⇡'
   # Don't show the number of commits next to the ahead/behind arrows.
   typeset -g POWERLEVEL9K_VCS_{COMMITS_AHEAD,COMMITS_BEHIND}_MAX_NUM=1
   # Remove space between '⇣' and '⇡' and all trailing spaces.
-  typeset -g POWERLEVEL9K_VCS_CONTENT_EXPANSION='${${${P9K_CONTENT/* :/}// }//:/ }'
+  typeset -g POWERLEVEL9K_VCS_CONTENT_EXPANSION='${${${P9K_CONTENT/⇣* :⇡/⇣⇡}// }//:/ }'
 
   # Grey current time.
   typeset -g POWERLEVEL9K_TIME_FOREGROUND=$grey

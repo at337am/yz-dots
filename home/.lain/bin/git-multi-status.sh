@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+
+# -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
+# 脚本用途：
+# 该脚本用于批量检查多个 Git 仓库的工作区状态。
+# 功能说明：
+# 1. 遍历预设的项目目录列表。
+# 2. 检查每个目录是否为 Git 仓库。
+# 3. 输出仓库状态。
+# 4. 输出结果使用彩色标记，方便快速识别。
+# -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
+
+# 依赖检查
+if ! command -v "git" &> /dev/null; then
+    printf "Error: Missing dependency: git\n" >&2
+    exit 1
+fi
+
+PROJECT_PATHS=(
+    "$HOME/Documents/notes"
+    "$HOME/Documents/memos"
+    "/workspace/dev/yz-dots"
+    "/workspace/dev/skit"
+    "/workspace/dev/raindrop"
+)
+
+C_BLUE="\033[0;34m"
+C_GREEN="\033[0;32m"
+C_YELLOW="\033[0;33m"
+C_RED="\033[0;31m"
+C_RESET="\033[0m"
+
+for dir in "${PROJECT_PATHS[@]}"; do
+    # printf "${C_BLUE}▪ Checking: %s${C_RESET}\n" "$dir"
+    printf "${C_BLUE}▪ Checking: %s${C_RESET}\n" "${dir##*/}"
+
+    # 检查 .git 目录是否存在, 这是判断是否为 git 仓库的最可靠方法
+    if [[ ! -d "$dir/.git" ]]; then
+        printf "  ${C_RED}Error: Not a git repository or directory does not exist${C_RESET}\n\n"
+        continue # 继续检查下一个项目
+    fi
+
+    (
+        cd "$dir" || exit 1
+
+        status=$(git status --short)
+
+        if [[ -z "$status" ]]; then
+            # 如果输出为空, 说明工作区是干净的
+            printf "  ${C_GREEN}✔ Clean${C_RESET}\n\n"
+        else
+            # 如果有输出, 说明有变更
+            printf "  ${C_YELLOW}Changes detected:${C_RESET}\n"
+            # 使用 sed 给每一行前面加上缩进, 使输出更整齐
+            echo "$status" | sed 's/^/   /'
+            printf "\n"
+        fi
+    )
+done
+
+printf "All checks complete.\n"

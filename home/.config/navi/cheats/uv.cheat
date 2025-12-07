@@ -1,0 +1,13 @@
+% uv, python
+
+# 列出系统或 uv 管理下可用的 Python 版本
+uv python list
+
+# 清理缓存
+uv cache clean
+
+# 删除特定版本
+uv python uninstall 3.12
+
+# 安装特定版本
+uv python install 3.12

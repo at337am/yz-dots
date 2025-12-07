@@ -1,10 +1,13 @@
-% xdg, mime, query
+% xdg, mime, search
 
 # 查询一个文件的 MIME 类型
 xdg-mime query filetype xxx
 
 # 查询一个 MIME 类型的默认关联
 xdg-mime query default image/jpeg
+
+# 查询默认的浏览器
+xdg-mime query default x-scheme-handler/https
 
 
 
@@ -15,7 +18,7 @@ xdg-mime default qimgv.desktop image/jpeg
 
 
 
-% xdg, desktop, query
+% xdg, desktop, search
 
 # 查找 .desktop 文件
 ls /usr/share/applications | grep -i qimgv

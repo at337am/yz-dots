@@ -5,23 +5,13 @@ fortune | cowsay
 
 
 
-% misc, cmatrix
-
-# 彩虹雨
-cmatrix -r
-
-# 不同的颜色
-cmatrix -C red
+% misc, cmatrix, terminal-rain
 
 # 异步滚动
-cmatrix -C red -a
+unimatrix -c red -s 96 -a
 
-
-
-% misc, wl-copy
-
-# 拷贝文件内容到剪贴板
-wl-copy < 1.txt
+# 下雨天 (按 T 切换)
+terminal-rain
 
 
 
@@ -75,3 +65,13 @@ sort a.txt | uniq -c
 
 # 10 分钟后响铃
 echo "paplay /usr/share/sounds/freedesktop/stereo/complete.oga" | at now + 10 minutes
+
+
+
+% misc, history
+
+# 列出最近 50 条历史命令
+history -f 1 | tail -n 50
+
+# 查找所有历史命令
+history -f 1 | fzf

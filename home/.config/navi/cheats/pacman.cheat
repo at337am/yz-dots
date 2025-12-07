@@ -1,0 +1,68 @@
+% pacman, update
+
+# 更新所有软件包
+sudo pacman -Syu
+
+# 更新所有软件包 (强制重新下载所有软件源数据库)
+sudo pacman -Syyu
+
+
+
+% pacman, install
+
+# 安装软件
+sudo pacman -S xxx
+
+
+
+% pacman, remove
+
+# 删除软件包以及依赖
+sudo pacman -Rns xxx
+
+
+
+% pacman, search
+
+# 搜索软件包
+pacman -Ss xxx
+
+# 搜索已安装的软件
+pacman -Qs xxx
+
+# 列出所有已安装的软件
+pacman -Q
+
+# 查看已安装的软件信息
+pacman -Qi xxx
+
+
+
+% pacman, search, kernel
+
+# 列出所有已安装的内核版本
+pacman -Q | grep -E '^linux(|-lts|-zen|-hardened) '
+
+
+
+% pacman, search, history
+
+# 列出历史操作记录 (安装, 删除, 更新)
+grep -E " installed | removed | upgraded" /var/log/pacman.log
+
+
+
+% pacman, clean
+
+# 清理所有软件包缓存
+sudo pacman -Scc --noconfirm
+
+
+
+% yay, clean
+
+# 清理不再需要的孤儿包
+yay -Yc
+
+# 清理所有软件包缓存
+yay -Scc --noconfirm

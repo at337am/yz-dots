@@ -7,7 +7,7 @@
 }
 
 * {
-    font: "Adwaita Sans, 0xProto Nerd Font Propo, Noto Sans CJK SC SemiBold 12";
+    font: "Inter, 0xProto Nerd Font Propo, Noto Sans CJK SC SemiBold 12";
 
     background-color: transparent;
     text-color: @textc;
@@ -19,11 +19,11 @@
 
 /* 边框圆角 */
 window {
-    border-radius: 10px;
+    border-radius: 14px;
 }
 inputbar,
 element {
-    border-radius: 6px;
+    border-radius: 8px;
 }
 
 /* 边框颜色 */
