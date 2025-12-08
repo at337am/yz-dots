@@ -2,6 +2,11 @@
 
 
 
+伤害	shanghai
+老登味	laodenwei
+老登味	laodengwei
+老登	laoden
+老登	laodeng
 可能	kn
 情况	qk
 合集	heji
