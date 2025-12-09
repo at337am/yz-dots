@@ -19,7 +19,7 @@ fi
 
 if [[ "$#" -eq 0 ]]; then
     printf "Error: Invalid argument.\n" >&2
-    printf "Usage: %s <files...>\n" "$(basename "$0")" >&2
+    printf "Usage: %s <paths...>\n" "$(basename "$0")" >&2
     exit 1
 fi
 
