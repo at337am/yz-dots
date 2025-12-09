@@ -2,6 +2,11 @@
 
 
 
+拼音	pinyin
+拼音	pinying
+拼音	pingyin
+拼音	pingying
+好的	hd
 我们	wm
 极简	jijian
 老中味	laozhonwei

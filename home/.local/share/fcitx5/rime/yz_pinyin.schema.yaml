@@ -62,6 +62,11 @@ speller:
     - derive/ang$/nag/
     - derive/ou$/o/
 
+# 备注:
+# 
+# 当 ü 跟在 j q x y 后面时, 书写时要去掉两点, 写作 "u", 但读音仍然是 ü, 打字时使用 u
+# 当 ü 跟在 n l 后面时, 通常必须保留两点, 以避免与 u 混淆, 打字时使用 v
+
 # 使用 "yz_pinyin.dict.yaml" 中定义的词库
 translator:
   dictionary: yz_pinyin
