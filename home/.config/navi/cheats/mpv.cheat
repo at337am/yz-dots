@@ -9,3 +9,11 @@ mpv --no-video 'https://youtu.be/jfKfPfyJRdk'
 
 # 以幻灯片模式播放目录中的所有图片
 mpv --image-display-duration=0.8 .
+
+
+
+% mpv
+
+# 旋转角度播放视频
+mpv --video-rotate=270 xxx
+
