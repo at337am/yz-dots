@@ -18,7 +18,7 @@ mpv --image-display-duration=0.8 .
 mpv 1.mp4 \
     --external-file=2.mp4 \
     --external-file=3.mp4 \
-    --lavfi-complex="[vid1][vid2][vid3]hstack=inputs=3[vo]" \
+    --lavfi-complex="[vid1]scale=-1:1080[v1];[vid2]scale=-1:1080[v2];[vid3]scale=-1:1080[v3];[v1][v2][v3]hstack=inputs=3[vo]" \
     --fs
 
 # 两个视频横向并排播放
