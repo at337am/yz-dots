@@ -22,4 +22,4 @@ mpv 1.mp4 \
     --fs
 
 # 两个视频横向并排播放
-mpv 1.mp4 --external-file=2.mp4 --lavfi-complex="[vid1][vid2]hstack[vo]" --fs
+mpv 1.mp4 --external-file=2.mp4 --lavfi-complex="[vid1]scale=-1:1080[v1s];[vid2]scale=-1:1080[v2s];[v1s][v2s]hstack[vo]" --fs
