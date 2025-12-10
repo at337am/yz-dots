@@ -2,6 +2,11 @@
 
 set -euo pipefail
 
+# 注意:
+# 在后续使用中, 不要再手动执行 setup 中的脚本了
+# setup 中的脚本都是一次性的, 不要重复执行, 避免出现错误
+# 因为我懒得维护它们的健壮性了, 只允许用其他父脚本调用
+
 scripts=(
     "setup/base.sh"
     "setup/configure_sudo.sh"
