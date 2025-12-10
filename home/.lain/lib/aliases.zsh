@@ -18,6 +18,8 @@ alias cnt='printf "dirs: %s  symlinks: %s  files: %s\n" "$(fd -IH -t d -d 1 | wc
 alias du1='du -ah -d 1 .'
 alias r='printf "zsh: r command disabled\n"'
 alias fc='printf "zsh: fc command disabled\n"'
+alias mv='mv -i'
+alias cp='cp -i'
 
 # base
 alias _='sudo'
