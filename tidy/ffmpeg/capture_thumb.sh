@@ -45,7 +45,7 @@ for f in "${video_files[@]}"; do
     base_name=$(basename "$f")
 
     ffmpeg -hide_banner -loglevel error \
-        -ss 00:00:09 \
+        -ss 00:00:02 \
         -i "$f" \
         -vframes 1 \
         -pix_fmt yuvj420p \
