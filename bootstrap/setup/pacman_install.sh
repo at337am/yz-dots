@@ -39,7 +39,7 @@ sudo pacman -S --needed --noconfirm \
 
 # 通知音效主题
 sudo pacman -S --needed --noconfirm \
-    pop-sound-theme
+    sound-theme-freedesktop
 
 # 常用软件
 sudo pacman -S --needed --noconfirm \

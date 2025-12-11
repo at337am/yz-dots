@@ -42,7 +42,7 @@ printf "ERR count: %d\n" "$fail"
 
 notify-send "ADB install" "all APKs have been installed."
 
-sound_file="/usr/share/sounds/Pop/stereo/notification/complete.oga"
+sound_file="/usr/share/sounds/freedesktop/stereo/complete.oga"
 
 if [[ -f "$sound_file" ]]; then
     paplay "$sound_file"
