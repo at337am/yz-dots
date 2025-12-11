@@ -37,6 +37,10 @@ sudo pacman -S --needed --noconfirm \
     inter-font \
     ttf-fira-code
 
+# 通知音效主题
+sudo pacman -S --needed --noconfirm \
+    pop-sound-theme
+
 # 常用软件
 sudo pacman -S --needed --noconfirm \
     android-tools \

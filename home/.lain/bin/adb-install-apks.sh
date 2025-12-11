@@ -40,4 +40,10 @@ printf "%s\n" "--- Total ---"
 printf "OK count: %d\n" "$success"
 printf "ERR count: %d\n" "$fail"
 
+sound_file="/usr/share/sounds/Pop/stereo/notification/complete.oga"
+
+if [[ -f "$sound_file" ]]; then
+    paplay "$sound_file"
+fi
+
 notify-send "ADB install" "all APKs have been installed."
