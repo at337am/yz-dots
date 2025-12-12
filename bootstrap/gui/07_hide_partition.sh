@@ -16,6 +16,7 @@ HIDE_UUID="$1"
 
 files="/etc/udev/rules.d/99-hide-partition.rules"
 
+# 它会直接覆盖
 sudo tee "$files" <<EOF
 SUBSYSTEM=="block", ENV{ID_FS_UUID}=="$HIDE_UUID", ENV{UDISKS_IGNORE}="1"
 EOF
