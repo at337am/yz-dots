@@ -75,7 +75,7 @@ echo "KEYMAP=us" > /mnt/etc/vconsole.conf
 
 
 
-# ------>>> 开始安装系统 <<<------
+# ------>>> 安装系统 <<<------
 
 # 设置代理
 export http_proxy=http://192.168.9.104:1082
