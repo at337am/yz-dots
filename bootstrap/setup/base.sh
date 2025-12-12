@@ -53,6 +53,19 @@ migration() {
     rsync -a "$syncs_path/restore/" /data/misc/restore/
 }
 
+install_nekoray() {
+    lcoal nekoray_path="/data/misc/restore/nekoray.tar.gz"
+
+	if [[ ! -f "$nekoray_path" ]]; then
+		printf "Error:  %s does not exist.\n" "$nekoray_path" >&2
+		exit 1
+	fi
+
+	rm -rf /opt/soft/nekoray
+
+	tar -zxf "$nekoray_path" -C /opt/soft/
+}
+
 configure_ssh_keys() {
     rm -rf ~/.ssh
     tar -xf "$ssh_path" -C ~/
@@ -65,5 +78,6 @@ home_symlinks() {
 
 create_path
 migration
+install_nekoray
 configure_ssh_keys
 home_symlinks
