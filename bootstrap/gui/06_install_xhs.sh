@@ -29,12 +29,12 @@ fi
 rm -rf /opt/soft/XHS-Downloader
 rm -rf /data/misc/xhs_dl
 
-tmp_dir=$(mktemp -d)
-trap 'rm -rf "$tmp_dir"' EXIT
-
 
 
 # ------------- 拉取项目 -------------
+tmp_dir=$(mktemp -d)
+trap 'rm -rf "$tmp_dir"' EXIT
+
 wget -O "$tmp_dir/2.5.tar.gz" https://github.com/JoeanAmier/XHS-Downloader/archive/refs/tags/2.5.tar.gz
 
 tar -zxvf "$tmp_dir/2.5.tar.gz" -C "$tmp_dir"

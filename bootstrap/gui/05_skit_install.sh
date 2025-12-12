@@ -23,15 +23,7 @@ just install-all
 
 cd "/workspace/dev/skit/hello-server"
 just pkg
+rm -rf /opt/soft/hello-server
 mv hello-server /opt/soft
 
 printf "Done.\n"
-
-# git_clone() {
-#     mkdir -p ~/Downloads/git_clone_tmp
-#     cd ~/Downloads/git_clone_tmp
-#     git clone git@github.com:at337am/notes.git
-#     git clone git@github.com:at337am/yz-dots.git
-#     git clone git@github.com:at337am/skit.git
-#     git clone git@github.com:at337am/raindrop.git
-# }
