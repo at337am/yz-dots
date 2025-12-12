@@ -8,7 +8,7 @@ exit 1
 
 # 放大显示字体, 恢复直接运行 setfont
 # setfont 命令只在当前的 Live 会话中生效
-setfont ter-132b
+setfont ter-128b
 
 
 
@@ -47,24 +47,24 @@ timedatectl
 # 先使用 fdisk -l 查看硬盘名称, 比如是: /dev/nvme0n1
 cfdisk /dev/nvme0n1
 # 选择一个空闲的分区, 进行以下操作:
-# New 新建一个 1G 的分区, 比如 /dev/nvme0n1p5, 然后把 type 改为 EFI
-# 再选择剩下的分区, 比如 /dev/nvme0n1p6, 然后把 type 改为 filesystem
+# New 新建一个 1G 的分区, 比如 /dev/nvme0n1p4, 然后把 type 改为 EFI
+# 再选择剩下的分区, 比如 /dev/nvme0n1p5, 然后把 type 改为 filesystem
 # 选择 write 写入, 输入 yes 确定
 # 最后 quite 退出
 # 使用 fdisk -l 查看是否成功
 
 # 格式化 EFI 分区
-mkfs.fat -F 32 /dev/nvme0n1p5
+mkfs.fat -F 32 /dev/nvme0n1p4
 
 # 格式化 根分区
-mkfs.ext4 /dev/nvme0n1p6
+mkfs.ext4 /dev/nvme0n1p5
 
 # 挂载根分区
-mount /dev/nvme0n1p6 /mnt
+mount /dev/nvme0n1p5 /mnt
 
 # 挂载 EFI 分区
 mkdir /mnt/boot
-mount /dev/nvme0n1p5 /mnt/boot
+mount /dev/nvme0n1p4 /mnt/boot
 
 # 再次查看一下
 lsblk -pf

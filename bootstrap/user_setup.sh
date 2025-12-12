@@ -47,6 +47,9 @@ done
 
 printf "\nFINAL STEP!\n\n"
 
+# 清除多余的文件
+sudo rm -rf /root/chroot_setup.sh
+
 # finish
 chsh -s /usr/bin/zsh
 
