@@ -101,8 +101,7 @@ chmod +x /mnt/root/chroot_setup.sh
 
 # 3. 执行 chroot
 # 这里的路径是 /root/..., 因为对于 chroot 内部来说，/mnt 已经变成了 /
-arch-chroot /mnt /root/chroot_setup.sh
-
+arch-chroot /mnt /root/chroot_setup.sh "用户密码"
 
 
 

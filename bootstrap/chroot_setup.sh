@@ -2,13 +2,25 @@
 
 set -euo pipefail
 
+PASSWORD="$1"
+
+if [[ -z "$PASSWORD" ]]; then
+    printf "Error: No password provided.\n" >&2
+    exit 1
+fi
+
+if [[ -n "${https_proxy}" ]]; then
+    printf "Error: No https_proxy set.\n" >&2
+    exit 1
+fi
+
 # 设置时区
 ln -sf /usr/share/zoneinfo/Asia/Taipei /etc/localtime
 
 # 同步当前的系统时间到硬件时钟
 hwclock --systohc
 
-pacman -S --needed \
+pacman -S --needed --noconfirm \
     neovim \
     vi \
     sudo \
@@ -35,15 +47,15 @@ echo "LANG=en_US.UTF-8" > /etc/locale.conf
 # 设置 hostname
 echo "ewjx" > /etc/hostname
 
-# 为 root 用户设置密码
-echo "Please enter password for ROOT:"
-passwd
-
-# 创建用户, 设置密码
+# 创建用户
 useradd -m -G wheel yz
-echo "Please enter password for yz:"
-passwd yz
 
+# 设置密码
+echo "root:$PASSWORD" | chpasswd
+echo "yz:$PASSWORD" | chpasswd
+
+# echo "Please enter password for ROOT:"
+# echo "Please enter password for yz:"
 
 # ------------- 自定义 /etc/sudoers.d/ 中的配置 -------------
 # 
@@ -76,7 +88,6 @@ if visudo -cf "$tmp_file"; then
     target_file="/etc/sudoers.d/yz_config"
 
     install -m 440 "$tmp_file" "$target_file"
-    printf "Success: sudo configuration has been applied to %s\n" "$target_file"
 else
     printf "Error: The generated configuration contains syntax errors.\n" >&2
     exit 1
