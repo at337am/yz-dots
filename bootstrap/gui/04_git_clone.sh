@@ -18,3 +18,5 @@ git_clone() {
 }
 
 git_clone
+
+printf "Done.\n"

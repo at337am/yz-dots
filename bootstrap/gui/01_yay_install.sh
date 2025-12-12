@@ -20,3 +20,5 @@ yay -S --needed \
     ungoogled-chromium-bin \
     gpu-screen-recorder \
     visual-studio-code-bin
+
+printf "Done.\n"

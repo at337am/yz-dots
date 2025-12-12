@@ -57,3 +57,10 @@ fc-list : family | fzf
 
 # 查看当前系统语言
 locale
+
+
+
+% system, swapon
+
+# 显示 swap 分区
+swapon --show

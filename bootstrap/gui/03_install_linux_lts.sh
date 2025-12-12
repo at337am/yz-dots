@@ -9,3 +9,5 @@ sudo pacman -S --needed --noconfirm \
 
 # 更新引导程序
 sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+printf "Done.\n"
