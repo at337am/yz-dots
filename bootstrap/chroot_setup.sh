@@ -45,9 +45,7 @@ echo "Please enter password for yz:"
 passwd yz
 
 
-# ------------- sudo 配置 -------------
-
-# 自定义 /etc/sudoers.d/ 中的配置
+# ------------- 自定义 /etc/sudoers.d/ 中的配置 -------------
 # 
 # 大多数 Linux 发行版, sudo 默认会清除大部分环境变量, 包括与代理相关的变量, 
 # 所以即使你在普通用户环境中设置了代理, sudo pacman 也无法使用它
