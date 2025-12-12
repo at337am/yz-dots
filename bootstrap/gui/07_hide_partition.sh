@@ -4,14 +4,16 @@
 
 set -euo pipefail
 
-if [[ -z "$1" ]]; then
-    printf "Error: No UUID provided.\n" >&2
-    exit 1
-fi
-
 HIDE_UUID="$1"
 
 files="/etc/udev/rules.d/99-hide-partition.rules"
+
+# todo 这一步 根本运行不到里面啊直接退出了 改一下思路, 检查参数个数吧
+
+if [[ -z "$HIDE_UUID" ]]; then
+    printf "Error: No UUID provided.\n" >&2
+    exit 1
+fi
 
 # 先找到要隐藏分区的 UUID
 # lsblk
