@@ -94,16 +94,18 @@ pacstrap -K /mnt base linux linux-firmware
 # 生成 fstab 文件
 genfstab -U /mnt > /mnt/etc/fstab
 
-# 1. 直接把脚本下载到新系统的 root 目录下
+# 拉取 chroot 脚本
 wget -O /mnt/root/chroot_setup.sh \
     https://raw.githubusercontent.com/at337am/yz-dots/refs/heads/main/bootstrap/chroot_setup.sh
 
-# 2. 赋予执行权限
+# 赋予执行权限
 chmod +x /mnt/root/chroot_setup.sh
 
-# 3. 执行 chroot
-# 这里的路径是 /root/..., 因为对于 chroot 内部来说，/mnt 已经变成了 /
+# 执行脚本 (这里的路径是 /root/..., 因为对于 chroot 内部来说，/mnt 已经变成了 /)
 arch-chroot /mnt /root/chroot_setup.sh "用户密码"
+
+# 最后重启进入新的系统
+reboot
 
 
 
