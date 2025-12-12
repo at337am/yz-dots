@@ -69,6 +69,10 @@ mount /dev/nvme0n1p5 /mnt/boot
 # 再次查看一下
 lsblk -pf
 
+# 为了解决下面 pacstrap 时可能会遇到的报错, 需要提前创建这个文件, 以后可能就不需要了
+mkdir /mnt/etc
+echo "KEYMAP=us" > /mnt/etc/vconsole.conf
+
 
 
 # ------>>> 开始安装系统 <<<------

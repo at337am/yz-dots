@@ -34,7 +34,6 @@ fi
 # vscode: https://wiki.archlinux.org/title/Visual_Studio_Code
 
 yay -S --needed \
-    visual-studio-code-bin \
     qimgv-git \
     localsend-bin \
     ungoogled-chromium-bin \

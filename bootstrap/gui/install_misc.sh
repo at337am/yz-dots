@@ -21,7 +21,8 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 # 一些有趣的东西
 yay -S --needed \
     unimatrix-git \
-    terminal-rain-lightning
+    terminal-rain-lightning \
+    visual-studio-code-bin
 
 sudo pacman -S --needed --noconfirm \
     obs-studio
