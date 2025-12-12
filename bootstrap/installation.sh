@@ -89,7 +89,8 @@ pacstrap -K /mnt base linux linux-firmware
 
 
 
-# ------>>> 配置系统 <<<------
+# ------>>> chroot 配置系统 <<<------
+
 # 生成 fstab 文件
 genfstab -U /mnt > /mnt/etc/fstab
 
