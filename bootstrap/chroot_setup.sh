@@ -9,33 +9,29 @@ ln -sf /usr/share/zoneinfo/Asia/Taipei /etc/localtime
 hwclock --systohc
 
 # 安装一下 nvim 和 vi 编辑器, 最好两个都要安装!
+# 虽然下面直接 sed 编辑了但是最好还是用一下
 pacman -S neovim vi
 
-# 生成 Locale
-# 这个目的是告诉系统, 需要生成哪些语言包
-nvim /etc/locale.gen
-# 编辑文件, 取消以下两个注释:
-# en_US.UTF-8 UTF-8
-# zh_CN.UTF-8 UTF-8
+sed -i 's/^#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
+sed -i 's/^#zh_CN.UTF-8 UTF-8/zh_CN.UTF-8 UTF-8/' /etc/locale.gen
 
-# 执行生成命令
+# 执行完修改后, 紧接着必须生成 locale
 locale-gen
 
 # 设置系统默认语言
 # 这个目的是告诉系统, 默认使用哪一个语言
-nvim /etc/locale.conf
-# 在创建 /etc/locale.conf 文件时，只写入英文设置:
-# LANG=en_US.UTF-8
+echo "LANG=en_US.UTF-8" > /etc/locale.conf
 
 # 设置 hostname
-nvim /etc/hostname
+echo "ewjx" > /etc/hostname
 
-
-# 为 root 用户设置密码, 直接执行:
+# 为 root 用户设置密码
+echo "Please enter password for ROOT:"
 passwd
 
-# 创建用户, 设置密码:
+# 创建用户, 设置密码
 useradd -m -G wheel yz
+echo "Please enter password for yz:"
 passwd yz
 
 # 设置用户 sudo 权限:
