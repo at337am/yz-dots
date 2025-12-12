@@ -84,7 +84,6 @@ fi
 
 # --------------------------
 
-
 # 将 GRUB 安装到硬盘的 ESP 分区上
 # 这一步会生成一个文件 /boot/EFI/Arch/grubx64.efi
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=Arch
