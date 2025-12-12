@@ -2,12 +2,13 @@
 
 set -euo pipefail
 
-PASSWORD="$1"
-
-if [[ -z "$PASSWORD" ]]; then
-    printf "Error: No password provided.\n" >&2
+if [[ "$#" -ne 1 ]]; then
+    printf "Error: Invalid arguments.\n" >&2
+    printf "Usage: %s <password>\n" "chroot_setup.sh" >&2
     exit 1
 fi
+
+PASSWORD="$1"
 
 if [[ -z "$https_proxy" ]]; then
     printf "Error: No https_proxy set.\n" >&2
