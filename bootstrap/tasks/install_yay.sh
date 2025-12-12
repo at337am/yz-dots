@@ -22,7 +22,7 @@ install_yay() {
 
     git clone https://aur.archlinux.org/yay.git "$tmp_dir/yay"
     cd "$tmp_dir/yay"
-    makepkg -si
+    makepkg -si --noconfirm
 }
 
 if ! command -v "yay" &> /dev/null; then

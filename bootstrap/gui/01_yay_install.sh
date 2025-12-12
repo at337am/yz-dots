@@ -12,7 +12,7 @@ if ! command -v "yay" &> /dev/null; then
     exit 1
 fi
 
-yay -S --needed \
+yay -S --needed --noconfirm \
     unimatrix-git \
     terminal-rain-lightning \
     qimgv-git \

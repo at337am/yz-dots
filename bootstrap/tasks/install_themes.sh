@@ -44,7 +44,7 @@ icon_themes() {
 }
 
 cursor_theme() {
-    yay -S --needed xcursor-breeze
+    yay -S --needed --noconfirm xcursor-breeze
 }
 
 # 刷新字体
