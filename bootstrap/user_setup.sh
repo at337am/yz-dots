@@ -18,7 +18,7 @@ scripts=(
     "setup/extract_p10k_theme.sh"
     "setup/fetch_fcitx5_dict.sh"
     "setup/misc_settings.sh"
-    "setup/yay_install.sh"
+    "setup/install_yay.sh"
     "setup/install_themes.sh"
 )
 

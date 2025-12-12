@@ -141,8 +141,13 @@ sudo pacman -S --needed --noconfirm \
 sudo pacman -S --needed --noconfirm \
     obsidian \
     telegram-desktop \
-    discord
+    discord \
+    obs-studio
 
 
+# ----- bak -----
+# 
+# sudo pacman -S mgba-qt
+# 
 # 目前不需要 监听 ACPI 事件 和 电源调度策略
 # sudo pacman -S acpid power-profiles-daemon

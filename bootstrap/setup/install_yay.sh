@@ -28,14 +28,3 @@ install_yay() {
 if ! command -v "yay" &> /dev/null; then
     install_yay
 fi
-
-# --------------- 开始安装常用的软件 ---------------
-# yay 官方仓库: https://aur.archlinux.org/packages/yay
-# vscode: https://wiki.archlinux.org/title/Visual_Studio_Code
-
-yay -S --needed \
-    qimgv-git \
-    localsend-bin \
-    ungoogled-chromium-bin \
-    gpu-screen-recorder \
-    visual-studio-code-bin
