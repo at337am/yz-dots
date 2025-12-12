@@ -34,7 +34,14 @@ done
 for run in "${scripts[@]}"; do
     name=$(basename "$run")
     echo "-=> Running: $name"
-    "$run"
+
+    "$run" || {
+        echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+        echo "Error: Script '$name' failed to execute!"
+        echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+        exit 1
+    }
+
     echo "-=> Completed: $name"
 done
 
