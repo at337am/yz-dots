@@ -10,11 +10,6 @@ fi
 
 PASSWORD="$1"
 
-if [[ -z "$https_proxy" ]]; then
-    printf "Error: No https_proxy set.\n" >&2
-    exit 1
-fi
-
 # 设置时区
 ln -sf /usr/share/zoneinfo/Asia/Taipei /etc/localtime
 
