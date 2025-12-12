@@ -13,6 +13,11 @@ if [[ ! -d "/workspace/dev/skit" ]]; then
     exit 1
 fi
 
+if [[ ! -d "/workspace/dev/raindrop" ]]; then
+    printf "Error: raindrop directory does not exist!" >&2
+    exit 1
+fi
+
 if [[ ! -d "/opt/soft" ]]; then
     printf "Error: /opt/soft does not exist.\n" >&2
     exit 1
@@ -25,5 +30,8 @@ cd "/workspace/dev/skit/hello-server"
 just pkg
 rm -rf /opt/soft/hello-server
 mv hello-server /opt/soft
+
+cd "/workspace/dev/raindrop"
+just install
 
 printf "Done.\n"
