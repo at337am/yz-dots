@@ -47,6 +47,12 @@ echo "LANG=en_US.UTF-8" > /etc/locale.conf
 # 设置 hostname
 echo "ewjx" > /etc/hostname
 
+# 创建 swap (我感觉没必要)
+# fallocate -l 8G /swapfile
+# chmod 600 /swapfile
+# mkswap /swapfile
+# echo "/swapfile none swap defaults 0 0" >> /etc/fstab
+
 # 创建用户
 useradd -m -G wheel yz
 
