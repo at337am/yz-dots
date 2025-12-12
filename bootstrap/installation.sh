@@ -101,7 +101,7 @@ wget -O /mnt/root/chroot_setup.sh \
 # 赋予执行权限
 chmod +x /mnt/root/chroot_setup.sh
 
-# 执行脚本 (这里的路径是 /root/..., 因为对于 chroot 内部来说，/mnt 已经变成了 /)
+# 执行脚本 (这里的路径是 /root/..., 因为对于 chroot 内部来说, /mnt 已经变成了 /)
 arch-chroot /mnt /root/chroot_setup.sh "用户密码"
 
 # 最后重启进入新的系统
