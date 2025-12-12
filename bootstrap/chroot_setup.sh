@@ -9,7 +9,7 @@ if [[ -z "$PASSWORD" ]]; then
     exit 1
 fi
 
-if [[ -n "${https_proxy}" ]]; then
+if [[ -z "$https_proxy" ]]; then
     printf "Error: No https_proxy set.\n" >&2
     exit 1
 fi
