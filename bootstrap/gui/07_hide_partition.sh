@@ -8,7 +8,7 @@ HIDE_UUID="$1"
 
 files="/etc/udev/rules.d/99-hide-partition.rules"
 
-# todo 这一步 根本运行不到里面啊直接退出了 改一下思路, 检查参数个数吧
+# todo 这一步 根本运行不到里面啊直接退出了 改一下思路, 检查参数个数吧, 还有 chroot 脚本也是
 
 if [[ -z "$HIDE_UUID" ]]; then
     printf "Error: No UUID provided.\n" >&2
