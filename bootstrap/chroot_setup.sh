@@ -42,27 +42,19 @@ sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 pacman -S --needed grub efibootmgr
 
 # 将 GRUB 安装到硬盘的 ESP 分区上
-# 这一步会在 /boot/EFI 下生成一个文件 Arch/grubx64.efi
+# 这一步会生成一个文件 /boot/EFI/Arch/grubx64.efi
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=Arch
 # 生成配置文件
 grub-mkconfig -o /boot/grub/grub.cfg
-
-
 
 # 安装驱动和微码
 pacman -S --needed intel-ucode mesa vulkan-intel intel-media-driver
 # 重新生成 GRUB 配置 (为了让 intel-ucode 生效)
 grub-mkconfig -o /boot/grub/grub.cfg
 
-
 # 安装网络服务和 ssh, 方便重启后可以连接 wifi
 pacman -S --needed networkmanager openssh
-# 启动服务
-systemctl enable --now NetworkManager.service
-systemctl enable --now sshd.service
+systemctl enable NetworkManager.service sshd.service
 
 # 提前安装 rsync, 方便后续处理
 pacman -S --needed rsync
-
-# 最后退出 chroot 环境, 重启
-exit
