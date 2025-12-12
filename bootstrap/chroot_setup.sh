@@ -45,6 +45,9 @@ locale-gen
 # 这个目的是告诉系统, 默认使用哪一个语言
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
 
+# 设置 TTY 字体
+echo "FONT=ter-132b" >> /etc/vconsole.conf
+
 # 设置 hostname
 echo "ewjx" > /etc/hostname
 
@@ -60,9 +63,6 @@ useradd -m -G wheel yz
 # 设置密码
 echo "root:$PASSWORD" | chpasswd
 echo "yz:$PASSWORD" | chpasswd
-
-# echo "Please enter password for ROOT:"
-# echo "Please enter password for yz:"
 
 # ------------- 自定义 /etc/sudoers.d/ 中的配置 -------------
 # 
