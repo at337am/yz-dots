@@ -38,6 +38,8 @@ for run in "${scripts[@]}"; do
     echo "-=> Completed: $name"
 done
 
+printf "\nFINAL STEP!\n\n"
+
 # finish
 chsh -s /usr/bin/zsh
 
