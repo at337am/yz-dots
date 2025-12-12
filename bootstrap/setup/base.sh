@@ -54,7 +54,7 @@ migration() {
 }
 
 install_nekoray() {
-    lcoal nekoray_path="/data/misc/restore/nekoray.tar.gz"
+    local nekoray_path="/data/misc/restore/nekoray.tar.gz"
 
 	if [[ ! -f "$nekoray_path" ]]; then
 		printf "Error:  %s does not exist.\n" "$nekoray_path" >&2
