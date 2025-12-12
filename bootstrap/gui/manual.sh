@@ -27,11 +27,7 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 lsblk
 lsblk -f
 
-# 创建 udev 规则文件
-sudo nvim /etc/udev/rules.d/99-hide-partition.rules
-
-# 在文件中粘贴以下内容
-SUBSYSTEM=="block", ENV{ID_FS_UUID}=="换成你的UUID", ENV{UDISKS_IGNORE}="1"
+echo 'SUBSYSTEM=="block", ENV{ID_FS_UUID}=="换成你的UUID", ENV{UDISKS_IGNORE}="1"' | sudo tee /etc/udev/rules.d/99-hide-partition.rules
 
 # 重载 udev 规则
 sudo udevadm control --reload-rules
