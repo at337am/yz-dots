@@ -37,7 +37,7 @@ for run in "${scripts[@]}"; do
 
     "$run" || {
         echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-        echo "Error: Script '$name' failed to execute!"
+        echo "Error: '$name' failed to execute!"
         echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
         exit 1
     }
