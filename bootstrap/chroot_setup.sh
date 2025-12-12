@@ -46,7 +46,7 @@ locale-gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
 
 # 设置 TTY 字体
-echo "FONT=ter-132b" >> /etc/vconsole.conf
+echo "FONT=ter-128b" >> /etc/vconsole.conf
 
 # 设置 hostname
 echo "ewjx" > /etc/hostname
