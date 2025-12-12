@@ -95,7 +95,8 @@ pacstrap -K /mnt base linux linux-firmware
 genfstab -U /mnt > /mnt/etc/fstab
 
 # 1. 直接把脚本下载到新系统的 root 目录下
-wget -O /mnt/root/chroot_setup.sh https://你的网址/脚本.sh
+wget -O /mnt/root/chroot_setup.sh \
+    https://raw.githubusercontent.com/at337am/yz-dots/refs/heads/main/bootstrap/chroot_setup.sh
 
 # 2. 赋予执行权限
 chmod +x /mnt/root/chroot_setup.sh
