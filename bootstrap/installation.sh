@@ -95,7 +95,7 @@ pacstrap -K /mnt base linux linux-firmware
 genfstab -U /mnt > /mnt/etc/fstab
 
 # 拉取 chroot 脚本
-wget -O /mnt/root/chroot_setup.sh \
+curl -o /mnt/root/chroot_setup.sh \
     https://raw.githubusercontent.com/at337am/yz-dots/refs/heads/main/bootstrap/chroot_setup.sh
 
 # 赋予执行权限
