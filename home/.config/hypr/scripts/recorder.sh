@@ -46,7 +46,7 @@ touch "$status_file"
 refresh_waybar
 
 # 混合音轨
-timeout -s 2 -k 10s 3600 gpu-screen-recorder \
+timeout -s 2 -k 10s 1800 gpu-screen-recorder \
             -w screen \
             -f 60 \
             -bm cbr \
@@ -56,7 +56,7 @@ timeout -s 2 -k 10s 3600 gpu-screen-recorder \
             -o "$output_file"
 
 # # 双音轨
-# timeout -s 2 -k 10s 3600 gpu-screen-recorder \
+# timeout -s 2 -k 10s 1800 gpu-screen-recorder \
 #             -w screen \
 #             -f 60 \
 #             -bm cbr \
@@ -66,7 +66,7 @@ timeout -s 2 -k 10s 3600 gpu-screen-recorder \
 #             -o "$output_file"
 
 # # 只录制系统声音
-# timeout -s 2 -k 10s 3600 gpu-screen-recorder \
+# timeout -s 2 -k 10s 1800 gpu-screen-recorder \
 #             -w screen \
 #             -f 60 \
 #             -bm cbr \
