@@ -1,6 +1,11 @@
 # 
 # arch 安装指南: https://wiki.archlinuxcn.org/wiki/安装指南
 # 
+# 目前不再需要到 /etc/hosts 中映射 hostname 了, Arch 官方文档已移除该内容:
+# https://wiki.archlinux.org/index.php?title=Installation_guide&diff=699807&oldid=698312
+# what is the purpose of /etc/hosts? - reddit:
+# https://www.reddit.com/r/linux4noobs/comments/xvjq4t/what_is_the_purpose_of_etchosts
+# 
 
 exit 1
 
