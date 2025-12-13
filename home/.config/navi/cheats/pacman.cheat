@@ -54,15 +54,15 @@ grep -E " installed | removed | upgraded" /var/log/pacman.log
 
 % pacman, clean
 
-# 清理所有软件包缓存
+# 清理 - 所有软件包缓存
 sudo pacman -Scc --noconfirm
 
 
 
 % yay, clean
 
-# 清理不再需要的孤儿包
+# 清理 - 不再需要的孤儿包
 yay -Yc
 
-# 清理所有软件包缓存
+# 清理 - 所有软件包缓存
 yay -Scc --noconfirm
