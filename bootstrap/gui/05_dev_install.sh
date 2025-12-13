@@ -25,19 +25,16 @@ fi
 
 cd "/workspace/dev/skit"
 just install-all
-
 echo "OK -> skit"
 
 cd "/workspace/dev/skit/hello-server"
 just pkg
 rm -rf /opt/soft/hello-server
 mv hello-server /opt/soft
-
 echo "OK -> skit/hello-server"
 
 cd "/workspace/dev/raindrop"
 just install
-
 echo "OK -> raindrop"
 
 printf "Done.\n"
