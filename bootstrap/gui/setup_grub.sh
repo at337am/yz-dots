@@ -4,7 +4,12 @@
 
 set -euo pipefail
 
-GRUB_CONFIG="/etc/default/grub"
+grub_config="$HOME/Downloads/todo/grub"
+
+if [[ ! -f "$grub_config" ]]; then
+    printf "Error: %s does not exist.\n" "$grub_config" >&2
+    exit 1
+fi
 
 set_grub_key() {
     local key="$1"
@@ -13,14 +18,14 @@ set_grub_key() {
     local regex="^[#[:space:]]*${key}[[:space:]]*="
 
     # 检查该键是否存在 (无论是否被注释)
-    if grep -q "$regex" "$GRUB_CONFIG"; then
+    if grep -q "$regex" "$grub_config"; then
         echo "更新配置: ${key}=${value}"
         # 使用 sed 替换整行
-        sudo sed -i "s|${regex}.*|${key}=${value}|" "$GRUB_CONFIG"
+        sudo sed -i "s|${regex}.*|${key}=${value}|" "$grub_config"
     else
         echo "追加配置: ${key}=${value}"
         # 如果没找到，追加到文件末尾
-        echo "${key}=${value}" | sudo tee -a "$GRUB_CONFIG" > /dev/null
+        echo "${key}=${value}" | sudo tee -a "$grub_config" > /dev/null
     fi
 }
 
