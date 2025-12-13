@@ -45,12 +45,13 @@ for run in "${scripts[@]}"; do
     echo "-=> Completed: $name"
 done
 
+# 最后收尾
 printf "\nFINAL STEP!\n\n"
 
-# 清除多余的文件
+# 清理多余的文件
 sudo rm -rf /root/chroot_setup.sh
 
-# finish
+# 设置 zsh
 chsh -s /usr/bin/zsh
 
-printf "Amazing! Go ahead and enjoy your Arch Linux.\n"
+printf "\nAmazing! Go ahead and enjoy your Arch Linux.\n"
