@@ -4,7 +4,7 @@
 
 set -euo pipefail
 
-grub_config="$HOME/Downloads/todo/grub"
+grub_config="/etc/default/grub"
 
 if [[ ! -f "$grub_config" ]]; then
     printf "Error: %s does not exist.\n" "$grub_config" >&2
@@ -38,6 +38,6 @@ set_grub_key "GRUB_SAVEDEFAULT" "true"
 # 禁用子菜单
 set_grub_key "GRUB_DISABLE_SUBMENU" "y"
 
-# sudo grub-mkconfig -o /boot/grub/grub.cfg
+sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 printf "Done.\n"
