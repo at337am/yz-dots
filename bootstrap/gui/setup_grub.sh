@@ -18,7 +18,7 @@ set_grub_key() {
     local regex="^[#[:space:]]*${key}[[:space:]]*="
 
     # 检查该键是否存在 (无论是否被注释)
-    if grep -E -q "$regex" "$GRUB_CONFIG"; then
+    if grep -E -q "$regex" "$grub_config"; then
         echo "更新配置: ${key}=${value}"
         # 使用 sed 替换整行
         sudo sed -i "s|${regex}.*|${key}=${value}|" "$grub_config"
