@@ -66,3 +66,13 @@ yay -Yc
 
 # 清理 - 所有软件包缓存
 yay -Scc --noconfirm
+
+
+
+% yay, update
+
+# 更新所有软件包
+yay -Syu
+
+# 更新所有软件包 (强制重新下载所有软件源数据库)
+yay -Syyu
