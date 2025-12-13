@@ -30,14 +30,12 @@ create_path() {
         /data/bak \
         /data/hello \
         /data/misc/tgboom \
-        /opt/soft \
-        /opt/venvs
+        /opt/soft
 
     sudo chown -R $(whoami):$(id -gn) \
         /workspace \
         /data \
-        /opt/soft \
-        /opt/venvs
+        /opt/soft
 }
 
 migration() {
