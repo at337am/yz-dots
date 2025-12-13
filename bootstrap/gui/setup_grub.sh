@@ -19,12 +19,12 @@ set_grub_key() {
 
     # 检查该键是否存在 (无论是否被注释)
     if grep -E -q "$regex" "$grub_config"; then
-        echo "更新配置: ${key}=${value}"
+        printf "updated: ${key}=${value}\n"
         # 使用 sed 替换整行
         sudo sed -i "s|${regex}.*|${key}=${value}|" "$grub_config"
     else
-        echo "追加配置: ${key}=${value}"
-        # 如果没找到，追加到文件末尾
+        printf "added: ${key}=${value}\n"
+        # 如果没找到, 追加到文件末尾
         echo "${key}=${value}" | sudo tee -a "$grub_config" > /dev/null
     fi
 }
