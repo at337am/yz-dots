@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# 隐藏另一个分区的卷挂载
+# 找到要隐藏分区的 UUID:
 # lsblk
 # lsblk -f
 
