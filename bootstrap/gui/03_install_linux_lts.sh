@@ -17,9 +17,9 @@ if [[ ! -f "$grub_config" ]]; then
 fi
 
 # 第一次修改前先备份一次
-if [[ ! -f "${grub_config}_bak" ]]; then
-    sudo cp -a "$grub_config" "${grub_config}_bak"
-    printf "配置已备份: %s\n" "${grub_config}_bak"
+if [[ ! -f "${grub_config}_default.bak" ]]; then
+    sudo cp -a "$grub_config" "${grub_config}_default.bak"
+    printf "配置已备份: %s\n" "${grub_config}_default.bak"
 fi
 
 set_grub_key() {
