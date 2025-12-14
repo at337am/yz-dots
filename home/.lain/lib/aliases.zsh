@@ -20,6 +20,7 @@ alias r='printf "zsh: r command disabled\n"'
 alias fc='printf "zsh: fc command disabled\n"'
 alias mv='mv -i'
 alias cp='cp -i'
+alias cpwd='printf "%s" "$(pwd)" | wl-copy'
 
 # base
 alias _='sudo'
