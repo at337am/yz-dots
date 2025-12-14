@@ -22,7 +22,7 @@ restore() {
 	sleep 1.5
 
 	if [[ ! -f "$bak_path" ]]; then
-		printf "Error: Backup file does not exist: %s\n" "$bak_path" >&2
+		printf "Error: %s does not exist.\n" "$bak_path" >&2
 		exit 1
 	fi
 
@@ -35,6 +35,11 @@ bak() {
 	if ! confirm "Are you sure you want to bak nekoray?"; then
 	    printf "Operation cancelled. Exiting...\n"
 	    exit 1
+	fi
+
+	if [[ ! -d "/opt/soft/nekoray" ]]; then
+		printf "Error: %s does not exist.\n" "/opt/soft/nekoray" >&2
+		exit 1
 	fi
 
 	pkill -15 nekoray || true
