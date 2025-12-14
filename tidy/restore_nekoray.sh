@@ -3,10 +3,24 @@
 bak_path="/data/misc/restore/nekoray.tar.gz"
 old_bak_path="/data/misc/restore/old/nekoray_bak_$(date +"%y%m%d_%H%M%S").tar.gz"
 
-pkill -15 nekoray || true
-sleep 1.5
+confirm() {
+    local prompt=${1:-"Do you want to continue?"}
+    read -r -p "$prompt [y/N]: " choice
+    case "${choice,,}" in
+        y|yes) return 0 ;;
+        *) return 1 ;;
+    esac
+}
 
 restore() {
+	if ! confirm "Are you sure you want to restore nekoray?"; then
+	    printf "Operation cancelled. Exiting...\n"
+	    exit 1
+	fi
+
+	pkill -15 nekoray || true
+	sleep 1.5
+
 	if [[ ! -f "$bak_path" ]]; then
 		printf "Error: Backup file does not exist: %s\n" "$bak_path" >&2
 		exit 1
@@ -20,6 +34,14 @@ restore() {
 }
 
 bak() {
+	if ! confirm "Are you sure you want to bak nekoray?"; then
+	    printf "Operation cancelled. Exiting...\n"
+	    exit 1
+	fi
+
+	pkill -15 nekoray || true
+	sleep 1.5
+
 	mkdir -p /data/misc/restore/old/
 
 	if [[ -f "$bak_path" ]]; then
