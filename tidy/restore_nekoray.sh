@@ -29,8 +29,6 @@ restore() {
 	rm -rf /opt/soft/nekoray
 
 	tar -zxf "$bak_path" -C /opt/soft/
-
-	printf "nekoray restored to original config\n"
 }
 
 bak() {
@@ -49,8 +47,6 @@ bak() {
 	fi
 
 	tar -zcf "$bak_path" -C /opt/soft/ nekoray
-
-	printf "nekoray backup completed\n"
 }
 
 if [[ "$#" -eq 0 ]]; then
@@ -62,3 +58,5 @@ else
 	printf "Usage: %s [bak]\n" "$(basename "$0")" >&2
     exit 1
 fi
+
+printf "Done.\n"
