@@ -51,7 +51,7 @@ rm -rf .git .github
 # 同步环境
 uv sync
 
-# rm -rf /data/misc/xhs_dl
-# ln -sv /opt/soft/XHS-Downloader/Download /data/misc/xhs_dl
+rm -rf /data/misc/xhs_dl
+ln -sv /opt/soft/XHS-Downloader/Download /data/misc/xhs_dl
 
 printf "Done.\n"
