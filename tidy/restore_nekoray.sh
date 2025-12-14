@@ -2,6 +2,7 @@
 
 bak_path="/data/misc/restore/nekoray.tar.gz"
 old_bak_path="/data/misc/restore/old/nekoray_bak_$(date +"%y%m%d_%H%M%S").tar.gz"
+nekoray_path="/opt/soft/nekoray"
 
 confirm() {
     local prompt=${1:-"Do you want to continue?"}
@@ -18,15 +19,15 @@ restore() {
 	    exit 1
 	fi
 
-	pkill -15 nekoray || true
-	sleep 1.5
-
 	if [[ ! -f "$bak_path" ]]; then
 		printf "Error: %s does not exist.\n" "$bak_path" >&2
 		exit 1
 	fi
 
-	rm -rf /opt/soft/nekoray
+	pkill -15 nekoray || true
+	sleep 1.5
+
+	rm -rf "$nekoray_path"
 
 	tar -zxf "$bak_path" -C /opt/soft/
 }
@@ -37,8 +38,8 @@ bak() {
 	    exit 1
 	fi
 
-	if [[ ! -d "/opt/soft/nekoray" ]]; then
-		printf "Error: %s does not exist.\n" "/opt/soft/nekoray" >&2
+	if [[ ! -d "$nekoray_path" ]]; then
+		printf "Error: %s does not exist.\n" "$nekoray_path" >&2
 		exit 1
 	fi
 
