@@ -23,6 +23,8 @@ configs["rime"]="$HOME/.local/share/fcitx5/rime"
 configs["fastfetch"]="$HOME/.config/fastfetch"
 configs["lain-bin"]="$HOME/.lain/bin"
 
+configs["skit"]="/workspace/dev/skit"
+configs["raindrop"]="/workspace/dev/raindrop"
 configs["tidy"]="/workspace/dev/yz-dots/tidy"
 configs["bootstrap"]="/workspace/dev/yz-dots/bootstrap"
 
