@@ -1,0 +1,4 @@
+% faillock
+
+# 解除用户锁定
+faillock --user yz --reset
