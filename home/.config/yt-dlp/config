@@ -1,5 +1,5 @@
 # 下载目录
---paths ~/Downloads/yt_dl
+--paths ~/Downloads/dl_ytdlp
 
 # 代理
 # --proxy "http://127.0.0.1:xxxx"
