@@ -28,11 +28,12 @@ TARGETS=()          # 存储目标文件列表
 # 函数: 打印帮助信息
 # ----------------------------------
 usage() {
-    printf "Usage: %s [OPTION] <files...>\n" "$(basename "$0")"
-    printf "\nOptions:\n"
-    printf "  -z, --gzip       Use gzip compression (for packing)\n"
-    printf "  -x, --extract    Extract mode (unpack archives)\n"
-    printf "  -h, --help       Show this help message\n"
+    printf "Usage:\n"
+    printf "  %s <files...> [flags]\n" "$(basename "$0")"
+    printf "\nFlags:\n"
+    printf "  -z, --gzip            Use gzip compression (for packing)\n"
+    printf "  -x, --extract         Extract mode (unpack archives)\n"
+    printf "  -h, --help            Show this help message\n"
 }
 
 # ----------------------------------

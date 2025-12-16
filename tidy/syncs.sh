@@ -66,13 +66,14 @@ pack_one() {
 }
 
 usage() {
-    printf "Usage: %s [OPTION]\n\nOptions:\n" "$(basename "$0")"
-
-    printf "  proj          打包 dev 和 Documents\n"
-    printf "  all           打包所有内容 (迁移)\n"
-    printf "  fonts         打包 fonts\n"
-    printf "  PFP           打包 PFP\n"
-    printf "  restore       打包 restore\n"
+    printf "Usage:\n"
+    printf "  %s [flags]\n" "$(basename "$0")"
+    printf "\nFlags:\n"
+    printf "  proj                  打包 dev 和 Documents\n"
+    printf "  all                   打包所有内容 (迁移)\n"
+    printf "  fonts                 打包 fonts\n"
+    printf "  PFP                   打包 PFP\n"
+    printf "  restore               打包 restore\n"
 }
 
 if [[ "$#" -eq 1 && ("$1" == "-h" || "$1" == "--help") ]]; then
