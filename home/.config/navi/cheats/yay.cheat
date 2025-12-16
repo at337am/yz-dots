@@ -50,6 +50,10 @@ yay -Qs xxx
 # 显示本地某个软件包的详细信息
 yay -Qi xxx
 
+
+
+% yay, search, local, dependency
+
 # 列出软件包 - 原生 + AUR (包括大量依赖包)
 yay -Q | fzf
 
@@ -58,6 +62,10 @@ yay -Qn | fzf
 
 # 列出软件包 - AUR (包含大量依赖)
 yay -Qm | fzf
+
+
+
+% yay, search, local, no_dependency
 
 # 列出软件包 - 原生 + AUR (不包含依赖)
 yay -Qe | fzf
