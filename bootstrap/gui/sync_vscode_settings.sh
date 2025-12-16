@@ -13,6 +13,7 @@ extensions_list="/workspace/dev/yz-dots/bootstrap/gui/static/vscode-extensions-l
 # 备份 插件列表
 bak_extensions_list() {
     code --list-extensions > "$extensions_list"
+    printf "vscode 插件列表已生成 -> %s\n" "$extensions_list"
 }
 
 # 同步 插件和配置
@@ -24,6 +25,7 @@ sync_settings() {
 
     # 安装插件
     cat "$extensions_list" | xargs -L 1 code --install-extension
+    printf "vscode 所有插件已安装完成\n"
 
     # 重新软链接 配置
     /workspace/dev/yz-dots/bootstrap/tasks/symlink_dotfiles.sh vscode
@@ -31,10 +33,9 @@ sync_settings() {
 
 if [[ "$#" -eq 1 && "$1" == "bak" ]]; then
     bak_extensions_list
-    printf "vscode 插件列表已备份完成\n"
+    printf "Done.\n"
     exit 0
 fi
 
 sync_settings
-
 printf "Done.\n"
