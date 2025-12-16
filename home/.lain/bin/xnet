@@ -10,6 +10,8 @@
 # 4. 完成后输出提示信息“Done”。
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
 
+set -euo pipefail
+
 if ! command -v "wget" &> /dev/null; then
     printf "Error: Missing dependency: wget\n" >&2
     exit 1

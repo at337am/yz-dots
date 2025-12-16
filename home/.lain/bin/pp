@@ -7,6 +7,8 @@
 # 脚本会检查依赖、验证文件是否存在及格式，并将指定图片设置为当前桌面壁纸。
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
 
+set -euo pipefail
+
 # 依赖检查
 if ! command -v "hyprctl" &> /dev/null; then
     printf "Error: Missing dependency: hyprctl\n" >&2
