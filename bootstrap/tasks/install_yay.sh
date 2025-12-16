@@ -20,11 +20,9 @@ install_yay() {
     tmp_dir=$(mktemp -d)
     trap 'rm -rf "$tmp_dir"' EXIT
 
-    git clone https://aur.archlinux.org/yay.git "$tmp_dir/yay"
-    cd "$tmp_dir/yay"
+    git clone https://aur.archlinux.org/yay-bin.git "$tmp_dir/yay-bin"
+    cd "$tmp_dir/yay-bin"
     makepkg -si --noconfirm
 }
 
-if ! command -v "yay" &> /dev/null; then
-    install_yay
-fi
+install_yay
