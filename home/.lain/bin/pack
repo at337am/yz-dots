@@ -2,14 +2,14 @@
 
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
 # 脚本用途: 
-# 该脚本用于打包或解压文件/目录。
+# 该脚本用于打包或解压文件/目录
 # 
 # 功能说明: 
 # 1. 打包 (默认模式):
-#    - 默认生成 .tar，加 -z 生成 .tar.gz。
-#    - 多个源文件时，自动打包到 packed_result 目录。
+#    - 默认生成 .tar, 加 -z 生成 .tar.gz
+#    - 多个源文件时, 自动打包到 packed_result 目录
 # 2. 解压 (-x / --extract):
-#    - 多个源文件时，自动解压到 unpacked_result 目录。
+#    - 多个源文件时, 自动解压到 unpacked_result 目录
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
 
 set -euo pipefail
@@ -36,12 +36,25 @@ usage() {
 }
 
 # ----------------------------------
-# 检查文件是否存在
+# 打包时, 目标可以是文件, 也可以是目录, 只要存在即可
 # ----------------------------------
-check_files_exist() {
+check_pack_targets() {
     local files=("$@")
     for item in "${files[@]}"; do
         if [[ ! -e "$item" && ! -L "$item" ]]; then
+            printf "${RED}Error: '%s' does not exist.${NC}\n" "$item" >&2
+            exit 1
+        fi
+    done
+}
+
+# ----------------------------------
+# 解压时, 目标必须是文件
+# ----------------------------------
+check_unpack_targets() {
+    local files=("$@")
+    for item in "${files[@]}"; do
+        if [[ ! -f "$item" ]]; then
             printf "${RED}Error: '%s' does not exist.${NC}\n" "$item" >&2
             exit 1
         fi
@@ -62,7 +75,7 @@ pack_files() {
         extension=".tar.gz"
     fi
 
-    # 如果有多个目标，创建统一输出目录
+    # 如果有多个目标, 创建统一输出目录
     if [[ "${#TARGETS[@]}" -gt 1 ]]; then
         local dir_name="packed_result"
         if mkdir -p "$dir_name"; then
@@ -99,7 +112,7 @@ pack_files() {
 unpack_files() {
     local dest_dir="."
 
-    # 如果有多个目标，创建统一解压目录
+    # 如果有多个目标, 创建统一解压目录
     if [[ "${#TARGETS[@]}" -gt 1 ]]; then
         local dir_name="unpacked_result"
         if mkdir -p "$dir_name"; then
@@ -158,12 +171,11 @@ if [[ "${#TARGETS[@]}" -eq 0 ]]; then
     exit 1
 fi
 
-# 检查文件存在性
-check_files_exist "${TARGETS[@]}"
-
 # 根据模式执行相应函数
 if [[ "$MODE" == "unpack" ]]; then
+    check_unpack_targets "${TARGETS[@]}"
     unpack_files
 else
+    check_pack_targets "${TARGETS[@]}"
     pack_files
 fi
