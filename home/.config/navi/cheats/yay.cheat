@@ -1,0 +1,20 @@
+% yay, update
+
+# 更新所有软件包
+yay -Syu
+
+# 更新所有软件包 (强制重新下载所有软件源数据库)
+yay -Syyu
+
+
+
+% yay, clean
+
+# 清理 - 删除孤儿依赖
+yay -Yc --noconfirm
+
+# 清理 - 删除旧的缓存文件 (保留当前版本的缓存)
+yay -Sc --noconfirm
+
+# 清理 - 删除所有缓存文件
+yay -Scc --noconfirm
