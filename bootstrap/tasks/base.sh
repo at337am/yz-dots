@@ -24,12 +24,18 @@ fi
 # ---------------- 检查所需文件 END ----------------
 
 create_path() {
+    mkdir -p ~/.config
+    mkdir -p ~/.local/share/fonts
+    mkdir -p ~/Pictures/PFP
+    mkdir -p ~/Documents
+
     sudo mkdir -p \
         /workspace/dev \
         /workspace/tmp \
         /data/bak \
         /data/hello \
-        /data/misc/tgboom \
+        /data/tgboom \
+        /data/misc/restore \
         /opt/soft
 
     sudo chown -R $(whoami):$(id -gn) \
@@ -39,11 +45,6 @@ create_path() {
 }
 
 migration() {
-    mkdir -p ~/Documents
-    mkdir -p ~/Pictures
-    mkdir -p ~/.config
-    mkdir -p ~/.local/share
-
     rsync -a "$syncs_path/dev/" /workspace/dev/
     rsync -a "$syncs_path/Documents/" ~/Documents/
     rsync -a "$syncs_path/PFP/" ~/Pictures/PFP/
