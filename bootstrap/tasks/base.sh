@@ -34,7 +34,7 @@ create_path() {
         /workspace/tmp \
         /data/bak \
         /data/hello \
-        /data/tgboom \
+        /data/dl_tg \
         /data/misc/restore \
         /opt/soft
 
