@@ -31,7 +31,7 @@
     "workbench.list.smoothScrolling",
     "terminal.integrated.fontSize",
     "scm.inputFontSize",
-    "editor.fontSize"
+    "-window.zoomLevel"
   ],
   "editor.fontWeight": "normal",
   "editor.formatOnSaveMode": "modificationsIfAvailable",
