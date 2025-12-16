@@ -61,10 +61,10 @@ sudo pacman -Scc --noconfirm
 
 % yay, clean
 
-# 清理 - 不再需要的孤儿包
+# 清理 - 删除无用依赖
 yay -Yc
 
-# 清理 - 所有软件包缓存
+# 清理 - 删除缓存文件
 yay -Scc --noconfirm
 
 
