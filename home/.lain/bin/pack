@@ -110,14 +110,14 @@ pack_files() {
 # 解压逻辑
 # ----------------------------------
 unpack_files() {
-    local dest_dir="."
+    local output_dir="."
 
     # 如果有多个目标, 创建统一解压目录
     if [[ "${#TARGETS[@]}" -gt 1 ]]; then
         local dir_name="unpacked_result"
         if mkdir -p "$dir_name"; then
-            dest_dir="$dir_name"
-            printf "Extracting multiple files to directory: %s\n" "$dest_dir"
+            output_dir="$dir_name"
+            printf "Output directory created: %s\n" "$output_dir"
         else
             printf "${RED}Error: Failed to create directory %s${NC}\n" "$dir_name" >&2
             exit 1
@@ -126,8 +126,8 @@ unpack_files() {
 
     # 循环解压
     for item in "${TARGETS[@]}"; do
-        if tar -xf "$item" -C "$dest_dir"; then
-            printf "${GREEN}Extracted -> %s (into %s/)${NC}\n" "$item" "$dest_dir"
+        if tar -xf "$item" -C "$output_dir"; then
+            printf "${GREEN}Extracted -> %s (into %s/)${NC}\n" "$item" "$output_dir"
         else
             printf "${RED}Error: Failed to extract %s${NC}\n" "$item" >&2
         fi
