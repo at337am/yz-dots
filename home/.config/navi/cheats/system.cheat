@@ -64,3 +64,17 @@ locale
 
 # 显示 swap 分区
 swapon --show
+
+
+
+% system, arch, kernel
+
+# 列出所有已安装的内核版本
+pacman -Q | grep -E '^linux(|-lts|-zen|-hardened) '
+
+
+
+% system, arch, history
+
+# 列出软件包历史记录 (安装, 删除, 更新)
+grep -E " installed | removed | upgraded" /var/log/pacman.log
