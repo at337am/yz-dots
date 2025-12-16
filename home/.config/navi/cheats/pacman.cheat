@@ -61,7 +61,7 @@ sudo pacman -Scc --noconfirm
 
 % yay, clean
 
-# 清理 - 删除无用依赖
+# 清理 - 删除孤儿依赖
 yay -Yc
 
 # 清理 - 删除缓存文件
