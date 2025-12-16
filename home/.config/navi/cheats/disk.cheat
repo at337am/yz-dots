@@ -35,7 +35,7 @@ df -hT
 % disk, duf
 
 # 显示磁盘空间使用情况 (仅显示已挂载) - duf
-duf
+duf -only local
 
 
 
