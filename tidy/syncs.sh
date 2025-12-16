@@ -66,13 +66,13 @@ pack_one() {
 }
 
 usage() {
-    printf "Usage: %s [OPTION]\n\nOptions:\n" "$(basename "$0")" >&2
+    printf "Usage: %s [OPTION]\n\nOptions:\n" "$(basename "$0")"
 
-    printf "  proj          打包 dev 和 Documents\n" >&2
-    printf "  all           打包所有内容 (迁移)\n" >&2
-    printf "  fonts         打包 fonts\n" >&2
-    printf "  PFP           打包 PFP\n" >&2
-    printf "  restore       打包 restore\n" >&2
+    printf "  proj          打包 dev 和 Documents\n"
+    printf "  all           打包所有内容 (迁移)\n"
+    printf "  fonts         打包 fonts\n"
+    printf "  PFP           打包 PFP\n"
+    printf "  restore       打包 restore\n"
 }
 
 if [[ "$#" -eq 1 && ("$1" == "-h" || "$1" == "--help") ]]; then
@@ -93,7 +93,7 @@ elif [[ "$#" -eq 1 && "$1" == "all" ]]; then
     pack_all
 else
     printf "Error: Invalid arguments.\n" >&2
-    usage
+    usage >&2
     exit 1
 fi
 
