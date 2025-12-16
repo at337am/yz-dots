@@ -90,7 +90,8 @@ sudo pacman -S --needed --noconfirm \
     cargo-cache \
     xh \
     base-devel \
-    tree
+    tree \
+    lsof
 
 # hyprland 相关
 sudo pacman -S --needed --noconfirm \
