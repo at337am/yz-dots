@@ -35,7 +35,7 @@ create_path() {
         /data/bak \
         /data/hello \
         /data/dl_tg \
-        /data/misc/restore \
+        /data/restore \
         /opt/soft
 
     sudo chown -R $(whoami):$(id -gn) \
@@ -49,11 +49,11 @@ migration() {
     rsync -a "$syncs_path/Documents/" ~/Documents/
     rsync -a "$syncs_path/PFP/" ~/Pictures/PFP/
     rsync -a "$syncs_path/fonts/" ~/.local/share/fonts/
-    rsync -a "$syncs_path/restore/" /data/misc/restore/
+    rsync -a "$syncs_path/restore/" /data/restore/
 }
 
 install_nekoray() {
-    local nekoray_path="/data/misc/restore/nekoray.tar.gz"
+    local nekoray_path="/data/restore/nekoray.tar.gz"
 
 	if [[ ! -f "$nekoray_path" ]]; then
 		printf "Error:  %s does not exist.\n" "$nekoray_path" >&2

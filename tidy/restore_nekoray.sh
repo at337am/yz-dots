@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
-bak_path="/data/misc/restore/nekoray.tar.gz"
-old_bak_path="/data/misc/restore/old/nekoray_bak_$(date +"%y%m%d_%H%M%S").tar.gz"
+set -euo pipefail
+
+restore_path="/data/restore/nekoray.tar.gz"
+old_restore_path="/data/restore/old/nekoray_bak_$(date +"%y%m%d_%H%M%S").tar.gz"
 nekoray_path="/opt/soft/nekoray"
 
 confirm() {
@@ -19,17 +21,17 @@ restore() {
 	    exit 1
 	fi
 
-	if [[ ! -f "$bak_path" ]]; then
-		printf "Error: %s does not exist.\n" "$bak_path" >&2
+	if [[ ! -f "$restore_path" ]]; then
+		printf "Error: %s does not exist.\n" "$restore_path" >&2
 		exit 1
 	fi
 
 	pkill -15 nekoray || true
-	sleep 1.5
+	sleep 1
 
 	rm -rf "$nekoray_path"
 
-	tar -zxf "$bak_path" -C /opt/soft/
+	tar -zxf "$restore_path" -C /opt/soft/
 }
 
 bak() {
@@ -44,15 +46,15 @@ bak() {
 	fi
 
 	pkill -15 nekoray || true
-	sleep 1.5
+	sleep 1
 
-	mkdir -p /data/misc/restore/old/
+	mkdir -p /data/restore/old/
 
-	if [[ -f "$bak_path" ]]; then
-		mv -v "$bak_path" "$old_bak_path"
+	if [[ -f "$restore_path" ]]; then
+		mv -v "$restore_path" "$old_restore_path"
 	fi
 
-	tar -zcf "$bak_path" -C /opt/soft/ nekoray
+	tar -zcf "$restore_path" -C /opt/soft/ nekoray
 }
 
 if [[ "$#" -eq 0 ]]; then

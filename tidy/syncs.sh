@@ -7,7 +7,7 @@ documents_path="$HOME/Documents"
 fonts_path="$HOME/.local/share/fonts"
 pfp_path="$HOME/Pictures/PFP"
 dev_path="/workspace/dev"
-restore_path="/data/misc/restore"
+restore_path="/data/restore"
 
 source_dirs=(
     "$documents_path"

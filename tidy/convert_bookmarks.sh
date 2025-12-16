@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 bookmarks_path="$HOME/Documents/notes/other/bookmarks.md"
 
 output_dir="$HOME/Documents"
