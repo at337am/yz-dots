@@ -37,6 +37,14 @@ fcitx5(){
     ln -sv "$DOTS_PATH/.config/fcitx5" ~/.config/fcitx5
 }
 
+vscode() {
+    rm -rf ~/.config/Code/User/settings.json
+    rm -rf ~/.config/Code/User/keybindings.json
+
+    ln -sv "$DOTS_PATH/.config/Code/User/settings.json" ~/.config/Code/User/settings.json
+    ln -sv "$DOTS_PATH/.config/Code/User/keybindings.json" ~/.config/Code/User/keybindings.json
+}
+
 # ------------- 如果脚本只接收到一个参数, 并且匹配 -------------
 
 if [[ "$#" -eq 1 && "$1" == "zsh" ]]; then
@@ -48,6 +56,15 @@ if [[ "$#" -eq 1 && "$1" == "fcitx5" ]]; then
     fcitx5
     exit 0
 fi
+
+if [[ "$#" -eq 1 && "$1" == "vscode" ]]; then
+    vscode
+    exit 0
+fi
+
+zsh
+fcitx5
+vscode
 
 # ------------ .config ------------
 # rm -rf ~/.config/cava
@@ -109,9 +126,3 @@ ln -sv "$DOTS_PATH/.config/mimeapps.list" ~/.config/mimeapps.list
 
 rm -rf ~/.config/gtk-3.0/bookmarks
 ln -sv "$DOTS_PATH/.config/gtk-3.0/bookmarks" ~/.config/gtk-3.0/bookmarks
-
-
-
-zsh
-
-fcitx5
