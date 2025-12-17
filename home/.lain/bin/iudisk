@@ -78,7 +78,6 @@ usage() {
     printf "  -h, --help            Show this help message\n"
 }
 
-# todo 这里一定要设置超时时间吗? 如果不设置会怎么样
 confirm() {
     local prompt=${1:-"Do you want to continue?"}
     read -r -p "$prompt [y/N]: " choice
@@ -106,9 +105,10 @@ do_mount() {
         exit 0
     fi
 
-    printf "Mounting %s (%s)...\n" "$TARGET_LABEL" "$usb_part"
-    # todo 这个挂载 也写一个简单的 if 提示输出吧吗因为可能会报错
+    printf "Mounting '%s' (%s)...\n" "$TARGET_LABEL" "$usb_part"
+
     udisksctl mount -b "$usb_part"
+    printf "${GREEN}Mounted successfully.${NC}\n"
 }
 
 # 卸载, 断电
@@ -119,12 +119,12 @@ do_unmount() {
             printf "Operation cancelled.\n" >&2
             exit 1
         fi
-        # todo 这个卸载 也写一个简单的 if 提示输出吧吗因为可能会报错
+
         udisksctl unmount -b "$usb_part"
         printf "${GREEN}Unmounted successfully.${NC}\n"
     else
         # 如果没挂载, 直接询问是否断电
-        if ! confirm "Device not mounted. Power off '$TARGET_LABEL' ($usb_dev)?"; then
+        if ! confirm "Device not mounted. Power off '$TARGET_LABEL'?"; then
              exit 1
         fi
     fi
