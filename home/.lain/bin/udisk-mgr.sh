@@ -17,13 +17,13 @@ GREEN='\033[0;32m'      # 绿色
 NC='\033[0m'            # 重置色
 
 # 配置变量
-target_dev="/dev/sda"
-target_part="/dev/sda1"
+usb_dev="/dev/sda"
+usb_part="/dev/sda1"
 
-# 判断 U 盘是否已插入
+# 检查设备是否存在
 check_dev() {
-    if [[ ! -b "$target_dev" ]]; then
-        printf "未找到块设备 %s\n" "$target_dev" >&2
+    if [[ ! -b "$usb_dev" ]]; then
+        printf "未找到块设备 %s\n" "$usb_dev" >&2
         exit 1
     fi
 }
@@ -37,21 +37,42 @@ usage() {
     printf "  -h, --help            Show this help message\n"
 }
 
+confirm() {
+    local prompt=${1:-"Do you want to continue?"}
+    read -r -p "$prompt [y/N]: " choice
+    case "${choice,,}" in
+        y|yes) return 0 ;;
+        *) return 1 ;;
+    esac
+}
+
+
+
 # 挂载
 do_mount() {
-    if findmnt -n "$target_part" &> /dev/null; then
-        mount_path=$(findmnt -n -o TARGET "$target_part")
-        printf "U 盘 (%s) 已挂载至: %s\n" "$target_part" "$mount_path"
-        exit 0
+    if findmnt -n "$usb_part" &> /dev/null; then
+        mount_path=$(findmnt -n -o TARGET "$usb_part")
+        printf "U 盘 (%s) 已挂载至: %s\n" "$usb_part" "$mount_path"
+        exit 1
     fi
 
-    udisksctl mount -b "$target_part"
+    udisksctl mount -b "$usb_part"
 }
 
 # 卸载, 断电
 do_unmount() {
-    udisksctl unmount -b "$target_part"
-    udisksctl power-off -b "$target_dev"
+    if ! findmnt -n "$usb_part" &> /dev/null; then
+        printf "U 盘 (%s) 未被挂载\n" "$usb_part"
+        exit 1
+    fi
+
+    if ! confirm "Are you sure you want to eject the USB drive?"; then
+        printf "Operation cancelled. Exiting...\n"
+        exit 1
+    fi
+
+    udisksctl unmount -b "$usb_part"
+    udisksctl power-off -b "$usb_dev"
 }
 
 if [[ "$#" -ne 1 ]]; then
