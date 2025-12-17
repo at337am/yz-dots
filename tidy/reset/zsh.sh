@@ -14,7 +14,7 @@ confirm() {
 }
 
 if ! confirm "Are you sure you want to reset zsh?"; then
-    printf "Operation cancelled. Exiting...\n"
+    printf "Operation cancelled.\n"
     exit 1
 fi
 

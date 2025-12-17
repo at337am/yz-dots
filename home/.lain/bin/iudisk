@@ -23,7 +23,7 @@ usb_part="/dev/sda1"
 # 检查设备是否存在
 check_dev_exists() {
     if [[ ! -b "$usb_dev" ]]; then
-        printf "未找到块设备 %s\n" "$usb_dev" >&2
+        printf "USB device %s not found\n" "$usb_dev" >&2
         exit 1
     fi
 }
@@ -51,9 +51,9 @@ confirm() {
 check_dev_status() {
     if findmnt -n "$usb_part" &> /dev/null; then
         mount_path=$(findmnt -n -o TARGET "$usb_part")
-        printf "U 盘 (%s) 已被挂载到: %s\n" "$usb_part" "$mount_path"
+        printf "USB drive (%s) has been mounted at: %s\n" "$usb_part" "$mount_path"
     else
-        printf "U 盘 (%s) 当前未被挂载\n" "$usb_part"
+        printf "USB drive (%s) is currently not mounted\n" "$usb_part"
     fi
 }
 
@@ -61,7 +61,7 @@ check_dev_status() {
 do_mount() {
     if findmnt -n "$usb_part" &> /dev/null; then
         mount_path=$(findmnt -n -o TARGET "$usb_part")
-        printf "U 盘 (%s) 已被挂载到: %s\n" "$usb_part" "$mount_path"
+        printf "USB drive (%s) has been mounted at: %s\n" "$usb_part" "$mount_path"
         exit 0
     fi
 
@@ -70,20 +70,21 @@ do_mount() {
 
 # 卸载, 断电
 do_unmount() {
-    if ! findmnt -n "$usb_part" &> /dev/null; then
-        printf "U 盘 (%s) 未被挂载\n" "$usb_part"
-        exit 1
-    fi
-
     if ! confirm "Are you sure you want to eject the USB drive?"; then
-        printf "Operation cancelled. Exiting...\n"
+        printf "Operation cancelled.\n"
         exit 1
     fi
 
-    udisksctl unmount -b "$usb_part"
+    if findmnt -n "$usb_part" &> /dev/null; then
+        udisksctl unmount -b "$usb_part"
+        printf "USB drive has been unmounted.\n"
+    fi
+
     udisksctl power-off -b "$usb_dev"
+    printf "USB drive has been safely removed.\n"
 }
 
+# 检查参数是否等于 1
 if [[ "$#" -ne 1 ]]; then
     printf "Error: Invalid arguments.\n" >&2
     usage >&2
