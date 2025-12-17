@@ -54,6 +54,7 @@ while [[ $# -gt 0 ]]; do
                 shift
             else
                 printf "${RED}Error: 仅支持单个视频文件${NC}\n" >&2
+                usage >&2
                 exit 1
             fi
             ;;
