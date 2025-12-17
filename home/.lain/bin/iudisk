@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
+# 脚本用途: 管理 U 盘
+# -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
+
 set -euo pipefail
 
 # 依赖检查
@@ -35,36 +39,29 @@ notify() {
 # 播放音频
 play_audio() {
     local audio_file="/usr/share/sounds/freedesktop/stereo/${1}.oga"
+    # todo & ?????????
     [[ -f "$audio_file" ]] && paplay "$audio_file"
 }
 
 # 通过标签探测设备
 detect_device() {
-    # 1. 尝试通过 Label 查找分区路径
-    # findfs 是 util-linux 的一部分，比解析 lsblk 输出更直接
+    # 1. 查找分区
     if ! usb_part=$(findfs LABEL="$TARGET_LABEL" 2>/dev/null); then
         printf "${RED}Error: No device found with label '%s'${NC}\n" "$TARGET_LABEL" >&2
         exit 1
     fi
 
-    # 2. 检查分区是否存在
-    if [[ ! -b "$usb_part" ]]; then
-        printf "${RED}Error: Partition detected at %s but is not a block device.${NC}\n" "$usb_part" >&2
-        exit 1
-    fi
+    # 2. 获取父设备
+    # -no pkname: 只输出父设备名称
+    # --paths: 输出完整路径 (如 /dev/sdb 而不是 sdb)
+    # xargs: 去除首尾空白符
+    usb_dev=$(lsblk -no pkname --paths "$usb_part" | xargs)
 
-    # 3. 查找父设备 (用于 power-off)
-    # lsblk -no pkname 会返回父设备的内核名称 (例如 sdb)
-    # 这种方法比字符串截取更安全 (兼容 /dev/nvme0n1p1 这种情况)
-    local parent_name
-    parent_name=$(lsblk -no pkname "$usb_part")
-
-    if [[ -z "$parent_name" ]]; then
+    # 3. 严格报错: 如果找不到父设备, 直接退出
+    if [[ -z "$usb_dev" ]]; then
         printf "${RED}Error: Could not determine parent device for %s${NC}\n" "$usb_part" >&2
         exit 1
     fi
-
-    usb_dev="/dev/$parent_name"
 }
 
 usage() {
@@ -169,3 +166,5 @@ case "$1" in
         exit 1
         ;;
 esac
+
+# todo: -s 选项可以更加详细一些
