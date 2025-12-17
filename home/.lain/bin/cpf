@@ -8,7 +8,7 @@ set -euo pipefail
 
 # 定义颜色
 RED='\033[0;31m'        # 红色
-GREEN='\033[0;32m'      # 绿色
+BLUE='\033[0;34m'       # 蓝色
 NC='\033[0m'            # 重置色
 
 if ! command -v "wl-copy" &> /dev/null; then
@@ -37,6 +37,6 @@ done
 
 if [[ -n "$uri_list" ]]; then
     printf "$uri_list" | wl-copy --type text/uri-list
-    printf "${GREEN}Copied:${NC}\n"
+    printf "${BLUE}Copied:${NC}\n"
     printf "$uri_list"
 fi
