@@ -9,6 +9,7 @@ set -euo pipefail
 # 定义颜色
 RED='\033[0;31m'        # 红色
 GREEN='\033[0;32m'      # 绿色
+BLUE='\033[0;34m'       # 蓝色
 NC='\033[0m'            # 重置色
 
 if ! command -v "adb" &> /dev/null; then
@@ -37,7 +38,7 @@ fi
 for source in "$@"; do
     if [[ -e "$source" ]]; then
         file_size=$(du -sh --apparent-size "$source" | awk '{print $1}')
-        printf "Pushing: ${GREEN}%s${NC}  Size: ${GREEN}%s${NC}\n" "$source" "$file_size"
+        printf "Pushing: ${GREEN}%s${NC}  Size: ${BLUE}%s${NC}\n" "$source" "$file_size"
         adb push "$source" "$target_dir"
         printf "\n"
     else
