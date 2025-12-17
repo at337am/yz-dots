@@ -3,7 +3,7 @@
 set -euo pipefail
 
 # 依赖检查
-dependencies=("udisksctl" "notify-send")
+dependencies=("udisksctl" "lsblk" "findfs" "findmnt" "notify-send")
 for cmd in "${dependencies[@]}"; do
     if ! command -v "$cmd" &> /dev/null; then
         printf "Error: Missing dependency: %s\n" "$cmd" >&2
@@ -17,9 +17,12 @@ GREEN='\033[0;32m'      # 绿色
 MAGENTA='\033[0;35m'    # 紫色
 NC='\033[0m'            # 重置色
 
-# 定义 U 盘设备以及分区
-usb_dev="/dev/sda"
-usb_part="/dev/sda1"
+# U 盘标签
+TARGET_LABEL="IUDISK"
+
+# 全局变量，稍后由 detect_device 函数填充
+usb_part=""
+usb_dev=""
 
 # 发送通知
 notify() {
@@ -29,43 +32,56 @@ notify() {
                 "$1"
 }
 
-play_removed_audio() {
-    local removed_audio_file="/usr/share/sounds/freedesktop/stereo/device-removed.oga"
-    if [[ -f "$removed_audio_file" ]]; then
-        paplay "$removed_audio_file"
+# 播放音频
+play_audio() {
+    local type="$1"
+    local audio_file="/usr/share/sounds/freedesktop/stereo/${type}.oga"
+    if [[ -f "$audio_file" ]] && command -v paplay &> /dev/null; then
+        paplay "$audio_file"
     fi
 }
 
-play_added_audio() {
-    local added_audio_file="/usr/share/sounds/freedesktop/stereo/device-added.oga"
-    if [[ -f "$added_audio_file" ]]; then
-        paplay "$added_audio_file"
-    fi
-}
-
-# 检查设备是否存在
-check_dev_exists() {
-    if [[ ! -b "$usb_dev" ]]; then
-        printf "${RED}USB device %s not found${NC}\n" "$usb_dev" >&2
+# 核心逻辑：通过标签探测设备
+detect_device() {
+    # 1. 尝试通过 Label 查找分区路径
+    # findfs 是 util-linux 的一部分，比解析 lsblk 输出更直接
+    if ! usb_part=$(findfs LABEL="$TARGET_LABEL" 2>/dev/null); then
+        printf "${RED}Error: No device found with label '%s'${NC}\n" "$TARGET_LABEL" >&2
         exit 1
     fi
 
+    # 2. 检查分区是否存在
     if [[ ! -b "$usb_part" ]]; then
-        printf "${RED}USB partition %s not found on device %s${NC}\n" "$usb_part" "$usb_dev" >&2
+        printf "${RED}Error: Partition detected at %s but is not a block device.${NC}\n" "$usb_part" >&2
         exit 1
     fi
+
+    # 3. 查找父设备 (用于 power-off)
+    # lsblk -no pkname 会返回父设备的内核名称 (例如 sdb)
+    # 这种方法比字符串截取更安全 (兼容 /dev/nvme0n1p1 这种情况)
+    local parent_name
+    parent_name=$(lsblk -no pkname "$usb_part")
+
+    if [[ -z "$parent_name" ]]; then
+        printf "${RED}Error: Could not determine parent device for %s${NC}\n" "$usb_part" >&2
+        exit 1
+    fi
+
+    usb_dev="/dev/$parent_name"
 }
 
 usage() {
     printf "Usage:\n"
     printf "  %s [flags]\n" "$(basename "$0")"
+    printf "\nTarget Label: ${MAGENTA}%s${NC}\n" "$TARGET_LABEL"
     printf "\nFlags:\n"
     printf "  -m, --mount           Mount the USB drive\n"
     printf "  -u, --unmount         Safely eject the USB drive (unmount and power off)\n"
-    printf "  -s, --status          Check the current mount status of the USB drive\n"
+    printf "  -s, --status          Check the current mount status\n"
     printf "  -h, --help            Show this help message\n"
 }
 
+# todo 这里一定要设置超时时间吗? 如果不设置会怎么样
 confirm() {
     local prompt=${1:-"Do you want to continue?"}
     read -r -p "$prompt [y/N]: " choice
@@ -79,9 +95,9 @@ confirm() {
 check_dev_status() {
     if findmnt -n "$usb_part" &> /dev/null; then
         mount_path=$(findmnt -n -o TARGET "$usb_part")
-        printf "${GREEN}USB drive (%s) has been mounted at: %s${NC}\n" "$usb_part" "$mount_path"
+        printf "USB drive [%s] (%s) is mounted at: ${GREEN}%s${NC}\n" "$TARGET_LABEL" "$usb_part" "$mount_path"
     else
-        printf "USB drive (%s) is not mounted\n" "$usb_part"
+        printf "USB drive [%s] (%s) is detected but ${RED}not mounted${NC}\n" "$TARGET_LABEL" "$usb_part"
     fi
 }
 
@@ -89,30 +105,37 @@ check_dev_status() {
 do_mount() {
     if findmnt -n "$usb_part" &> /dev/null; then
         mount_path=$(findmnt -n -o TARGET "$usb_part")
-        printf "${MAGENTA}The USB drive is already mounted${NC}\n"
+        printf "${MAGENTA}Already mounted at: %s${NC}\n" "$mount_path"
         exit 0
     fi
 
+    printf "Mounting %s (%s)...\n" "$TARGET_LABEL" "$usb_part"
     udisksctl mount -b "$usb_part"
 }
 
 # 卸载, 断电
 do_unmount() {
-    if ! confirm "Are you sure you want to eject the USB drive?"; then
-        printf "Operation cancelled.\n" >&2
-        exit 1
-    fi
-
+    # 如果已经挂载, 先卸载
     if findmnt -n "$usb_part" &> /dev/null; then
+        if ! confirm "Eject USB drive '$TARGET_LABEL' ($usb_part)?"; then
+            printf "Operation cancelled.\n" >&2
+            exit 1
+        fi
         udisksctl unmount -b "$usb_part"
-        printf "${GREEN}USB drive has been unmounted${NC}\n"
+        printf "${GREEN}Unmounted successfully.${NC}\n"
+    else
+        # 如果没挂载, 直接询问是否断电
+        if ! confirm "Device not mounted. Power off '$TARGET_LABEL' ($usb_dev)?"; then
+             exit 1
+        fi
     fi
 
+    # 断电操作针对的是父设备 (/dev/sda 而不是 /dev/sda1)
     udisksctl power-off -b "$usb_dev"
-    printf "${GREEN}USB drive has been safely removed${NC}\n"
+    printf "${GREEN}Device %s has been safely removed.${NC}\n" "$usb_dev"
 }
 
-# 检查参数是否等于 1
+# 检查参数
 if [[ "$#" -ne 1 ]]; then
     printf "${RED}Error: Invalid arguments.${NC}\n" >&2
     usage >&2
@@ -122,19 +145,19 @@ fi
 # 主程序入口
 case "$1" in
     -m|--mount)
-        check_dev_exists
+        detect_device
         do_mount
         notify "Mounted"
-        play_added_audio
+        play_audio "device-added"
         ;;
     -u|--unmount)
-        check_dev_exists
+        detect_device
         do_unmount
         notify "Ejected"
-        play_removed_audio
+        play_audio "device-removed"
         ;;
     -s|--status)
-        check_dev_exists
+        detect_device
         check_dev_status
         ;;
     -h|--help)
@@ -147,5 +170,3 @@ case "$1" in
         exit 1
         ;;
 esac
-
-# todo 透过 U 盘标签来寻找磁盘号

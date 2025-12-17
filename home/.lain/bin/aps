@@ -12,6 +12,15 @@ GREEN='\033[0;32m'      # 绿色
 BLUE='\033[0;34m'       # 蓝色
 NC='\033[0m'            # 重置色
 
+# 播放音频
+play_audio() {
+    local type="$1"
+    local audio_file="/usr/share/sounds/freedesktop/stereo/${type}.oga"
+    if [[ -f "$audio_file" ]] && command -v paplay &> /dev/null; then
+        paplay "$audio_file"
+    fi
+}
+
 if ! command -v "adb" &> /dev/null; then
     printf "Error: Missing dependency: adb\n" >&2
     exit 1
@@ -50,8 +59,4 @@ printf "Done.\n"
 
 notify-send "ADB push" "all files have been transferred."
 
-complete_audio_file="/usr/share/sounds/freedesktop/stereo/complete.oga"
-
-if [[ -f "$complete_audio_file" ]]; then
-    paplay "$complete_audio_file"
-fi
+play_audio "complete"
