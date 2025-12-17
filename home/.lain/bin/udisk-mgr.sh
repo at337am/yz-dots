@@ -42,7 +42,7 @@ usage() {
 do_mount() {
     if findmnt -n "$TARGET_PART" &> /dev/null; then
         MOUNT_PATH=$(findmnt -n -o TARGET "$TARGET_PART")
-        printf "设备已挂载于%s\n" "$MOUNT_PATH"
+        printf "设备已挂载到: %s\n" "$MOUNT_PATH"
         exit 0
     fi
 
