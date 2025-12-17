@@ -12,7 +12,6 @@ for cmd in "${dependencies[@]}"; do
 done
 
 # 定义颜色
-BLACK='\033[0;30m'      # 黑色
 RED='\033[0;31m'        # 红色
 GREEN='\033[0;32m'      # 绿色
 MAGENTA='\033[0;35m'    # 紫色
@@ -31,14 +30,14 @@ notify() {
 }
 
 play_removed_audio() {
-    removed_audio_file="/usr/share/sounds/freedesktop/stereo/device-removed.oga"
+    local removed_audio_file="/usr/share/sounds/freedesktop/stereo/device-removed.oga"
     if [[ -f "$removed_sound_file" ]]; then
         paplay "$removed_sound_file"
     fi
 }
 
 play_added_audio() {
-    added_audio_file="/usr/share/sounds/freedesktop/stereo/device-added.oga"
+    local added_audio_file="/usr/share/sounds/freedesktop/stereo/device-added.oga"
     if [[ -f "$added_sound_file" ]]; then
         paplay "$added_sound_file"
     fi
@@ -82,7 +81,7 @@ check_dev_status() {
         mount_path=$(findmnt -n -o TARGET "$usb_part")
         printf "${GREEN}USB drive (%s) has been mounted at: %s${NC}\n" "$usb_part" "$mount_path"
     else
-        printf "${BLACK}USB drive (%s) is currently not mounted${NC}\n" "$usb_part"
+        printf "USB drive (%s) is not mounted\n" "$usb_part"
     fi
 }
 
