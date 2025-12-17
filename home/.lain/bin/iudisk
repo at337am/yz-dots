@@ -32,9 +32,9 @@ usage() {
     printf "Usage:\n"
     printf "  %s [flags]\n" "$(basename "$0")"
     printf "\nFlags:\n"
-    printf "  -m, --mount           挂载 U 盘\n"
-    printf "  -u, --unmount         安全弹出 U 盘 (卸载并断电)\n"
-    printf "  -s, --status          查看 U 盘目前的挂载状态\n"
+    printf "  -m, --mount           Mount the USB drive\n"
+    printf "  -u, --unmount         Safely eject the USB drive (unmount and power off)\n"
+    printf "  -s, --status          Check the current mount status of the USB drive\n"
     printf "  -h, --help            Show this help message\n"
 }
 
