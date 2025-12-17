@@ -20,6 +20,15 @@ NC='\033[0m'            # 重置色
 TARGET_DEV="/dev/sda"
 TARGET_PART="${TARGET_DEV}1"
 
+# 判断 U 盘是否已插入
+check_dev() {
+    if [[ ! -b "$TARGET_DEV" ]]; then
+        printf "未找到块设备 %s\n" "$TARGET_DEV" >&2
+        exit 1
+    fi
+}
+
+# 帮助信息
 usage() {
     printf "Usage:\n"
     printf "  %s [flags]\n" "$(basename "$0")"
@@ -28,18 +37,6 @@ usage() {
     printf "  -u, --unmount         安全弹出 U 盘 (卸载并断电)\n"
     printf "  -h, --help            Show this help message\n"
 }
-
-if [[ "$#" -ne 1 ]]; then
-    printf "Error: Invalid arguments.\n" >&2
-    usage >&2
-    exit 1
-fi
-
-# 判断是否为块设备
-if [[ ! -b "$TARGET_DEV" ]]; then
-    printf "未找到块设备 %s\n" "$TARGET_DEV" >&2
-    exit 1
-fi
 
 # 定义挂载函数
 do_mount() {
@@ -77,12 +74,20 @@ do_power_off() {
     fi
 }
 
+if [[ "$#" -ne 1 ]]; then
+    printf "Error: Invalid arguments.\n" >&2
+    usage >&2
+    exit 1
+fi
+
 # 脚本逻辑选择
 case "$1" in
     -m|--mount)
+        check_dev
         do_mount
         ;;
     -u|--unmount)
+        check_dev
         do_unmount
         do_power_off
         ;;
