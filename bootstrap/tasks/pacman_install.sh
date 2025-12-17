@@ -91,7 +91,8 @@ sudo pacman -S --needed --noconfirm \
     xh \
     base-devel \
     tree \
-    lsof
+    lsof \
+    exfatprogs
 
 # hyprland 相关
 sudo pacman -S --needed --noconfirm \
