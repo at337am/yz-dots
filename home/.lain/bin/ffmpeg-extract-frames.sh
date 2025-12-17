@@ -68,17 +68,12 @@ extract_frames() {
         mkdir -p "$output_dir"
     fi
 
-    # todo 这里似乎只支持 四位数字? 如果 超过四位呢? 
     output_name="$output_dir/output_%04d.$ext"
-
-    printf "${BLUE}:: 正在处理: %s -> %s (%s)${NC}\n" "$video_base" "$output_dir" "$ext"
 
     ffmpeg -i "$video_path" \
         -vsync 0 \
         "${ffmpeg_opts[@]}" \
         "$output_name"
-
-    printf "\n${GREEN}:: 完成! 已提取至 -> %s${NC}\n" "$output_dir"
 }
 
 # 主程序入口
@@ -122,3 +117,5 @@ check_file "$VIDEO_FILE"
 
 # 调用主函数
 extract_frames "$VIDEO_FILE" "$TARGET_EXT"
+
+printf "Done.\n"
