@@ -26,6 +26,11 @@ check_dev_exists() {
         printf "USB device %s not found\n" "$usb_dev" >&2
         exit 1
     fi
+
+    if [[ ! -b "$usb_part" ]]; then
+        printf "USB partition %s not found on device %s\n" "$usb_part" "$usb_dev" >&2
+        exit 1
+    fi
 }
 
 usage() {
@@ -71,7 +76,7 @@ do_mount() {
 # 卸载, 断电
 do_unmount() {
     if ! confirm "Are you sure you want to eject the USB drive?"; then
-        printf "Operation cancelled.\n"
+        printf "Operation cancelled.\n" >&2
         exit 1
     fi
 

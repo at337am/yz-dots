@@ -21,7 +21,7 @@ confirm() {
 }
 
 if ! confirm "Are you sure you want to install xhs?"; then
-    printf "Operation cancelled.\n"
+    printf "Operation cancelled.\n" >&2
     exit 1
 fi
 
