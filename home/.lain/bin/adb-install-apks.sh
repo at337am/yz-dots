@@ -45,5 +45,4 @@ printf "OK count: %d\n" "$success"
 printf "ERR count: %d\n" "$fail"
 
 notify-send "ADB install" "all APKs have been installed."
-
 play_audio "complete"

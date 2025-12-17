@@ -59,5 +59,4 @@ done
 printf "Done.\n"
 
 notify-send "ADB push" "all files have been transferred."
-
 play_audio "complete"
