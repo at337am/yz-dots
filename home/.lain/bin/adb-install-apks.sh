@@ -37,9 +37,8 @@ printf "ERR count: %d\n" "$fail"
 
 notify-send "ADB install" "all APKs have been installed."
 
-sound_file="/usr/share/sounds/freedesktop/stereo/complete.oga"
+complete_audio_file="/usr/share/sounds/freedesktop/stereo/complete.oga"
 
-if [[ -f "$sound_file" ]]; then
-    paplay "$sound_file"
+if [[ -f "$complete_audio_file" ]]; then
+    paplay "$complete_audio_file"
 fi
-

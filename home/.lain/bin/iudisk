@@ -30,6 +30,20 @@ notify() {
                 "$1"
 }
 
+play_removed_audio() {
+    removed_audio_file="/usr/share/sounds/freedesktop/stereo/device-removed.oga"
+    if [[ -f "$removed_sound_file" ]]; then
+        paplay "$removed_sound_file"
+    fi
+}
+
+play_added_audio() {
+    added_audio_file="/usr/share/sounds/freedesktop/stereo/device-added.oga"
+    if [[ -f "$added_sound_file" ]]; then
+        paplay "$added_sound_file"
+    fi
+}
+
 # 检查设备是否存在
 check_dev_exists() {
     if [[ ! -b "$usb_dev" ]]; then
@@ -112,11 +126,13 @@ case "$1" in
         check_dev_exists
         do_mount
         notify "Mounted"
+        play_added_audio
         ;;
     -u|--unmount)
         check_dev_exists
         do_unmount
         notify "Ejected"
+        play_removed_audio
         ;;
     -s|--status)
         check_dev_exists

@@ -50,8 +50,8 @@ printf "Done.\n"
 
 notify-send "ADB push" "all files have been transferred."
 
-sound_file="/usr/share/sounds/freedesktop/stereo/complete.oga"
+complete_audio_file="/usr/share/sounds/freedesktop/stereo/complete.oga"
 
-if [[ -f "$sound_file" ]]; then
-    paplay "$sound_file"
+if [[ -f "$complete_audio_file" ]]; then
+    paplay "$complete_audio_file"
 fi
