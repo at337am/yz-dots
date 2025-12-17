@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
 
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
-# 脚本用途：从视频提取帧为图片 (Arch Linux / Hyprland 风格重构版)
+# 脚本用途：从视频提取帧为图片
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
 
 set -euo pipefail
 
 # 定义颜色
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-BLUE='\033[0;34m'
+RED='\033[31m'
+GREEN='\033[32m'
 NC='\033[0m'
 
 # 默认变量
-TARGET_EXT="jpg"
 VIDEO_FILE=""
+target_ext="jpg"
+ffmpeg_opts=(-q:v 6)
 
 # 依赖检查
 if ! command -v "ffmpeg" &> /dev/null; then
@@ -30,52 +30,6 @@ usage() {
     printf "  -h, --help    显示帮助信息\n"
 }
 
-# 检查文件是否存在
-check_file() {
-    local video_path="$1"
-    if [[ ! -f "$video_path" ]]; then
-        printf "${RED}Error: %s does not exist.${NC}\n" "$video_path" >&2
-        exit 1
-    fi
-}
-
-# 核心逻辑函数
-extract_frames() {
-    local video_path="$1"
-    local ext="$2"
-
-    local video_base
-    video_base=$(basename "$video_path")
-
-    local output_dir
-    local ffmpeg_opts=()
-    local output_name
-
-    # 根据格式配置参数
-    if [[ "$ext" == "jpg" ]]; then
-        output_dir="${video_base%.*}_jpg_frames"
-        ffmpeg_opts=(-q:v 6)
-    elif [[ "$ext" == "png" ]]; then
-        output_dir="${video_base%.*}_png_frames"
-        ffmpeg_opts=(-compression_level 0)
-    else
-        printf "${RED}Error: 不支持的格式: %s${NC}\n" "$ext" >&2
-        exit 1
-    fi
-
-    # 创建目录
-    if [[ ! -d "$output_dir" ]]; then
-        mkdir -p "$output_dir"
-    fi
-
-    output_name="$output_dir/output_%04d.$ext"
-
-    ffmpeg -i "$video_path" \
-        -vsync 0 \
-        "${ffmpeg_opts[@]}" \
-        "$output_name"
-}
-
 # 主程序入口
 while [[ $# -gt 0 ]]; do
     case "$1" in
@@ -84,11 +38,12 @@ while [[ $# -gt 0 ]]; do
             exit 0
             ;;
         -p|--png)
-            TARGET_EXT="png"
+            target_ext="png"
+            ffmpeg_opts=(-compression_level 0)
             shift
             ;;
         -*)
-            printf "${RED}Error: Unknown option %s${NC}\n" "$1" >&2
+            printf "${RED}Error: Unknown flag %s${NC}\n" "$1" >&2
             usage >&2
             exit 1
             ;;
@@ -112,10 +67,22 @@ if [[ -z "$VIDEO_FILE" ]]; then
     exit 1
 fi
 
-# 检查文件
-check_file "$VIDEO_FILE"
+if [[ ! -f "$VIDEO_FILE" ]]; then
+    printf "${RED}Error: %s does not exist.${NC}\n" "$VIDEO_FILE" >&2
+    exit 1
+fi
 
-# 调用主函数
-extract_frames "$VIDEO_FILE" "$TARGET_EXT"
+video_base=$(basename "$VIDEO_FILE")
+output_dir="${video_base%.*}_frames"
+
+# 创建输出目录
+mkdir -p "$output_dir"
+
+output_path="$output_dir/output_%04d.$target_ext"
+
+ffmpeg -i "$VIDEO_FILE" \
+    -vsync 0 \
+    "${ffmpeg_opts[@]}" \
+    "$output_path"
 
 printf "Done.\n"
