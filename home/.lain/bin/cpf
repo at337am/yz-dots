@@ -4,6 +4,13 @@
 # 脚本用途: 将一个或多个文件路径以 URI 形式复制到 Wayland 剪贴板
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
 
+set -euo pipefail
+
+# 定义颜色
+RED='\033[0;31m'        # 红色
+GREEN='\033[0;32m'      # 绿色
+NC='\033[0m'            # 重置色
+
 if ! command -v "wl-copy" &> /dev/null; then
     printf "Error: Missing dependency: wl-copy\n" >&2
     exit 1
@@ -19,7 +26,7 @@ uri_list=""
 
 for file in "$@"; do
     if [[ ! -f "$file" ]]; then
-        printf "\033[31mError: '%s' is not a regular file.\033[0m\n" "$file" >&2
+        printf "${RED}Error: '%s' is not a regular file.${NC}\n" "$file" >&2
         exit 1
     fi
 
@@ -30,6 +37,6 @@ done
 
 if [[ -n "$uri_list" ]]; then
     printf "$uri_list" | wl-copy --type text/uri-list
-    printf "Copied:\n"
+    printf "${GREEN}Copied:${NC}\n"
     printf "$uri_list"
 fi
