@@ -17,13 +17,13 @@ GREEN='\033[0;32m'      # 绿色
 NC='\033[0m'            # 重置色
 
 # 配置变量
-TARGET_DEV="/dev/sda"
-TARGET_PART="${TARGET_DEV}1"
+target_dev="/dev/sda"
+target_part="/dev/sda1"
 
 # 判断 U 盘是否已插入
 check_dev() {
-    if [[ ! -b "$TARGET_DEV" ]]; then
-        printf "未找到块设备 %s\n" "$TARGET_DEV" >&2
+    if [[ ! -b "$target_dev" ]]; then
+        printf "未找到块设备 %s\n" "$target_dev" >&2
         exit 1
     fi
 }
@@ -40,19 +40,19 @@ usage() {
 
 # 挂载函数
 do_mount() {
-    if findmnt -n "$TARGET_PART" &> /dev/null; then
-        MOUNT_PATH=$(findmnt -n -o TARGET "$TARGET_PART")
-        printf "设备已挂载到: %s\n" "$MOUNT_PATH"
+    if findmnt -n "$target_part" &> /dev/null; then
+        mount_path=$(findmnt -n -o TARGET "$target_part")
+        printf "设备已挂载到: %s\n" "$mount_path"
         exit 0
     fi
 
-    udisksctl mount -b "$TARGET_PART"
+    udisksctl mount -b "$target_part"
 }
 
 # 卸载函数
 do_unmount() {
-    udisksctl unmount -b "$TARGET_PART"
-    udisksctl power-off -b "$TARGET_DEV"
+    udisksctl unmount -b "$target_part"
+    udisksctl power-off -b "$target_dev"
 }
 
 if [[ "$#" -ne 1 ]]; then
