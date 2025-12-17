@@ -28,7 +28,6 @@ check_dev() {
     fi
 }
 
-# 帮助信息
 usage() {
     printf "Usage:\n"
     printf "  %s [flags]\n" "$(basename "$0")"
@@ -38,18 +37,18 @@ usage() {
     printf "  -h, --help            Show this help message\n"
 }
 
-# 挂载函数
+# 挂载
 do_mount() {
     if findmnt -n "$target_part" &> /dev/null; then
         mount_path=$(findmnt -n -o TARGET "$target_part")
-        printf "设备已挂载到: %s\n" "$mount_path"
+        printf "U 盘 (%s) 已挂载至: %s\n" "$target_part" "$mount_path"
         exit 0
     fi
 
     udisksctl mount -b "$target_part"
 }
 
-# 卸载函数
+# 卸载, 断电
 do_unmount() {
     udisksctl unmount -b "$target_part"
     udisksctl power-off -b "$target_dev"
@@ -61,7 +60,7 @@ if [[ "$#" -ne 1 ]]; then
     exit 1
 fi
 
-# 脚本逻辑选择
+# 主程序入口
 case "$1" in
     -m|--mount)
         check_dev
@@ -70,7 +69,6 @@ case "$1" in
     -u|--unmount)
         check_dev
         do_unmount
-        do_power_off
         ;;
     -h|--help)
         usage
