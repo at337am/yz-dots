@@ -80,7 +80,8 @@ mkdir -p "$output_dir"
 
 output_path="$output_dir/output_%04d.$target_ext"
 
-ffmpeg -i "$VIDEO_FILE" \
+ffmpeg -hide_banner -loglevel error -stats \
+    -i "$VIDEO_FILE" \
     -vsync 0 \
     "${ffmpeg_opts[@]}" \
     "$output_path"
