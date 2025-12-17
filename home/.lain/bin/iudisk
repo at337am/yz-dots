@@ -20,7 +20,7 @@ NC='\033[0m'            # 重置色
 # U 盘标签
 TARGET_LABEL="IUDISK"
 
-# 全局变量，稍后由 detect_device 函数填充
+# 全局变量, 之后会由 detect_device 函数填充
 usb_part=""
 usb_dev=""
 
