@@ -21,7 +21,7 @@ usb_dev="/dev/sda"
 usb_part="/dev/sda1"
 
 # 检查设备是否存在
-check_dev() {
+check_dev_exists() {
     if [[ ! -b "$usb_dev" ]]; then
         printf "未找到块设备 %s\n" "$usb_dev" >&2
         exit 1
@@ -34,6 +34,7 @@ usage() {
     printf "\nFlags:\n"
     printf "  -m, --mount           挂载 U 盘\n"
     printf "  -u, --unmount         安全弹出 U 盘 (卸载并断电)\n"
+    printf "  -s, --status          查看 U 盘目前的挂载状态\n"
     printf "  -h, --help            Show this help message\n"
 }
 
@@ -44,6 +45,16 @@ confirm() {
         y|yes) return 0 ;;
         *) return 1 ;;
     esac
+}
+
+# 查看 U 盘的挂载状态
+check_dev_status() {
+    if findmnt -n "$usb_part" &> /dev/null; then
+        mount_path=$(findmnt -n -o TARGET "$usb_part")
+        printf "U 盘 (%s) 已被挂载到: %s\n" "$usb_part" "$mount_path"
+    else
+        printf "U 盘 (%s) 当前未被挂载\n" "$usb_part"
+    fi
 }
 
 # 挂载
@@ -83,12 +94,16 @@ fi
 # 主程序入口
 case "$1" in
     -m|--mount)
-        check_dev
+        check_dev_exists
         do_mount
         ;;
     -u|--unmount)
-        check_dev
+        check_dev_exists
         do_unmount
+        ;;
+    -s|--status)
+        check_dev_exists
+        check_dev_status
         ;;
     -h|--help)
         usage
