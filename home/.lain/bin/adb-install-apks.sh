@@ -7,10 +7,19 @@
 set -euo pipefail
 
 # 依赖检查
-if ! command -v "adb" &> /dev/null; then
-    printf "Error: Missing dependency: adb\n" >&2
-    exit 1
-fi
+dependencies=("adb" "paplay")
+for cmd in "${dependencies[@]}"; do
+    if ! command -v "$cmd" &> /dev/null; then
+        printf "Error: Missing dependency: %s\n" "$cmd" >&2
+        exit 1
+    fi
+done
+
+# 播放音频
+play_audio() {
+    local audio_file="/usr/share/sounds/freedesktop/stereo/${1}.oga"
+    [[ -f "$audio_file" ]] && paplay "$audio_file"
+}
 
 success=0
 fail=0
@@ -37,8 +46,4 @@ printf "ERR count: %d\n" "$fail"
 
 notify-send "ADB install" "all APKs have been installed."
 
-complete_audio_file="/usr/share/sounds/freedesktop/stereo/complete.oga"
-
-if [[ -f "$complete_audio_file" ]]; then
-    paplay "$complete_audio_file"
-fi
+play_audio "complete"

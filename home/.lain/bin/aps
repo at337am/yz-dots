@@ -6,6 +6,15 @@
 
 set -euo pipefail
 
+# 依赖检查
+dependencies=("adb" "paplay")
+for cmd in "${dependencies[@]}"; do
+    if ! command -v "$cmd" &> /dev/null; then
+        printf "Error: Missing dependency: %s\n" "$cmd" >&2
+        exit 1
+    fi
+done
+
 # 定义颜色
 RED='\033[0;31m'        # 红色
 GREEN='\033[0;32m'      # 绿色
@@ -14,17 +23,9 @@ NC='\033[0m'            # 重置色
 
 # 播放音频
 play_audio() {
-    local type="$1"
-    local audio_file="/usr/share/sounds/freedesktop/stereo/${type}.oga"
-    if [[ -f "$audio_file" ]] && command -v paplay &> /dev/null; then
-        paplay "$audio_file"
-    fi
+    local audio_file="/usr/share/sounds/freedesktop/stereo/${1}.oga"
+    [[ -f "$audio_file" ]] && paplay "$audio_file"
 }
-
-if ! command -v "adb" &> /dev/null; then
-    printf "Error: Missing dependency: adb\n" >&2
-    exit 1
-fi
 
 if [[ "$#" -eq 0 ]]; then
     printf "Error: Invalid argument.\n" >&2

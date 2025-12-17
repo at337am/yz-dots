@@ -3,7 +3,7 @@
 set -euo pipefail
 
 # 依赖检查
-dependencies=("udisksctl" "lsblk" "findfs" "findmnt" "notify-send")
+dependencies=("udisksctl" "lsblk" "findfs" "findmnt" "notify-send" "paplay")
 for cmd in "${dependencies[@]}"; do
     if ! command -v "$cmd" &> /dev/null; then
         printf "Error: Missing dependency: %s\n" "$cmd" >&2
@@ -34,11 +34,8 @@ notify() {
 
 # 播放音频
 play_audio() {
-    local type="$1"
-    local audio_file="/usr/share/sounds/freedesktop/stereo/${type}.oga"
-    if [[ -f "$audio_file" ]] && command -v paplay &> /dev/null; then
-        paplay "$audio_file"
-    fi
+    local audio_file="/usr/share/sounds/freedesktop/stereo/${1}.oga"
+    [[ -f "$audio_file" ]] && paplay "$audio_file"
 }
 
 # 核心逻辑：通过标签探测设备
@@ -95,7 +92,7 @@ confirm() {
 check_dev_status() {
     if findmnt -n "$usb_part" &> /dev/null; then
         mount_path=$(findmnt -n -o TARGET "$usb_part")
-        printf "USB drive [%s] (%s) is mounted at: ${GREEN}%s${NC}\n" "$TARGET_LABEL" "$usb_part" "$mount_path"
+        printf "USB drive [%s] (%s) is mounted at ${GREEN}%s${NC}\n" "$TARGET_LABEL" "$usb_part" "$mount_path"
     else
         printf "USB drive [%s] (%s) is detected but ${RED}not mounted${NC}\n" "$TARGET_LABEL" "$usb_part"
     fi
@@ -105,7 +102,7 @@ check_dev_status() {
 do_mount() {
     if findmnt -n "$usb_part" &> /dev/null; then
         mount_path=$(findmnt -n -o TARGET "$usb_part")
-        printf "${MAGENTA}Already mounted at: %s${NC}\n" "$mount_path"
+        printf "${MAGENTA}Already mounted at %s${NC}\n" "$mount_path"
         exit 0
     fi
 
@@ -117,7 +114,7 @@ do_mount() {
 do_unmount() {
     # 如果已经挂载, 先卸载
     if findmnt -n "$usb_part" &> /dev/null; then
-        if ! confirm "Eject USB drive '$TARGET_LABEL' ($usb_part)?"; then
+        if ! confirm "Eject USB drive '$TARGET_LABEL'?"; then
             printf "Operation cancelled.\n" >&2
             exit 1
         fi
