@@ -147,3 +147,5 @@ case "$1" in
         exit 1
         ;;
 esac
+
+# todo 透过 U 盘标签来寻找磁盘号
