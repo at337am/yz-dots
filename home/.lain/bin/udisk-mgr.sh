@@ -46,13 +46,12 @@ confirm() {
     esac
 }
 
-
-
 # 挂载
 do_mount() {
     if findmnt -n "$usb_part" &> /dev/null; then
         mount_path=$(findmnt -n -o TARGET "$usb_part")
-        printf "U 盘 (%s) 已挂载至: %s\n" "$usb_part" "$mount_path"
+        printf "U 盘 (%s) 已被挂载到: %s\n" "$usb_part" "$mount_path"
+        printf "退出执行\n"
         exit 1
     fi
 
@@ -101,3 +100,5 @@ case "$1" in
         exit 1
         ;;
 esac
+
+# todo 增加一个 -s 选项检查 u盘 的挂载状态
