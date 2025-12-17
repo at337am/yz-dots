@@ -3,58 +3,77 @@
 set -euo pipefail
 
 # 依赖检查
-if ! command -v "udisksctl" &> /dev/null; then
-    printf "Error: Missing dependency: udisksctl\n" >&2
-    exit 1
-fi
+dependencies=("udisksctl" "notify-send")
+for cmd in "${dependencies[@]}"; do
+    if ! command -v "$cmd" &> /dev/null; then
+        printf "Error: Missing dependency: %s\n" "$cmd" >&2
+        exit 1
+    fi
+done
+
+# 定义颜色
+RED='\033[0;31m'        # 红色
+GREEN='\033[0;32m'      # 绿色
+NC='\033[0m'            # 重置色
 
 # 配置变量
 TARGET_DEV="/dev/sda"
 TARGET_PART="${TARGET_DEV}1"
 
-# 发送通知
-notify() {
-    notify-send -a "udisk" \
-                -u low \
-                -h string:x-dunst-stack-tag:volume_notif \
-                "$1"
+usage() {
+    printf "Usage:\n"
+    printf "  %s [flags]\n" "$(basename "$0")"
+    printf "\nFlags:\n"
+    printf "  -m, --mount           挂载 U 盘\n"
+    printf "  -u, --unmount         安全弹出 U 盘 (卸载并断电)\n"
+    printf "  -h, --help            Show this help message\n"
 }
+
+if [[ "$#" -ne 1 ]]; then
+    printf "Error: Invalid arguments.\n" >&2
+    usage >&2
+    exit 1
+fi
 
 # 判断是否为块设备
 if [[ ! -b "$TARGET_DEV" ]]; then
-    notify-send -u critical "错误" "未找到设备 $TARGET_DEV"
+    printf "未找到块设备 %s\n" "$TARGET_DEV" >&2
     exit 1
 fi
 
 # 定义挂载函数
 do_mount() {
-    if mountpoint -q "/run/media/$USER/"*; then
-        notify-send "提示" "设备似乎已经挂载。"
+    if findmnt -n "$TARGET_PART" &> /dev/null; then
+        MOUNT_PATH=$(findmnt -n -o TARGET "$TARGET_PART")
+        printf "设备已挂载于%s\n" "$MOUNT_PATH"
         exit 0
     fi
 
-    # 使用 udisksctl 挂载
-    OUTPUT=$(udisksctl mount -b "$TARGET_PART" 2>&1)
-    if [ $? -eq 0 ]; then
-        MOUNT_PATH=$(echo "$OUTPUT" | grep -oP "at \K.*")
-        notify-send "U盘已挂载" "路径: $MOUNT_PATH"
+    if udisksctl mount -b "$TARGET_PART"; then
+        printf "挂载成功\n"
     else
-        notify-send -u critical "挂载失败" "$OUTPUT"
+        printf "挂载失败\n" >&2
+        exit 1
     fi
 }
 
-# 定义卸载并断电函数
+# 定义卸载函数
 do_unmount() {
-    # 1. 卸载分区
-    if udisksctl unmount -b "$TARGET_PART" 2>/dev/null; then
-        # 2. 安全断电 (Power off)
-        if udisksctl power-off -b "$TARGET_DEV" 2>/dev/null; then
-            notify-send "U盘安全移除" "数据已同步，电源已切断，可以拔出了。"
-        else
-            notify-send "卸载成功" "分区已卸载，但断电失败。"
-        fi
+    if udisksctl unmount -b "$TARGET_PART"; then
+        printf "卸载成功\n"
     else
-        notify-send -u critical "卸载失败" "请检查是否有程序正在使用 U 盘文件。"
+        printf "卸载失败\n" >&2
+        exit 1
+    fi
+}
+
+# 定义断电函数
+do_power_off() {
+    if udisksctl power-off -b "$TARGET_DEV"; then
+        printf "断电成功\n"
+    else
+        printf "断电失败\n" >&2
+        exit 1
     fi
 }
 
@@ -65,10 +84,15 @@ case "$1" in
         ;;
     -u|--unmount)
         do_unmount
+        do_power_off
+        ;;
+    -h|--help)
+        usage
+        exit 0
         ;;
     *)
-        echo "用法: $0 {-m|--mount | -u|--unmount}"
-        echo "示例: $0 -m (挂载并通知)"
-        echo "示例: $0 -u (卸载、断电并通知)"
+        printf "${RED}Error: Unknown flag %s${NC}\n" "$1" >&2
+        usage >&2
+        exit 1
         ;;
 esac
