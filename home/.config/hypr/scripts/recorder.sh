@@ -1,11 +1,25 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
+# 依赖检查
+dependencies=("gpu-screen-recorder" "notify-send")
+for cmd in "${dependencies[@]}"; do
+    if ! command -v "$cmd" &> /dev/null; then
+        printf "Error: Missing dependency: %s\n" "$cmd" >&2
+        exit 1
+    fi
+done
+
+# 状态文件
 status_file="/tmp/recorder_status"
 
 # 向 waybar 发送刷新信号
 refresh_waybar() {
     pkill -SIGRTMIN+8 waybar
 }
+
+trap 'rm -f "$status_file"; refresh_waybar' EXIT
 
 # 发送通知
 notify() {
@@ -15,8 +29,6 @@ notify() {
                 "$1"
 }
 
-trap 'rm -f "$status_file"; refresh_waybar' EXIT
-
 # 检查是否已经在运行
 if pgrep -f "gpu-screen-recorder" > /dev/null; then
     # -2 相当于 Ctrl + C
@@ -25,12 +37,6 @@ if pgrep -f "gpu-screen-recorder" > /dev/null; then
     notify "STOP REC"
 
     exit 0
-fi
-
-# 依赖检查
-if ! command -v "gpu-screen-recorder" &> /dev/null; then
-    printf "Error: Missing dependency: gpu-screen-recorder\n" >&2
-    exit 1
 fi
 
 output_file="$HOME/Videos/recorder_$(date +"%y%m%d_%H%M%S").mkv"
