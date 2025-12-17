@@ -51,6 +51,9 @@ timedatectl
 
 # 先使用 fdisk -l 查看硬盘名称, 比如是: /dev/nvme0n1
 cfdisk /dev/nvme0n1
+# 
+# (如果是重装的话, 需要先 delete 删除掉旧的的分区)
+# 
 # 选择一个空闲的分区, 进行以下操作:
 # New 新建一个 1G 的分区, 比如 /dev/nvme0n1p4, 然后把 type 改为 EFI
 # 再选择剩下的分区, 比如 /dev/nvme0n1p5, 然后把 type 改为 filesystem
