@@ -31,15 +31,15 @@ notify() {
 
 play_removed_audio() {
     local removed_audio_file="/usr/share/sounds/freedesktop/stereo/device-removed.oga"
-    if [[ -f "$removed_sound_file" ]]; then
-        paplay "$removed_sound_file"
+    if [[ -f "$removed_audio_file" ]]; then
+        paplay "$removed_audio_file"
     fi
 }
 
 play_added_audio() {
     local added_audio_file="/usr/share/sounds/freedesktop/stereo/device-added.oga"
-    if [[ -f "$added_sound_file" ]]; then
-        paplay "$added_sound_file"
+    if [[ -f "$added_audio_file" ]]; then
+        paplay "$added_audio_file"
     fi
 }
 
