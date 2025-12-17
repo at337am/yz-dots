@@ -52,15 +52,19 @@ detect_device() {
     fi
 
     # 2. 获取父设备
-    # -no pkname: 只输出父设备名称
-    # --paths: 输出完整路径 (如 /dev/sdb 而不是 sdb)
     # xargs: 去除首尾空白符
-    usb_dev=$(lsblk -no pkname --paths "$usb_part" | xargs)
+    usb_dev=$(lsblk -n -o pkname --paths "$usb_part" | xargs)
 
     # 3. 严格报错: 如果找不到父设备, 直接退出
     if [[ -z "$usb_dev" ]]; then
         printf "${RED}Error: Could not determine parent device for %s${NC}\n" "$usb_part" >&2
         exit 1
+    fi
+
+    # 额外的防御性检查: 确保找到的父设备真的是个块设备
+    if [[ ! -b "$usb_dev" ]]; then
+         printf "${RED}Error: Detected parent %s is not a block device.${NC}\n" "$usb_dev" >&2
+         exit 1
     fi
 }
 
