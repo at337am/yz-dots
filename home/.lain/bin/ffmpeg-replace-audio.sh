@@ -31,14 +31,13 @@ if [[ ! -f "$AUD_PATH" ]]; then
     exit 1
 fi
 
-# 构建输出文件名
+# 构建输出格式
 output_dir=$(dirname "$VID_PATH")
 video_base=$(basename "$VID_PATH")
-# todo 这里什么作用
-filename="${video_base%.*}"
+video_name="${video_base%.*}"
 ext="${video_base##*.}"
 
-output_path="$output_dir/${filename}_repaudio.$ext"
+output_path="$output_dir/${video_name}_repaudio.$ext"
 
 # -shortest: 当最短的输入流结束时，完成编码
 ffmpeg -hide_banner -loglevel error \

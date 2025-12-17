@@ -13,7 +13,7 @@ NC='\033[0m'            # 重置色
 
 # 默认变量
 VIDEO_FILE=""
-target_ext="jpg"
+ext="jpg"
 ffmpeg_opts=(-q:v 6)
 
 # 依赖检查
@@ -38,7 +38,7 @@ while [[ $# -gt 0 ]]; do
             exit 0
             ;;
         -p|--png)
-            target_ext="png"
+            ext="png"
             ffmpeg_opts=(-compression_level 0)
             shift
             ;;
@@ -80,8 +80,8 @@ output_dir="${video_base%.*}_frames"
 mkdir -p "$output_dir"
 printf "Output directory created: ${GREEN}%s${NC}\n" "$output_dir"
 
-output_path="$output_dir/output_%04d.$target_ext"
-printf "Extraction frame format: ${GREEN}%s${NC}\n" "$target_ext"
+output_path="$output_dir/frame_%04d.$ext"
+printf "Extraction frame format: ${GREEN}%s${NC}\n" "$ext"
 
 ffmpeg -hide_banner -loglevel error -stats \
     -i "$VIDEO_FILE" \
