@@ -78,10 +78,10 @@ output_dir="${video_base%.*}_frames"
 
 # 创建输出目录
 mkdir -p "$output_dir"
-printf "Output directory created: %s\n" "$output_dir"
+printf "Output directory created: ${GREEN}%s${NC}\n" "$output_dir"
 
 output_path="$output_dir/output_%04d.$target_ext"
-printf "Extraction frame format: %s\n" "$target_ext"
+printf "Extraction frame format: ${GREEN}%s${NC}\n" "$target_ext"
 
 ffmpeg -hide_banner -loglevel error -stats \
     -i "$VIDEO_FILE" \
