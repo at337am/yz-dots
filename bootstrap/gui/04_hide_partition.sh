@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 # 找到要隐藏分区的 UUID:
-# lsblk
-# lsblk -f
+# lsblk -p
+# lsblk -pf
 
 set -euo pipefail
 
