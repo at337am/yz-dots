@@ -22,6 +22,14 @@ NC='\033[0m'            # 重置色
 usb_dev="/dev/sda"
 usb_part="/dev/sda1"
 
+# 发送通知
+notify() {
+    notify-send -a "iudisk" \
+                -u low \
+                -h string:x-dunst-stack-tag:volume_notif \
+                "$1"
+}
+
 # 检查设备是否存在
 check_dev_exists() {
     if [[ ! -b "$usb_dev" ]]; then
@@ -103,10 +111,12 @@ case "$1" in
     -m|--mount)
         check_dev_exists
         do_mount
+        notify "Mounted"
         ;;
     -u|--unmount)
         check_dev_exists
         do_unmount
+        notify "Ejected"
         ;;
     -s|--status)
         check_dev_exists
