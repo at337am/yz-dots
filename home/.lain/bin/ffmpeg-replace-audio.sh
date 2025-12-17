@@ -1,13 +1,7 @@
 #!/usr/bin/env bash
 
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
-# 脚本用途：
-# 该脚本用于将指定视频文件中的音频轨道替换为另一条音频文件。
-# 功能说明：
-# 1. 支持保留原视频流，不重新编码视频，提高处理速度。
-# 2. 支持直接复制音频流，无损替换原音频。
-# 3. 输出文件命名为“原视频文件名_repaudio.原扩展名”。
-# 4. 自动根据视频和音频长度裁剪，保证输出文件长度与最短流一致。
+# 脚本用途: 替换视频的音频轨道, 取最短
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
 
 set -euo pipefail
@@ -38,19 +32,14 @@ if [[ ! -f "$AUD_PATH" ]]; then
 fi
 
 # 构建输出文件名
-dirname=$(dirname "$VID_PATH")
-basename=$(basename "$VID_PATH")
-filename="${basename%.*}"
-ext="${basename##*.}"
+output_dir=$(dirname "$VID_PATH")
+video_base=$(basename "$VID_PATH")
+# todo 这里什么作用
+filename="${video_base%.*}"
+ext="${video_base##*.}"
 
-output_path="${dirname}/${filename}_repaudio.${ext}"
+output_path="$output_dir/${filename}_repaudio.$ext"
 
-# --- 开始执行 ---
-
-# -c:v copy: 视频流直接复制，不重新编码
-# -c:a copy: 音频流直接复制，不重新编码
-# -map 0:v: 映射第一个输入(视频)的视频流
-# -map 1:a: 映射第二个输入(音频)的音频流
 # -shortest: 当最短的输入流结束时，完成编码
 ffmpeg -hide_banner -loglevel error \
     -i "$VID_PATH" \
