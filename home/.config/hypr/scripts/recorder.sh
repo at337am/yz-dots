@@ -28,13 +28,10 @@ if pgrep -f "gpu-screen-recorder" > /dev/null; then
 fi
 
 # 依赖检查
-dependencies=("gpu-screen-recorder" "notify-send")
-for cmd in "${dependencies[@]}"; do
-    if ! command -v "$cmd" &> /dev/null; then
-        printf "Error: Missing dependency: %s\n" "$cmd" >&2
-        exit 1
-    fi
-done
+if ! command -v "gpu-screen-recorder" &> /dev/null; then
+    printf "Error: Missing dependency: gpu-screen-recorder\n" >&2
+    exit 1
+fi
 
 output_file="$HOME/Videos/recorder_$(date +"%y%m%d_%H%M%S").mkv"
 mkdir -p "$HOME/Videos"
