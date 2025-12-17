@@ -12,6 +12,11 @@
 
 set -euo pipefail
 
+# 定义颜色
+RED='\033[0;31m'        # 红色
+BLUE='\033[0;34m'       # 蓝色
+NC='\033[0m'            # 重置色
+
 if ! command -v "wget" &> /dev/null; then
     printf "Error: Missing dependency: wget\n" >&2
     exit 1
@@ -19,7 +24,7 @@ fi
 
 bytes=$((50 * 1024 * 1024))
 
-printf "\033[34mCloudflare speed test...\033[0m\n"
+printf "${BLUE}Cloudflare speed test...${NC}\n"
 
 url="https://speed.cloudflare.com/__down?bytes=${bytes}"
 

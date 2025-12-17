@@ -7,9 +7,9 @@
 set -euo pipefail
 
 # 定义颜色
-RED='\033[31m'
-GREEN='\033[32m'
-NC='\033[0m'
+RED='\033[0;31m'        # 红色
+GREEN='\033[0;32m'      # 绿色
+NC='\033[0m'            # 重置色
 
 # 默认变量
 VIDEO_FILE=""
