@@ -39,8 +39,7 @@ notify() {
 # 播放音频
 play_audio() {
     local audio_file="/usr/share/sounds/freedesktop/stereo/${1}.oga"
-    # todo & ?????????
-    [[ -f "$audio_file" ]] && paplay "$audio_file"
+    [[ -f "$audio_file" ]] && paplay "$audio_file" &
 }
 
 # 通过标签探测设备
@@ -171,4 +170,4 @@ case "$1" in
         ;;
 esac
 
-# todo: -s 选项可以更加详细一些
+# todo: -s 选项的功能可以更加详细一些

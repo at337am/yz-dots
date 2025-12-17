@@ -18,7 +18,7 @@ done
 # 播放音频
 play_audio() {
     local audio_file="/usr/share/sounds/freedesktop/stereo/${1}.oga"
-    [[ -f "$audio_file" ]] && paplay "$audio_file"
+    [[ -f "$audio_file" ]] && paplay "$audio_file" &
 }
 
 success=0
