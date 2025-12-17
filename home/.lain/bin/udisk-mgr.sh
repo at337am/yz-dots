@@ -38,7 +38,7 @@ usage() {
     printf "  -h, --help            Show this help message\n"
 }
 
-# 定义挂载函数
+# 挂载函数
 do_mount() {
     if findmnt -n "$TARGET_PART" &> /dev/null; then
         MOUNT_PATH=$(findmnt -n -o TARGET "$TARGET_PART")
@@ -46,32 +46,13 @@ do_mount() {
         exit 0
     fi
 
-    if udisksctl mount -b "$TARGET_PART"; then
-        printf "挂载成功\n"
-    else
-        printf "挂载失败\n" >&2
-        exit 1
-    fi
+    udisksctl mount -b "$TARGET_PART"
 }
 
-# 定义卸载函数
+# 卸载函数
 do_unmount() {
-    if udisksctl unmount -b "$TARGET_PART"; then
-        printf "卸载成功\n"
-    else
-        printf "卸载失败\n" >&2
-        exit 1
-    fi
-}
-
-# 定义断电函数
-do_power_off() {
-    if udisksctl power-off -b "$TARGET_DEV"; then
-        printf "断电成功\n"
-    else
-        printf "断电失败\n" >&2
-        exit 1
-    fi
+    udisksctl unmount -b "$TARGET_PART"
+    udisksctl power-off -b "$TARGET_DEV"
 }
 
 if [[ "$#" -ne 1 ]]; then
