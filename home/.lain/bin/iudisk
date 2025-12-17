@@ -82,11 +82,11 @@ do_unmount() {
 
     if findmnt -n "$usb_part" &> /dev/null; then
         udisksctl unmount -b "$usb_part"
-        printf "USB drive has been unmounted.\n"
+        printf "USB drive has been unmounted\n"
     fi
 
     udisksctl power-off -b "$usb_dev"
-    printf "USB drive has been safely removed.\n"
+    printf "USB drive has been safely removed\n"
 }
 
 # 检查参数是否等于 1
