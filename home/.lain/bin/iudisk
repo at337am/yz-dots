@@ -115,27 +115,27 @@ check_dev_status() {
     fstype="${fstype:-Unknown}"
 
     # 2. 定义样式常量
-    local HR="----------------------------------------------"
+    local HR="------------------------------------------"
 
     # 3. 输出头部
     printf "${MAGENTA}%s${NC}\n" "$HR"
-    printf " Device Info  : ${MAGENTA}%s${NC}\n" "$TARGET_LABEL"
+    printf " Device Info   ${MAGENTA}%s${NC}\n" "$TARGET_LABEL"
     printf "${MAGENTA}%s${NC}\n" "$HR"
 
     # 4. 输出基础信息
-    printf " %-12s : %s\n" "Partition"  "$usb_part"
-    printf " %-12s : %s\n" "Parent Dev" "$usb_dev"
-    printf " %-12s : %s\n" "Size/Type"  "$size ($fstype)"
+    printf " %-12s  %s\n" "Partition"  "$usb_part"
+    printf " %-12s  %s\n" "Parent Dev" "$usb_dev"
+    printf " %-12s  %s\n" "Size/Type"  "$size ($fstype)"
 
     # 5. 输出挂载状态
     if findmnt -n "$usb_part" &> /dev/null; then
         local mount_path
         mount_path=$(findmnt -n -o TARGET "$usb_part")
 
-        printf " %-12s : ${GREEN}%s${NC}\n" "Status" "Mounted"
-        printf " %-12s : %s\n" "Mount Point" "$mount_path"
+        printf " %-12s  ${GREEN}%s${NC}\n" "Status" "Mounted"
+        printf " %-12s  %s\n" "Mount Point" "$mount_path"
     else
-        printf " %-12s : ${RED}%s${NC}\n" "Status" "Unmounted"
+        printf " %-12s  ${RED}%s${NC}\n" "Status" "Unmounted"
     fi
 
     printf "${MAGENTA}%s${NC}\n" "$HR"
