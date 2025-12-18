@@ -29,3 +29,13 @@ sudo pacman -S xxx
 
 # 删除软件包以及依赖
 sudo pacman -Rns xxx
+
+
+
+% pacman, find
+
+# 同步文件数据库
+sudo pacman -Fy
+
+# 查找某个命令属于哪个包
+pacman -F xxx
