@@ -19,6 +19,9 @@ alias du1='du -ah -d 1 .'
 alias duf='duf -only local'
 alias cpwd='pwd | wl-copy -n'
 alias update='yay -Syyu'
+alias gst='git st'
+alias gaw='git aw'
+alias glg='git lg'
 
 # base
 alias _='sudo'
