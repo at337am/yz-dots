@@ -141,6 +141,50 @@ check_dev_status() {
     printf "${MAGENTA}%s${NC}\n" "$HR"
 }
 
+# 查看 U 盘的挂载状态
+# check_dev_status() {
+#     # 1. 获取设备详细信息 (大小, 文件系统)
+#     local size fstype
+#     read -r size fstype <<< "$(lsblk -d -n -o SIZE,FSTYPE "$usb_part" 2>/dev/null)"
+
+#     # 当出现空值时, 提供默认显示
+#     # 
+#     # 笔记: 这是参数扩展的写法, 相当于下面的伪代码:
+#     # if [[ -z "$size" ]]; then
+#     #     size="N/A"
+#     # else
+#     #     size=$size
+#     # fi
+#     size="${size:-N/A}"
+#     fstype="${fstype:-Unknown}"
+
+#     # 2. 定义样式常量
+#     local HR="------------------------------------------"
+
+#     # 3. 输出头部
+#     printf "${MAGENTA}%s${NC}\n" "$HR"
+#     printf " Device Info   ${MAGENTA}%s${NC}\n" "$TARGET_LABEL"
+#     printf "${MAGENTA}%s${NC}\n" "$HR"
+
+#     # 4. 输出基础信息
+#     printf " %-12s  %s\n" "Partition"  "$usb_part"
+#     printf " %-12s  %s\n" "Parent Dev" "$usb_dev"
+#     printf " %-12s  %s\n" "Size/Type"  "$size ($fstype)"
+
+#     # 5. 输出挂载状态
+#     if findmnt -n "$usb_part" &> /dev/null; then
+#         local mount_path
+#         mount_path=$(findmnt -n -o TARGET "$usb_part")
+
+#         printf " %-12s  ${GREEN}%s${NC}\n" "Status" "Mounted"
+#         printf " %-12s  %s\n" "Mount Point" "$mount_path"
+#     else
+#         printf " %-12s  ${RED}%s${NC}\n" "Status" "Unmounted"
+#     fi
+
+#     printf "${MAGENTA}%s${NC}\n" "$HR"
+# }
+
 # 挂载
 do_mount() {
     if findmnt -n "$usb_part" &> /dev/null; then
