@@ -2,6 +2,10 @@
 
 set -euo pipefail
 
+# 定义颜色
+RED='\033[0;31m'        # 红色
+NC='\033[0m'            # 重置色
+
 usage() {
     printf "Usage:\n"
     printf "  %s [flags]\n" "$(basename "$0")"
@@ -80,7 +84,7 @@ pack_one() {
 
 # 参数个数不能大于 1
 if [[ "$#" -gt 1 ]]; then
-    printf "Error: Too many arguments.\n" >&2
+    printf "${RED}Error: Too many arguments.${NC}\n" >&2
     usage >&2
     exit 1
 fi
@@ -109,7 +113,7 @@ case "$action" in
         exit 0
         ;;
     *)
-        printf "Error: Unknown flag %s\n" "$action" >&2
+        printf "${RED}Error: Unknown flag %s${NC}\n" "$action" >&2
         usage >&2
         exit 1
         ;;
