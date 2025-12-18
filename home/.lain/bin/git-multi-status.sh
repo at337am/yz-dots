@@ -45,7 +45,7 @@ for dir in "${PROJECT_PATHS[@]}"; do
         if [[ -z "$status" ]]; then
             printf "    ${GREEN}✔ Clean${NC}\n\n"
         else
-            printf "  ${YELLOW}Changes:${NC}\n"
+            # printf "  ${YELLOW}Changes:${NC}\n"
             echo "$status" | sed 's/^/   /'
             printf "\n"
         fi
