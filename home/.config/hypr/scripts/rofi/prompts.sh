@@ -5,12 +5,17 @@ if pgrep -x rofi > /dev/null; then
     exit 0
 fi
 
+# 发送通知
+notify() {
+    notify-send -a "clipboard" \
+                -u low \
+                -h string:x-dunst-stack-tag:volume_notif \
+                "$1"
+}
+
 notes_path="$HOME/Documents/notes/prompts"
 
-if [ ! -d "$notes_path" ]; then
-    rofi -e "错误: 目录未找到: $notes_path"
-    exit 1
-fi
+[[ ! -d "$notes_path" ]] && exit 1
 
 selected_file=$( (cd "$notes_path" && ls -1) | rofi -dmenu -i -p "prompts" -theme ~/.config/rofi/themes/prompts.rasi)
 
@@ -20,14 +25,8 @@ full_path="$notes_path/$selected_file"
 
 if [[ -f "$full_path" ]]; then
     wl-copy < "$full_path"
-    notify-send -a "clipboard" \
-                -u low \
-                -h string:x-dunst-stack-tag:volume_notif \
-                "Copied"
+    notify "Copied"
 else
-    notify-send -a "clipboard" \
-                -u low \
-                -h string:x-dunst-stack-tag:volume_notif \
-                "Copy Failed"
+    notify "Copy Failed"
     exit 1
 fi
