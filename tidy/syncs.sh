@@ -2,6 +2,19 @@
 
 set -euo pipefail
 
+usage() {
+    printf "Usage:\n"
+    printf "  %s [flags]\n" "$(basename "$0")"
+    printf "\nFlags:\n"
+    printf "  proj                  打包 dev 和 Documents\n"
+    printf "  fonts                 打包 fonts\n"
+    printf "  PFP                   打包 PFP\n"
+    printf "  restore               打包 restore\n"
+    printf "  all                   打包所有内容 (迁移)\n"
+    printf "  sync                  仅同步\n"
+    printf "  -h, --help            Show this help message\n"
+}
+
 # 需要同步的源路径
 documents_path="$HOME/Documents"
 fonts_path="$HOME/.local/share/fonts"
@@ -65,37 +78,41 @@ pack_one() {
     printf "%s packed and ready in ~/Downloads.\n" "$name"
 }
 
-usage() {
-    printf "Usage:\n"
-    printf "  %s [flags]\n" "$(basename "$0")"
-    printf "\nFlags:\n"
-    printf "  proj                  打包 dev 和 Documents\n"
-    printf "  all                   打包所有内容 (迁移)\n"
-    printf "  fonts                 打包 fonts\n"
-    printf "  PFP                   打包 PFP\n"
-    printf "  restore               打包 restore\n"
-}
-
-if [[ "$#" -eq 1 && ("$1" == "-h" || "$1" == "--help") ]]; then
-    usage
-    exit 0
-fi
-
-if [[ "$#" -eq 0 ]]; then
-    mirroring
-elif [[ "$#" -eq 1 && "$1" == "proj" ]]; then
-    mirroring
-    pack_proj
-elif [[ "$#" -eq 1 && "$1" =~ ^(fonts|PFP|restore)$ ]]; then
-    mirroring
-    pack_one "$1"
-elif [[ "$#" -eq 1 && "$1" == "all" ]]; then
-    mirroring
-    pack_all
-else
-    printf "Error: Invalid arguments.\n" >&2
+# 参数个数不能大于 1
+if [[ "$#" -gt 1 ]]; then
+    printf "Error: Too many arguments.\n" >&2
     usage >&2
     exit 1
 fi
+
+# 如果 $1 为空 (无参数)，则赋值为 sync
+action="${1:-sync}"
+
+case "$action" in
+    proj)
+        mirroring
+        pack_proj
+        ;;
+    fonts|PFP|restore)
+        mirroring
+        pack_one "$action"
+        ;;
+    all)
+        mirroring
+        pack_all
+        ;;
+    sync)
+        mirroring
+        ;;
+    -h|--help)
+        usage
+        exit 0
+        ;;
+    *)
+        printf "Error: Unknown flag %s\n" "$action" >&2
+        usage >&2
+        exit 1
+        ;;
+esac
 
 printf "Done.\n"

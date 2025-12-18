@@ -43,6 +43,25 @@ play_audio() {
     [[ -f "$audio_file" ]] && paplay "$audio_file" &
 }
 
+usage() {
+    printf "Usage:\n"
+    printf "  %s [flags]\n" "$(basename "$0")"
+    printf "\nFlags:\n"
+    printf "  -m, --mount           Mount the USB drive\n"
+    printf "  -u, --unmount         Safely eject the USB drive (unmount and power off)\n"
+    printf "  -s, --status          Check the current mount status\n"
+    printf "  -h, --help            Show this help message\n"
+}
+
+confirm() {
+    local prompt=${1:-"Do you want to continue?"}
+    read -r -p "$prompt [y/N]: " choice
+    case "${choice,,}" in
+        y|yes) return 0 ;;
+        *) return 1 ;;
+    esac
+}
+
 # 通过标签探测设备
 detect_device() {
     # 1. 查找分区
@@ -66,25 +85,6 @@ detect_device() {
          printf "${RED}Error: Detected parent %s is not a block device.${NC}\n" "$dev_name" >&2
          exit 1
     fi
-}
-
-usage() {
-    printf "Usage:\n"
-    printf "  %s [flags]\n" "$(basename "$0")"
-    printf "\nFlags:\n"
-    printf "  -m, --mount           Mount the USB drive\n"
-    printf "  -u, --unmount         Safely eject the USB drive (unmount and power off)\n"
-    printf "  -s, --status          Check the current mount status\n"
-    printf "  -h, --help            Show this help message\n"
-}
-
-confirm() {
-    local prompt=${1:-"Do you want to continue?"}
-    read -r -p "$prompt [y/N]: " choice
-    case "${choice,,}" in
-        y|yes) return 0 ;;
-        *) return 1 ;;
-    esac
 }
 
 # 查看 U 盘的挂载状态
