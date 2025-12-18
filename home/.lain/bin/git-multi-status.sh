@@ -52,4 +52,4 @@ for dir in "${PROJECT_PATHS[@]}"; do
     )
 done
 
-printf "All checks complete.\n"
+printf "Done.\n"
