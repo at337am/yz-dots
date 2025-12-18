@@ -111,8 +111,8 @@ check_dev_status() {
     # else
     #     size=$size
     # fi
-    size=${size:-N/A}
-    fstype=${fstype:-Unknown}
+    size="${size:-N/A}"
+    fstype="${fstype:-Unknown}"
 
     # 2. 定义样式常量
     local HR="----------------------------------------------"
