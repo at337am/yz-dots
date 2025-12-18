@@ -35,7 +35,7 @@ for dir in "${PROJECT_PATHS[@]}"; do
         continue
     fi
 
-    cd "$dir" || exit 1
+    cd "$dir"
 
     status=$(git status --short)
 
