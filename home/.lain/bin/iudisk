@@ -195,5 +195,5 @@ case "$1" in
         ;;
 esac
 
-# todo 未指定参数时, 执行 status
+# todo 未指定参数时, 执行 status, 一个参数或者是没有参数
 # todo 改进 help 描述
