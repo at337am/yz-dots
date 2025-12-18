@@ -18,20 +18,21 @@ PROJECT_PATHS=(
     "/workspace/dev/raindrop"
 )
 
-C_BLUE="\033[0;34m"
-C_GREEN="\033[0;32m"
-C_YELLOW="\033[0;33m"
-C_RED="\033[0;31m"
-C_RESET="\033[0m"
+# 定义颜色
+RED='\033[0;31m'        # 红色
+GREEN='\033[0;32m'      # 绿色
+BLUE='\033[0;34m'       # 蓝色
+MAGENTA='\033[0;35m'    # 紫色
+NC='\033[0m'            # 重置色
 
 for dir in "${PROJECT_PATHS[@]}"; do
-    # printf "${C_BLUE}▪ Checking: %s${C_RESET}\n" "$dir"
-    printf "${C_BLUE}▪ Checking: %s${C_RESET}\n" "${dir##*/}"
+    # printf "${BLUE}▪ Checking: %s${NC}\n" "$dir"
+    printf "${BLUE}▪ Checking: %s${NC}\n" "${dir##*/}"
 
     # 检查 .git 目录是否存在, 这是判断是否为 git 仓库的最可靠方法
     if [[ ! -d "$dir/.git" ]]; then
-        printf "  ${C_RED}Error: Not a git repository or directory does not exist${C_RESET}\n\n"
-        continue # 继续检查下一个项目
+        printf "  ${RED}Error: Not a git repository or directory does not exist${NC}\n\n"
+        continue
     fi
 
     (
@@ -41,11 +42,10 @@ for dir in "${PROJECT_PATHS[@]}"; do
 
         if [[ -z "$status" ]]; then
             # 如果输出为空, 说明工作区是干净的
-            printf "  ${C_GREEN}✔ Clean${C_RESET}\n\n"
+            printf "  ${GREEN}✔ Clean${NC}\n\n"
         else
             # 如果有输出, 说明有变更
-            printf "  ${C_YELLOW}Changes detected:${C_RESET}\n"
-            # 使用 sed 给每一行前面加上缩进, 使输出更整齐
+            printf "  ${MAGENTA}Changes detected:${NC}\n"
             echo "$status" | sed 's/^/   /'
             printf "\n"
         fi
