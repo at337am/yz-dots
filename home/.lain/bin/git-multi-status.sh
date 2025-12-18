@@ -40,11 +40,11 @@ for dir in "${PROJECT_PATHS[@]}"; do
 
         status=$(git status --short)
 
+        # 如果输出为空, 说明工作区是干净的
+        # 如果有输出, 说明有变更
         if [[ -z "$status" ]]; then
-            # 如果输出为空, 说明工作区是干净的
             printf "  ${GREEN}✔ Clean${NC}\n\n"
         else
-            # 如果有输出, 说明有变更
             printf "  ${MAGENTA}Changes detected:${NC}\n"
             echo "$status" | sed 's/^/   /'
             printf "\n"
