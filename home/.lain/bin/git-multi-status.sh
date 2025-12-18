@@ -12,7 +12,7 @@ if ! command -v "git" &> /dev/null; then
     exit 1
 fi
 
-PROJECT_PATHS=(
+project_paths=(
     "$HOME/Documents/notes"
     "$HOME/Documents/memos"
     "/workspace/dev/yz-dots"
@@ -26,7 +26,7 @@ GREEN='\033[0;32m'      # 绿色
 BLUE='\033[0;34m'       # 蓝色
 NC='\033[0m'            # 重置色
 
-for dir in "${PROJECT_PATHS[@]}"; do
+for dir in "${project_paths[@]}"; do
     printf "\n${BLUE}▪ Checking: %s${NC}\n" "${dir##*/}"
 
     # 检查 .git 目录是否存在, 这是判断是否为 git 仓库的最可靠方法
