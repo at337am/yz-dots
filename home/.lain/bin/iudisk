@@ -126,7 +126,7 @@ check_dev_status() {
 do_mount() {
     if findmnt -n "$dev_part" &> /dev/null; then
         mount_path=$(findmnt -n -o TARGET "$dev_part")
-        printf "${MAGENTA}Already mounted at %s${NC}\n" "$mount_path"
+        printf "Already mounted at %s\n" "$mount_path"
         exit 0
     fi
 
@@ -146,7 +146,7 @@ do_unmount() {
         fi
 
         udisksctl unmount -b "$dev_part"
-        printf "${GREEN}Unmounted successfully.${NC}\n"
+        printf "${MAGENTA}Unmounted successfully.${NC}\n"
     else
         # 如果没挂载, 直接询问是否断电
         if ! confirm "Device not mounted. Power off '$TARGET_LABEL'?"; then
@@ -156,7 +156,7 @@ do_unmount() {
 
     # 断电操作针对的是父设备 (/dev/sda 而不是 /dev/sda1)
     udisksctl power-off -b "$dev_name"
-    printf "${GREEN}Device %s has been safely removed.${NC}\n" "$dev_name"
+    printf "${MAGENTA}Device %s has been safely removed.${NC}\n" "$dev_name"
 }
 
 # 参数个数不能大于 1
