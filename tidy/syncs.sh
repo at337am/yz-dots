@@ -4,6 +4,7 @@ set -euo pipefail
 
 # 定义颜色
 RED='\033[0;31m'        # 红色
+GREEN='\033[0;32m'      # 绿色
 NC='\033[0m'            # 重置色
 
 usage() {
@@ -37,7 +38,7 @@ source_dirs=(
 # 路径检查
 for path in "${source_dirs[@]}"; do
     if [[ ! -d "$path" ]]; then
-        printf "Error: %s is not a directory.\n" "$path" >&2
+        printf "${RED}Error: %s is not a directory.${NC}\n" "$path" >&2
         exit 1
     fi
 done
@@ -60,7 +61,7 @@ mirroring() {
 pack_all() {
     local timestamp=$(date +"%y%m%d_%H%M%S")
     tar -cf "$HOME/Downloads/syncs_migration_${timestamp}.tar" -C /data/bak/ syncs
-    printf "The migration has been packed into ~/Downloads.\n"
+    printf "${GREEN}The migration has been packed into ~/Downloads.${NC}\n"
 }
 
 # 日常备份, 打包 proj 项目
@@ -71,7 +72,7 @@ pack_proj(){
     cd ~/Downloads
     tar -cf "proj_bak_$(date +"%y%m%d_%H%M%S").tar" proj_bak
     command rm -rf proj_bak
-    printf "proj packed and ready in ~/Downloads.\n"
+    printf "${GREEN}proj packed and ready in ~/Downloads.${NC}\n"
 }
 
 # 打包某个单独的内容
@@ -79,7 +80,7 @@ pack_one() {
     local name="$1"
     local timestamp=$(date +"%y%m%d_%H%M%S")
     tar -cf "$HOME/Downloads/${name}_bak_${timestamp}.tar" -C "$TARGET_DIR" "$name"
-    printf "%s packed and ready in ~/Downloads.\n" "$name"
+    printf "${GREEN}%s packed and ready in ~/Downloads.${NC}\n" "$name"
 }
 
 # 参数个数不能大于 1
