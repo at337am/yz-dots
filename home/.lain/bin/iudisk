@@ -114,11 +114,11 @@ check_dev_status() {
     size="${size:-N/A}"
     fstype="${fstype:-Unknown}"
 
-    printf "Device Info: ${MAGENTA}%s${NC}\n" "$TARGET_LABEL"
+    printf "${MAGENTA}%s${NC}\n" "--- $TARGET_LABEL ---"
 
+    printf "%s: %s\n" "Disk" "$usb_dev"
     printf "%s: %s\n" "Partition"  "$usb_part"
-    printf "%s: %s\n" "Parent Dev" "$usb_dev"
-    printf "%s: %s\n" "Size/Type"  "$size ($fstype)"
+    printf "%s: %s\n" "Size"  "$size ($fstype)"
 
     # 5. 输出挂载状态
     if findmnt -n "$usb_part" &> /dev/null; then
