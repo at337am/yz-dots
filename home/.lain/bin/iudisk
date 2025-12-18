@@ -100,11 +100,14 @@ confirm() {
 # 查看 U 盘的挂载状态
 check_dev_status() {
     # 1. 获取设备详细信息 (大小, 文件系统)
-    local dev_info
-    dev_info=$(lsblk -n -o SIZE,FSTYPE "$usb_part" 2>/dev/null)
+    # local dev_info
+    # dev_info=$(lsblk -n -o SIZE,FSTYPE "$usb_part" 2>/dev/null)
 
-    local size=$(echo "$dev_info" | awk '{print $1}')
-    local fstype=$(echo "$dev_info" | awk '{print $2}')
+    # local size=$(echo "$dev_info" | awk '{print $1}')
+    # local fstype=$(echo "$dev_info" | awk '{print $2}')
+
+    local size fstype
+    read -r size fstype <<< "$(lsblk -d -n -o SIZE,FSTYPE "$usb_part" 2>/dev/null)"
 
     # 数据判空处理
     size=${size:-N/A}
@@ -112,9 +115,8 @@ check_dev_status() {
 
     # 2. 定义样式常量
     # 分割线长度
-    local HR="----------------------------------------"
+    local HR="----------------------------------------------"
     # 格式化字符串: 行首缩进1空格 + 左列12字符 + 冒号 + 内容
-    local FMT=" %-12s : %s\n"
 
     # 3. 输出头部
     printf "${MAGENTA}%s${NC}\n" "$HR"
@@ -122,9 +124,9 @@ check_dev_status() {
     printf "${MAGENTA}%s${NC}\n" "$HR"
 
     # 4. 输出基础信息
-    printf "$FMT" "Partition"  "$usb_part"
-    printf "$FMT" "Parent Dev" "$usb_dev"
-    printf "$FMT" "Size/Type"  "$size ($fstype)"
+    printf " %-12s : %s\n" "Partition"  "$usb_part"
+    printf " %-12s : %s\n" "Parent Dev" "$usb_dev"
+    printf " %-12s : %s\n" "Size/Type"  "$size ($fstype)"
 
     # 5. 输出挂载状态
     if findmnt -n "$usb_part" &> /dev/null; then
@@ -132,7 +134,7 @@ check_dev_status() {
         mount_path=$(findmnt -n -o TARGET "$usb_part")
 
         printf " %-12s : ${GREEN}%s${NC}\n" "Status" "Mounted"
-        printf "$FMT" "Mount Point" "$mount_path"
+        printf " %-12s : %s\n" "Mount Point" "$mount_path"
     else
         printf " %-12s : ${RED}%s${NC}\n" "Status" "Unmounted"
     fi
