@@ -104,6 +104,13 @@ check_dev_status() {
     read -r size fstype <<< "$(lsblk -d -n -o SIZE,FSTYPE "$usb_part" 2>/dev/null)"
 
     # 当出现空值时, 提供默认显示
+    # 
+    # 笔记: 这是参数扩展的写法, 相当于下面的伪代码:
+    # if [[ -z "$size" ]]; then
+    #     size="N/A"
+    # else
+    #     size=$size
+    # fi
     size=${size:-N/A}
     fstype=${fstype:-Unknown}
 
