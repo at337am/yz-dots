@@ -70,7 +70,6 @@ detect_device() {
 usage() {
     printf "Usage:\n"
     printf "  %s [flags]\n" "$(basename "$0")"
-    printf "\nTarget Label: ${MAGENTA}%s${NC}\n" "$TARGET_LABEL"
     printf "\nFlags:\n"
     printf "  -m, --mount           Mount the USB drive\n"
     printf "  -u, --unmount         Safely eject the USB drive (unmount and power off)\n"
