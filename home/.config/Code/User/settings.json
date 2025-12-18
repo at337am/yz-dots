@@ -71,5 +71,6 @@
   "window.zoomLevel": 0.75,
   "chat.disableAIFeatures": true,
   "chat.extensionUnification.enabled": false,
-  "workbench.layoutControl.enabled": false
+  "workbench.layoutControl.enabled": false,
+  "editor.mouseWheelScrollSensitivity": 1.6
 }
