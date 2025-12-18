@@ -67,7 +67,7 @@ yay -Qm | fzf
 
 % yay, list, local, no_dependency
 
-# 列出软件包 - 原生 + AUR (不包含依赖)
+# 列出软件包 - 原生 + AUR (不包含依赖) - 最常用
 yay -Qe | fzf
 
 # 列出软件包 - 原生 (不包含依赖)
