@@ -17,7 +17,7 @@ prompts_path="$HOME/Documents/notes/prompts"
 
 [[ ! -d "$prompts_path" ]] && exit 1
 
-selection=$( (cd "$prompts_path" && ls -1) | rofi -dmenu -i -p "prompts" -theme ~/.config/rofi/themes/prompts.rasi)
+selection=$(ls -1 "$prompts_path" | rofi -dmenu -i -p "prompts" -theme ~/.config/rofi/themes/prompts.rasi)
 
 [[ -z "$selection" ]] && exit 0
 

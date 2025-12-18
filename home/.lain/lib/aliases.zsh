@@ -17,7 +17,7 @@ alias mm='nvim /workspace/tmp/mm_$(date +"%y%m%d_%H%M%S").md'
 alias cnt='printf "dirs: %s  symlinks: %s  files: %s\n" "$(fd -IH -t d -d 1 | wc -l)" "$(fd -IH -t l -d 1 | wc -l)" "$(fd -IH -t f -d 1 | wc -l)"'
 alias du1='du -ah -d 1 .'
 alias duf='duf -only local'
-alias cpwd='printf "%s" "$(pwd)" | wl-copy'
+alias cpwd='pwd | wl-copy -n'
 alias update='yay -Syyu'
 
 # base
