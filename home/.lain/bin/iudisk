@@ -159,15 +159,18 @@ do_unmount() {
     printf "${GREEN}Device %s has been safely removed.${NC}\n" "$dev_name"
 }
 
-# 检查参数
-if [[ "$#" -ne 1 ]]; then
-    printf "${RED}Error: Invalid arguments.${NC}\n" >&2
+# 参数个数不能大于 1
+if [[ "$#" -gt 1 ]]; then
+    printf "${RED}Error: Too many arguments.${NC}\n" >&2
     usage >&2
     exit 1
 fi
 
+# 如果 $1 为空 (无参数)，则赋值为 --status
+action="${1:---status}"
+
 # 主程序入口
-case "$1" in
+case "$action" in
     -m|--mount)
         detect_device
         do_mount
@@ -189,7 +192,7 @@ case "$1" in
         exit 0
         ;;
     *)
-        printf "${RED}Error: Unknown flag %s${NC}\n" "$1" >&2
+        printf "${RED}Error: Unknown flag %s${NC}\n" "$action" >&2
         usage >&2
         exit 1
         ;;
