@@ -42,8 +42,8 @@ for dir in "${PROJECT_PATHS[@]}"; do
     # 如果输出为空, 说明工作区是干净的
     # 如果有输出, 说明有变更
     if [[ -z "$status" ]]; then
-        printf "    ${GREEN}✔ Clean${NC}\n"
+        printf "  ${GREEN}✔ Clean${NC}\n"
     else
-        echo "$status" | sed 's/^/   /'
+        echo "$status" | sed 's/^/ /'
     fi
 done
