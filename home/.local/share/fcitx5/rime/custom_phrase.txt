@@ -3,6 +3,9 @@
 
 
 改进	gaij
+性能	xinne
+性能	xinnen
+性能	xinneng
 依赖	yilai
 它们	tm
 它们	tamen
