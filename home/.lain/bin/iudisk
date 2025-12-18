@@ -100,23 +100,15 @@ confirm() {
 # 查看 U 盘的挂载状态
 check_dev_status() {
     # 1. 获取设备详细信息 (大小, 文件系统)
-    # local dev_info
-    # dev_info=$(lsblk -n -o SIZE,FSTYPE "$usb_part" 2>/dev/null)
-
-    # local size=$(echo "$dev_info" | awk '{print $1}')
-    # local fstype=$(echo "$dev_info" | awk '{print $2}')
-
     local size fstype
     read -r size fstype <<< "$(lsblk -d -n -o SIZE,FSTYPE "$usb_part" 2>/dev/null)"
 
-    # 数据判空处理
+    # 当出现空值时, 提供默认显示
     size=${size:-N/A}
-    fstype=${fstype:-N/A}
+    fstype=${fstype:-Unknown}
 
     # 2. 定义样式常量
-    # 分割线长度
     local HR="----------------------------------------------"
-    # 格式化字符串: 行首缩进1空格 + 左列12字符 + 冒号 + 内容
 
     # 3. 输出头部
     printf "${MAGENTA}%s${NC}\n" "$HR"
