@@ -35,9 +35,7 @@ for dir in "${project_paths[@]}"; do
         continue
     fi
 
-    cd "$dir"
-
-    status=$(git status --short)
+    status=$(git -C "$dir" status --short)
 
     # 如果输出为空, 说明工作区是干净的
     # 如果有输出, 说明有变更
