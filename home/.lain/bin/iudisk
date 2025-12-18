@@ -25,8 +25,8 @@ NC='\033[0m'            # 重置色
 TARGET_LABEL="IUDISK"
 
 # 全局变量, 之后会由 detect_device 函数填充
-usb_part=""
-usb_dev=""
+dev_name=""
+dev_part=""
 
 # 发送通知
 notify() {
@@ -45,24 +45,24 @@ play_audio() {
 # 通过标签探测设备
 detect_device() {
     # 1. 查找分区
-    if ! usb_part=$(findfs LABEL="$TARGET_LABEL" 2>/dev/null); then
+    if ! dev_part=$(findfs LABEL="$TARGET_LABEL" 2>/dev/null); then
         printf "${RED}Error: No device found with label '%s'${NC}\n" "$TARGET_LABEL" >&2
         exit 1
     fi
 
     # 2. 获取父设备
     # xargs: 去除首尾空白符
-    usb_dev=$(lsblk -n -o pkname --paths "$usb_part" | xargs)
+    dev_name=$(lsblk -n -o pkname --paths "$dev_part" | xargs)
 
     # 3. 严格报错: 如果找不到父设备, 直接退出
-    if [[ -z "$usb_dev" ]]; then
-        printf "${RED}Error: Could not determine parent device for %s${NC}\n" "$usb_part" >&2
+    if [[ -z "$dev_name" ]]; then
+        printf "${RED}Error: Could not determine parent device for %s${NC}\n" "$dev_part" >&2
         exit 1
     fi
 
     # 额外的防御性检查: 确保找到的父设备真的是个块设备
-    if [[ ! -b "$usb_dev" ]]; then
-         printf "${RED}Error: Detected parent %s is not a block device.${NC}\n" "$usb_dev" >&2
+    if [[ ! -b "$dev_name" ]]; then
+         printf "${RED}Error: Detected parent %s is not a block device.${NC}\n" "$dev_name" >&2
          exit 1
     fi
 }
@@ -91,7 +91,7 @@ confirm() {
 check_dev_status() {
     # 1. 获取设备详细信息 (大小, 文件系统)
     local size fstype
-    read -r size fstype <<< "$(lsblk -d -n -o SIZE,FSTYPE "$usb_part" 2>/dev/null)"
+    read -r size fstype <<< "$(lsblk -d -n -o SIZE,FSTYPE "$dev_part" 2>/dev/null)"
 
     # 当出现空值时, 提供默认显示
     # 
@@ -106,14 +106,14 @@ check_dev_status() {
 
     printf "${MAGENTA}%s${NC}\n" "--- $TARGET_LABEL ---"
 
-    printf "%s: %s\n" "Disk" "$usb_dev"
-    printf "%s: %s\n" "Partition"  "$usb_part"
+    printf "%s: %s\n" "Disk" "$dev_name"
+    printf "%s: %s\n" "Partition"  "$dev_part"
     printf "%s: %s\n" "Size"  "$size ($fstype)"
 
     # 5. 输出挂载状态
-    if findmnt -n "$usb_part" &> /dev/null; then
+    if findmnt -n "$dev_part" &> /dev/null; then
         local mount_path
-        mount_path=$(findmnt -n -o TARGET "$usb_part")
+        mount_path=$(findmnt -n -o TARGET "$dev_part")
 
         printf "s: ${GREEN}%s${NC}\n" "Status" "Mounted"
         printf "s: %s\n" "Mount Point" "$mount_path"
@@ -124,28 +124,28 @@ check_dev_status() {
 
 # 挂载
 do_mount() {
-    if findmnt -n "$usb_part" &> /dev/null; then
-        mount_path=$(findmnt -n -o TARGET "$usb_part")
+    if findmnt -n "$dev_part" &> /dev/null; then
+        mount_path=$(findmnt -n -o TARGET "$dev_part")
         printf "${MAGENTA}Already mounted at %s${NC}\n" "$mount_path"
         exit 0
     fi
 
-    printf "Mounting '%s' (%s)...\n" "$TARGET_LABEL" "$usb_part"
+    printf "Mounting '%s' (%s)...\n" "$TARGET_LABEL" "$dev_part"
 
-    udisksctl mount -b "$usb_part"
+    udisksctl mount -b "$dev_part"
     printf "${GREEN}Mounted successfully.${NC}\n"
 }
 
 # 卸载, 断电
 do_unmount() {
     # 如果已经挂载, 先卸载
-    if findmnt -n "$usb_part" &> /dev/null; then
+    if findmnt -n "$dev_part" &> /dev/null; then
         if ! confirm "Eject USB drive '$TARGET_LABEL'?"; then
             printf "Operation cancelled.\n" >&2
             exit 1
         fi
 
-        udisksctl unmount -b "$usb_part"
+        udisksctl unmount -b "$dev_part"
         printf "${GREEN}Unmounted successfully.${NC}\n"
     else
         # 如果没挂载, 直接询问是否断电
@@ -155,8 +155,8 @@ do_unmount() {
     fi
 
     # 断电操作针对的是父设备 (/dev/sda 而不是 /dev/sda1)
-    udisksctl power-off -b "$usb_dev"
-    printf "${GREEN}Device %s has been safely removed.${NC}\n" "$usb_dev"
+    udisksctl power-off -b "$dev_name"
+    printf "${GREEN}Device %s has been safely removed.${NC}\n" "$dev_name"
 }
 
 # 检查参数
@@ -196,3 +196,4 @@ case "$1" in
 esac
 
 # todo 未指定参数时, 执行 status
+# todo 改进 help 描述
