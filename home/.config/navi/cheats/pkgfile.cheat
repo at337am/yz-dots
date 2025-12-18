@@ -1,6 +1,6 @@
 % pkgfile, pacman, find
 
-# 建立索引, 更新一次数据库 (建议偶尔运行一次)
+# 建立索引, 更新一次数据库
 sudo pkgfile -u
 
 # 查找某个命令属于哪个包
