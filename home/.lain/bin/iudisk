@@ -106,7 +106,7 @@ check_dev_status() {
 
     printf "${MAGENTA}%s${NC}\n" "--- $TARGET_LABEL INFO ---"
 
-    printf "%s: %s\n" "Device Path" "$dev_name"
+    printf "%s: %s\n" "Disk" "$dev_name"
     printf "%s: %s\n" "Partition"  "$dev_part"
     printf "%s: %s\n" "Size"  "$size ($fstype)"
 
@@ -116,9 +116,9 @@ check_dev_status() {
         mount_path=$(findmnt -n -o TARGET "$dev_part")
 
         printf "%s: ${GREEN}%s${NC}\n" "Status" "Mounted"
-        printf "%s: %s\n" "Mount Point" "$mount_path"
+        printf "%s: ${GREEN}%s${NC}\n" "Mount Point" "$mount_path"
     else
-        printf "%s: ${RED}%s${NC}\n" "Status" "Unmounted"
+        printf "%s: ${MAGENTA}%s${NC}\n" "Status" "Unmounted"
     fi
 }
 
