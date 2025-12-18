@@ -26,8 +26,8 @@ MAGENTA='\033[0;35m'    # 紫色
 NC='\033[0m'            # 重置色
 
 for dir in "${PROJECT_PATHS[@]}"; do
-    printf "${BLUE}▪ Checking: %s${NC}\n" "$dir"
-    # printf "${BLUE}▪ Checking: %s${NC}\n" "${dir##*/}"
+    # printf "${BLUE}▪ Checking: %s${NC}\n" "$dir"
+    printf "${BLUE}▪ Checking: %s${NC}\n" "${dir##*/}"
 
     # 检查 .git 目录是否存在, 这是判断是否为 git 仓库的最可靠方法
     if [[ ! -d "$dir/.git" ]]; then
