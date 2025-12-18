@@ -88,12 +88,46 @@ confirm() {
 }
 
 # 查看 U 盘的挂载状态
+# check_dev_status() {
+#     if findmnt -n "$usb_part" &> /dev/null; then
+#         mount_path=$(findmnt -n -o TARGET "$usb_part")
+#         printf "USB drive [%s] (%s) is mounted at ${GREEN}%s${NC}\n" "$TARGET_LABEL" "$usb_part" "$mount_path"
+#     else
+#         printf "USB drive [%s] (%s) is detected but ${RED}not mounted${NC}\n" "$TARGET_LABEL" "$usb_part"
+#     fi
+# }
+
+# 查看 U 盘的挂载状态
 check_dev_status() {
+    # 获取额外的设备信息 (大小, 文件系统类型)
+    # lsblk 参数说明: -n(无标题) -o(输出列)
+    local dev_info
+    dev_info=$(lsblk -n -o SIZE,FSTYPE "$usb_part" 2>/dev/null)
+
+    # 简单的字符串分割获取 size 和 fstype (防止 lsblk 失败导致为空)
+    local size=$(echo "$dev_info" | awk '{print $1}')
+    local fstype=$(echo "$dev_info" | awk '{print $2}')
+
+    # 如果为空则显示 N/A
+    size=${size:-N/A}
+    fstype=${fstype:-N/A}
+
+    # 打印头部
+    printf "%-12s %s\n" "Label"  "$TARGET_LABEL"
+
+    # 打印基础硬件信息 (利用 printf 进行对齐)
+    printf "%-12s %s\n" "Partition"  "$usb_part"
+    printf "%-12s %s\n" "Parent Dev" "$usb_dev"
+    printf "%-12s %s (%s)\n" "Size/Type"  "$size" "$fstype"
+
+    # 打印挂载状态
     if findmnt -n "$usb_part" &> /dev/null; then
+        local mount_path
         mount_path=$(findmnt -n -o TARGET "$usb_part")
-        printf "USB drive [%s] (%s) is mounted at ${GREEN}%s${NC}\n" "$TARGET_LABEL" "$usb_part" "$mount_path"
+        printf "%-12s ${GREEN}Mounted${NC}\n" "Status"
+        printf "%-12s %s\n" "Mount Point" "$mount_path"
     else
-        printf "USB drive [%s] (%s) is detected but ${RED}not mounted${NC}\n" "$TARGET_LABEL" "$usb_part"
+        printf "%-12s ${RED}Unmounted${NC}\n" "Status"
     fi
 }
 
