@@ -21,8 +21,8 @@ PROJECT_PATHS=(
 # 定义颜色
 RED='\033[0;31m'        # 红色
 GREEN='\033[0;32m'      # 绿色
+YELLOW='\033[0;33m'     # 黄色
 BLUE='\033[0;34m'       # 蓝色
-MAGENTA='\033[0;35m'    # 紫色
 NC='\033[0m'            # 重置色
 
 for dir in "${PROJECT_PATHS[@]}"; do
@@ -43,9 +43,9 @@ for dir in "${PROJECT_PATHS[@]}"; do
         # 如果输出为空, 说明工作区是干净的
         # 如果有输出, 说明有变更
         if [[ -z "$status" ]]; then
-            printf "  ${GREEN}✔ Clean${NC}\n\n"
+            printf "    ${GREEN}✔ Clean${NC}\n\n"
         else
-            printf "  ${MAGENTA}Changes detected:${NC}\n"
+            printf "  ${YELLOW}Changes:${NC}\n"
             echo "$status" | sed 's/^/   /'
             printf "\n"
         fi
