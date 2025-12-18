@@ -197,6 +197,3 @@ case "$action" in
         exit 1
         ;;
 esac
-
-# todo 未指定参数时, 执行 status, 一个参数或者是没有参数
-# todo 改进 help 描述
