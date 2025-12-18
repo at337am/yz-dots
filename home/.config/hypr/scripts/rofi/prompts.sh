@@ -13,18 +13,15 @@ notify() {
                 "$1"
 }
 
-notes_path="$HOME/Documents/notes/prompts"
+prompts_path="$HOME/Documents/notes/prompts"
 
-[[ ! -d "$notes_path" ]] && exit 1
+[[ ! -d "$prompts_path" ]] && exit 1
 
-selected_file=$( (cd "$notes_path" && ls -1) | rofi -dmenu -i -p "prompts" -theme ~/.config/rofi/themes/prompts.rasi)
+selection=$( (cd "$prompts_path" && ls -1) | rofi -dmenu -i -p "prompts" -theme ~/.config/rofi/themes/prompts.rasi)
 
-[[ -z "$selected_file" ]] && exit 0
+[[ -z "$selection" ]] && exit 0
 
-full_path="$notes_path/$selected_file"
-
-if [[ -f "$full_path" ]]; then
-    wl-copy < "$full_path"
+if wl-copy < "$prompts_path/$selection"; then
     notify "Copied"
 else
     notify "Copy Failed"
