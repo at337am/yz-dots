@@ -43,7 +43,7 @@
   local green='#81E7AF'
   local yellow='#E9F5BE'
   local magenta='#C5B7C7'
-  local cyan='#F1BA88'
+  local cyan='#F4C499'
   local white='#E5E5E5'
 
   # 注释掉下面左右两个 newline 就变成显示在一行 prompt 了 
