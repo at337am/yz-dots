@@ -25,6 +25,7 @@
 拼音	pingyin
 拼音	pingying
 好的	hd
+好的	haode
 我们	wm
 极简	jijian
 老中味	laozhonwei
@@ -57,6 +58,7 @@
 时间	shijian
 挂载	guazai
 好	h
+好	hao
 了	l
 了	le
 吗	m
