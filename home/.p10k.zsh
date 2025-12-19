@@ -38,7 +38,7 @@
   [[ $ZSH_VERSION == (5.<1->*|<6->.*) ]] || return
 
   # Prompt colors.
-  local light_black='#229799'
+  local black='#8C8C8C'
   local red='#F59A9A'
   local green='#81E7AF'
   local yellow='#E9F5BE'
@@ -96,7 +96,7 @@
   typeset -g POWERLEVEL9K_PROMPT_CHAR_OVERWRITE_STATE=false
 
   # custom, uv 虚拟环境名称的配色
-  typeset -g POWERLEVEL9K_VIRTUALENV_FOREGROUND=$light_black
+  typeset -g POWERLEVEL9K_VIRTUALENV_FOREGROUND=$black
   # Don't show Python version.
   typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_PYTHON_VERSION=false
   typeset -g POWERLEVEL9K_VIRTUALENV_{LEFT,RIGHT}_DELIMITER=
@@ -159,7 +159,7 @@
   typeset -g POWERLEVEL9K_VCS_CONTENT_EXPANSION='${${${P9K_CONTENT/⇣* :⇡/⇣⇡}// }//:/ }'
 
   # Current time.
-  typeset -g POWERLEVEL9K_TIME_FOREGROUND=$light_black
+  typeset -g POWERLEVEL9K_TIME_FOREGROUND=$black
   # Format for the current time: 09:51:02. See `man 3 strftime`.
   typeset -g POWERLEVEL9K_TIME_FORMAT='%D{%H:%M:%S}'
   # If set to true, time will update when you hit enter. This way prompts for the past
