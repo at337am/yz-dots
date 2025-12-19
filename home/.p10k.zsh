@@ -44,7 +44,7 @@
   local yellow='#E9F5BE'
   local light_magenta='#D6CADA'
   local cyan='#F1BA88'
-  local white='#F2F2F2'
+  local white='#E5E5E5'
 
   # 注释掉下面左右两个 newline 就变成显示在一行 prompt 了 
   # Left prompt segments.
