@@ -13,17 +13,17 @@
         {
             "type": "os",
             "key": "OS",
-            "keyColor": "cyan"
+            "keyColor": "blue"
         },
         {
             "type": "kernel",
             "key": "Kernel",
-            "keyColor": "cyan"
+            "keyColor": "blue"
         },
         {
             "type": "packages",
             "key": "Packages",
-            "keyColor": "cyan"
+            "keyColor": "blue"
         },
         "break",
         {
@@ -55,27 +55,27 @@
         {
             "type": "cpu",
             "key": "CPU",
-            "keyColor": "magenta"
+            "keyColor": "blue"
         }, 
         {
             "type": "gpu",
             "key": "GPU",
-            "keyColor": "magenta"
+            "keyColor": "blue"
         },
         {
             "type": "display",
             "key": "Display",
-            "keyColor": "magenta"
+            "keyColor": "blue"
         },
         {
             "type": "memory",
             "key": "Memory",
-            "keyColor": "magenta"
+            "keyColor": "blue"
         },
         {
             "type": "disk",
             "key": "Disk",
-            "keyColor": "magenta"
+            "keyColor": "blue"
         },
         "break",
         {
