@@ -39,12 +39,12 @@
 
   # Prompt colors.
   local grey='#229799'
-  local yellow='#E9F5BE'
-  local purple='#E69DB8'
-  local white='#FDFAF6'
-  local orange='#F1BA88'
+  local red='#E69DB8'
   local green='#81E7AF'
+  local yellow='#E9F5BE'
   local blue='#A8CBE2'
+  local cyan='#F1BA88'
+  local white='#F2F2F2'
 
   # 注释掉下面左右两个 newline 就变成显示在一行 prompt 了 
   # Left prompt segments.
@@ -96,13 +96,13 @@
   typeset -g POWERLEVEL9K_PROMPT_CHAR_OVERWRITE_STATE=false
 
   # custom, uv 虚拟环境名称的配色
-  typeset -g POWERLEVEL9K_VIRTUALENV_FOREGROUND=$purple
+  typeset -g POWERLEVEL9K_VIRTUALENV_FOREGROUND=$red
   # Don't show Python version.
   typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_PYTHON_VERSION=false
   typeset -g POWERLEVEL9K_VIRTUALENV_{LEFT,RIGHT}_DELIMITER=
 
   # custom, 当前路径配色
-  typeset -g POWERLEVEL9K_DIR_FOREGROUND=$orange
+  typeset -g POWERLEVEL9K_DIR_FOREGROUND=$cyan
 
   # custom, root 用户, 显示效果: user@host, 不同颜色
   typeset -g POWERLEVEL9K_CONTEXT_ROOT_TEMPLATE="%F{$white}%n%f%F{$grey}@%m%f"
@@ -141,7 +141,7 @@
   typeset -g POWERLEVEL9K_VCS_MAX_SYNC_LATENCY_SECONDS=0
 
   # custom, 远程变更箭头的配色
-  typeset -g POWERLEVEL9K_VCS_{INCOMING,OUTGOING}_CHANGESFORMAT_FOREGROUND=$purple
+  typeset -g POWERLEVEL9K_VCS_{INCOMING,OUTGOING}_CHANGESFORMAT_FOREGROUND=$red
   # Don't show remote branch, current tag or stashes.
   typeset -g POWERLEVEL9K_VCS_GIT_HOOKS=(vcs-detect-changes git-untracked git-aheadbehind)
   # Don't show the branch icon.
