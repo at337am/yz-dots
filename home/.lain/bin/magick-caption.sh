@@ -38,8 +38,7 @@ font_color="white"
 # Josefin-Sans-Italic
 # Google-Sans-Code-Regular
 # Google-Sans-Code-Italic
-# Zhi-Mang-Xing-Regular
-font_style="Zhi-Mang-Xing-Regular"
+font_style="Josefin-Sans-Regular"
 
 # 文字位置
 # Center    居中
