@@ -66,7 +66,7 @@ confirm() {
 detect_device() {
     # 1. 查找分区
     if ! dev_part=$(findfs LABEL="$TARGET_LABEL" 2>/dev/null); then
-        printf "${RED}Error: No device found with label '%s'${NC}\n" "$TARGET_LABEL" >&2
+        printf "${RED}Error:${NC} No device found with label '%s'\n" "$TARGET_LABEL" >&2
         exit 1
     fi
 
@@ -76,13 +76,13 @@ detect_device() {
 
     # 3. 严格报错: 如果找不到父设备, 直接退出
     if [[ -z "$dev_name" ]]; then
-        printf "${RED}Error: Could not determine parent device for %s${NC}\n" "$dev_part" >&2
+        printf "${RED}Error:${NC} Could not determine parent device for %s\n" "$dev_part" >&2
         exit 1
     fi
 
     # 额外的防御性检查: 确保找到的父设备真的是个块设备
     if [[ ! -b "$dev_name" ]]; then
-         printf "${RED}Error: Detected parent %s is not a block device.${NC}\n" "$dev_name" >&2
+         printf "${RED}Error:${NC} Detected parent %s is not a block device.\n" "$dev_name" >&2
          exit 1
     fi
 }
@@ -161,7 +161,7 @@ do_unmount() {
 
 # 参数个数不能大于 1
 if [[ "$#" -gt 1 ]]; then
-    printf "${RED}Error: Too many arguments.${NC}\n" >&2
+    printf "${RED}Error:${NC} Too many arguments.\n" >&2
     usage >&2
     exit 1
 fi
@@ -192,7 +192,7 @@ case "$action" in
         exit 0
         ;;
     *)
-        printf "${RED}Error: Unknown flag %s${NC}\n" "$action" >&2
+        printf "${RED}Error:${NC} Unknown flag %s\n" "$action" >&2
         usage >&2
         exit 1
         ;;
