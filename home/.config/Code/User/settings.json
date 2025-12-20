@@ -51,9 +51,9 @@
   "workbench.navigationControl.enabled": false,
   "files.associations": {
     "*.cheat": "navi-cheatsheet",
-    // "*.sh": "shellscript",
     "*.rasi": "css",
-    "config": "properties"
+    "config": "properties",
+    "*.ini": "toml"
   },
   "workbench.secondarySideBar.defaultVisibility": "hidden",
   "workbench.colorTheme": "Catppuccin Macchiato",
