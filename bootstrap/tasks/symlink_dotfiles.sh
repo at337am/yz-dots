@@ -109,9 +109,6 @@ ln -sv "$DOTS_PATH/.config/nvim" ~/.config/nvim
 rm -rf ~/.config/rofi
 ln -sv "$DOTS_PATH/.config/rofi" ~/.config/rofi
 
-# rm -rf ~/.config/Thunar
-# ln -sv "$DOTS_PATH/.config/Thunar" ~/.config/Thunar
-
 rm -rf ~/.config/waybar
 ln -sv "$DOTS_PATH/.config/waybar" ~/.config/waybar
 
@@ -126,3 +123,6 @@ ln -sv "$DOTS_PATH/.config/mimeapps.list" ~/.config/mimeapps.list
 
 rm -rf ~/.config/gtk-3.0/bookmarks
 ln -sv "$DOTS_PATH/.config/gtk-3.0/bookmarks" ~/.config/gtk-3.0/bookmarks
+
+rm -rf ~/.config/foot
+ln -sv "$DOTS_PATH/.config/foot" ~/.config/foot
