@@ -33,7 +33,7 @@ if [[ "$#" -eq 0 ]]; then
     exit 1
 fi
 
-# 路径校验
+# 路径校验, 目标可以是文件, 也可以是目录, 只要存在即可
 for item in "$@"; do
     if [[ ! -e "$item" && ! -L "$item" ]]; then
         printf "${RED}Error:${NC} '%s' does not exist.\n" "$item" >&2
