@@ -42,7 +42,7 @@
   local red='#F59A9A'
   local green='#81E7AF'
   local yellow='#E9F5BE'
-  local magenta='#C5B7C7'
+  local light_magenta='#FFCCEA'
   local cyan='#F4C499'
   local white='#F5F5F5'
 
@@ -127,7 +127,7 @@
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND=$yellow
 
   # custom, Git 分支名称配色
-  typeset -g POWERLEVEL9K_VCS_FOREGROUND=$magenta
+  typeset -g POWERLEVEL9K_VCS_FOREGROUND=$light_magenta
 
   # Disable async loading indicator to make directories that aren't Git repositories
   # indistinguishable from large Git repositories without known state.
@@ -138,7 +138,7 @@
   typeset -g POWERLEVEL9K_VCS_MAX_SYNC_LATENCY_SECONDS=0
 
   # custom, 远程变更箭头的配色
-  typeset -g POWERLEVEL9K_VCS_{INCOMING,OUTGOING}_CHANGESFORMAT_FOREGROUND=$magenta
+  typeset -g POWERLEVEL9K_VCS_{INCOMING,OUTGOING}_CHANGESFORMAT_FOREGROUND=$light_magenta
   # Don't show remote branch, current tag or stashes.
   typeset -g POWERLEVEL9K_VCS_GIT_HOOKS=(vcs-detect-changes git-untracked git-aheadbehind)
   # Don't show the branch icon.
