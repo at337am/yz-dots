@@ -37,7 +37,8 @@ sudo pacman -S --needed --noconfirm \
     inter-font \
     ttf-fira-code \
     ttf-jetbrains-mono \
-    ttf-nerd-fonts-symbols
+    ttf-nerd-fonts-symbols \
+    ttf-0xproto-nerd
 
 # 通知音效主题
 sudo pacman -S --needed --noconfirm \
