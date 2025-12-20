@@ -38,7 +38,7 @@ source_dirs=(
 # 路径检查
 for path in "${source_dirs[@]}"; do
     if [[ ! -d "$path" ]]; then
-        printf "${RED}Error: %s is not a directory.${NC}\n" "$path" >&2
+        printf "${RED}Error:${NC} %s is not a directory.\n" "$path" >&2
         exit 1
     fi
 done
@@ -85,7 +85,7 @@ pack_one() {
 
 # 参数个数不能大于 1
 if [[ "$#" -gt 1 ]]; then
-    printf "${RED}Error: Too many arguments.${NC}\n" >&2
+    printf "${RED}Error:${NC} Too many arguments.\n" >&2
     usage >&2
     exit 1
 fi
@@ -114,7 +114,7 @@ case "$action" in
         exit 0
         ;;
     *)
-        printf "${RED}Error: Unknown flag %s${NC}\n" "$action" >&2
+        printf "${RED}Error:${NC} Unknown flag %s\n" "$action" >&2
         usage >&2
         exit 1
         ;;

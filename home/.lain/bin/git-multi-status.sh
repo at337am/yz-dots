@@ -31,7 +31,7 @@ for dir in "${project_paths[@]}"; do
 
     # 检查 .git 目录是否存在, 这是判断是否为 git 仓库的最可靠方法
     if [[ ! -d "$dir/.git" ]]; then
-        printf "  ${RED}Error: Not a git repository or directory does not exist${NC}\n"
+        printf "  ${RED}Error:${NC} Not a git repository or directory does not exist.\n"
         continue
     fi
 

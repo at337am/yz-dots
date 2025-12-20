@@ -43,7 +43,7 @@ while [[ $# -gt 0 ]]; do
             shift
             ;;
         -*)
-            printf "${RED}Error: Unknown flag %s${NC}\n" "$1" >&2
+            printf "${RED}Error:${NC} Unknown flag %s\n" "$1" >&2
             usage >&2
             exit 1
             ;;
@@ -53,7 +53,7 @@ while [[ $# -gt 0 ]]; do
                 VIDEO_FILE="$1"
                 shift
             else
-                printf "${RED}Error: 仅支持单个视频文件${NC}\n" >&2
+                printf "${RED}Error:${NC} 仅支持单个视频文件\n" >&2
                 usage >&2
                 exit 1
             fi
@@ -63,13 +63,13 @@ done
 
 # 验证输入
 if [[ -z "$VIDEO_FILE" ]]; then
-    printf "${RED}Error: No files specified.${NC}\n" >&2
+    printf "${RED}Error:${NC} No files specified.\n" >&2
     usage >&2
     exit 1
 fi
 
 if [[ ! -f "$VIDEO_FILE" ]]; then
-    printf "${RED}Error: %s does not exist.${NC}\n" "$VIDEO_FILE" >&2
+    printf "${RED}Error:${NC} %s does not exist.\n" "$VIDEO_FILE" >&2
     exit 1
 fi
 

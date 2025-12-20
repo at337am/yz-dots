@@ -52,7 +52,7 @@ for source in "$@"; do
         adb push "$source" "$target_dir"
         printf "\n"
     else
-        printf "${RED}Error: '%s' does not exist.${NC}\n" "$source" >&2
+        printf "${RED}Error:${NC} '%s' does not exist.\n" "$source" >&2
     fi
 done
 

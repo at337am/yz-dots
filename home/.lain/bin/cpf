@@ -25,7 +25,7 @@ uri_list=""
 
 for file in "$@"; do
     if [[ ! -f "$file" ]]; then
-        printf "${RED}Error: '%s' is not a regular file.${NC}\n" "$file" >&2
+        printf "${RED}Error:${NC} '%s' is not a regular file.\n" "$file" >&2
         exit 1
     fi
 
