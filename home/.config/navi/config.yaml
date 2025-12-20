@@ -4,7 +4,7 @@ style:
     width_percentage: 30
     min_width: 15
   comment:
-    color: magenta
+    color: white
     width_percentage: 70
     min_width: 30
   snippet:
