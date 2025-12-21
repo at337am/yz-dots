@@ -1,5 +1,6 @@
 # misc
-alias cl='reset'
+alias cl='clear'
+alias clr='reset'
 alias v='nvim'
 alias px='http_proxy=http://127.0.0.1:2080 https_proxy=http://127.0.0.1:2080'
 alias mpv='px mpv'
