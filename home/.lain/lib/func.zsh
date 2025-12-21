@@ -154,6 +154,34 @@ bak() {
     cp -a -- "$source_file" "${source_file}_$(date +%y%m%d_%H%M%S_%N).bak"
 }
 
+# 复制一个或多个文件的 URI
+cpf() {
+    if [[ "$#" -eq 0 ]]; then
+        printf "Error: Invalid arguments.\n" >&2
+        printf "Usage: cpf <files...>\n" >&2
+        return 1
+    fi
+
+    local uri_list=""
+    local real_path
+    local file
+
+    for file in "$@"; do
+        if [[ ! -f "$file" ]]; then
+            printf "Error: '%s' is not a regular file.\n" "$file" >&2
+            return 1
+        fi
+        real_path=$(realpath "$file")
+        uri_list="${uri_list}file://${real_path}\n"
+    done
+
+    if [[ -n "$uri_list" ]]; then
+        printf "$uri_list" | wl-copy --type text/uri-list
+        printf "Copied:\n"
+        printf "$uri_list"
+    fi
+}
+
 d() {
     if [[ "$#" -ne 0 ]]; then
         return 1
