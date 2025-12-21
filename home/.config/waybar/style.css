@@ -1,9 +1,9 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: "Google Sans Code", "Symbols Nerd Font", "Noto Sans CJK SC";
+    /* 最好使用 Mono 字体 */
+    font-family: "Noto Sans Mono", "Symbols Nerd Font", "Noto Sans CJK SC";
     font-size: 15px;
-    font-weight: 400;
 }
 
 window#waybar {
