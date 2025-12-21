@@ -46,15 +46,26 @@ done
 TARGET_DIR="/data/bak/syncs"
 mkdir -p "$TARGET_DIR"
 
+# 软件包列表文件存放位置
+native_pkglist="$TARGET_DIR/pkglist-native.txt"
+aur_pkglist="$TARGET_DIR/pkglist-aur.txt"
+
 # -------------- 主要逻辑 --------------
 
 # 只做同步
 mirroring() {
+    # 1. 同步所有目录内容
     for path in "${source_dirs[@]}"; do
         rsync -a --delete \
             "$path/" \
             "$TARGET_DIR/$(basename "$path")"
     done
+    printf "All directory contents have been synced.\n"
+
+    # 2. 同步所有软件包列表
+    pacman -Qqen > "$native_pkglist"
+    pacman -Qqem > "$aur_pkglist"
+    printf "All package lists have been synced.\n"
 }
 
 # 为迁移做准备, 打包所有内容
