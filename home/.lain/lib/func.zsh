@@ -164,6 +164,8 @@ d() {
 
 # 方便打开一些媒体文件
 o() {
+    [[ -f "$1" ]] || { printf "Error: %s does not exist.\n" "$1" >&2; return 1; }
+
     local ext="${1##*.}"
     ext="${ext:l}"
     case "$ext" in
