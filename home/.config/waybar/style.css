@@ -3,7 +3,7 @@
     border-radius: 0;
     /* 最好使用 Mono 字体 */
     font-family: "Noto Sans Mono", "Symbols Nerd Font", "Noto Sans CJK SC";
-    font-size: 15px;
+    font-size: 14.4px;
 }
 
 window#waybar {
