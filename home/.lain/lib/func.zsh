@@ -161,3 +161,22 @@ d() {
 
     dirs -v | head -n 10
 }
+
+o() {
+    local ext="${1##*.}"
+    ext="${ext:l}"
+    case "$ext" in
+        jpg|jpeg|png|gif|webp)
+            qimgv "$1"
+            ;;
+        mp4|mkv|mov|m4v|webm|ts|avi)
+            mpv "$1"
+            ;;
+        pdf)
+            zathura "$1"
+            ;;
+        *)
+            printf "Unknown extension: %s\n" "$ext" >&2
+            ;;
+    esac
+}
