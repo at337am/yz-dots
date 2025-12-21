@@ -164,10 +164,20 @@ d() {
 
 # 方便打开一些媒体文件
 o() {
-    [[ -f "$1" ]] || { printf "Error: %s does not exist.\n" "$1" >&2; return 1; }
+    if [[ "$#" -ne 1 ]]; then
+        printf "Error: Invalid arguments.\n" >&2
+        printf "Usage: o <file>\n" >&2
+        return 1
+    fi
+
+    if [[ ! -f "$1" ]]; then
+        printf "Error: %s does not exist.\n" "$1" >&2
+        return 1
+    fi
 
     local ext="${1##*.}"
     ext="${ext:l}"
+
     case "$ext" in
         jpg|jpeg|png|gif|webp)
             qimgv "$1"
@@ -180,6 +190,7 @@ o() {
             ;;
         *)
             printf "Error: Unknown extension: %s\n" "$ext" >&2
+            return 1
             ;;
     esac
 }
