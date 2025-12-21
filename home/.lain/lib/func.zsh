@@ -163,7 +163,7 @@ d() {
 }
 
 # 方便打开一些媒体文件
-oo() {
+o() {
     if [[ "$#" -ne 1 ]]; then
         printf "Error: Invalid arguments.\n" >&2
         printf "Usage: o <file>\n" >&2
