@@ -23,7 +23,7 @@ alias update='yay -Syyu'
 
 # startup program
 alias open='xdg-open'
-alias mpg='qimgv'
+alias imv='qimgv'
 
 # base
 alias _='sudo'
