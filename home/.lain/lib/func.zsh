@@ -162,6 +162,7 @@ d() {
     dirs -v | head -n 10
 }
 
+# 方便打开一些媒体文件
 o() {
     local ext="${1##*.}"
     ext="${ext:l}"
@@ -176,7 +177,7 @@ o() {
             zathura "$1"
             ;;
         *)
-            printf "Unknown extension: %s\n" "$ext" >&2
+            printf "Error: Unknown extension: %s\n" "$ext" >&2
             ;;
     esac
 }
