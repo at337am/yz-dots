@@ -39,14 +39,14 @@ uname -r
 
 
 
-% system, font
+% system, fc-cache, font
 
 # 刷新字体缓存
 fc-cache -fv
 
 
 
-% system, font, search
+% system, fc-list, font, search
 
 # 查找已安装的字体
 fc-list : family | fzf

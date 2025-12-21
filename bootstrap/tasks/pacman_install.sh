@@ -35,7 +35,6 @@ sudo pacman -S --needed --noconfirm \
     noto-fonts-cjk \
     noto-fonts-emoji \
     inter-font \
-    ttf-fira-code \
     ttf-jetbrains-mono \
     ttf-nerd-fonts-symbols \
     ttf-0xproto-nerd
