@@ -199,7 +199,7 @@ o() {
     fi
 
     if [[ ! -f "$1" ]]; then
-        printf "Error: %s does not exist.\n" "$1" >&2
+        printf "Error: '%s' does not exist.\n" "$1" >&2
         return 1
     fi
 
