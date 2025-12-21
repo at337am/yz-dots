@@ -31,7 +31,7 @@ image_height=$(magick identify -format "%h" "$IMG_PATH")
 # --- 定义参数 ---
 
 # 字体颜色
-font_color="white"
+font_color="#2E2E2E"
 
 # 字体样式
 # Josefin-Sans-Regular
@@ -48,21 +48,20 @@ font_style="Josefin-Sans-Regular"
 # NorthEast 右上角
 # SouthWest 左下角
 # SouthEast 右下角
-position="SouthEast"
+position="South"
 
 # 定义文字高度占图片总高度的百分比
-# percentage=0.03
-percentage=0.06
+# percentage=0.06
+percentage=0.03
 
 # 字体大小
 font_size=$(echo "$image_height * $percentage / 1" | bc)
 
 # 底部边距
-x_offset=$(echo "$font_size * 0.5 / 1" | bc)
-y_offset=$(echo "$font_size * 0.5 / 1" | bc)
-
-# x_offset=0
-# y_offset=$(echo "$font_size * 1 / 1" | bc)
+# x_offset=$(echo "$font_size * 0.5 / 1" | bc)
+# y_offset=$(echo "$font_size * 0.5 / 1" | bc)
+x_offset=0
+y_offset=$(echo "$font_size * 1 / 1" | bc)
 
 # 定义输出路径
 dirname=$(dirname "$IMG_PATH")
