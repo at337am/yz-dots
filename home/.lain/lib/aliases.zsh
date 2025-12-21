@@ -21,6 +21,10 @@ alias duf='duf -only local'
 alias cpwd='pwd | wl-copy -n'
 alias update='yay -Syyu'
 
+# startup program
+alias open='xdg-open'
+alias mpg='qimgv'
+
 # base
 alias _='sudo'
 alias 1='cd -1'
