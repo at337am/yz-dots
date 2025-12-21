@@ -4,6 +4,7 @@ alias cl='clear'
 alias v='nvim'
 alias px='http_proxy=http://127.0.0.1:2080 https_proxy=http://127.0.0.1:2080'
 alias mpv='px mpv'
+alias imv='qimgv'
 alias yt='px yt-dlp'
 alias fpi='px flatpak install --user -y flathub'
 alias ryc='rsync -avh --progress'
@@ -20,10 +21,6 @@ alias du1='du -ah -d 1 .'
 alias duf='duf -only local'
 alias cpwd='pwd | wl-copy -n'
 alias update='yay -Syyu'
-
-# startup program
-alias open='xdg-open'
-alias imv='qimgv'
 
 # base
 alias _='sudo'
