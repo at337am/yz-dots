@@ -163,7 +163,7 @@ d() {
 }
 
 # 方便打开一些媒体文件
-o() {
+oo() {
     if [[ "$#" -ne 1 ]]; then
         printf "Error: Invalid arguments.\n" >&2
         printf "Usage: o <file>\n" >&2
@@ -182,7 +182,7 @@ o() {
         jpg|jpeg|png|gif|webp)
             qimgv "$1"
             ;;
-        mp4|mkv|mov|m4v|webm|ts|avi)
+        mp4|mkv|mov|mp3|flac|m4a|m4v|webm|ts|avi)
             mpv "$1"
             ;;
         pdf)
