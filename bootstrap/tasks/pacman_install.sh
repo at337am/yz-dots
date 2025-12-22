@@ -152,10 +152,10 @@ sudo pacman -S --needed --noconfirm \
 
 # ----- bak -----
 # 
-# sudo pacman -S mgba-qt
+# mgba-qt
 # 
 # 目前不需要 监听 ACPI 事件 和 电源调度策略
-# sudo pacman -S acpid power-profiles-daemon
+# acpid power-profiles-daemon
 # 
 # 壁纸引擎已迁移到 swww
 # hyprpaper
