@@ -154,8 +154,18 @@ sudo pacman -S --needed --noconfirm \
 # 
 # mgba-qt
 # 
+# 
+# 
 # 目前不需要 监听 ACPI 事件 和 电源调度策略
 # acpid power-profiles-daemon
 # 
-# 壁纸引擎已迁移到 swww
+# 
+# 
+# 目前的壁纸工具为 swww
+# 注意: swww 项目已改名为 awww, 但是目前 arch 官方仓库中还没有, 以后记得换!
+# https://codeberg.org/LGFae/awww
+# 
+# 如果不在乎运行时切换壁纸的话, 可以使用 swaybg
+# 实际测试 hyprpaper 的内存占用太高了, 以后不用它了
+# swaybg
 # hyprpaper
