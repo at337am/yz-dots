@@ -85,3 +85,10 @@ whence -va ls
 
 # 排查命令冲突 - POSIX 兼容
 type -a ls
+
+
+
+% misc, lines, count
+
+# 统计一个文件的行数
+wc -l x.txt
