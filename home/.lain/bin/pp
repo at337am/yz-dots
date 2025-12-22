@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
-# 脚本用途: 临时设置壁纸, 适合预览 (不会写入 hypr 配置)
+# 脚本用途: 设置壁纸
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
 
 set -euo pipefail
 
 # 依赖检查
-if ! command -v "hyprctl" &> /dev/null; then
-    printf "Error: Missing dependency: hyprctl\n" >&2
+if ! command -v "swww" &> /dev/null; then
+    printf "Error: Missing dependency: swww\n" >&2
     exit 1
 fi
 
@@ -18,21 +18,21 @@ if [[ "$#" -ne 1 ]]; then
     exit 1
 fi
 
-if [[ ! -f "$1" ]]; then
-    printf "Error: %s does not exist.\n" "$1" >&2
+WALLPAPER_PATH="$1"
+
+if [[ ! -f "$WALLPAPER_PATH" ]]; then
+    printf "Error: %s does not exist.\n" "$WALLPAPER_PATH" >&2
     exit 1
 fi
 
-# 检查文件扩展名是否为 jpg 或 png
-if (shopt -s nocasematch; [[ ! "$1" =~ \.(jpg|jpeg|png)$ ]]); then
-    printf "Error: Invalid file type. Only JPG and PNG are supported: %s\n" "$1" >&2
-    exit 1
-fi
-shopt -u nocasematch
-
-WALLPAPER_PATH=$(realpath "$1")
-
-hyprctl hyprpaper preload "$WALLPAPER_PATH"
-hyprctl hyprpaper wallpaper ",$WALLPAPER_PATH"
+swww img "$WALLPAPER_PATH" --transition-type any
 
 printf "Wallpaper has been changed to: %s\n" "$WALLPAPER_PATH"
+
+
+
+# --- deprecated ---
+# 
+# WALLPAPER_PATH=$(realpath "$1")
+# hyprctl hyprpaper preload "$WALLPAPER_PATH"
+# hyprctl hyprpaper wallpaper ",$WALLPAPER_PATH"
