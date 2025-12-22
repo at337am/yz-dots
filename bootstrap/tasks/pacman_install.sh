@@ -104,7 +104,7 @@ sudo pacman -S --needed --noconfirm \
     hypridle \
     hyprland \
     hyprlock \
-    hyprpaper \
+    swww \
     hyprpicker \
     lxqt-policykit \
     mako \
@@ -156,3 +156,6 @@ sudo pacman -S --needed --noconfirm \
 # 
 # 目前不需要 监听 ACPI 事件 和 电源调度策略
 # sudo pacman -S acpid power-profiles-daemon
+# 
+# 壁纸引擎已迁移到 swww
+# hyprpaper
