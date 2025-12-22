@@ -51,7 +51,6 @@ sudo pacman -S --needed --noconfirm \
     catimg \
     cava \
     chafa \
-    cmatrix \
     eza \
     fastfetch \
     fcitx5 \
@@ -95,7 +94,9 @@ sudo pacman -S --needed --noconfirm \
     tree \
     lsof \
     exfatprogs \
-    foot
+    foot \
+    cowsay \
+    fortune-mod
 
 # hyprland 相关
 sudo pacman -S --needed --noconfirm \
