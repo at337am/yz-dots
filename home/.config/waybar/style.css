@@ -11,6 +11,8 @@ window#waybar {
     background: rgba(31, 33, 38, 0.75);
 }
 
+
+
 #clock,
 #workspaces,
 #window,
@@ -22,23 +24,30 @@ window#waybar {
     padding: 0 7.5px;
 }
 
+
+
 /* 工作区列表 */
 #workspaces {
     margin: 4px 0;
 }
+
 #workspaces button {
     all:unset;
     padding: 0 15px;
-    color: #a6a6a6;
+    color: #A9AFB7;
 }
+
 #workspaces button:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(70, 75, 86, 0.45);
 }
+
+/* 当前的工作区 */
 #workspaces button.active {
-    /* 当前的工作区 */
     color: #f5f5f5;
-    background-color: #555555;
+    background-color: rgba(70, 75, 86, 0.85);
 }
+
+
 
 #battery {
     color: #f5f5f5;
@@ -54,6 +63,8 @@ window#waybar {
 #battery.critical:not(.plugged) {
     color: #FF8282;
 }
+
+
 
 #custom-recorder {
     color: #f5f5f5;
