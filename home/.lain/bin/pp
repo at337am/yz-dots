@@ -30,7 +30,10 @@ if [[ ! -f "$WALLPAPER_PATH" ]]; then
     exit 1
 fi
 
-swww img "$WALLPAPER_PATH" --transition-type any --transition-angle 60 --transition-step 90
+swww img "$WALLPAPER_PATH" --transition-type none
+
+# 开启动画效果
+# swww img "$WALLPAPER_PATH" --transition-type any --transition-angle 60 --transition-step 90
 
 printf "${GREEN}Wallpaper has been changed to: %s${NC}\n" "$WALLPAPER_PATH"
 
