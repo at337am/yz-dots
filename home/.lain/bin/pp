@@ -4,18 +4,21 @@
 # 脚本用途: 设置壁纸
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
 
-# https://codeberg.org/LGFae/awww
-
 set -euo pipefail
+
+# 定义颜色
+RED='\033[0;31m'        # 红色
+GREEN='\033[0;32m'      # 绿色
+NC='\033[0m'            # 重置色
 
 # 依赖检查
 if ! command -v "swww" &> /dev/null; then
-    printf "Error: Missing dependency: swww\n" >&2
+    printf "${RED}Error:${NC} Missing dependency: swww\n" >&2
     exit 1
 fi
 
 if [[ "$#" -ne 1 ]]; then
-    printf "Error: Invalid argument.\n" >&2
+    printf "${RED}Error:${NC} Invalid argument.\n" >&2
     printf "Usage: %s <image>\n" "$(basename "$0")" >&2
     exit 1
 fi
@@ -23,13 +26,13 @@ fi
 WALLPAPER_PATH="$1"
 
 if [[ ! -f "$WALLPAPER_PATH" ]]; then
-    printf "Error: %s does not exist.\n" "$WALLPAPER_PATH" >&2
+    printf "${RED}Error:${NC} %s does not exist.\n" "$WALLPAPER_PATH" >&2
     exit 1
 fi
 
 swww img "$WALLPAPER_PATH" --transition-type any --transition-angle 60 --transition-step 90
 
-printf "Wallpaper has been changed to: %s\n" "$WALLPAPER_PATH"
+printf "${GREEN}Wallpaper has been changed to: %s${NC}\n" "$WALLPAPER_PATH"
 
 
 
