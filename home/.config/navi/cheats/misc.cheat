@@ -8,7 +8,7 @@ fortune | cowsay
 % misc, cmatrix, terminal-rain
 
 # 异步滚动
-unimatrix -c red -s 96 -a
+unimatrix -c magenta -s 96 -a
 
 # 下雨天 (按 T 切换)
 terminal-rain
