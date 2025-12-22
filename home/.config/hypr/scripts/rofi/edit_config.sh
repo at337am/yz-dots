@@ -23,6 +23,7 @@ configs["foot"]="$HOME/.config/foot"
 configs["fcitx5"]="$HOME/.local/share/fcitx5"
 configs["fastfetch"]="$HOME/.config/fastfetch"
 configs["lain-bin"]="$HOME/.lain/bin"
+configs["lain"]="$HOME/.lain"
 
 configs["tidy"]="/workspace/dev/yz-dots/tidy"
 configs["bootstrap"]="/workspace/dev/yz-dots/bootstrap"

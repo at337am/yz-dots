@@ -75,3 +75,13 @@ history -f 1 | tail -n 50
 
 # 查找所有历史命令
 history -f 1 | fzf
+
+
+
+% misc, type, whence
+
+# 排查命令冲突 - zsh 专用
+whence -va ls
+
+# 排查命令冲突 - POSIX 兼容
+type -a ls
