@@ -27,7 +27,7 @@ if [[ ! -f "$WALLPAPER_PATH" ]]; then
     exit 1
 fi
 
-swww img "$WALLPAPER_PATH" --transition-type none
+swww img "$WALLPAPER_PATH" --transition-type any --transition-angle 60 --transition-step 90
 
 printf "Wallpaper has been changed to: %s\n" "$WALLPAPER_PATH"
 
