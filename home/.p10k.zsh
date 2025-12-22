@@ -40,10 +40,10 @@
   # Prompt colors.
   local light_black='#8C8C8C'
   local red='#F3A0A0'
-  local green='#86E8B3'
+  local green='#7DE3AB'
   local yellow='#E6F2B8'
   local magenta='#C9BED0'
-  local cyan='#F6CCA3'
+  local cyan='#F2C092'
   local white='#F5F5F5'
 
   # 注释掉下面左右两个 newline 就变成显示在一行 prompt 了 
