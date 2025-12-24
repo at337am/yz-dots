@@ -67,7 +67,7 @@ swapon --show
 
 
 
-% system, list, arch, kernel
+% system, list, pacman, kernel
 
 # 列出所有已安装的内核版本
 pacman -Q | grep -E '^linux(|-lts|-zen|-hardened) '
