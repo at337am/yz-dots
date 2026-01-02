@@ -1,34 +1,60 @@
 #!/usr/bin/env bash
 
-bak_path="/data/misc/restore/nekoray.tar.gz"
-old_bak_path="/data/misc/restore/old/nekoray_bak_$(date +"%y%m%d_%H%M%S").tar.gz"
+set -euo pipefail
 
-pkill -15 nekoray || true
-sleep 1.5
+restore_path="/data/restore/nekoray.tar.gz"
+old_restore_path="/data/restore/old/nekoray_bak_$(date +"%y%m%d_%H%M%S").tar.gz"
+nekoray_path="/opt/soft/nekoray"
+
+confirm() {
+    local prompt=${1:-"Do you want to continue?"}
+    read -r -p "$prompt [y/N]: " choice
+    case "${choice,,}" in
+        y|yes) return 0 ;;
+        *) return 1 ;;
+    esac
+}
 
 restore() {
-	if [[ ! -f "$bak_path" ]]; then
-		printf "Error: Backup file does not exist: %s\n" "$bak_path" >&2
+	if ! confirm "Are you sure you want to restore nekoray?"; then
+    	printf "Operation cancelled.\n" >&2
+	    exit 1
+	fi
+
+	if [[ ! -f "$restore_path" ]]; then
+		printf "Error: %s does not exist.\n" "$restore_path" >&2
 		exit 1
 	fi
 
-	rm -rf /opt/soft/nekoray
+	pkill -15 nekoray || true
+	sleep 1
 
-	tar -zxf "$bak_path" -C /opt/soft/
+	rm -rf "$nekoray_path"
 
-	printf "nekoray restored to original config\n"
+	tar -zxf "$restore_path" -C /opt/soft/
 }
 
 bak() {
-	mkdir -p /data/misc/restore/old/
-
-	if [[ -f "$bak_path" ]]; then
-		mv -v "$bak_path" "$old_bak_path"
+	if ! confirm "Are you sure you want to bak nekoray?"; then
+    	printf "Operation cancelled.\n" >&2
+	    exit 1
 	fi
 
-	tar -zcf "$bak_path" -C /opt/soft/ nekoray
+	if [[ ! -d "$nekoray_path" ]]; then
+		printf "Error: %s does not exist.\n" "$nekoray_path" >&2
+		exit 1
+	fi
 
-	printf "nekoray backup completed\n"
+	pkill -15 nekoray || true
+	sleep 1
+
+	mkdir -p /data/restore/old/
+
+	if [[ -f "$restore_path" ]]; then
+		mv -v "$restore_path" "$old_restore_path"
+	fi
+
+	tar -zcf "$restore_path" -C /opt/soft/ nekoray
 }
 
 if [[ "$#" -eq 0 ]]; then
@@ -40,3 +66,5 @@ else
 	printf "Usage: %s [bak]\n" "$(basename "$0")" >&2
     exit 1
 fi
+
+printf "Done.\n"

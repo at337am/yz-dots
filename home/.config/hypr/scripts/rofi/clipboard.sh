@@ -5,17 +5,21 @@ if pgrep -x rofi > /dev/null; then
     exit 0
 fi
 
-cliphist list | rofi -dmenu -i -p "clipboard" | cliphist decode | wl-copy
+# 发送通知
+notify() {
+    notify-send -a "clipboard" \
+                -u low \
+                -h string:x-dunst-stack-tag:volume_notif \
+                "$1"
+}
 
-# todo: fix 取消时, 依然提示 Copied
-# if cliphist list | rofi -dmenu -p "clipboard" | cliphist decode | wl-copy; then
-#     notify-send -a "clipboard" \
-#                 -u low \
-#                 -h string:x-dunst-stack-tag:volume_notif \
-#                 "📋  Copied"
-# else
-#     notify-send -a "clipboard" \
-#                 -u low \
-#                 -h string:x-dunst-stack-tag:volume_notif \
-#                 "Copy Failed"
-# fi
+selection=$(cliphist list | rofi -dmenu -i -p "clipboard")
+
+[[ -z "$selection" ]] && exit 0
+
+if echo "$selection" | cliphist decode | wl-copy; then
+    notify "Copied"
+else
+    notify "Copy Failed"
+    exit 1
+fi

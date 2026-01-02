@@ -1,7 +1,0 @@
-% fcitx5, rime
-
-# 打开 fcitx5 GUI 配置
-fcitx5-configtool
-
-# 诊断 Fcitx5 输入法框架状态
-fcitx5-diagnose

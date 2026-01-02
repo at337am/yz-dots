@@ -13,42 +13,45 @@ du -sh .
 
 % disk, lsblk
 
-# 列出所有块设备以及文件系统信息 (包含未挂载的设备)
+# 查看所有磁盘、分区和挂载点 (包含未挂载) - 最常用
 lsblk -pf
 
 
 
 % disk, fdisk
 
-# 列出所有磁盘及其分区表 (包含未挂载的设备)
+# 查看和操作磁盘分区表, 底层的分区细节 (包含未挂载)
 sudo fdisk -l
 
 
 
 % disk, df
 
-# 显示磁盘空间使用情况 (仅显示已挂载) - df
+# 查看已挂载的磁盘空间使用情况 (仅显示已挂载) - df
 df -hT
 
 
 
 % disk, duf
 
-# 显示磁盘空间使用情况 (仅显示已挂载) - duf
+# 查看已挂载的磁盘空间使用情况 (仅显示已挂载) - duf
 duf
 
 
 
 % disk, udisksctl
 
-# 挂载 U 盘
+# 显示物理驱动器列表
+udisksctl status
+
+# 挂载 U 盘 (插入后执行)
 udisksctl mount -b /dev/sda1
 
 # 卸载 U 盘
 udisksctl unmount -b /dev/sda1
 
-# 显示状态
-udisksctl status
+# 给 U 盘断电 (拔出前执行)
+udisksctl power-off -b /dev/sda
 
 
 

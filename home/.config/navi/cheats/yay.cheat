@@ -1,0 +1,77 @@
+% yay, update
+
+# 更新所有软件包
+yay -Syu
+
+# 更新所有软件包 (强制重新下载所有软件源数据库)
+yay -Syyu
+
+
+
+% yay, clean
+
+# 清理 - 删除孤儿依赖
+yay -Yc --noconfirm
+
+# 清理 - 删除旧的缓存文件 (保留当前版本的缓存)
+yay -Sc --noconfirm
+
+# 清理 - 删除所有缓存文件
+yay -Scc --noconfirm
+
+
+
+% yay, install
+
+# 安装软件 (原生 / AUR)
+yay -S xxx
+
+
+
+% yay, remove
+
+# 删除软件包以及依赖 (原生 / AUR)
+yay -Rns xxx
+
+
+
+% yay, list, repo
+
+# 搜索仓库中的软件 - 原生 + AUR
+yay -Ss xxx
+
+
+
+% yay, list, local
+
+# 搜索本地的某个软件包
+yay -Qs xxx
+
+# 显示本地某个软件包的详细信息
+yay -Qi xxx
+
+
+
+% yay, list, local, dependency
+
+# 列出软件包 - 原生 + AUR (包括大量依赖包)
+yay -Q | fzf
+
+# 列出软件包 - 原生 (包含大量依赖)
+yay -Qn | fzf
+
+# 列出软件包 - AUR (包含大量依赖)
+yay -Qm | fzf
+
+
+
+% yay, list, local, no_dependency
+
+# 列出软件包 - 原生 + AUR (不包含依赖) - 最常用
+yay -Qe | fzf
+
+# 列出软件包 - 原生 (不包含依赖)
+yay -Qen | fzf
+
+# 列出软件包 - AUR (不包含依赖)
+yay -Qem | fzf

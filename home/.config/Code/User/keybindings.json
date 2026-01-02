@@ -1,0 +1,160 @@
+// 将键绑定放在此文件中以覆盖默认值
+[
+    {
+        "key": "ctrl+enter",
+        "command": "-github.copilot.generate",
+        "when": "editorTextFocus && github.copilot.activated && !commentEditorFocused && !inInteractiveInput && !interactiveEditorFocused"
+    },
+    {
+        "key": "ctrl+shift+s",
+        "command": "-workbench.action.files.saveAs"
+    },
+    {
+        "key": "ctrl+shift+s",
+        "command": "-workbench.action.files.saveLocalFile",
+        "when": "remoteFileDialogVisible"
+    },
+    {
+        "key": "ctrl+shift+x",
+        "command": "-workbench.view.extensions",
+        "when": "viewContainer.workbench.view.extensions.enabled"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-editor.action.triggerSuggest",
+        "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-workbench.action.chat.startVoiceChat",
+        "when": "chatIsEnabled && hasSpeechProvider && inChatInput && !chatSessionRequestInProgress && !editorFocus && !notebookEditorFocused && !scopedVoiceChatGettingReady && !speechToTextInProgress || chatIsEnabled && hasSpeechProvider && inlineChatFocused && !chatSessionRequestInProgress && !editorFocus && !notebookEditorFocused && !scopedVoiceChatGettingReady && !speechToTextInProgress"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-workbench.action.chat.stopListeningAndSubmit",
+        "when": "inChatInput && voiceChatInProgress && scopedVoiceChatInProgress == 'editor' || inChatInput && voiceChatInProgress && scopedVoiceChatInProgress == 'inline' || inChatInput && voiceChatInProgress && scopedVoiceChatInProgress == 'quick' || inChatInput && voiceChatInProgress && scopedVoiceChatInProgress == 'view' || inlineChatFocused && voiceChatInProgress && scopedVoiceChatInProgress == 'editor' || inlineChatFocused && voiceChatInProgress && scopedVoiceChatInProgress == 'inline' || inlineChatFocused && voiceChatInProgress && scopedVoiceChatInProgress == 'quick' || inlineChatFocused && voiceChatInProgress && scopedVoiceChatInProgress == 'view'"
+    },
+    {
+        "key": "ctrl+shift+o",
+        "command": "-workbench.action.gotoSymbol",
+        "when": "!accessibilityHelpIsShown && !accessibleViewIsShown"
+    },
+    {
+        "key": "ctrl+shift+o",
+        "command": "-workbench.action.terminal.openDetectedLink",
+        "when": "terminalFocus && terminalHasBeenCreated"
+    },
+    {
+        "key": "ctrl+shift+o",
+        "command": "-editor.action.accessibleViewGoToSymbol",
+        "when": "accessibilityHelpIsShown && accessibleViewGoToSymbolSupported || accessibleViewGoToSymbolSupported && accessibleViewIsShown"
+    },
+    {
+        "key": "ctrl+o",
+        "command": "-workbench.action.files.openFile",
+        "when": "true"
+    },
+    {
+        "key": "ctrl+o",
+        "command": "-workbench.action.files.openFileFolder",
+        "when": "isMacNative && openFolderWorkspaceSupport"
+    },
+    {
+        "key": "ctrl+o",
+        "command": "-workbench.action.files.openFolderViaWorkspace",
+        "when": "!openFolderWorkspaceSupport && workbenchState == 'workspace'"
+    },
+    {
+        "key": "ctrl+o",
+        "command": "-workbench.action.files.openLocalFile",
+        "when": "remoteFileDialogVisible"
+    },
+    {
+        "key": "ctrl+k ctrl+s",
+        "command": "-workbench.action.openGlobalKeybindings"
+    },
+    {
+        "key": "ctrl+-",
+        "command": "-workbench.action.zoomOut"
+    },
+    {
+        "key": "ctrl+=",
+        "command": "-workbench.action.zoomIn"
+    },
+    {
+        "key": "ctrl+t",
+        "command": "-workbench.action.showAllSymbols"
+    },
+    {
+        "key": "space",
+        "command": "hideSuggestWidget",
+        "when": "suggestWidgetVisible && textInputFocus"
+    },
+    {
+        "key": "escape",
+        "command": "-hideSuggestWidget",
+        "when": "suggestWidgetVisible && textInputFocus"
+    },
+    {
+        "key": "shift+escape",
+        "command": "-hideSuggestWidget",
+        "when": "suggestWidgetVisible && textInputFocus"
+    },
+    {
+        "key": "ctrl+shift+=",
+        "command": "-workbench.action.zoomIn"
+    },
+    {
+        "key": "ctrl+g",
+        "command": "-workbench.action.gotoLine"
+    },
+    {
+        "key": "ctrl+g",
+        "command": "-workbench.action.terminal.goToRecentDirectory",
+        "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+    },
+    {
+        "key": "ctrl+space",
+        "command": "-workbench.action.terminal.requestCompletions",
+        "when": "config.terminal.integrated.suggest.enabled && terminalFocus && terminalProcessSupported && !terminalSuggestWidgetVisible"
+    },
+    {
+        "key": "ctrl+space",
+        "command": "-workbench.action.terminal.sendSequence",
+        "when": "terminalFocus && terminalShellIntegrationEnabled && !accessibilityModeEnabled && terminalShellType == 'pwsh'"
+    },
+    {
+        "key": "ctrl+space",
+        "command": "-editor.action.triggerSuggest",
+        "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible"
+    },
+    {
+        "key": "ctrl+space",
+        "command": "-focusSuggestion",
+        "when": "suggestWidgetVisible && textInputFocus && !suggestWidgetHasFocusedSuggestion"
+    },
+    {
+        "key": "ctrl+space",
+        "command": "-toggleSuggestionDetails",
+        "when": "suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && textInputFocus"
+    },
+    {
+        "key": "ctrl+space",
+        "command": "-workbench.action.terminal.suggestToggleDetails",
+        "when": "simpleSuggestWidgetHasFocusedSuggestion && terminalFocus && terminalHasBeenCreated && terminalIsOpen && terminalSuggestWidgetVisible || simpleSuggestWidgetHasFocusedSuggestion && terminalFocus && terminalIsOpen && terminalProcessSupported && terminalSuggestWidgetVisible"
+    },
+    {
+        "key": "ctrl+space",
+        "command": "-quickInput.toggleHover",
+        "when": "inQuickInput && quickInputType == 'quickPick' || inQuickInput && quickInputType == 'quickTree'"
+    },
+    {
+        "key": "ctrl+b",
+        "command": "-workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "ctrl+u",
+        "command": "-cursorUndo",
+        "when": "textInputFocus"
+    }
+]

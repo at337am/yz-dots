@@ -14,7 +14,7 @@ confirm() {
 }
 
 if ! confirm "Are you sure you want to reset zsh?"; then
-    printf "Operation cancelled. Exiting...\n"
+    printf "Operation cancelled.\n" >&2
     exit 1
 fi
 
@@ -40,12 +40,12 @@ rsync -a \
     ~/
 
 # 解压 p10k 主题
-/workspace/dev/yz-dots/bootstrap/setup/extract_p10k_theme.sh
+/workspace/dev/yz-dots/bootstrap/tasks/extract_p10k_theme.sh
 
 # 软链接配置
-/workspace/dev/yz-dots/bootstrap/setup/symlink_dotfiles.sh zsh
+/workspace/dev/yz-dots/bootstrap/tasks/symlink_dotfiles.sh zsh
 
 # 设置路径权限
-/workspace/dev/yz-dots/bootstrap/setup/set_path_perms.sh zsh
+/workspace/dev/yz-dots/bootstrap/tasks/set_path_perms.sh zsh
 
 printf "Done.\n"

@@ -1,0 +1,76 @@
+{
+  "explorer.confirmDelete": false,
+  "update.enableWindowsBackgroundUpdates": false,
+  "update.showReleaseNotes": false,
+  "update.mode": "none",
+  "extensions.autoCheckUpdates": false,
+  "extensions.autoUpdate": false,
+  "workbench.startupEditor": "none",
+  "go.toolsManagement.autoUpdate": true,
+  "extensions.ignoreRecommendations": true,
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "git.openRepositoryInParentFolders": "always",
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "prettier.tabWidth": 4,
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "settingsSync.ignoredSettings": [
+    "editor.smoothScrolling",
+    "workbench.list.smoothScrolling",
+    "terminal.integrated.fontSize",
+    "scm.inputFontSize",
+    "-window.zoomLevel"
+  ],
+  "editor.fontWeight": "normal",
+  "editor.formatOnSaveMode": "modificationsIfAvailable",
+  "catppuccin.italicComments": false,
+  "catppuccin.italicKeywords": false,
+  "catppuccin.accentColor": "pink",
+  "terminal.integrated.fontSize": 15,
+  "editor.unicodeHighlight.ambiguousCharacters": false,
+  "editor.fontFamily": "'Google Sans Code', 'Symbols Nerd Font', 'Noto Sans CJK SC'",
+  "terminal.integrated.fontFamily": "'Google Sans Code', 'Symbols Nerd Font', 'Noto Sans CJK SC'",
+  "workbench.list.smoothScrolling": true,
+  "editor.fontSize": 16,
+  "editor.stickyScroll.enabled": false,
+  "editor.stickyScroll.scrollWithEditor": false,
+  "workbench.tree.enableStickyScroll": false,
+  "diffEditor.ignoreTrimWhitespace": true,
+  "workbench.navigationControl.enabled": false,
+  "files.associations": {
+    "*.cheat": "navi-cheatsheet",
+    "*.rasi": "css",
+    "config": "properties",
+    "*.ini": "toml"
+  },
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
+  "workbench.colorTheme": "Catppuccin Macchiato",
+  "editor.smoothScrolling": true,
+  "workbench.editor.empty.hint": "hidden",
+  "[shellscript]": {
+      "editor.quickSuggestions": {
+          "other": false,
+          "comments": false,
+          "strings": false
+      },
+      "editor.wordBasedSuggestions": "off"
+  },
+  "debug.disassemblyView.showSourceCode": false,
+  "window.zoomLevel": 0.75,
+  "chat.disableAIFeatures": true,
+  "chat.extensionUnification.enabled": false,
+  "workbench.layoutControl.enabled": false,
+  "editor.mouseWheelScrollSensitivity": 1.75
+}

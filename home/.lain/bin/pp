@@ -1,39 +1,38 @@
 #!/usr/bin/env bash
 
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
-# 脚本用途：
-# 该脚本用于在 Hyprland 环境下设置桌面壁纸。
-# 用户需提供一个 JPG 或 PNG 格式的图片文件路径作为参数。
-# 脚本会检查依赖、验证文件是否存在及格式，并将指定图片设置为当前桌面壁纸。
+# 脚本用途: 设置壁纸
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
 
+set -euo pipefail
+
+# 定义颜色
+RED='\033[0;31m'        # 红色
+GREEN='\033[0;32m'      # 绿色
+NC='\033[0m'            # 重置色
+
 # 依赖检查
-if ! command -v "hyprctl" &> /dev/null; then
-    printf "Error: Missing dependency: hyprctl\n" >&2
+if ! command -v "swww" &> /dev/null; then
+    printf "${RED}Error:${NC} Missing dependency: swww\n" >&2
     exit 1
 fi
 
 if [[ "$#" -ne 1 ]]; then
-    printf "Error: Invalid argument.\n" >&2
-    printf "Usage: %s <path-to-wallpaper>\n" "$(basename "$0")" >&2
+    printf "${RED}Error:${NC} Invalid argument.\n" >&2
+    printf "Usage: %s <image>\n" "$(basename "$0")" >&2
     exit 1
 fi
 
-if [[ ! -f "$1" ]]; then
-    printf "Error: %s does not exist.\n" "$1" >&2
+WALLPAPER_PATH="$1"
+
+if [[ ! -f "$WALLPAPER_PATH" ]]; then
+    printf "${RED}Error:${NC} %s does not exist.\n" "$WALLPAPER_PATH" >&2
     exit 1
 fi
 
-# 检查文件扩展名是否为 jpg 或 png
-if (shopt -s nocasematch; [[ ! "$1" =~ \.(jpg|jpeg|png)$ ]]); then
-    printf "Error: Invalid file type. Only JPG and PNG are supported: %s\n" "$1" >&2
-    exit 1
-fi
-shopt -u nocasematch
+swww img "$WALLPAPER_PATH" --transition-type none
 
-WALLPAPER_PATH=$(realpath "$1")
+# 开启动画效果
+# swww img "$WALLPAPER_PATH" --transition-type any --transition-angle 60 --transition-step 90
 
-hyprctl hyprpaper preload "$WALLPAPER_PATH"
-hyprctl hyprpaper wallpaper ",$WALLPAPER_PATH"
-
-printf "Wallpaper has been changed to: %s\n" "$WALLPAPER_PATH"
+printf "${GREEN}Wallpaper has been changed to: %s${NC}\n" "$WALLPAPER_PATH"

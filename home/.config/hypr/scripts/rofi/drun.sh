@@ -5,4 +5,5 @@ if pgrep -x rofi > /dev/null; then
     exit 0
 fi
 
-rofi -show drun -drun-match-fields name -theme ~/.config/rofi/themes/drun.rasi
+# 只匹配 name 和 keywords
+rofi -show drun -drun-match-fields name,keywords -theme ~/.config/rofi/themes/drun.rasi

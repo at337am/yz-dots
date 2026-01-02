@@ -8,17 +8,10 @@ fortune | cowsay
 % misc, cmatrix, terminal-rain
 
 # 异步滚动
-unimatrix -c red -s 96 -a
+unimatrix -c magenta -s 96 -a
 
 # 下雨天 (按 T 切换)
 terminal-rain
-
-
-
-% misc, watch
-
-# 监控当前目录下的文件变化, 新生成的文件会出现在最下面
-watch -d -n 1 'ls -lhrt'
 
 
 
@@ -32,13 +25,6 @@ file -i a.mp4
 
 # 批量检查文件的类型
 file *
-
-
-
-% misc, tr
-
-# 去除多余的换行符
-tr -s '\n' < input.md > output.md
 
 
 
@@ -75,3 +61,20 @@ history -f 1 | tail -n 50
 
 # 查找所有历史命令
 history -f 1 | fzf
+
+
+
+% misc, type, whence
+
+# 排查命令冲突 - zsh 专用
+whence -va ls
+
+# 排查命令冲突 - POSIX 兼容
+type -a ls
+
+
+
+% misc, lines, count
+
+# 统计一个文件的行数
+wc -l x.txt

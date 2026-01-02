@@ -2,12 +2,30 @@
 
 set -euo pipefail
 
+# 定义颜色
+RED='\033[0;31m'        # 红色
+GREEN='\033[0;32m'      # 绿色
+NC='\033[0m'            # 重置色
+
+usage() {
+    printf "Usage:\n"
+    printf "  %s [flags]\n" "$(basename "$0")"
+    printf "\nFlags:\n"
+    printf "  proj                  打包 dev 和 Documents\n"
+    printf "  fonts                 打包 fonts\n"
+    printf "  PFP                   打包 PFP\n"
+    printf "  restore               打包 restore\n"
+    printf "  all                   打包所有内容 (迁移)\n"
+    printf "  sync                  仅同步\n"
+    printf "  -h, --help            Show this help message\n"
+}
+
 # 需要同步的源路径
 documents_path="$HOME/Documents"
 fonts_path="$HOME/.local/share/fonts"
 pfp_path="$HOME/Pictures/PFP"
 dev_path="/workspace/dev"
-restore_path="/data/misc/restore"
+restore_path="/data/restore"
 
 source_dirs=(
     "$documents_path"
@@ -20,7 +38,7 @@ source_dirs=(
 # 路径检查
 for path in "${source_dirs[@]}"; do
     if [[ ! -d "$path" ]]; then
-        printf "Error: %s is not a directory.\n" "$path" >&2
+        printf "${RED}Error:${NC} %s is not a directory.\n" "$path" >&2
         exit 1
     fi
 done
@@ -28,22 +46,33 @@ done
 TARGET_DIR="/data/bak/syncs"
 mkdir -p "$TARGET_DIR"
 
+# 软件包列表文件存放位置
+native_pkglist="$TARGET_DIR/pkglist-native.txt"
+aur_pkglist="$TARGET_DIR/pkglist-aur.txt"
+
 # -------------- 主要逻辑 --------------
 
 # 只做同步
 mirroring() {
+    # 1. 同步所有目录内容
     for path in "${source_dirs[@]}"; do
         rsync -a --delete \
             "$path/" \
             "$TARGET_DIR/$(basename "$path")"
     done
+    printf "All directory contents have been synced.\n"
+
+    # 2. 同步所有软件包列表
+    pacman -Qqen > "$native_pkglist"
+    pacman -Qqem > "$aur_pkglist"
+    printf "All package lists have been synced.\n"
 }
 
 # 为迁移做准备, 打包所有内容
 pack_all() {
     local timestamp=$(date +"%y%m%d_%H%M%S")
     tar -cf "$HOME/Downloads/syncs_migration_${timestamp}.tar" -C /data/bak/ syncs
-    printf "The migration has been packed into ~/Downloads.\n"
+    printf "${GREEN}The migration has been packed into ~/Downloads.${NC}\n"
 }
 
 # 日常备份, 打包 proj 项目
@@ -54,7 +83,7 @@ pack_proj(){
     cd ~/Downloads
     tar -cf "proj_bak_$(date +"%y%m%d_%H%M%S").tar" proj_bak
     command rm -rf proj_bak
-    printf "proj packed and ready in ~/Downloads.\n"
+    printf "${GREEN}proj packed and ready in ~/Downloads.${NC}\n"
 }
 
 # 打包某个单独的内容
@@ -62,39 +91,44 @@ pack_one() {
     local name="$1"
     local timestamp=$(date +"%y%m%d_%H%M%S")
     tar -cf "$HOME/Downloads/${name}_bak_${timestamp}.tar" -C "$TARGET_DIR" "$name"
-    printf "%s packed and ready in ~/Downloads.\n" "$name"
+    printf "${GREEN}%s packed and ready in ~/Downloads.${NC}\n" "$name"
 }
 
-usage() {
-    printf "Usage: %s [OPTION]\n\nOptions:\n" "$(basename "$0")" >&2
-
-    printf "  proj          打包 dev 和 Documents\n" >&2
-    printf "  all           打包所有内容 (迁移)\n" >&2
-    printf "  fonts         打包 fonts\n" >&2
-    printf "  PFP           打包 PFP\n" >&2
-    printf "  restore       打包 restore\n" >&2
-}
-
-if [[ "$#" -eq 1 && ("$1" == "-h" || "$1" == "--help") ]]; then
-    usage
-    exit 0
-fi
-
-if [[ "$#" -eq 0 ]]; then
-    mirroring
-elif [[ "$#" -eq 1 && "$1" == "proj" ]]; then
-    mirroring
-    pack_proj
-elif [[ "$#" -eq 1 && "$1" =~ ^(fonts|PFP|restore)$ ]]; then
-    mirroring
-    pack_one "$1"
-elif [[ "$#" -eq 1 && "$1" == "all" ]]; then
-    mirroring
-    pack_all
-else
-    printf "Error: Invalid arguments.\n" >&2
-    usage
+# 参数个数不能大于 1
+if [[ "$#" -gt 1 ]]; then
+    printf "${RED}Error:${NC} Too many arguments.\n" >&2
+    usage >&2
     exit 1
 fi
+
+# 如果 $1 为空 (无参数)，则赋值为 sync
+action="${1:-sync}"
+
+case "$action" in
+    proj)
+        mirroring
+        pack_proj
+        ;;
+    fonts|PFP|restore)
+        mirroring
+        pack_one "$action"
+        ;;
+    all)
+        mirroring
+        pack_all
+        ;;
+    sync)
+        mirroring
+        ;;
+    -h|--help)
+        usage
+        exit 0
+        ;;
+    *)
+        printf "${RED}Error:${NC} Unknown flag %s\n" "$action" >&2
+        usage >&2
+        exit 1
+        ;;
+esac
 
 printf "Done.\n"

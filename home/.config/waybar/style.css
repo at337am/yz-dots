@@ -1,15 +1,17 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: "Google Sans Code", "0xProto Nerd Font Propo", "Noto Sans CJK SC";
-    font-size: 15px;
-    font-weight: 400;
+    /* 最好使用 Mono 字体 */
+    font-family: "Noto Sans Mono", "Symbols Nerd Font", "Noto Sans CJK SC";
+    font-size: 14.4px;
 }
 
 window#waybar {
-    color: #e5e5e5;
-    background: rgba(46, 46, 46, 0.80);
+    color: #f5f5f5;
+    background: rgba(31, 33, 38, 0.75);
 }
+
+
 
 #clock,
 #workspaces,
@@ -22,26 +24,33 @@ window#waybar {
     padding: 0 7.5px;
 }
 
+
+
 /* 工作区列表 */
 #workspaces {
     margin: 4px 0;
 }
+
 #workspaces button {
     all:unset;
     padding: 0 15px;
-    color: #a6a6a6;
-}
-#workspaces button:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-#workspaces button.active {
-    /* 当前的工作区 */
-    color: #e5e5e5;
-    background-color: #555555;
+    color: #A9AFB7;
 }
 
+#workspaces button:hover {
+    background-color: rgba(70, 75, 86, 0.45);
+}
+
+/* 当前的工作区 */
+#workspaces button.active {
+    color: #f5f5f5;
+    background-color: rgba(70, 75, 86, 0.85);
+}
+
+
+
 #battery {
-    color: #e5e5e5;
+    color: #f5f5f5;
 }
 
 #battery.charging,
@@ -55,8 +64,10 @@ window#waybar {
     color: #FF8282;
 }
 
+
+
 #custom-recorder {
-    color: #e5e5e5;
+    color: #f5f5f5;
     animation-name: blink;
     animation-duration: 1s;
     animation-timing-function: linear;

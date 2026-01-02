@@ -39,14 +39,14 @@ uname -r
 
 
 
-% system, font
+% system, fc-cache, font
 
 # 刷新字体缓存
 fc-cache -fv
 
 
 
-% system, font, search
+% system, fc-list, font, search
 
 # 查找已安装的字体
 fc-list : family | fzf
@@ -57,3 +57,24 @@ fc-list : family | fzf
 
 # 查看当前系统语言
 locale
+
+
+
+% system, swapon
+
+# 显示 swap 分区
+swapon --show
+
+
+
+% system, list, pacman, kernel
+
+# 列出所有已安装的内核版本
+pacman -Q | grep -E '^linux(|-lts|-zen|-hardened) '
+
+
+
+% system, list, arch, history
+
+# 列出软件包历史记录 (安装, 删除, 更新)
+grep -E " installed | removed | upgraded" /var/log/pacman.log

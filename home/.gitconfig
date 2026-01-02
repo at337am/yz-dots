@@ -4,7 +4,7 @@
     name = at337am
     email = lueqit@gmail.com
 [alias]
-    st = status
+    ss = status
     lg = log --graph --decorate --all --pretty=format:'%C(yellow)%h%C(reset) - %C(cyan)%ad%C(reset) %C(auto)%d%C(reset) %s' --date=format:'%y%m%d %H:%M'
     sw = switch
     br = branch
@@ -24,7 +24,3 @@
     editor = nvim
 [log]
     date = iso
-[https]
-    proxy = http://127.0.0.1:2080
-[http]
-    proxy = http://127.0.0.1:2080

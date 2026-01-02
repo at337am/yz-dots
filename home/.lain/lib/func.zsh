@@ -147,11 +147,37 @@ bak() {
     local source_file="$1"
 
     if [[ ! -f "$source_file" && ! -L "$source_file" ]]; then
-        printf "\033[31mError: '%s' is not a regular file\033[0m\n" "$source_file" >&2
+        printf "Error: '%s' is not a regular file.\n" "$source_file" >&2
         return 1
     fi
 
     cp -a -- "$source_file" "${source_file}_$(date +%y%m%d_%H%M%S_%N).bak"
+}
+
+# 复制一个或多个文件的 URI
+cpf() {
+    if [[ "$#" -eq 0 ]]; then
+        printf "Error: Invalid arguments.\n" >&2
+        printf "Usage: cpf <files...>\n" >&2
+        return 1
+    fi
+
+    local uri_list=""
+    local file
+
+    for file in "$@"; do
+        if [[ ! -f "$file" ]]; then
+            printf "Error: '%s' is not a regular file.\n" "$file" >&2
+            return 1
+        fi
+        uri_list="${uri_list}file://${file:A}\n"
+    done
+
+    if [[ -n "$uri_list" ]]; then
+        print -n -- "$uri_list" | wl-copy --type text/uri-list
+        print "Copied:"
+        print -n -- "$uri_list"
+    fi
 }
 
 d() {
@@ -160,4 +186,37 @@ d() {
     fi
 
     dirs -v | head -n 10
+}
+
+# 方便打开一些媒体文件
+o() {
+    if [[ "$#" -ne 1 ]]; then
+        printf "Error: Invalid arguments.\n" >&2
+        printf "Usage: o <file>\n" >&2
+        return 1
+    fi
+
+    if [[ ! -f "$1" ]]; then
+        printf "Error: '%s' does not exist.\n" "$1" >&2
+        return 1
+    fi
+
+    local ext="${1##*.}"
+    ext="${ext:l}"
+
+    case "$ext" in
+        jpg|jpeg|png|gif|webp)
+            qimgv "$1"
+            ;;
+        mp4|mkv|mov|mp3|flac|m4a|m4v|webm|ts|avi)
+            mpv "$1"
+            ;;
+        pdf)
+            zathura "$1"
+            ;;
+        *)
+            printf "Error: Unknown extension: %s\n" "$ext" >&2
+            return 1
+            ;;
+    esac
 }

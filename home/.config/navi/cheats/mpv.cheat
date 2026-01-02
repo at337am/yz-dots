@@ -8,18 +8,12 @@ mpv --no-video 'https://youtu.be/jfKfPfyJRdk'
 % mpv, images
 
 # 以幻灯片模式播放目录中的所有图片
-mpv --image-display-duration=0.8 .
+mpv --image-display-duration=0.8 xxx
 
 
 
-% mpv, videos
+% mpv
 
-# 三个视频横向并排播放
-mpv 1.mp4 \
-    --external-file=2.mp4 \
-    --external-file=3.mp4 \
-    --lavfi-complex="[vid1][vid2][vid3]hstack=inputs=3[vo]" \
-    --fs
+# 旋转角度播放视频
+mpv --video-rotate=270 xxx
 
-# 两个视频横向并排播放
-mpv 1.mp4 --external-file=2.mp4 --lavfi-complex="[vid1][vid2]hstack[vo]" --fs

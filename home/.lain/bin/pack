@@ -1,71 +1,174 @@
 #!/usr/bin/env bash
 
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
-# 脚本用途：
-# 该脚本用于将指定的文件或目录打包为 tar 归档文件。
-# 功能说明：
-# 1. 默认生成不压缩的 .tar 文件，可使用 -z 或 --gzip 参数生成压缩归档 (.tar.gz)。
-# 2. 检查目标文件或目录是否存在，避免覆盖已有归档文件。
-# 3. 若只有一个目标，在当前目录生成；若有多个目标，自动新建目录并打包到其中。
+# 脚本用途: 支持打包一个或多个文件/目录, 支持解压一个或多个文件
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
 
-tar_options="-cf"
-extension=".tar"
+set -euo pipefail
 
-# 处理选项参数
-if [[ "$1" == "-z" || "$1" == "--gzip" ]]; then
-    tar_options="-czf"
-    extension=".tar.gz"
-    shift
-fi
+# 定义颜色
+RED='\033[0;31m'        # 红色
+GREEN='\033[0;32m'      # 绿色
+NC='\033[0m'            # 重置色
 
-# 检查剩余参数
-if [[ "$#" -eq 0 ]]; then
-    printf "Error: Invalid arguments.\n" >&2
-    printf "Usage: %s [-z|--gzip] <path>...\n" "$(basename "$0")" >&2
+# 默认变量
+MODE="pack"         # 默认为打包模式
+USE_GZIP=0          # 默认不使用 Gzip
+TARGETS=()          # 存储目标文件列表
+
+# ----------------------------------
+# 函数: 打印帮助信息
+# ----------------------------------
+usage() {
+    printf "Usage:\n"
+    printf "  %s <files...> [flags]\n" "$(basename "$0")"
+    printf "\nFlags:\n"
+    printf "  -z, --gzip            Use gzip compression (for packing)\n"
+    printf "  -x, --extract         Extract mode (unpack archives)\n"
+    printf "  -h, --help            Show this help message\n"
+}
+
+# ----------------------------------
+# 打包时, 目标可以是文件, 也可以是目录, 只要存在即可
+# ----------------------------------
+check_pack_targets() {
+    local files=("$@")
+    for item in "${files[@]}"; do
+        if [[ ! -e "$item" && ! -L "$item" ]]; then
+            printf "${RED}Error:${NC} '%s' does not exist.\n" "$item" >&2
+            exit 1
+        fi
+    done
+}
+
+# ----------------------------------
+# 解压时, 目标必须是文件
+# ----------------------------------
+check_unpack_targets() {
+    local files=("$@")
+    for item in "${files[@]}"; do
+        if [[ ! -f "$item" ]]; then
+            printf "${RED}Error:${NC} '%s' does not exist.\n" "$item" >&2
+            exit 1
+        fi
+    done
+}
+
+# ----------------------------------
+# 打包逻辑
+# ----------------------------------
+pack_files() {
+    local output_dir="."
+    local tar_options="-cf"
+    local extension=".tar"
+
+    # 设置压缩选项
+    if [[ $USE_GZIP -eq 1 ]]; then
+        tar_options="-czf"
+        extension=".tar.gz"
+    fi
+
+    # 如果有多个目标, 创建统一输出目录
+    if [[ "${#TARGETS[@]}" -gt 1 ]]; then
+        local dir_name="packed_result"
+        if mkdir -p "$dir_name"; then
+            output_dir="$dir_name"
+            printf "Output directory created: %s\n" "$output_dir"
+        else
+            printf "${RED}Error:${NC} Failed to create directory %s\n" "$dir_name" >&2
+            exit 1
+        fi
+    fi
+
+    # 循环打包
+    for item in "${TARGETS[@]}"; do
+        local base_name="$(basename -- "$item")"
+        local archive_name="${base_name}${extension}"
+        local full_output_path="${output_dir}/${archive_name}"
+
+        if [[ -e "$full_output_path" ]]; then
+            printf "${RED}Error:${NC} %s already exists, skipping.\n" "${full_output_path}" >&2
+            continue
+        fi
+
+        if tar "${tar_options}" "${full_output_path}" -- "$item"; then
+            printf "${GREEN}Packed -> %s${NC}\n" "${full_output_path}"
+        else
+            printf "${RED}Error:${NC} Failed to pack %s\n" "$item" >&2
+        fi
+    done
+}
+
+# ----------------------------------
+# 解压逻辑
+# ----------------------------------
+unpack_files() {
+    local output_dir="."
+
+    # 如果有多个目标, 创建统一解压目录
+    if [[ "${#TARGETS[@]}" -gt 1 ]]; then
+        local dir_name="unpacked_result"
+        if mkdir -p "$dir_name"; then
+            output_dir="$dir_name"
+            printf "Output directory created: %s\n" "$output_dir"
+        else
+            printf "${RED}Error:${NC} Failed to create directory %s\n" "$dir_name" >&2
+            exit 1
+        fi
+    fi
+
+    # 循环解压
+    for item in "${TARGETS[@]}"; do
+        if tar -xf "$item" -C "$output_dir"; then
+            printf "${GREEN}Extracted -> %s (into %s/)${NC}\n" "$item" "$output_dir"
+        else
+            printf "${RED}Error:${NC} Failed to extract %s\n" "$item" >&2
+        fi
+    done
+}
+
+# ----------------------------------
+# 主程序入口
+# ----------------------------------
+while [[ $# -gt 0 ]]; do
+    key="$1"
+    case $key in
+        -z|--gzip)
+            USE_GZIP=1
+            shift
+            ;;
+        -x|--extract)
+            MODE="unpack"
+            shift
+            ;;
+        -h|--help)
+            usage
+            exit 0
+            ;;
+        -*)
+            printf "${RED}Error:${NC} Unknown flag %s\n" "$1" >&2
+            usage >&2
+            exit 1
+            ;;
+        *)
+            TARGETS+=("$1")
+            shift
+            ;;
+    esac
+done
+
+# 检查是否有输入文件
+if [[ "${#TARGETS[@]}" -eq 0 ]]; then
+    printf "${RED}Error:${NC} No files specified.\n" >&2
+    usage >&2
     exit 1
 fi
 
-# 检查参数指定的路径是否存在且不是符号链接
-for item in "$@"; do
-    if [[ ! -e "$item" && ! -L "$item" ]]; then
-        printf "Error: '%s' does not exist.\n" "$item" >&2
-        exit 1
-    fi
-done
-
-output_dir="."
-
-# 若有多个目标, 则输出到新的目录中
-if [[ "$#" -gt 1 ]]; then
-    dir_name="packed_result"
-
-    if mkdir -p "$dir_name"; then
-        output_dir="$dir_name"
-        printf "Output directory created: %s\n" "$output_dir"
-    else
-        printf "\033[31mError: Failed to create output directory %s\033[0m\n" "$dir_name" >&2
-        exit 1
-    fi
+# 根据模式执行相应函数
+if [[ "$MODE" == "unpack" ]]; then
+    check_unpack_targets "${TARGETS[@]}"
+    unpack_files
+else
+    check_pack_targets "${TARGETS[@]}"
+    pack_files
 fi
-
-for item in "$@"; do
-    # 获取基础文件名
-    base_name="$(basename -- "$item")"
-    archive_name="${base_name}${extension}"
-
-    full_output_path="${output_dir}/${archive_name}"
-
-    if [[ -e "$full_output_path" ]]; then
-        printf "\033[31mError: %s already exists\033[0m\n" "${full_output_path}" >&2
-        continue
-    fi
-
-    # 执行打包命令
-    if tar "${tar_options}" "${full_output_path}" -- "$item"; then
-        printf "\033[32mPacked -> %s\033[0m\n" "${full_output_path}"
-    else
-        printf "\033[31mError: Failed to pack %s\033[0m\n" "$item" >&2
-        continue
-    fi
-done

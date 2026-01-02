@@ -38,13 +38,13 @@
   [[ $ZSH_VERSION == (5.<1->*|<6->.*) ]] || return
 
   # Prompt colors.
-  local grey='#229799'
-  local yellow='#E9F5BE'
-  local purple='#E69DB8'
-  local white='#FDFAF6'
-  local orange='#F1BA88'
-  local green='#81E7AF'
-  local blue='#A8CBE2'
+  local light_black='#8C8C8C'
+  local red='#F3A0A0'
+  local green='#7DE3AB'
+  local yellow='#E6F2B8'
+  local magenta='#C9BED0'
+  local cyan='#F2C092'
+  local white='#F5F5F5'
 
   # 注释掉下面左右两个 newline 就变成显示在一行 prompt 了 
   # Left prompt segments.
@@ -85,7 +85,7 @@
   # custom, 提示小箭头 > ok 的配色
   typeset -g POWERLEVEL9K_PROMPT_CHAR_OK_{VIINS,VICMD,VIVIS}_FOREGROUND=$green
   # custom, 提示小箭头 > error 的配色
-  typeset -g POWERLEVEL9K_PROMPT_CHAR_ERROR_{VIINS,VICMD,VIVIS}_FOREGROUND=$blue
+  typeset -g POWERLEVEL9K_PROMPT_CHAR_ERROR_{VIINS,VICMD,VIVIS}_FOREGROUND=$red
   # Default prompt symbol.
   typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIINS_CONTENT_EXPANSION='❯'
   # Prompt symbol in command vi mode.
@@ -96,28 +96,26 @@
   typeset -g POWERLEVEL9K_PROMPT_CHAR_OVERWRITE_STATE=false
 
   # custom, uv 虚拟环境名称的配色
-  typeset -g POWERLEVEL9K_VIRTUALENV_FOREGROUND=$purple
+  typeset -g POWERLEVEL9K_VIRTUALENV_FOREGROUND=$light_black
   # Don't show Python version.
   typeset -g POWERLEVEL9K_VIRTUALENV_SHOW_PYTHON_VERSION=false
   typeset -g POWERLEVEL9K_VIRTUALENV_{LEFT,RIGHT}_DELIMITER=
 
   # custom, 当前路径配色
-  typeset -g POWERLEVEL9K_DIR_FOREGROUND=$orange
+  typeset -g POWERLEVEL9K_DIR_FOREGROUND=$cyan
 
-  # custom, root 用户, 显示效果: user@host, 不同颜色
-  typeset -g POWERLEVEL9K_CONTEXT_ROOT_TEMPLATE="%F{$white}%n%f%F{$grey}@%m%f"
+  # custom, root 用户, 显示: user@host, 统一颜色
+  # (但似乎 root 用户访问不到 .p10k.zsh, 这个配置可能是不需要的)
+  # typeset -g POWERLEVEL9K_CONTEXT_ROOT_TEMPLATE="%F{$white}%n@%m%f"
 
-  # custom, 除非是 root 和 SSH, 否则都不显示 user@host
+  # custom, 普通用户, 不显示
   typeset -g POWERLEVEL9K_CONTEXT_{DEFAULT,SUDO}_CONTENT_EXPANSION=
 
-  # custom, 普通用户, 显示效果: user@host, 不同颜色
-  # typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE="%F{$green}%n%f%F{$blue}@%m%f"
+  # custom, 普通用户, 显示: user@host, 统一颜色
+  # typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE="%F{$white}%n@%m%f"
 
-  # custom, 普通用户, 显示效果: user@host, 统一颜色
-  # typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE="%F{$grey}%n@%m%f"
-
-  # custom, 普通用户, 显示效果: host
-  # typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE="%F{$grey}%m%f"
+  # custom, 普通用户, 显示: host
+  # typeset -g POWERLEVEL9K_CONTEXT_TEMPLATE="%F{$white}%m%f"
 
   # Show previous command duration only if it's >= 5s.
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=5
@@ -128,9 +126,8 @@
   # custom, 命令持续时间配色, 超过5秒才会显示
   typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND=$yellow
 
-  # Grey Git prompt. This makes stale prompts indistinguishable from up-to-date ones.
   # custom, Git 分支名称配色
-  typeset -g POWERLEVEL9K_VCS_FOREGROUND=$blue
+  typeset -g POWERLEVEL9K_VCS_FOREGROUND=$magenta
 
   # Disable async loading indicator to make directories that aren't Git repositories
   # indistinguishable from large Git repositories without known state.
@@ -141,7 +138,7 @@
   typeset -g POWERLEVEL9K_VCS_MAX_SYNC_LATENCY_SECONDS=0
 
   # custom, 远程变更箭头的配色
-  typeset -g POWERLEVEL9K_VCS_{INCOMING,OUTGOING}_CHANGESFORMAT_FOREGROUND=$purple
+  typeset -g POWERLEVEL9K_VCS_{INCOMING,OUTGOING}_CHANGESFORMAT_FOREGROUND=$magenta
   # Don't show remote branch, current tag or stashes.
   typeset -g POWERLEVEL9K_VCS_GIT_HOOKS=(vcs-detect-changes git-untracked git-aheadbehind)
   # Don't show the branch icon.
@@ -161,8 +158,8 @@
   # Remove space between '⇣' and '⇡' and all trailing spaces.
   typeset -g POWERLEVEL9K_VCS_CONTENT_EXPANSION='${${${P9K_CONTENT/⇣* :⇡/⇣⇡}// }//:/ }'
 
-  # Grey current time.
-  typeset -g POWERLEVEL9K_TIME_FOREGROUND=$grey
+  # Current time.
+  typeset -g POWERLEVEL9K_TIME_FOREGROUND=$light_black
   # Format for the current time: 09:51:02. See `man 3 strftime`.
   typeset -g POWERLEVEL9K_TIME_FORMAT='%D{%H:%M:%S}'
   # If set to true, time will update when you hit enter. This way prompts for the past

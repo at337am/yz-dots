@@ -12,9 +12,6 @@ ffmpeg -ss 00:00:00 -i input.mp4 -t 01:30 -c:v libx264 -crf 18 -preset slow -c:a
 # 精确裁剪 (快, 体积会很大)
 ffmpeg -ss 00:00:00 -i input.mp4 -t 01:30 -c:v libx264 -crf 18 -preset ultrafast -c:a copy clip.mp4
 
-# 将视频循环 5 次
-ffmpeg -stream_loop 4 -i input.mp4 -c copy output.mp4
-
 
 
 % ffmpeg, video

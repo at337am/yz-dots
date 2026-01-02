@@ -1,0 +1,4 @@
+% hyperfine, time
+
+# 命令行基准测试
+hyperfine 'ls -l'

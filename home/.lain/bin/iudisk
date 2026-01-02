@@ -1,0 +1,199 @@
+#!/usr/bin/env bash
+
+# -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
+# 脚本用途: 为了简化 U 盘挂载、卸载、断电等操作
+# -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
+
+set -euo pipefail
+
+# 依赖检查
+dependencies=("udisksctl" "lsblk" "findfs" "findmnt" "notify-send" "paplay")
+for cmd in "${dependencies[@]}"; do
+    if ! command -v "$cmd" &> /dev/null; then
+        printf "Error: Missing dependency: %s\n" "$cmd" >&2
+        exit 1
+    fi
+done
+
+# 定义颜色
+RED='\033[0;31m'        # 红色
+GREEN='\033[0;32m'      # 绿色
+MAGENTA='\033[0;35m'    # 紫色
+CYAN='\033[0;36m'       # 青色
+NC='\033[0m'            # 重置色
+
+# U 盘标签
+TARGET_LABEL="IUDISK"
+
+# 全局变量, 之后会由 detect_device 函数填充
+dev_name=""
+dev_part=""
+
+# 发送通知
+notify() {
+    notify-send -a "iudisk" \
+                -u low \
+                -h string:x-dunst-stack-tag:volume_notif \
+                "$1"
+}
+
+# 播放音频
+play_audio() {
+    local audio_file="/usr/share/sounds/freedesktop/stereo/${1}.oga"
+    [[ -f "$audio_file" ]] && paplay "$audio_file" &
+}
+
+usage() {
+    printf "Usage:\n"
+    printf "  %s [flags]\n" "$(basename "$0")"
+    printf "\nFlags:\n"
+    printf "  -m, --mount           Mount the USB drive\n"
+    printf "  -u, --unmount         Safely eject the USB drive (unmount and power off)\n"
+    printf "  -s, --status          Check the current mount status\n"
+    printf "  -h, --help            Show this help message\n"
+}
+
+confirm() {
+    local prompt=${1:-"Do you want to continue?"}
+    read -r -p "$prompt [y/N]: " choice
+    case "${choice,,}" in
+        y|yes) return 0 ;;
+        *) return 1 ;;
+    esac
+}
+
+# 通过标签探测设备
+detect_device() {
+    # 1. 查找分区
+    if ! dev_part=$(findfs LABEL="$TARGET_LABEL" 2>/dev/null); then
+        printf "${RED}Error:${NC} No device found with label '%s'\n" "$TARGET_LABEL" >&2
+        exit 1
+    fi
+
+    # 2. 获取父设备
+    # xargs: 去除首尾空白符
+    dev_name=$(lsblk -n -o pkname --paths "$dev_part" | xargs)
+
+    # 3. 严格报错: 如果找不到父设备, 直接退出
+    if [[ -z "$dev_name" ]]; then
+        printf "${RED}Error:${NC} Could not determine parent device for %s\n" "$dev_part" >&2
+        exit 1
+    fi
+
+    # 额外的防御性检查: 确保找到的父设备真的是个块设备
+    if [[ ! -b "$dev_name" ]]; then
+         printf "${RED}Error:${NC} Detected parent %s is not a block device.\n" "$dev_name" >&2
+         exit 1
+    fi
+}
+
+# 查看 U 盘的挂载状态
+check_dev_status() {
+    # 1. 获取设备详细信息 (大小, 文件系统)
+    local size fstype
+    read -r size fstype <<< "$(lsblk -d -n -o SIZE,FSTYPE "$dev_part" 2>/dev/null)"
+
+    # 当出现空值时, 提供默认显示
+    # 
+    # 笔记: 这是参数扩展的写法, 相当于下面的伪代码:
+    # if [[ -z "$size" ]]; then
+    #     size="N/A"
+    # else
+    #     size=$size
+    # fi
+    size="${size:-N/A}"
+    fstype="${fstype:-Unknown}"
+
+    printf "${CYAN}%s${NC}\n" "--- $TARGET_LABEL INFO ---"
+
+    printf "%s: %s\n" "Disk" "$dev_name"
+    printf "%s: %s\n" "Partition"  "$dev_part"
+    printf "%s: %s\n" "Size"  "$size ($fstype)"
+
+    # 5. 输出挂载状态
+    if findmnt -n "$dev_part" &> /dev/null; then
+        local mount_path
+        mount_path=$(findmnt -n -o TARGET "$dev_part")
+
+        printf "%s: ${GREEN}%s${NC}\n" "Status" "Mounted"
+        printf "%s: ${GREEN}%s${NC}\n" "Mount Point" "$mount_path"
+    else
+        printf "%s: ${MAGENTA}%s${NC}\n" "Status" "Unmounted"
+    fi
+}
+
+# 挂载
+do_mount() {
+    if findmnt -n "$dev_part" &> /dev/null; then
+        mount_path=$(findmnt -n -o TARGET "$dev_part")
+        printf "Already mounted at %s\n" "$mount_path"
+        exit 0
+    fi
+
+    printf "Mounting '%s' (%s)...\n" "$TARGET_LABEL" "$dev_part"
+
+    udisksctl mount -b "$dev_part"
+    printf "${GREEN}Mounted successfully.${NC}\n"
+}
+
+# 卸载, 断电
+do_unmount() {
+    # 如果已经挂载, 先卸载
+    if findmnt -n "$dev_part" &> /dev/null; then
+        if ! confirm "Eject USB drive '$TARGET_LABEL'?"; then
+            printf "Operation cancelled.\n" >&2
+            exit 1
+        fi
+
+        udisksctl unmount -b "$dev_part"
+        printf "${MAGENTA}Unmounted successfully.${NC}\n"
+    else
+        # 如果没挂载, 直接询问是否断电
+        if ! confirm "Device not mounted. Power off '$TARGET_LABEL'?"; then
+             exit 1
+        fi
+    fi
+
+    # 断电操作针对的是父设备 (/dev/sda 而不是 /dev/sda1)
+    udisksctl power-off -b "$dev_name"
+    printf "${MAGENTA}Device %s has been safely removed.${NC}\n" "$dev_name"
+}
+
+# 参数个数不能大于 1
+if [[ "$#" -gt 1 ]]; then
+    printf "${RED}Error:${NC} Too many arguments.\n" >&2
+    usage >&2
+    exit 1
+fi
+
+# 如果 $1 为空 (无参数)，则赋值为 --status
+action="${1:---status}"
+
+# 主程序入口
+case "$action" in
+    -m|--mount)
+        detect_device
+        do_mount
+        notify "Mounted"
+        play_audio "device-added"
+        ;;
+    -u|--unmount)
+        detect_device
+        do_unmount
+        notify "Ejected"
+        play_audio "device-removed"
+        ;;
+    -s|--status)
+        detect_device
+        check_dev_status
+        ;;
+    -h|--help)
+        usage
+        exit 0
+        ;;
+    *)
+        printf "${RED}Error:${NC} Unknown flag %s\n" "$action" >&2
+        usage >&2
+        exit 1
+        ;;
+esac

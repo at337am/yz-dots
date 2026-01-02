@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
-# 脚本用途：
-# 该脚本用于测试从 Cloudflare 下载速度。
-# 功能说明：
-# 1. 使用 wget 下载指定大小（默认 50MB）的数据文件。
-# 2. 下载内容不保存，只用于测速（输出到 /dev/null）。
-# 3. 下载过程中在终端显示进度信息。
-# 4. 完成后输出提示信息“Done”。
+# 脚本用途: 测试下载速度
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
+
+set -euo pipefail
+
+# 定义颜色
+BLUE='\033[0;34m'       # 蓝色
+NC='\033[0m'            # 重置色
 
 if ! command -v "wget" &> /dev/null; then
     printf "Error: Missing dependency: wget\n" >&2
@@ -17,7 +17,7 @@ fi
 
 bytes=$((50 * 1024 * 1024))
 
-printf "\033[34mCloudflare speed test...\033[0m\n"
+printf "${BLUE}Cloudflare speed test...${NC}\n"
 
 url="https://speed.cloudflare.com/__down?bytes=${bytes}"
 

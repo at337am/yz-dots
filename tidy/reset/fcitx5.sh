@@ -14,7 +14,7 @@ confirm() {
 }
 
 if ! confirm "Are you sure you want to reset fcitx5?"; then
-    printf "Operation cancelled. Exiting...\n"
+    printf "Operation cancelled.\n" >&2
     exit 1
 fi
 
@@ -35,9 +35,9 @@ rsync -a --delete \
         ~/.local/share/fcitx5/
 
 # 拉取词库
-/workspace/dev/yz-dots/bootstrap/setup/fetch_fcitx5_dict.sh
+/workspace/dev/yz-dots/bootstrap/tasks/fetch_fcitx5_dict.sh
 
 # 软链接配置
-/workspace/dev/yz-dots/bootstrap/setup/symlink_dotfiles.sh fcitx5
+/workspace/dev/yz-dots/bootstrap/tasks/symlink_dotfiles.sh fcitx5
 
 printf "Done.\n"

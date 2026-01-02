@@ -1,0 +1,5 @@
+catppuccin.catppuccin-vsc
+esbenp.prettier-vscode
+golang.go
+tamasfe.even-better-toml
+yanivmo.navi-cheatsheet-language

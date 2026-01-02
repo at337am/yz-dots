@@ -1,12 +1,12 @@
 # 注意: mako 配置不支持行内注释!
 
 # 默认配置
-default-timeout=3000
+default-timeout=2500
 
 format=%s\n%b
 
 layer=overlay
-anchor=top-right
+anchor=top-center
 
 font=Inter SemiBold 12
 
@@ -15,10 +15,10 @@ text-alignment=center
 
 width=320
 height=240
-margin=12
+margin=24
 padding=12
 border-size=2
-border-radius=14
+border-radius=16
 
 background-color=#F5F5F5f2
 border-color=#48CFCBf2
@@ -60,6 +60,11 @@ margin=360,0,0,0
 width=120
 
 [app-name=mistakes]
+anchor=center
+margin=360,0,0,0
+width=120
+
+[app-name=iudisk]
 anchor=center
 margin=360,0,0,0
 width=120

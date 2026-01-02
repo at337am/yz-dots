@@ -1,5 +1,6 @@
 # misc
-alias cl='reset'
+# 这个clear 之后可以删除掉, 为了治强迫症
+alias cl='clear'
 alias v='nvim'
 alias px='http_proxy=http://127.0.0.1:2080 https_proxy=http://127.0.0.1:2080'
 alias mpv='px mpv'
@@ -16,8 +17,9 @@ alias fm='env LC_ALL=C thunar . > /dev/null 2>&1'
 alias mm='nvim /workspace/tmp/mm_$(date +"%y%m%d_%H%M%S").md'
 alias cnt='printf "dirs: %s  symlinks: %s  files: %s\n" "$(fd -IH -t d -d 1 | wc -l)" "$(fd -IH -t l -d 1 | wc -l)" "$(fd -IH -t f -d 1 | wc -l)"'
 alias du1='du -ah -d 1 .'
-alias r='printf "zsh: r command disabled\n"'
-alias fc='printf "zsh: fc command disabled\n"'
+alias duf='duf -only local'
+alias cpwd='pwd | wl-copy -n'
+alias update='yay -Syyu'
 
 # base
 alias _='sudo'
@@ -32,6 +34,10 @@ alias 8='cd -8'
 alias 9='cd -9'
 alias ls='ls --color=auto'
 alias ll='ls -alh'
+alias mv='mv -i'
+alias cp='cp -i'
+alias r='printf "zsh: r command disabled\n"'
+alias fc='printf "zsh: fc command disabled\n"'
 
 # docker
 alias dstopall='sudo docker stop $(sudo docker ps -q)'

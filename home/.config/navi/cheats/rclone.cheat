@@ -1,0 +1,7 @@
+% rclone
+
+# 列出 Drive 上的目录
+rclone lsd gdrive:
+
+# 上传文件
+rclone copy --progress xxx gdrive:rclone_tmp/

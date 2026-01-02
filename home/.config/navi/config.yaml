@@ -1,10 +1,10 @@
 style:
   tag:
-    color: cyan
+    color: blue
     width_percentage: 30
     min_width: 15
   comment:
-    color: green
+    color: white
     width_percentage: 70
     min_width: 30
   snippet:

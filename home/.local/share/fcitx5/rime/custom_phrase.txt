@@ -2,6 +2,44 @@
 
 
 
+还是什么	haishism
+旧配置	jpz
+旧配置	jiupeizhi
+旧代码	jdm
+旧代码	jiudaima
+改进	gaij
+性能	xinne
+性能	xinnen
+性能	xinneng
+依赖	yilai
+它们	tm
+它们	tamen
+它们	tameng
+怎么表示	zmbs
+怎么表示	zmbiaos
+怎么表示	zmbiaoshi
+怎么表示	zenmebiaoshi
+已销号	yixiaoh
+已销号	yixiaohao
+发生	fashen
+发生	fasheng
+拼音	pinyin
+拼音	pinying
+拼音	pingyin
+拼音	pingying
+好的	hd
+好的	haode
+我们	wm
+极简	jijian
+老中味	laozhonwei
+老中味	laozhongwei
+老中	laozhon
+老中	laozhong
+老登味	laodenwei
+老登味	laodengwei
+老登	laoden
+老登	laodeng
+伤害	shanghai
 可能	kn
 情况	qk
 合集	heji
@@ -23,6 +61,7 @@
 时间	shijian
 挂载	guazai
 好	h
+好	hao
 了	l
 了	le
 吗	m
@@ -126,6 +165,7 @@
 
 
 
+习近平	xjp
 毛时期	maoshiqi
 邓时期	dengshiqi
 江时期	jiangshiqi

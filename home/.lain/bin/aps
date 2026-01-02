@@ -1,28 +1,47 @@
 #!/usr/bin/env bash
 
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
-# 脚本用途：
-# 该脚本用于将本地文件批量推送到通过 ADB 连接的 Android 设备。
-# 功能说明：
-# 1. 检查 ADB 设备是否已连接。
-# 2. 在设备上创建目标目录 /sdcard/tmp_aps（如果不存在）。
-# 3. 将指定的一个或多个本地文件上传到该目录。
-# 4. 对每个文件提供进度提示，未找到的文件会输出错误信息。
+# 脚本用途: 使用 ADB 推送文件/目录到 Android 设备
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
 
 set -euo pipefail
 
-if ! command -v "adb" &> /dev/null; then
-    printf "Error: Missing dependency: adb\n" >&2
-    exit 1
-fi
+# 依赖检查
+dependencies=("adb" "paplay")
+for cmd in "${dependencies[@]}"; do
+    if ! command -v "$cmd" &> /dev/null; then
+        printf "Error: Missing dependency: %s\n" "$cmd" >&2
+        exit 1
+    fi
+done
+
+# 定义颜色
+RED='\033[0;31m'        # 红色
+GREEN='\033[0;32m'      # 绿色
+BLUE='\033[0;34m'       # 蓝色
+NC='\033[0m'            # 重置色
+
+# 播放音频
+play_audio() {
+    local audio_file="/usr/share/sounds/freedesktop/stereo/${1}.oga"
+    [[ -f "$audio_file" ]] && paplay "$audio_file" &
+}
 
 if [[ "$#" -eq 0 ]]; then
     printf "Error: Invalid argument.\n" >&2
-    printf "Usage: %s <file>...\n" "$(basename "$0")" >&2
+    printf "Usage: %s <paths...>\n" "$(basename "$0")" >&2
     exit 1
 fi
 
+# 路径校验, 目标可以是文件, 也可以是目录, 只要存在即可
+for item in "$@"; do
+    if [[ ! -e "$item" && ! -L "$item" ]]; then
+        printf "${RED}Error:${NC} '%s' does not exist.\n" "$item" >&2
+        exit 1
+    fi
+done
+
+# 检查设备是否连接
 if [[ -z "$(adb devices | tail -n +2 | grep -v '^$')" ]]; then
     printf "Error: 未检测到任何 ADB 连接的设备\n" >&2
     exit 1
@@ -31,21 +50,18 @@ fi
 target_dir="/sdcard/temp_dir_of_aps"
 
 if ! adb shell "mkdir -p '$target_dir'"; then
-    printf "Error: 在 ADB 设备上创建目录 '%s' 失败\n" "$target_dir" >&2
+    printf "${RED}Error:${NC} 在 ADB 设备上创建目录 '%s' 失败\n" "$target_dir" >&2
     exit 1
 fi
 
 for source in "$@"; do
-    if [[ -e "$source" ]]; then
-        file_size=$(du -sh --apparent-size "$source" | awk '{print $1}')
-        printf "\033[34mPushing: %s  Size: %s\033[0m\n" "$source" "$file_size"
-        adb push "$source" "$target_dir"
-        printf "\n"
-    else
-        printf "\033[31mError: '%s' does not exist.\033[0m\n" "$source" >&2
-    fi
+    file_size=$(du -sh --apparent-size "$source" | awk '{print $1}')
+    printf "Pushing: ${GREEN}%s${NC}  Size: ${BLUE}%s${NC}\n" "$source" "$file_size"
+    adb push "$source" "$target_dir"
+    printf "\n"
 done
 
 printf "Done.\n"
 
 notify-send "ADB push" "all files have been transferred."
+play_audio "complete"
