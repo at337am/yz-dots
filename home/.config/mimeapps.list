@@ -2,9 +2,11 @@
 image/png=qimgv.desktop
 image/gif=qimgv.desktop
 image/jpeg=qimgv.desktop
-text/html=io.github.ungoogled_software.ungoogled_chromium.desktop
+text/html=firefox.desktop
 video/mp4=mpv.desktop
 application/pdf=org.pwmt.zathura.desktop
+x-scheme-handler/http=firefox.desktop
+x-scheme-handler/https=firefox.desktop
 
 [Added Associations]
 image/jpeg=qimgv.desktop;
