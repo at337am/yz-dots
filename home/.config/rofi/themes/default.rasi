@@ -7,7 +7,8 @@
 }
 
 * {
-    font: "Inter SemiBold 12";
+    /* original 12 */
+    font: "Inter SemiBold 15";
 
     background-color: transparent;
     text-color: @textc;
@@ -19,17 +20,20 @@
 
 /* 边框圆角 */
 window {
-    border-radius: 14px;
+    /* original 14 */
+    border-radius: 18px;
 }
 inputbar,
 element {
-    border-radius: 6px;
+    /* original 6 */
+    border-radius: 8px;
 }
 
 /* 边框颜色 */
 window,
 inputbar {
-    border: 2px;
+    /* original 2 */
+    border: 3px;
     border-color: @borderc;
 }
 
@@ -41,18 +45,21 @@ window {
 }
 
 mainbox {
-    padding: 12px;
+    /* original 12 */
+    padding: 15px;
 }
 
 inputbar {
-    padding: 8px 16px;
+    /* original 8 16 */
+    padding: 10px 20px;
 
     /* 子元素之间的间距 */
     spacing: 8px;
 }
 
 listview {
-    margin: 12px 0 0;
+    /* original 12 */
+    margin: 15px 0 0;
 
     /* 显示的行数 */
     lines: 8;
@@ -65,8 +72,10 @@ listview {
 }
 
 element {
-    padding: 10px 18px;
-    spacing: 8px;
+    /* original 10 18 */
+    padding: 12px 24px;
+    /* original 8 */
+    spacing: 10px;
 }
 
 element-text {

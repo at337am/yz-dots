@@ -3,7 +3,7 @@
     border-radius: 0;
     /* 最好使用 Mono 字体 */
     font-family: "Google Sans Code", "Symbols Nerd Font", "Noto Sans CJK SC";
-    font-size: 14.4px;
+    font-size: 18px;    /* original 14.4px */
 }
 
 window#waybar {
@@ -21,7 +21,7 @@ window#waybar {
 #pulseaudio,
 #backlight,
 #battery {
-    padding: 0 7.5px;
+    padding: 0 9px; /* original 7.5px */
 }
 
 
@@ -33,7 +33,7 @@ window#waybar {
 
 #workspaces button {
     all:unset;
-    padding: 0 15px;
+    padding: 0 18px;    /* original 15px */
     color: #A9AFB7;
 }
 
@@ -42,6 +42,9 @@ window#waybar {
 }
 
 /* 当前的工作区 */
+/* Sway 使用 .focused */
+/* Hyprland 使用 .active */
+#workspaces button.focused,
 #workspaces button.active {
     color: #f5f5f5;
     background-color: rgba(70, 75, 86, 0.85);

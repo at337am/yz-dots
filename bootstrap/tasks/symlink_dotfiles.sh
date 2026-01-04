@@ -112,8 +112,8 @@ ln -sv "$DOTS_PATH/.config/rofi" ~/.config/rofi
 rm -rf ~/.config/waybar
 ln -sv "$DOTS_PATH/.config/waybar" ~/.config/waybar
 
-rm -rf ~/.config/xdg-desktop-portal
-ln -sv "$DOTS_PATH/.config/xdg-desktop-portal" ~/.config/xdg-desktop-portal
+# rm -rf ~/.config/xdg-desktop-portal
+# ln -sv "$DOTS_PATH/.config/xdg-desktop-portal" ~/.config/xdg-desktop-portal
 
 rm -rf ~/.config/yt-dlp
 ln -sv "$DOTS_PATH/.config/yt-dlp" ~/.config/yt-dlp
@@ -126,3 +126,6 @@ ln -sv "$DOTS_PATH/.config/gtk-3.0/bookmarks" ~/.config/gtk-3.0/bookmarks
 
 rm -rf ~/.config/foot
 ln -sv "$DOTS_PATH/.config/foot" ~/.config/foot
+
+rm -rf ~/.config/sway
+ln -sv "$DOTS_PATH/.config/sway" ~/.config/sway

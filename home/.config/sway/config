@@ -1,0 +1,13 @@
+# ~/.config/sway/config
+
+# 显示器设置
+# 语法: output <名称> resolution <宽x高> scale <缩放倍率>
+# original 1.25
+output eDP-1 resolution 1920x1080 scale 1
+
+set $configs ~/.config/sway/configs
+
+include $configs/exec
+include $configs/binds
+include $configs/settings
+include $configs/rules

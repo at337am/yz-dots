@@ -137,13 +137,20 @@ sudo pacman -S --needed --noconfirm \
     xorg-xwayland
 
 # hyprland 相关
+# sudo pacman -S --needed --noconfirm \
+#     hyprland \
+#     hypridle \
+#     hyprlock \
+#     hyprpicker \
+#     xdg-desktop-portal-hyprland \
+#     uwsm
+
+# sway 相关
 sudo pacman -S --needed --noconfirm \
-    hyprland \
-    hypridle \
-    hyprlock \
-    hyprpicker \
-    xdg-desktop-portal-hyprland \
-    uwsm
+    sway \
+    swayidle \
+    swaylock \
+    xdg-desktop-portal-wlr
 
 # 常用重量级 App
 sudo pacman -S --needed --noconfirm \

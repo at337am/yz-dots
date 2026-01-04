@@ -1,0 +1,95 @@
+# ~/.config/sway/configs/settings
+
+# 常规设置
+
+# 笔记:
+# 100% → FF
+# 95%  → F2
+# 90%  → E6
+# 85%  → D9
+# 80%  → CC
+# 75%  → BF
+# 70%  → B3
+# 65%  → A6
+# 60%  → 99
+# 55%  → 8C
+# 50%  → 80
+# 45%  → 73
+# 40%  → 66
+# 35%  → 59
+# 30%  → 4D
+# 25%  → 40
+# 20%  → 33
+# 15%  → 26
+# 10%  → 1A
+# 5%   → 0D
+# 0%   → 00
+
+# 窗口之间的空隙
+gaps inner 2
+
+# 窗口距离屏幕边缘的空隙
+gaps outer 6
+
+# 智能空隙 (Smart Gaps)
+# 当工作区只有一个窗口时，自动取消空隙和边框
+# smart_gaps on
+smart_borders on
+
+# 默认平铺窗口的边框样式
+# normal: 带有标题栏和边框
+# pixel: 只有边框，没有标题栏
+# none: 无边框
+default_border pixel 4
+
+# 或者浮动窗口也只要边框
+default_floating_border pixel 4
+
+set $focus_col  #D1D5DB59
+set $unfocus_col #D1D5DB1A
+
+# class                 border       backgr.      text         indicator    child_border
+client.focused          $focus_col   $focus_col   #ffffff      $focus_col   $focus_col
+client.focused_inactive $unfocus_col $unfocus_col #888888      $unfocus_col $unfocus_col
+client.unfocused        $unfocus_col #222222      #888888      $unfocus_col $unfocus_col
+client.urgent           #ff5555      #ff5555      #ffffff      #ff5555      #ff5555
+
+# 鼠标样式和大小
+# original 24
+seat seat0 xcursor_theme Breeze_Light 30
+
+# 匹配所有键盘
+input "type:keyboard" {
+    # 设置键盘布局为美式英语
+    xkb_layout "us"
+
+    # 将 CapsLock 映射为 ESC
+    # 如果你想让 CapsLock 变成 Esc，同时按 Shift+CapsLock 还是大写锁定，用 "caps:escape"
+    # 如果你想交换 CapsLock 和 Esc 的位置，用 "caps:swapescape"
+    xkb_options "caps:escape"
+
+    # 启用按键重复 (可选, 让键盘反应更快)
+    # repeat_delay 300
+    # repeat_rate 50
+}
+
+# 匹配所有鼠标设备
+input "type:pointer" {
+    # 关闭鼠标加速
+    # 设置为 flat (扁平) 即可关闭加速度，实现 1:1 移动
+    accel_profile flat
+
+    # 鼠标灵敏度
+    # 范围 -1.0 到 1.0
+    # 如果关闭了加速(flat)，这个值相当于 DPI 的乘数。
+    # 0 是默认，负数变慢，正数变快。
+    pointer_accel -0.1
+
+    # 滚动距离/速度
+    scroll_factor 1.4
+}
+
+# 禁用触摸板
+input "type:touchpad" {
+    events disabled
+}
