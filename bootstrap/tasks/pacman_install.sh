@@ -150,7 +150,8 @@ sudo pacman -S --needed --noconfirm \
     obsidian \
     telegram-desktop \
     discord \
-    obs-studio
+    obs-studio \
+    firefox
 
 
 # ----- bak -----

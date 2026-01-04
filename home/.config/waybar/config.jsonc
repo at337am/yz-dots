@@ -2,7 +2,7 @@
     "layer": "top",
     "position": "top",
 
-    // "height": 30,   // 状态栏高度
+    // "height": 28,   // 状态栏高度
 
     "modules-left": ["clock", "hyprland/workspaces"],
     "modules-center": ["hyprland/window"],
@@ -15,14 +15,14 @@
 
     // 工作区
     "hyprland/workspaces": {
-        "format": "{name}",
+        "format": "{id}",
         "on-click": "activate"
     },
 
     // 窗口标题
     "hyprland/window": {
         "tooltip": false,
-        "format": "{}",
+        "format": "{title}",
         "max-length": 50
     },
 
