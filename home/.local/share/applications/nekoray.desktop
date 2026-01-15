@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Terminal=false
+Name=NekoRay
+Comment=Longing for freedom
+Exec=/opt/soft/nekoray/nekoray
+Icon=/opt/soft/nekoray/nekoray.png
+Categories=Network;

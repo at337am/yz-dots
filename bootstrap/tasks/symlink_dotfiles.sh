@@ -11,16 +11,6 @@ if [[ ! -d "$DOTS_PATH" ]]; then
     exit 1
 fi
 
-zsh() {
-    rm -rf ~/.lain/bin
-    rm -rf ~/.lain/lib/aliases.zsh
-    rm -rf ~/.lain/lib/func.zsh
-
-    ln -sv "$DOTS_PATH/.lain/bin" ~/.lain/bin
-    ln -sv "$DOTS_PATH/.lain/lib/aliases.zsh" ~/.lain/lib/aliases.zsh
-    ln -sv "$DOTS_PATH/.lain/lib/func.zsh" ~/.lain/lib/func.zsh
-}
-
 fcitx5(){
     rm -rf ~/.local/share/fcitx5/rime/custom_phrase.txt
     rm -rf ~/.local/share/fcitx5/rime/default.yaml
@@ -47,11 +37,6 @@ vscode() {
 
 # ------------- 如果脚本只接收到一个参数, 并且匹配 -------------
 
-if [[ "$#" -eq 1 && "$1" == "zsh" ]]; then
-    zsh
-    exit 0
-fi
-
 if [[ "$#" -eq 1 && "$1" == "fcitx5" ]]; then
     fcitx5
     exit 0
@@ -62,13 +47,15 @@ if [[ "$#" -eq 1 && "$1" == "vscode" ]]; then
     exit 0
 fi
 
-zsh
 fcitx5
 vscode
 
 # ------------ .config ------------
 # rm -rf ~/.config/cava
 # ln -sv "$DOTS_PATH/.config/cava" ~/.config/cava
+
+rm -rf ~/.lain
+ln -sv "$DOTS_PATH/.lain" ~/.lain
 
 rm -rf \
 	~/.config/fastfetch \
@@ -106,9 +93,6 @@ rm -rf \
 	~/.cache/nvim
 ln -sv "$DOTS_PATH/.config/nvim" ~/.config/nvim
 
-rm -rf ~/.config/rofi
-ln -sv "$DOTS_PATH/.config/rofi" ~/.config/rofi
-
 rm -rf ~/.config/waybar
 ln -sv "$DOTS_PATH/.config/waybar" ~/.config/waybar
 
@@ -129,3 +113,21 @@ ln -sv "$DOTS_PATH/.config/foot" ~/.config/foot
 
 rm -rf ~/.config/sway
 ln -sv "$DOTS_PATH/.config/sway" ~/.config/sway
+
+rm -rf ~/.config/swaylock
+ln -sv "$DOTS_PATH/.config/swaylock" ~/.config/swaylock
+
+rm -rf ~/.config/fuzzel
+ln -sv "$DOTS_PATH/.config/fuzzel" ~/.config/fuzzel
+
+rm -rf ~/.config/alacritty
+ln -sv "$DOTS_PATH/.config/alacritty" ~/.config/alacritty
+
+rm -rf ~/.config/river
+ln -sv "$DOTS_PATH/.config/river" ~/.config/river
+
+rm -rf ~/.config/wob
+ln -sv "$DOTS_PATH/.config/wob" ~/.config/wob
+
+rm -rf ~/.config/wm-scripts
+ln -sv "$DOTS_PATH/.config/wm-scripts" ~/.config/wm-scripts

@@ -22,3 +22,6 @@ systemctl --user enable --now pipewire pipewire-pulse wireplumber
 # 关闭文件管理器的 "最近打开"
 gsettings set org.gnome.desktop.privacy remember-recent-files false
 rm -f ~/.local/share/recently-used.xbel
+
+# 刷新字体
+fc-cache -f

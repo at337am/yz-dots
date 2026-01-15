@@ -1,5 +1,6 @@
 catppuccin.catppuccin-vsc
 esbenp.prettier-vscode
 golang.go
+nico-castell.linux-desktop-file
 tamasfe.even-better-toml
 yanivmo.navi-cheatsheet-language

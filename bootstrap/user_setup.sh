@@ -15,7 +15,6 @@ scripts=(
     "tasks/sync_dotfiles.sh"
     "tasks/symlink_dotfiles.sh"
     "tasks/set_path_perms.sh"
-    "tasks/extract_p10k_theme.sh"
     "tasks/fetch_fcitx5_dict.sh"
     "tasks/misc_settings.sh"
     "tasks/install_yay.sh"

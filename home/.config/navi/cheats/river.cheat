@@ -1,0 +1,28 @@
+% river, riverctl
+
+# 查看硬件设备信息
+riverctl list-inputs
+
+
+
+% river, wlr-randr
+
+# 查看显示器信息
+wlr-randr
+
+
+
+% river, lswt, window
+
+# 查看 wayland 窗口信息
+lswt
+
+# 以 JSON 格式输出 wayland 窗口信息
+lswt --json
+
+
+
+% river, xlsclients, window
+
+# 排查是否有运行在 xwayland 的窗口
+xlsclients -l

@@ -156,5 +156,29 @@
         "key": "ctrl+u",
         "command": "-cursorUndo",
         "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+shift+c",
+        "command": "editor.action.clipboardCopyAction"
+    },
+    {
+        "key": "ctrl+shift+v",
+        "command": "editor.action.clipboardPasteAction"
+    },
+    {
+        "key": "ctrl+shift+v",
+        "command": "-markdown.showPreview",
+        "when": "!notebookEditorFocused && editorLangId =~ /^(markdown|prompt|instructions|chatagent)$/"
+    },
+    {
+        "key": "ctrl+shift+v",
+        "command": "-notebook.cell.pasteAbove",
+        "when": "notebookEditorFocused && !inputFocus"
+    },
+    {
+        "key": "ctrl+shift+c",
+        "command": "-workbench.action.terminal.openNativeConsole",
+        "when": "!terminalFocus"
     }
 ]
+

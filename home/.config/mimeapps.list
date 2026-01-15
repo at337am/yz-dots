@@ -4,11 +4,8 @@ image/gif=qimgv.desktop
 image/jpeg=qimgv.desktop
 text/html=firefox.desktop
 video/mp4=mpv.desktop
+video/webm=mpv.desktop
+video/x-matroska=mpv.desktop
 application/pdf=org.pwmt.zathura.desktop
 x-scheme-handler/http=firefox.desktop
 x-scheme-handler/https=firefox.desktop
-
-[Added Associations]
-image/jpeg=qimgv.desktop;
-image/png=qimgv.desktop;
-image/gif=qimgv.desktop;

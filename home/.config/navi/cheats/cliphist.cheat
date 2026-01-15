@@ -1,4 +1,4 @@
 % cliphist, clean
 
-# 备份并清空剪贴板历史记录
-bak ~/.cache/cliphist/db && rm ~/.cache/cliphist/db
+# 清空剪贴板历史记录
+rm ~/.cache/cliphist/db

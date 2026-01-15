@@ -1,9 +1,0 @@
-@import "~/.config/rofi/themes/default.rasi"
-
-window {
-    width: 20%;
-}
-
-listview {
-    lines: 4;
-}

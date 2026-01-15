@@ -1,25 +1,28 @@
 #!/usr/bin/env bash
 
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
-# 脚本用途: 先关闭一些指定的进程, 最后执行关机命令
+# 脚本用途: 关闭一些指定的进程, 并执行关机命令
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
 
+# 倒计时秒数
 countdown=3
 
-# 提示用户程序即将关闭
+# 进程关闭的脚本
+kill_script="$WM_SCRIPTS/kill_process.sh"
+
+if [[ ! -f "$kill_script" ]]; then
+    printf "Error: %s does not exist.\n" "$kill_script" >&2
+    exit 1
+fi
+
 printf "Time to bid farewell to running apps...\n"
 
-pkill -2 -f "gpu-screen-recorder"
-pkill -9 -x obsidian
-pkill -15 -x Telegram
-pkill -15 -x nekoray
+# 执行关闭脚本
+"$kill_script"
 
-# 脚本执行完成后, 通知用户所有程序已关闭
-# 倒计时开始, 并提示可通过 Ctrl+C 取消关机
 printf "All clear! Apps have left the building.\n"
 printf "Going dark in %d seconds. Press Ctrl+C to stay alive.\n" "$countdown"
 
-# 逐秒倒计时显示剩余时间, 允许用户中断操作
 for i in $(seq "$countdown" -1 1); do
     printf "\rT-minus %d seconds... Ctrl+C to cancel." "$i"
     sleep 1

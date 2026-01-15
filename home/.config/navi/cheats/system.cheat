@@ -67,14 +67,14 @@ swapon --show
 
 
 
-% system, list, pacman, kernel
+% system, pacman, kernel
 
-# 列出所有已安装的内核版本
+# 显示所有已安装的内核版本
 pacman -Q | grep -E '^linux(|-lts|-zen|-hardened) '
 
 
 
-% system, list, arch, history
+% system, paclog, history
 
-# 列出软件包历史记录 (安装, 删除, 更新)
-grep -E " installed | removed | upgraded" /var/log/pacman.log
+# 显示软件包历史记录 (安装, 删除, 更新)
+paclog --action=install --action=remove --action=upgrade

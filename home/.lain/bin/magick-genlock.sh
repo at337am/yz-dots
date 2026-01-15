@@ -32,3 +32,5 @@ output_path="${dirname}/${filename}_lock_wall.jpg"
 magick "$IMG_PATH" -gaussian-blur 0x12 "$output_path"
 
 printf "OK -> %s\n" "$output_path"
+
+# todo: 给锁屏壁纸添加文字

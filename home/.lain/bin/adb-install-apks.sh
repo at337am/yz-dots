@@ -15,12 +15,6 @@ for cmd in "${dependencies[@]}"; do
     fi
 done
 
-# 播放音频
-play_audio() {
-    local audio_file="/usr/share/sounds/freedesktop/stereo/${1}.oga"
-    [[ -f "$audio_file" ]] && paplay "$audio_file" &
-}
-
 success=0
 fail=0
 
@@ -45,4 +39,4 @@ printf "OK count: %d\n" "$success"
 printf "ERR count: %d\n" "$fail"
 
 notify-send "ADB install" "all APKs have been installed."
-play_audio "complete"
+"$WM_SCRIPTS/play_audio.sh" "complete.oga"

@@ -8,6 +8,13 @@ yay -Syyu
 
 
 
+% yay, upgrade, old
+
+# 安装本地文件 (回退到某个版本)
+yay -U /var/cache/pacman/pkg/xxx.pkg.tar.zst
+
+
+
 % yay, clean
 
 # 清理 - 删除孤儿依赖

@@ -1,0 +1,43 @@
+# ~/.config/swaylock/config
+
+show-failed-attempts
+ignore-empty-password
+
+image=~/Pictures/PFP/lock_wall.png
+scaling=fill
+
+# 圆环大小
+indicator-radius=120
+indicator-thickness=12
+
+# 一直显示圆环
+# indicator-idle-visible
+
+# 圆环内部完全透明，让背景图露出来
+inside-color=00000000
+inside-clear-color=00000000
+inside-ver-color=00000000
+inside-wrong-color=00000000
+
+# 外部圆圈的颜色 (这里使用白色，带一点点透明度)
+ring-color=ffffff33
+ring-clear-color=f5a97f
+ring-ver-color=8aadf4
+ring-wrong-color=ed8796
+
+# 分割线颜色 (设为透明，隐藏丑陋的分割线)
+line-color=00000000
+separator-color=00000000
+
+# 文字颜色
+text-color=ffffff
+text-clear-color=ffffff
+text-ver-color=ffffff
+text-wrong-color=ffffff
+
+# 按键反馈颜色 (当你按键时，圆圈的颜色)
+key-hl-color=88c0d0
+bs-hl-color=bf616a
+
+# 布局文本颜色 (比如显示 US/CN)
+layout-text-color=ffffff

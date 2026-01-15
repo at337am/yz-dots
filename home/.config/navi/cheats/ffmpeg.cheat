@@ -3,9 +3,6 @@
 # 模糊裁剪 (时间是对的, 但会有兼容问题, 适合快速预览)
 ffmpeg -ss 00:00:00 -i input.mp4 -t 01:30 -c copy clip.mp4
 
-# 模糊裁剪 (不准确的时间位置)
-ffmpeg -ss 00:00:00 -i input.mp4 -t 01:30 -c copy -avoid_negative_ts make_zero clip.mp4
-
 # 精确裁剪 (慢, 体积小, 画质会更好一些)
 ffmpeg -ss 00:00:00 -i input.mp4 -t 01:30 -c:v libx264 -crf 18 -preset slow -c:a copy clip.mp4
 
@@ -18,3 +15,17 @@ ffmpeg -ss 00:00:00 -i input.mp4 -t 01:30 -c:v libx264 -crf 18 -preset ultrafast
 
 # 调整视频播放速度 (1.25x)
 ffmpeg -i input.mp4 -vf "setpts=PTS/1.25" -af "atempo=1.25" -c:v libx264 -crf 18 -preset slow -c:a aac -b:a 256k output.mp4
+
+
+
+% ffmpeg, check_error
+
+# 检查一个视频是否有损坏 (逐帧解码, 速度较慢)
+ffmpeg -v error -i input.mp4 -f null -
+
+
+
+% ffmpeg, ffprobe, check_error
+
+# 检查视频的元数据是否完整 (是否因为下载中断导致文件尾部缺失)
+ffprobe -v error -show_format -show_streams input.mp4

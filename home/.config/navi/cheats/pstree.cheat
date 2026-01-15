@@ -1,0 +1,10 @@
+% pstree
+
+# 查看子进程
+pstree [PID]
+
+# 查看父子进程
+pstree -s [PID]
+
+# 查看父子进程, 并显示 PID
+pstree -sp [PID]

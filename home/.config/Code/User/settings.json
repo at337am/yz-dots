@@ -43,7 +43,6 @@
   "editor.fontFamily": "'Google Sans Code', 'Symbols Nerd Font', 'Noto Sans CJK SC'",
   "terminal.integrated.fontFamily": "'Google Sans Code', 'Symbols Nerd Font', 'Noto Sans CJK SC'",
   "workbench.list.smoothScrolling": true,
-  "editor.fontSize": 16,
   "editor.stickyScroll.enabled": false,
   "editor.stickyScroll.scrollWithEditor": false,
   "workbench.tree.enableStickyScroll": false,
@@ -51,9 +50,10 @@
   "workbench.navigationControl.enabled": false,
   "files.associations": {
     "*.cheat": "navi-cheatsheet",
-    "*.rasi": "css",
+    "*.rasi": "rasi",
     "config": "properties",
-    "*.ini": "toml"
+    "*.ini": "toml",
+    "*.conf": "shellscript"
   },
   "workbench.secondarySideBar.defaultVisibility": "hidden",
   "workbench.colorTheme": "Catppuccin Macchiato",
@@ -72,5 +72,6 @@
   "chat.disableAIFeatures": true,
   "chat.extensionUnification.enabled": false,
   "workbench.layoutControl.enabled": false,
-  "editor.mouseWheelScrollSensitivity": 1.75
+  "editor.mouseWheelScrollSensitivity": 1.75,
+  "editor.fontSize": 16
 }

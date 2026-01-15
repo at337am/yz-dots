@@ -19,6 +19,7 @@ yay -S --needed --noconfirm \
     localsend-bin \
     ungoogled-chromium-bin \
     gpu-screen-recorder \
-    visual-studio-code-bin
+    visual-studio-code-bin \
+    lswt
 
 printf "Done.\n"

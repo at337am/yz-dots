@@ -37,12 +37,6 @@ notify() {
                 "$1"
 }
 
-# 播放音频
-play_audio() {
-    local audio_file="/usr/share/sounds/freedesktop/stereo/${1}.oga"
-    [[ -f "$audio_file" ]] && paplay "$audio_file" &
-}
-
 usage() {
     printf "Usage:\n"
     printf "  %s [flags]\n" "$(basename "$0")"
@@ -175,13 +169,13 @@ case "$action" in
         detect_device
         do_mount
         notify "Mounted"
-        play_audio "device-added"
+        "$WM_SCRIPTS/play_audio.sh" "device-added.oga"
         ;;
     -u|--unmount)
         detect_device
         do_unmount
         notify "Ejected"
-        play_audio "device-removed"
+        "$WM_SCRIPTS/play_audio.sh" "device-removed.oga"
         ;;
     -s|--status)
         detect_device

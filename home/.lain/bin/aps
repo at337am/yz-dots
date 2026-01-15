@@ -21,12 +21,6 @@ GREEN='\033[0;32m'      # 绿色
 BLUE='\033[0;34m'       # 蓝色
 NC='\033[0m'            # 重置色
 
-# 播放音频
-play_audio() {
-    local audio_file="/usr/share/sounds/freedesktop/stereo/${1}.oga"
-    [[ -f "$audio_file" ]] && paplay "$audio_file" &
-}
-
 if [[ "$#" -eq 0 ]]; then
     printf "Error: Invalid argument.\n" >&2
     printf "Usage: %s <paths...>\n" "$(basename "$0")" >&2
@@ -64,4 +58,4 @@ done
 printf "Done.\n"
 
 notify-send "ADB push" "all files have been transferred."
-play_audio "complete"
+"$WM_SCRIPTS/play_audio.sh" "complete.oga"

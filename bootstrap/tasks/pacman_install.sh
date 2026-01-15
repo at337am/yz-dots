@@ -47,6 +47,7 @@ sudo pacman -S --needed --noconfirm \
 sudo pacman -S --needed --noconfirm \
     foot \
     kitty \
+    alacritty \
     android-tools \
     bat \
     bc \
@@ -107,7 +108,7 @@ sudo pacman -S --needed --noconfirm \
     grim \
     lxqt-policykit \
     network-manager-applet \
-    rofi \
+    fuzzel \
     slurp \
     waybar \
     wev \
@@ -123,8 +124,8 @@ sudo pacman -S --needed --noconfirm \
     gvfs \
     xdg-user-dirs \
     wl-clip-persist \
-    xdg-desktop-portal-gtk \
     xdg-desktop-portal \
+    xdg-desktop-portal-gtk \
     libnewt \
     jq \
     exiftool \
@@ -134,7 +135,12 @@ sudo pacman -S --needed --noconfirm \
     tesseract-data-chi_sim \
     qt6-multimedia-ffmpeg \
     xorg-xlsclients \
-    xorg-xwayland
+    xorg-xwayland \
+    wob
+
+# arch 专用工具
+sudo pacman -S --needed --noconfirm \
+    pacutils
 
 # hyprland 相关
 # sudo pacman -S --needed --noconfirm \
@@ -146,11 +152,19 @@ sudo pacman -S --needed --noconfirm \
 #     uwsm
 
 # sway 相关
+# sudo pacman -S --needed --noconfirm \
+#     sway \
+#     swayidle \
+#     swaylock \
+#     xdg-desktop-portal-wlr
+
+# river 相关
 sudo pacman -S --needed --noconfirm \
-    sway \
+    river \
     swayidle \
     swaylock \
-    xdg-desktop-portal-wlr
+    xdg-desktop-portal-wlr \
+    wlr-randr
 
 # 常用重量级 App
 sudo pacman -S --needed --noconfirm \
@@ -162,19 +176,17 @@ sudo pacman -S --needed --noconfirm \
 
 
 # ----- bak -----
-# 
+
 # mgba-qt
-# 
-# 
-# 
+
 # 目前不需要 监听 ACPI 事件 和 电源调度策略
 # acpid power-profiles-daemon
-# 
-# 
-# 
+
 # 目前的壁纸工具为 swww
 # 注意: swww 项目已改名为 awww, 但是目前 arch 官方仓库中还没有, 以后记得换!
 # https://codeberg.org/LGFae/awww
-# 
-# 如果不在乎运行时切换壁纸的话, 可以使用 swaybg
-# swaybg
+
+# foot 在我的 sway 上存在卡顿 bug, 而在 hyprland 上却似乎是正常的
+# 一直找不到原因, 如果后续又迁移到了别的 WM, 再用回 foot 试试
+
+# river 中, 如果需要多个显示器热插拔的话, 可以使用 kanshi 来实现

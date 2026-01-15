@@ -45,3 +45,7 @@ for dir in "${project_paths[@]}"; do
         echo "$status" | sed 's/^/ /'
     fi
 done
+
+# todo 疑问:
+# status=$(git -C "$dir" status --porcelain)
+# 这个如果爆错了为什么没有触发 set -euo pipefail ?

@@ -1,4 +1,6 @@
 # ~/.config/sway/config
+# 
+# https://wiki.archlinuxcn.org/wiki/Sway
 
 # 显示器设置
 # 语法: output <名称> resolution <宽x高> scale <缩放倍率>
@@ -7,7 +9,7 @@ output eDP-1 resolution 1920x1080 scale 1
 
 set $configs ~/.config/sway/configs
 
-include $configs/exec
-include $configs/binds
-include $configs/settings
-include $configs/rules
+include $configs/exec.conf
+include $configs/binds.conf
+include $configs/settings.conf
+include $configs/rules.conf

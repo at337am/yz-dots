@@ -9,25 +9,25 @@ layer=overlay
 anchor=top-center
 
 # original 12
-font=Inter SemiBold 15
+font=Inter SemiBold 12
 
 # 文字水平居中
 text-alignment=center
 
 # original:
-# width=320
-# height=240
-# margin=24
-# padding=12
-# border-size=2
-# border-radius=16
+width=320
+height=240
+margin=24
+padding=12
+border-size=2
+border-radius=16
 
-width=400
-height=300
-margin=30
-padding=15
-border-size=3
-border-radius=20
+# width=400
+# height=300
+# margin=30
+# padding=15
+# border-size=3
+# border-radius=20
 
 background-color=#F5F5F5f2
 border-color=#48CFCBf2
@@ -44,43 +44,43 @@ background-color=#ff8282d9
 
 # --- 需要覆盖配置的 app ---
 # original:
-# margin=360,0,0,0
-# width=120
+margin=360,0,0,0
+width=120
 
 [app-name=volume]
 anchor=center
-margin=450,0,0,0
-width=150
+margin=360,0,0,0
+width=120
 
 [app-name=recorder]
 anchor=center
-margin=450,0,0,0
-width=150
+margin=360,0,0,0
+width=120
 
 [app-name=screenshot]
 anchor=center
-margin=450,0,0,0
-width=150
+margin=360,0,0,0
+width=120
 
 [app-name=microphone]
 anchor=center
-margin=450,0,0,0
-width=150
+margin=360,0,0,0
+width=120
 
 [app-name=clipboard]
 anchor=center
-margin=450,0,0,0
-width=150
+margin=360,0,0,0
+width=120
 
 [app-name=mistakes]
 anchor=center
-margin=450,0,0,0
-width=150
+margin=360,0,0,0
+width=120
 
 [app-name=iudisk]
 anchor=center
-margin=450,0,0,0
-width=150
+margin=360,0,0,0
+width=120
 
 # 测试:
 # makoctl reload && notify-send "测试标题" "这是一个默认风格通知"

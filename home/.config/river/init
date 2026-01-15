@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+# riverctl - arch wiki: https://man.archlinux.org/man/riverctl.1
+# 
+# river-classic wiki: https://codeberg.org/river/wiki-classic
+# 
+# river - archcraft wiki: https://wiki.archcraft.io/docs/wayland-compositors/river/
+# 
+# 参考别人的 dotfile: https://github.com/SwayKh/dotfiles
+# 
+# Useful Software: https://codeberg.org/river/wiki/src/branch/main/pages/useful-software.md
+
+# river 并不关心 init 是用什么语言写, 它只要求这个文件是可执行的程序
+# 所以, 甚至可以使用 golang, c, python 等语言来编写它
+
+# 如果要重新加载配置, 直接手动执行对应的脚本就行了
+# 除了 autostart.sh 需要提前判断以外, 其他都是可以重复执行的
+
+# init 中是无法设置环境变量的
+# 因为 river 是用一个子进程来执行 init 脚本的, 执行完了就退出了
+# 而 Linux 进程机制决定了: 子进程修改的环境变量无法影响父进程
+
+source "$HOME/.config/river/config.d/autostart.sh"
+source "$HOME/.config/river/config.d/settings.sh"
+source "$HOME/.config/river/config.d/binds.sh"
+source "$HOME/.config/river/config.d/rules.sh"
+
+# 播放音频
+"$WM_SCRIPTS/play_audio.sh" "service-login.oga"

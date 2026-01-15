@@ -20,7 +20,6 @@ fi
 
 # 同步所有配置
 /workspace/dev/yz-dots/bootstrap/tasks/sync_dotfiles.sh
-rm -rf ~/.lain/themes/powerlevel10k.tar.gz
 
 # 软链接配置
 /workspace/dev/yz-dots/bootstrap/tasks/symlink_dotfiles.sh

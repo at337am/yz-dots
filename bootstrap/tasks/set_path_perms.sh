@@ -7,7 +7,6 @@ set -euo pipefail
 zsh() {
     chmod 600 ~/.zshrc
     chmod 600 ~/.zprofile
-    chmod 600 ~/.p10k.zsh
 }
 
 # ------------- 如果脚本只接收到一个参数, 并且匹配 -------------

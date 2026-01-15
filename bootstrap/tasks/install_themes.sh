@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# Orchis gtk theme: https://github.com/vinceliuice/Orchis-theme
-# Tela-icon-theme: https://github.com/vinceliuice/Tela-icon-theme
+# Yaru-Colors (GTK Theme): https://www.gnome-look.org/p/1299514
+# Tela-icon-theme: https://www.gnome-look.org/p/1279924
 
 set -euo pipefail
 
@@ -15,9 +15,9 @@ for cmd in "${dependencies[@]}"; do
 done
 
 # 安装依赖 (gtk-engine-murrine 是 gtk2 的, 现在似乎已经不需要了)
-sudo pacman -S --needed --noconfirm \
-    gnome-themes-extra \
-    sassc
+# sudo pacman -S --needed --noconfirm \
+#     gnome-themes-extra \
+#     sassc
 
 tmp_dir=$(mktemp -d)
 trap 'rm -rf "$tmp_dir"' EXIT
@@ -26,14 +26,8 @@ mkdir -p ~/.local/share/themes
 mkdir -p ~/.local/share/icons
 
 gtk_themes(){
-    # 卸载: ./install.sh --uninstall
-    git clone --depth 1 https://github.com/vinceliuice/Orchis-theme.git "$tmp_dir/Orchis-theme"
-    cd "$tmp_dir/Orchis-theme"
-    ./install.sh \
-        --theme pink \
-        --color light \
-        --size standard \
-        --dest ~/.local/share/themes
+    local script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+    tar -xf "$script_dir/static/gtk-themes.tar.xz" -C ~/.local/share/themes
 }
 
 icon_themes() {
@@ -47,19 +41,16 @@ cursor_theme() {
     yay -S --needed --noconfirm xcursor-breeze
 }
 
-# 刷新字体
-fc-cache -f
-
 gtk_themes
 icon_themes
 cursor_theme
 
 # 最后设置主题
-script="$HOME/.config/hypr/scripts/auto/gsettings.sh"
+gtk_script="$HOME/.config/wm-scripts/auto/gsettings.sh"
 
-if [[ ! -f "$script" ]]; then
-    printf "Error: %s does not exist.\n" "$script" >&2
+if [[ ! -f "$gtk_script" ]]; then
+    printf "Error: %s does not exist.\n" "$gtk_script" >&2
     exit 1
 fi
 
-"$script"
+"$gtk_script"

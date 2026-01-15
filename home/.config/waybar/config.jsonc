@@ -2,10 +2,10 @@
     "layer": "top",
     "position": "top",
 
-    // "height": 28,   // 状态栏高度
+    // "height": 28,
 
-    "modules-left": ["clock", "sway/workspaces"],
-    "modules-center": ["sway/window"],
+    "modules-left": ["clock", "river/tags"],
+    "modules-center": ["river/window"],
     "modules-right": ["custom/recorder", "tray", "pulseaudio", "backlight", "battery"],
 
     "clock": {
@@ -13,50 +13,52 @@
         "format": "{:%y%m%d %H:%M}"
     },
 
-    // 工作区
-    "sway/workspaces": {
-        "format": "{name}",
-        "on-click": "activate"
+    "river/tags": {
+        "num-tags": 10,
+        "tag-labels": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "0"
+        ]
     },
 
-    // 窗口标题
-    "sway/window": {
-        "tooltip": false,
-        "format": "{}",
-        "max-length": 60    // original 50
+    "river/window": {
+        "max-length": 60
     },
 
-    // 后台程序
     "tray": {
-        "icon-size": 16,    // original 15px
-        "spacing": 16,      // original 15px
+        "icon-size": 15,
+        "spacing": 15,
         "reverse-direction": true
     },
 
-    // 自定义录屏脚本提示
     "custom/recorder": {
         "tooltip": false,
         "format": "{}",
         "signal": 8,
         "exec": "$HOME/.config/waybar/scripts/check_recorder.sh",
-        "on-click": "$HOME/.config/sway/scripts/recorder.sh"
+        "on-click": "$WM_SCRIPTS/recorder.sh"
     },
 
-    // 音量
     "pulseaudio": {
         "tooltip": false,
         "format": "vol {volume}%",
         "format-muted": "muted"
     },
 
-    // 亮度
     "backlight": {
         "tooltip": false,
         "device": "intel_backlight",
         "format": "bri {percent}%"
     },
 
-    // 电量
     "battery": {
         "tooltip": false,
         "interval": 60,
@@ -64,11 +66,8 @@
             "warning": 30,
             "critical": 15
         },
-        // Battery Mode: 电池供电, 没插电源线，电脑正在消耗电池里的电
         "format": "bat {capacity}%",
-        // Charging: 电池正在充电, 插了电源线，并且电量正在增加
         "format-charging": "chg {capacity}%",
-        // AC Mode: 外部电源供电, 插了电源线，但电池电量不增加也不减少
         "format-plugged": "ac {capacity}%"
     }
 }

@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+if [[ "$1" == "-c" ]] && [[ -n "$2" ]]; then
+    seconds=$2
+    printf "Starting countdown: $seconds seconds\n"
+
+    while [ $seconds -ge 0 ]; do
+        printf "\rTime remaining: %d seconds   " "$seconds"
+        sleep 1
+        ((seconds--))
+    done
+
+    "$WM_SCRIPTS/play_audio.sh" "complete.oga"
+    printf "\nTime is up!\n"
+
+else
+    seconds=0
+    printf "Starting timer (press Ctrl+C to stop)...\n"
+
+    while true; do
+        printf "\rElapsed time: %d seconds   " "$seconds"
+        sleep 1
+        ((seconds++))
+    done
+fi
