@@ -20,7 +20,6 @@ riverctl spawn "wl-paste --type image --watch cliphist store"
 riverctl spawn "/usr/bin/lxqt-policykit-agent"
 riverctl spawn "env LC_ALL=C thunar --daemon"
 
-# 自动熄屏和锁屏
 # riverctl spawn \
 #         "swayidle -w \
 #         timeout 420 'swaylock -f' \
@@ -28,12 +27,8 @@ riverctl spawn "env LC_ALL=C thunar --daemon"
 #         resume 'wlr-randr --output eDP-1 --on' \
 #         before-sleep 'swaylock -f'"
 
-riverctl spawn \
-        "swayidle -w \
-        timeout 5 'swaylock -f' \
-        timeout 10 'wlopm --off \*' \
-        resume 'wlopm --on \*' \
-        before-sleep 'swaylock -f'"
+# 自动熄屏和锁屏
+riverctl spawn "swayidle -w"
 
 # 这些放在最后执行, (壁纸一定要放在显示器之后执行)
 riverctl spawn "waybar"
