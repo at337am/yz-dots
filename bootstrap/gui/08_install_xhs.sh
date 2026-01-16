@@ -31,19 +31,22 @@ rm -rf /opt/soft/XHS-Downloader
 
 
 # ------------- 拉取项目 -------------
+destination="/opt/soft/XHS-Downloader"
+source_code="https://github.com/JoeanAmier/XHS-Downloader/archive/refs/tags/2.6.tar.gz"
+
 tmp_dir=$(mktemp -d)
 trap 'rm -rf "$tmp_dir"' EXIT
 
-wget -O "$tmp_dir/2.5.tar.gz" https://github.com/JoeanAmier/XHS-Downloader/archive/refs/tags/2.5.tar.gz
+wget -P "$tmp_dir" "$source_code"
 
-tar -zxvf "$tmp_dir/2.5.tar.gz" -C "$tmp_dir"
+tar -zxvf "$tmp_dir/2.6.tar.gz" -C "$tmp_dir"
 
-mv "$tmp_dir/XHS-Downloader-2.5" "/opt/soft/XHS-Downloader"
+mv "$tmp_dir/XHS-Downloader-2.6" "$destination"
 
 
 
 # ------------- 在项目目录下创建并激活虚拟环境 -------------
-cd /opt/soft/XHS-Downloader
+cd "$destination"
 
 rm -rf .git .github
 
