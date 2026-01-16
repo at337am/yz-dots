@@ -47,11 +47,6 @@ background-color=#ff8282d9
 margin=360,0,0,0
 width=120
 
-[app-name=volume]
-anchor=center
-margin=360,0,0,0
-width=120
-
 [app-name=recorder]
 anchor=center
 margin=360,0,0,0
