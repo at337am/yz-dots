@@ -20,6 +20,7 @@ yay -S --needed --noconfirm \
     ungoogled-chromium-bin \
     gpu-screen-recorder \
     visual-studio-code-bin \
-    lswt
+    lswt \
+    wlopm
 
 printf "Done.\n"

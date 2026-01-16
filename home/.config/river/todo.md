@@ -16,3 +16,5 @@ bootstrap - 从 GRUB 迁移到 systemd-boot
 ~/workspace/dev/yz-dots 这个也许也可以设置为环境变量
 
 fuzzel? 美化
+
+bootstrap - wlopm 使用 pacman 来安装
