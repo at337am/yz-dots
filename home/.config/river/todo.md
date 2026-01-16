@@ -16,5 +16,3 @@ bootstrap - 从 GRUB 迁移到 systemd-boot
 ~/workspace/dev/yz-dots 这个也许也可以设置为环境变量
 
 fuzzel? 美化
-
-小红书项目解析的 install_xhs.sh 完善
