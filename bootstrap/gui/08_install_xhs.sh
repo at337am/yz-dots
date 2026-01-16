@@ -55,3 +55,7 @@ uv sync
 # ln -sv /opt/soft/XHS-Downloader/Download /data/dl_xhs
 
 printf "Done.\n"
+
+
+# todo
+# 配置更改: "image_format": "jpeg",
