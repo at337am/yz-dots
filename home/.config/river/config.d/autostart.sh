@@ -1,13 +1,9 @@
 #!/usr/bin/env bash
 
 # 先杀死旧的进程
-kill_apps() {
-    pkill -x "kanshi"
-    pkill -x "swayidle"
-    pkill -x "waybar"
-}
-
-kill_apps || true
+pkill -x "kanshi"   || true
+pkill -x "swayidle" || true
+pkill -x "waybar"   || true
 
 riverctl spawn "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP"
 riverctl spawn "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP"
