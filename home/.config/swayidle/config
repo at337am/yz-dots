@@ -1,5 +1,5 @@
-timeout 5 'swaylock -f'
+timeout 420 'swaylock -f'
 
-timeout 10 'wlopm --off "*"' resume 'wlopm --on "*"'
+timeout 430 'wlopm --off "*"' resume 'wlopm --on "*"'
 
 before-sleep 'swaylock -f'
