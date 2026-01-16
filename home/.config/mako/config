@@ -8,26 +8,17 @@ format=%s\n%b
 layer=overlay
 anchor=top-center
 
-# original 12
 font=Inter SemiBold 12
 
 # 文字水平居中
 text-alignment=center
 
-# original:
 width=320
 height=240
 margin=24
 padding=12
 border-size=2
 border-radius=16
-
-# width=400
-# height=300
-# margin=30
-# padding=15
-# border-size=3
-# border-radius=20
 
 background-color=#F5F5F5f2
 border-color=#48CFCBf2
