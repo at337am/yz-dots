@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
 
 # 先杀死旧的进程
-pkill -x "kanshi"
-pkill -x "swayidle"
-pkill -x "waybar"
+kill_apps() {
+    pkill -x "kanshi"
+    pkill -x "swayidle"
+    pkill -x "waybar"
+}
+
+kill_apps || true
 
 riverctl spawn "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP"
 riverctl spawn "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP"
@@ -24,13 +28,6 @@ riverctl spawn "wl-paste --type image --watch cliphist store"
 # riverctl spawn "wl-clip-persist --clipboard regular"
 riverctl spawn "/usr/bin/lxqt-policykit-agent"
 riverctl spawn "env LC_ALL=C thunar --daemon"
-
-# riverctl spawn \
-#         "swayidle -w \
-#         timeout 420 'swaylock -f' \
-#         timeout 430 'wlr-randr --output eDP-1 --off' \
-#         resume 'wlr-randr --output eDP-1 --on' \
-#         before-sleep 'swaylock -f'"
 
 # 自动熄屏和锁屏
 riverctl spawn "swayidle -w"
