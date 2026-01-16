@@ -59,6 +59,6 @@ ln -sv "$destination/Volume/Download" /data/dl_xhs
 
 printf "Done.\n"
 
-
-# todo
-# 配置更改: "image_format": "jpeg",
+# 后续手动更改配置:
+# 编辑 /opt/soft/XHS-Downloader/Volume/settings.json
+# "image_format": "PNG" -> "image_format": "jpeg"
