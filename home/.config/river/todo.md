@@ -17,6 +17,4 @@ bootstrap - 从 GRUB 迁移到 systemd-boot
 
 fuzzel? 美化
 
-bootstrap - wlopm 使用 pacman 来安装
-
 wlopm 和 wl-randr 控制熄屏有什么区别??
