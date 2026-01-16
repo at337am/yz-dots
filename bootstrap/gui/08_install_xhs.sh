@@ -27,7 +27,6 @@ fi
 
 # 先清理
 rm -rf /opt/soft/XHS-Downloader
-# rm -rf /data/dl_xhs
 
 
 
@@ -50,9 +49,6 @@ rm -rf .git .github
 
 # 同步环境
 uv sync
-
-# rm -rf /data/dl_xhs
-# ln -sv /opt/soft/XHS-Downloader/Download /data/dl_xhs
 
 printf "Done.\n"
 
