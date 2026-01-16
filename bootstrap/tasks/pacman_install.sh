@@ -164,7 +164,7 @@ sudo pacman -S --needed --noconfirm \
     swayidle \
     swaylock \
     xdg-desktop-portal-wlr \
-    wlr-randr
+    kanshi
 
 # 常用重量级 App
 sudo pacman -S --needed --noconfirm \
@@ -189,4 +189,4 @@ sudo pacman -S --needed --noconfirm \
 # foot 在我的 sway 上存在卡顿 bug, 而在 hyprland 上却似乎是正常的
 # 一直找不到原因, 如果后续又迁移到了别的 WM, 再用回 foot 试试
 
-# river 中, 如果需要多个显示器热插拔的话, 可以使用 kanshi 来实现
+# 等 wlopm 上线官方仓库后, 记得改, 目前 wlopm 还在过渡测试期

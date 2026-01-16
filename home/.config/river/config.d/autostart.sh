@@ -1,10 +1,15 @@
 #!/usr/bin/env bash
 
+# 先杀死旧的进程
+pkill -x "kanshi"
+pkill -x "swayidle"
+pkill -x "waybar"
+
 riverctl spawn "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP"
 riverctl spawn "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP"
 
 # 显示器设置
-riverctl spawn "wlr-randr --output eDP-1 --scale 1.25"
+riverctl spawn "kanshi"
 
 # 启动布局管理器
 # 2 8 / 3 7
