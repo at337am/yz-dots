@@ -6,5 +6,5 @@ fcitx5-configtool
 # 重新部署
 fcitx5-remote -r
 
-# 诊断 Fcitx5 输入法框架状态
+# 诊断 fcitx5 输入法框架状态
 fcitx5-diagnose
