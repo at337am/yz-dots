@@ -74,7 +74,4 @@ width=120
 # makoctl reload && notify-send -u low "低级通知" "这是一个低级通知"
 # makoctl reload && notify-send -u critical "紧急！" "这是一个紧急通知"
 
-# 只有当 Firefox 发送的通知标题中包含 "Download" 时才触发
-# [app-name=Firefox summary="*Download*"]
-
 # 位置可选: top-right, top-center, top-left, bottom-right, bottom-center, bottom-left, center
