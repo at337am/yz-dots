@@ -67,11 +67,6 @@ anchor=center
 margin=360,0,0,0
 width=120
 
-[app-name=mistakes]
-anchor=center
-margin=360,0,0,0
-width=120
-
 [app-name=iudisk]
 anchor=center
 margin=360,0,0,0
