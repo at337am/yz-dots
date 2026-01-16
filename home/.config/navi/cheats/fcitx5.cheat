@@ -1,0 +1,10 @@
+% fcitx5
+
+# 打开 fcitx5 GUI 配置
+fcitx5-configtool
+
+# 重新部署
+fcitx5-remote -r
+
+# 诊断 Fcitx5 输入法框架状态
+fcitx5-diagnose
