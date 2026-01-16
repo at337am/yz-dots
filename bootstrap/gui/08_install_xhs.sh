@@ -25,7 +25,7 @@ if ! confirm "Are you sure you want to install xhs?"; then
     exit 1
 fi
 
-# 先清理
+# 先清理旧的项目
 rm -rf /opt/soft/XHS-Downloader
 
 
@@ -52,6 +52,10 @@ rm -rf .git .github
 
 # 同步环境
 uv sync
+
+# 最后软链接
+rm -rf /data/dl_xhs
+ln -sv "$destination/Volume/Download" /data/dl_xhs
 
 printf "Done.\n"
 
