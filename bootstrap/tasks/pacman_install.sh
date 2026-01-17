@@ -47,7 +47,6 @@ sudo pacman -S --needed --noconfirm \
 sudo pacman -S --needed --noconfirm \
     foot \
     kitty \
-    alacritty \
     android-tools \
     bat \
     bc \
