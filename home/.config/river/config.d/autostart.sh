@@ -4,6 +4,7 @@
 pkill -x "kanshi"   || true
 pkill -x "swayidle" || true
 pkill -x "waybar"   || true
+pkill -x "wob"      || true
 
 riverctl spawn "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP"
 riverctl spawn "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP"
@@ -45,7 +46,5 @@ if [[ ! -p "$WOB_SOCK" ]]; then
     mkfifo "$WOB_SOCK"
 fi
 
-# 如果没有找到 wob 进程, 才执行 spawn
-if ! pgrep -x "wob" > /dev/null; then
-    riverctl spawn "sh -c 'tail -f $WOB_SOCK | wob'"
-fi
+# 启动 wob 进程
+riverctl spawn "sh -c 'tail -f $WOB_SOCK | wob'"
