@@ -53,6 +53,8 @@ riverctl rule-add -app-id "org.telegram.desktop" -title "*" dimensions 830 630
 riverctl rule-add -app-id "org.telegram.desktop" -title "选择文件" dimensions 730 570
 riverctl rule-add -app-id "org.telegram.desktop" -title "Choose Files" dimensions 730 570
 
+riverctl rule-add -app-id "firefox" -title "我的足迹" float
+riverctl rule-add -app-id "firefox" -title "我的足迹" dimensions 830 630
 
 
 
