@@ -76,28 +76,39 @@ riverctl map-pointer normal Super BTN_LEFT move-view
 riverctl map-pointer normal Super BTN_RIGHT resize-view
 
 # 焦点移动
-riverctl map normal Super H focus-view left
-riverctl map normal Super J focus-view down
-riverctl map normal Super K focus-view up
-riverctl map normal Super L focus-view right
+riverctl map normal Super H     focus-view left
+riverctl map normal Super J     focus-view down
+riverctl map normal Super K     focus-view up
+riverctl map normal Super L     focus-view right
+
+riverctl map normal Super left  focus-view left
+riverctl map normal Super down  focus-view down
+riverctl map normal Super up    focus-view up
+riverctl map normal Super right focus-view right
 
 # 移动窗口位置
-riverctl map normal Super+Shift H swap left
-riverctl map normal Super+Shift J swap down
-riverctl map normal Super+Shift K swap up
-riverctl map normal Super+Shift L swap right
+riverctl map normal Super+Shift H       swap left
+riverctl map normal Super+Shift J       swap down
+riverctl map normal Super+Shift K       swap up
+riverctl map normal Super+Shift L       swap right
+
+riverctl map normal Super+Shift left    swap left
+riverctl map normal Super+Shift down    swap down
+riverctl map normal Super+Shift up      swap up
+riverctl map normal Super+Shift right   swap right
 
 # 调整主区域的宽度/高度
-riverctl map normal Super+Alt right    send-layout-cmd rivertile "main-ratio +0.1"
-riverctl map normal Super+Alt left     send-layout-cmd rivertile "main-ratio -0.1"
-riverctl map normal Super+Alt up       send-layout-cmd rivertile "main-ratio +0.1"
-riverctl map normal Super+Alt down     send-layout-cmd rivertile "main-ratio -0.1"
+riverctl map normal Super+Alt H     send-layout-cmd rivertile "main-ratio -0.1"
+riverctl map normal Super+Alt L     send-layout-cmd rivertile "main-ratio +0.1"
+
+riverctl map normal Super+Alt left  send-layout-cmd rivertile "main-ratio -0.1"
+riverctl map normal Super+Alt right send-layout-cmd rivertile "main-ratio +0.1"
 
 # 切换主窗口的布局位置
-riverctl map normal Super+Alt H    send-layout-cmd rivertile "main-location left"
-riverctl map normal Super+Alt J    send-layout-cmd rivertile "main-location bottom"
-riverctl map normal Super+Alt K    send-layout-cmd rivertile "main-location top"
-riverctl map normal Super+Alt L    send-layout-cmd rivertile "main-location right"
+# riverctl map normal Super+Alt H    send-layout-cmd rivertile "main-location left"
+# riverctl map normal Super+Alt J    send-layout-cmd rivertile "main-location bottom"
+# riverctl map normal Super+Alt K    send-layout-cmd rivertile "main-location top"
+# riverctl map normal Super+Alt L    send-layout-cmd rivertile "main-location right"
 
 # 将当前窗口提升为主窗口
 # riverctl map normal Super+Shift M zoom
