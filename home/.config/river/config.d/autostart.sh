@@ -40,11 +40,10 @@ riverctl spawn "swww-daemon"
     "$WM_SCRIPTS/auto/hello-server.sh"
 ) &
 
+# 启动 wob 进程
 # 如果管道不存在, 先尝试删除同名文件 (防止被占), 再创建管道文件
 if [[ ! -p "$WOB_SOCK" ]]; then
     rm -f "$WOB_SOCK"
     mkfifo "$WOB_SOCK"
 fi
-
-# 启动 wob 进程
 riverctl spawn "sh -c 'tail -f $WOB_SOCK | wob'"
