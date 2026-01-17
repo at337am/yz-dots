@@ -2,6 +2,7 @@
 
 # 先杀死旧的进程
 pkill -x "kanshi"   || true
+pkill -x "mako"     || true
 pkill -x "swayidle" || true
 pkill -x "waybar"   || true
 pkill -x "wob"      || true
