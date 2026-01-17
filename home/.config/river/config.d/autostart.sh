@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 
 # 先杀死旧的进程
-pkill -x "kanshi"   || true
-pkill -x "mako"     || true
-pkill -x "swayidle" || true
-pkill -x "waybar"   || true
-pkill -x "wob"      || true
+pkill -x "kanshi"       || true
+pkill -x "mako"         || true
+pkill -x "swayidle"     || true
+pkill -x "waybar"       || true
+pkill -x "swww-daemon"  || true
+pkill -x "wob"          || true
 
 riverctl spawn "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP"
 riverctl spawn "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP"
