@@ -1,6 +1,4 @@
 # misc
-# 这个clear 之后可以删除掉, 为了治强迫症
-# alias cl='clear'
 alias v='nvim'
 alias px='http_proxy=http://127.0.0.1:2080 https_proxy=http://127.0.0.1:2080'
 alias mpv='px mpv'
@@ -18,7 +16,6 @@ alias du1='du -ah -d 1 .'
 alias duf='duf -only local'
 # alias cpwd='pwd | wl-copy -n'
 alias update='yay -Syyu'
-# alias code='code --force-device-scale-factor=1.0'
 
 # base
 alias _='sudo'

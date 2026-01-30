@@ -117,11 +117,11 @@ ln -sv "$DOTS_PATH/.config/sway" ~/.config/sway
 rm -rf ~/.config/swaylock
 ln -sv "$DOTS_PATH/.config/swaylock" ~/.config/swaylock
 
+rm -rf ~/.config/swayidle
+ln -sv "$DOTS_PATH/.config/swayidle" ~/.config/swayidle
+
 rm -rf ~/.config/fuzzel
 ln -sv "$DOTS_PATH/.config/fuzzel" ~/.config/fuzzel
-
-rm -rf ~/.config/alacritty
-ln -sv "$DOTS_PATH/.config/alacritty" ~/.config/alacritty
 
 rm -rf ~/.config/river
 ln -sv "$DOTS_PATH/.config/river" ~/.config/river
@@ -131,3 +131,6 @@ ln -sv "$DOTS_PATH/.config/wob" ~/.config/wob
 
 rm -rf ~/.config/wm-scripts
 ln -sv "$DOTS_PATH/.config/wm-scripts" ~/.config/wm-scripts
+
+rm -rf ~/.config/kanshi
+ln -sv "$DOTS_PATH/.config/kanshi" ~/.config/kanshi

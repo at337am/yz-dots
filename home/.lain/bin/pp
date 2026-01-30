@@ -23,16 +23,16 @@ if [[ "$#" -ne 1 ]]; then
     exit 1
 fi
 
-WALLPAPER_PATH="$1"
+IMG_PATH="$1"
 
-if [[ ! -f "$WALLPAPER_PATH" ]]; then
-    printf "${RED}Error:${NC} %s does not exist.\n" "$WALLPAPER_PATH" >&2
+if [[ ! -f "$IMG_PATH" ]]; then
+    printf "${RED}Error:${NC} %s does not exist.\n" "$IMG_PATH" >&2
     exit 1
 fi
 
-swww img "$WALLPAPER_PATH" --transition-type none
+swww img "$IMG_PATH" --transition-type none
 
 # 开启动画效果
-# swww img "$WALLPAPER_PATH" --transition-type any --transition-angle 60 --transition-step 90
+# swww img "$IMG_PATH" --transition-type any --transition-angle 60 --transition-step 90
 
-printf "${GREEN}Wallpaper has been changed to: %s${NC}\n" "$WALLPAPER_PATH"
+printf "${GREEN}Wallpaper has been changed to: %s${NC}\n" "$IMG_PATH"

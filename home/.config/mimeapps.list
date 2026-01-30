@@ -6,6 +6,7 @@ text/html=firefox.desktop
 video/mp4=mpv.desktop
 video/webm=mpv.desktop
 video/x-matroska=mpv.desktop
+audio/flac=mpv.desktop
 application/pdf=org.pwmt.zathura.desktop
 x-scheme-handler/http=firefox.desktop
 x-scheme-handler/https=firefox.desktop

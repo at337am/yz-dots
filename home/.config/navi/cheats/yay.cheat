@@ -42,14 +42,14 @@ yay -Rns xxx
 
 
 
-% yay, list, repo
+% yay, search, repo
 
 # 搜索仓库中的软件 - 原生 + AUR
 yay -Ss xxx
 
 
 
-% yay, list, local
+% yay, search, package
 
 # 搜索本地的某个软件包
 yay -Qs xxx
@@ -59,7 +59,7 @@ yay -Qi xxx
 
 
 
-% yay, list, local, dependency
+% yay, list, package, dependency
 
 # 列出软件包 - 原生 + AUR (包括大量依赖包)
 yay -Q | fzf
@@ -72,7 +72,7 @@ yay -Qm | fzf
 
 
 
-% yay, list, local, no_dependency
+% yay, list, package, no_dependency
 
 # 列出软件包 - 原生 + AUR (不包含依赖) - 最常用
 yay -Qe | fzf

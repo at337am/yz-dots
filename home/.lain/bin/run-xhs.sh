@@ -17,6 +17,19 @@ fi
 
 cd "$TARGET_DIR"
 
+# 如果有参数, 则清除下载记录
+if [[ "$#" -eq 1 && "$1" == "clear" ]]; then
+
+    rm -rfv \
+    Volume/ExploreID.db \
+    Volume/MappingData.db \
+    Volume/Download/ExploreData.db \
+    Volume/Temp
+
+    printf "Done.\n"
+    exit 0
+fi
+
 uv run python main.py
 
 printf "Done.\n"

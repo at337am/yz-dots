@@ -64,9 +64,7 @@ x_offset=0
 y_offset=$(echo "$font_size * 1 / 1" | bc)
 
 # 定义输出路径
-dirname=$(dirname "$IMG_PATH")
-filename=$(basename "${IMG_PATH%.*}")
-output_path="${dirname}/${filename}_caption.png"
+output_path="${IMG_PATH%.*}_caption.png"
 
 # --- 开始执行 ---
 

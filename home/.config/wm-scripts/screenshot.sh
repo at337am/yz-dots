@@ -12,7 +12,7 @@ mkdir -p "$output_dir"
 file_path="$output_dir/$(date +'%y%m%d_%H%M%S').png"
 
 notify() {
-    notify-send -a "screenshot" \
+    notify-send -a "visuals" \
                 -u low \
                 -h string:x-dunst-stack-tag:volume_notif \
                 "$1"

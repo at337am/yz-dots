@@ -1,0 +1,13 @@
+% exiftool, image
+
+# 查看图像元信息
+exiftool image.png
+
+# 删除图像中的所有元信息 (保留原始文件备份)
+exiftool -all= image.png
+
+# 删除图像中的所有元信息 (直接覆盖原始文件)
+exiftool -all= -overwrite_original image.png
+
+# 批量处理整个目录, 批量脱敏 (直接覆盖)
+exiftool -all= -overwrite_original dir/

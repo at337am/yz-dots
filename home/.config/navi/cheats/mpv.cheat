@@ -17,3 +17,9 @@ mpv --image-display-duration=0.8 xxx
 # 旋转角度播放视频
 mpv --video-rotate=270 xxx
 
+
+
+% mpv, camera
+
+# 打开相机
+mpv av://v4l2:/dev/video0 --profile=low-latency --untimed

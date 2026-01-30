@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# 隐藏另一个系统分区的卷
+# 为了不在 Thunar 文件管理器中看到其他系统分区的卷
+
 # 找到要隐藏分区的 UUID:
 # lsblk -p
 # lsblk -pf

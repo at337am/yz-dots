@@ -1,0 +1,10 @@
+% ios, iPhone
+
+# 配对 iPhone 设备 (需要连接数据线, 如果已配对会提示 SUCCESS)
+idevicepair pair
+
+# 创建挂载点, 挂载 iPhone 设备
+mkdir -p ~/Downloads/iPhone && ifuse ~/Downloads/iPhone
+
+# 卸载 iPhone 设备 (完成传输后)
+fusermount -u ~/Downloads/iPhone

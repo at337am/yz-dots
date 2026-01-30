@@ -12,7 +12,7 @@ GREEN='\033[0;32m'      # 绿色
 NC='\033[0m'            # 重置色
 
 # 默认变量
-VIDEO_FILE=""
+VID_PATH=""
 ext="jpg"
 ffmpeg_opts=(-q:v 6)
 
@@ -48,9 +48,9 @@ while [[ $# -gt 0 ]]; do
             exit 1
             ;;
         *)
-            # 如果不是选项，且 VIDEO_FILE 为空，则认为是视频文件
-            if [[ -z "$VIDEO_FILE" ]]; then
-                VIDEO_FILE="$1"
+            # 如果不是选项，且 VID_PATH 为空，则认为是视频文件
+            if [[ -z "$VID_PATH" ]]; then
+                VID_PATH="$1"
                 shift
             else
                 printf "${RED}Error:${NC} 仅支持单个视频文件\n" >&2
@@ -62,29 +62,28 @@ while [[ $# -gt 0 ]]; do
 done
 
 # 验证输入
-if [[ -z "$VIDEO_FILE" ]]; then
+if [[ -z "$VID_PATH" ]]; then
     printf "${RED}Error:${NC} No files specified.\n" >&2
     usage >&2
     exit 1
 fi
 
-if [[ ! -f "$VIDEO_FILE" ]]; then
-    printf "${RED}Error:${NC} %s does not exist.\n" "$VIDEO_FILE" >&2
+if [[ ! -f "$VID_PATH" ]]; then
+    printf "${RED}Error:${NC} %s does not exist.\n" "$VID_PATH" >&2
     exit 1
 fi
 
-video_base=$(basename "$VIDEO_FILE")
-output_dir="${video_base%.*}_frames"
-
 # 创建输出目录
+output_dir="${VID_PATH%.*}_frames"
 mkdir -p "$output_dir"
+
 printf "Output directory created: ${GREEN}%s${NC}\n" "$output_dir"
 
 output_path="$output_dir/frame_%04d.$ext"
 printf "Extraction frame format: ${GREEN}%s${NC}\n" "$ext"
 
 ffmpeg -hide_banner -loglevel error -stats \
-    -i "$VIDEO_FILE" \
+    -i "$VID_PATH" \
     -vsync 0 \
     "${ffmpeg_opts[@]}" \
     "$output_path"

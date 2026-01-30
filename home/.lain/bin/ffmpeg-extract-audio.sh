@@ -58,11 +58,7 @@ case "$audio_codec" in
 esac
 
 # 构建输出文件名
-dirname=$(dirname "$VID_PATH")
-basename=$(basename "$VID_PATH")
-filename="${basename%.*}"
-
-output_path="${dirname}/${filename}_audio.${ext}"
+output_path="${VID_PATH%.*}_audio.${ext}"
 
 # --- 开始执行 ---
 

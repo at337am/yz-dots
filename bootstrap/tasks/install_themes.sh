@@ -26,6 +26,7 @@ mkdir -p ~/.local/share/themes
 mkdir -p ~/.local/share/icons
 
 gtk_themes(){
+    # 当前脚本所在的目录
     local script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
     tar -xf "$script_dir/static/gtk-themes.tar.xz" -C ~/.local/share/themes
 }

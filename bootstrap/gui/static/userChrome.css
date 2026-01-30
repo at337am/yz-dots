@@ -1,0 +1,34 @@
+/* 隐藏标签页右键菜单中的特定选项 */
+
+/* 所有分割线 */
+#tabContextMenu menuseparator { display: none !important; }
+
+/* 静音标签页 */
+#context_toggleMuteTab { display: none !important; }
+
+/* 复制标签页 */
+#context_duplicateTab { display: none !important; }
+
+/* 为标签页添加书签 */
+#context_bookmarkTab { display: none !important; }
+
+/* 选择所有标签页 */
+#context_selectAllTabs { display: none !important; }
+
+/* 恢复关闭的标签页 */
+#context_undoCloseTab { display: none !important; }
+
+/* 卸载标签页 */
+#context_unloadTab { display: none !important; }
+
+/* 在右侧新建标签页 */
+#context_openANewTab { display: none !important; }
+
+/* 关闭重复的标签页 */
+#tabContextMenu #context_closeDuplicateTabs { display: none !important; }
+
+/* 关闭标签页 */
+#context_closeTab { display: none !important; }
+
+/* 将标签页添加到新群组 */
+menuitem[label="将标签页添加到新群组"] { display: none !important; }

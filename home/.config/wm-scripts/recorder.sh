@@ -23,7 +23,7 @@ trap 'rm -f "$status_file"; refresh_waybar' EXIT
 
 # 发送通知
 notify() {
-    notify-send -a "recorder" \
+    notify-send -a "visuals" \
                 -u low \
                 -h string:x-dunst-stack-tag:volume_notif \
                 "$1"

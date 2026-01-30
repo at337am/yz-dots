@@ -23,9 +23,7 @@ if [[ ! -f "$IMG_PATH" ]]; then
 fi
 
 # 定义输出路径
-dirname=$(dirname "$IMG_PATH")
-filename=$(basename "${IMG_PATH%.*}")
-output_path="${dirname}/${filename}_lock_wall.jpg"
+output_path="${IMG_PATH%.*}_lock_wall.jpg"
 
 # --- 开始执行 ---
 

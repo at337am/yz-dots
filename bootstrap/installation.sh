@@ -61,7 +61,7 @@ cfdisk /dev/nvme0n1
 # 最后 quite 退出
 # 使用 fdisk -l 查看是否成功
 
-# 格式化 EFI 分区
+# 格式化 EFI 分区 (ESP)
 mkfs.fat -F 32 /dev/nvme0n1p4
 
 # 格式化 根分区
@@ -70,7 +70,7 @@ mkfs.ext4 /dev/nvme0n1p5
 # 挂载根分区
 mount /dev/nvme0n1p5 /mnt
 
-# 挂载 EFI 分区
+# 挂载 EFI 分区 (ESP)
 mkdir /mnt/boot
 mount /dev/nvme0n1p4 /mnt/boot
 

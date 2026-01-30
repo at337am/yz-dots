@@ -53,8 +53,16 @@ riverctl rule-add -app-id "org.telegram.desktop" -title "*" dimensions 830 630
 riverctl rule-add -app-id "org.telegram.desktop" -title "选择文件" dimensions 730 570
 riverctl rule-add -app-id "org.telegram.desktop" -title "Choose Files" dimensions 730 570
 
+riverctl rule-add -app-id "firefox" -title "我的足迹" float
+riverctl rule-add -app-id "firefox" -title "我的足迹" dimensions 830 630
 
 
 
 # 强制给所有窗口添加边框
 riverctl rule-add -app-id "*" ssd
+
+
+
+# -------- 绑定窗口和标签 --------
+riverctl rule-add -app-id "org.telegram.desktop" tags 64
+riverctl rule-add -app-id "obsidian" tags 128

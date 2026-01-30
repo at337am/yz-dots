@@ -21,7 +21,7 @@ window#waybar {
 #pulseaudio,
 #backlight,
 #battery {
-    padding: 0 7.5px;
+    padding: 0 8px;
 }
 
 
@@ -30,32 +30,36 @@ window#waybar {
     margin: 4px 0;
 }
 
+/* 空白标签页 */
 #tags button {
     all:unset;
-    padding: 0 13px;
+    padding: 0 12.4px;
     margin: 0 2px;
-    color: #A9AFB7;
+    color: #AAAAAA;
 }
 
 /* 有窗口存在的标签页 */
 #tags button.occupied {
-    background-color: rgba(70, 75, 86, 0.45);
+    color: #E0E0E0;
+    background-color: #575757;
 }
 
 /* 紧急状态标签页 */
 #tags button.urgent {
-    background-color: #C5C5C5;
-    color: #1F2126;
+    color: #1F1F1F;
+    background-color: #C9C9C9;
 }
 
+/* 悬停在标签页时 */
 #tags button:hover {
-    background-color: rgba(70, 75, 86, 0.85);
+    color: #E0E0E0;
+    background-color: #464646;
 }
 
 /* 当前所在的标签页 */
 #tags button.focused {
-    color: #fafafa;
-    background-color: rgba(70, 75, 86, 0.85);
+    color: #1F1F1F;
+    background-color: #959595;
 }
 
 

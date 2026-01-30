@@ -25,33 +25,40 @@ if ! confirm "Are you sure you want to install xhs?"; then
     exit 1
 fi
 
-# 先清理
-rm -rf /opt/soft/XHS-Downloader
-# rm -rf /data/dl_xhs
+destination="/opt/soft/XHS-Downloader"
+source_code="https://github.com/JoeanAmier/XHS-Downloader/archive/refs/tags/2.6.tar.gz"
 
-
+# 先清理旧的项目
+rm -rf "$destination"
 
 # ------------- 拉取项目 -------------
 tmp_dir=$(mktemp -d)
 trap 'rm -rf "$tmp_dir"' EXIT
 
-wget -O "$tmp_dir/2.5.tar.gz" https://github.com/JoeanAmier/XHS-Downloader/archive/refs/tags/2.5.tar.gz
+wget -P "$tmp_dir" "$source_code"
 
-tar -zxvf "$tmp_dir/2.5.tar.gz" -C "$tmp_dir"
+tar -zxvf "$tmp_dir/2.6.tar.gz" -C "$tmp_dir"
 
-mv "$tmp_dir/XHS-Downloader-2.5" "/opt/soft/XHS-Downloader"
+mv "$tmp_dir/XHS-Downloader-2.6" "$destination"
 
 
 
 # ------------- 在项目目录下创建并激活虚拟环境 -------------
-cd /opt/soft/XHS-Downloader
+cd "$destination"
 
 rm -rf .git .github
 
 # 同步环境
 uv sync
 
-# rm -rf /data/dl_xhs
-# ln -sv /opt/soft/XHS-Downloader/Download /data/dl_xhs
+# 最后软链接
+rm -rf /data/dl_xhs
+ln -sv "$destination/Volume/Download" /data/dl_xhs
 
 printf "Done.\n"
+
+# 后续手动更改配置:
+# 编辑 /opt/soft/XHS-Downloader/Volume/settings.json
+# "image_format": "JPEG"
+# "author_archive": true
+# "write_mtime": true

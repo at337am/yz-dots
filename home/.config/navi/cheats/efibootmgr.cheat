@@ -1,0 +1,4 @@
+% efibootmgr
+
+# 显示 UEFI 固件的启动列表 (读写主板上的 NVRAM)
+efibootmgr

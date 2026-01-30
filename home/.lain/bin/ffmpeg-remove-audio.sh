@@ -22,7 +22,8 @@ if [[ ! -f "$VID_PATH" ]]; then
 fi
 
 # 构建输出文件名
-output_path="$(dirname "$VID_PATH")/$(basename "${VID_PATH%.*}")_noaudio.mp4"
+ext="${VID_PATH##*.}"
+output_path="${VID_PATH%.*}_noaudio.$ext"
 
 # 去除音频流
 ffmpeg -i "$VID_PATH" -c:v copy -an -y "$output_path"

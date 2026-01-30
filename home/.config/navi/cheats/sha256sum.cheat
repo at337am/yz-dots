@@ -22,4 +22,4 @@ sha256sum -c SHA256SUMS
 % sha256sum, hash, search
 
 # 找出重复的哈希值
-sha256sum *png | sort | uniq -w 64 -d
+sha256sum *jpeg | sort | uniq -w 64 -d

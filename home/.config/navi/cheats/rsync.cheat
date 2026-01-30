@@ -3,6 +3,9 @@
 # 同步 "整个源目录" 到目标目录 (类似于 cp -a)
 rsync -a source destination/
 
+# 同步 "整个源目录" 到目标目录 (类似于 cp -a) - 显示传输信息和进度条
+rsync -avh --progress source destination/
+
 # 同步 "源目录中的所有内容" 到目标目录
 rsync -a source/ destination/
 

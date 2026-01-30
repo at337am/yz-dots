@@ -32,8 +32,8 @@ create_path() {
     sudo mkdir -p \
         /workspace/dev \
         /workspace/tmp \
-        /data/bak \
-        /data/hello \
+        /data/bak/pending \
+        /data/hello/pending \
         /data/dl_tg \
         /data/restore \
         /opt/soft
@@ -63,6 +63,10 @@ install_nekoray() {
 	rm -rf /opt/soft/nekoray
 
 	tar -zxf "$nekoray_path" -C /opt/soft/
+
+    # 赋予核心网络权限 (为了 TUN 模式)
+    sudo setcap cap_net_admin,cap_net_bind_service+ep /opt/soft/nekoray/nekoray_core
+    sudo setcap cap_net_admin,cap_net_bind_service+ep /opt/soft/nekoray/nekobox_core
 }
 
 configure_ssh_keys() {

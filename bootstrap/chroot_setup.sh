@@ -20,7 +20,6 @@ pacman -S --needed --noconfirm \
     neovim \
     vi \
     sudo \
-    grub \
     efibootmgr \
     networkmanager \
     openssh \
@@ -96,15 +95,65 @@ else
     exit 1
 fi
 
-# --------------------------
+# ------------- 安装引导程序 -------------
+# systemd-boot wiki: https://wiki.archlinuxcn.org/wiki/Systemd-boot
+# 
+# 如果是文件系统是 btrfs, 可能还需要额外处理
 
-# 将 GRUB 安装到硬盘的 ESP 分区上
-# 这一步会生成一个文件 /boot/EFI/Arch/grubx64.efi
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=Arch
+# 将引导程序安装到 EFI 分区 (/boot)
+bootctl install
 
-# 生成配置文件
-grub-mkconfig -o /boot/grub/grub.cfg
+# 配置 loader.conf (全局设置)
+cat <<EOF > /boot/loader/loader.conf
+default arch.conf
+timeout 5
+console-mode max
+editor no
+EOF
 
+# 获取根分区 UUID
+root_uuid=$(findmnt / -n -o UUID)
+if [[ -z "$root_uuid" ]]; then
+    echo "Error: Missing root partition UUID"
+    exit 1
+fi
+
+# 获取微码 (Intel/AMD)
+microcode=""
+if [[ -f "/boot/intel-ucode.img" ]]; then
+    microcode="/intel-ucode.img"
+elif [[ -f "/boot/amd-ucode.img" ]]; then
+    microcode="/amd-ucode.img"
+fi
+
+# 创建启动条目
+# systemd-boot 的设计哲学是: 一个文件对应一个启动菜单项
+mkdir -p /boot/loader/entries
+
+# 普通内核
+cat <<EOF > /boot/loader/entries/arch.conf
+title Arch Linux
+linux /vmlinuz-linux
+initrd $microcode
+initrd /initramfs-linux.img
+options root=UUID=$root_uuid rw
+EOF
+
+# LTS 内核
+cat <<EOF > /boot/loader/entries/arch-lts.conf
+title Arch Linux LTS
+linux /vmlinuz-linux-lts
+initrd $microcode
+initrd /initramfs-linux-lts.img
+options root=UUID=$root_uuid rw
+EOF
+
+# 启用自动更新 systemd-boot 服务
+systemctl enable systemd-boot-update.service
+
+echo "systemd-boot configuration complete!"
+
+# ------------- 收尾 -------------
 systemctl enable NetworkManager.service sshd.service
 
 printf "Done.\n"

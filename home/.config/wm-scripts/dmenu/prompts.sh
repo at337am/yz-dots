@@ -7,7 +7,7 @@ fi
 
 # 发送通知
 notify() {
-    notify-send -a "clipboard" \
+    notify-send -a "visuals" \
                 -u low \
                 -h string:x-dunst-stack-tag:volume_notif \
                 "$1"
@@ -15,15 +15,14 @@ notify() {
 
 prompts_path="$HOME/Documents/notes/prompts"
 
-[[ ! -d "$prompts_path" ]] && exit 1
+choice=$(ls -1 "$prompts_path" | fuzzel --dmenu)
 
-selection=$(ls -1 "$prompts_path" | fuzzel --dmenu)
+# 如果按 Esc 退出, 则脚本结束
+[[ -z "$choice" ]] && exit 0
 
-[[ -z "$selection" ]] && exit 0
-
-if wl-copy < "$prompts_path/$selection"; then
+if wl-copy < "$prompts_path/$choice"; then
     notify "Copied"
 else
-    notify "??? Failed"
+    notify "ERROR"
     exit 1
 fi

@@ -31,7 +31,7 @@ dev_part=""
 
 # 发送通知
 notify() {
-    notify-send -a "iudisk" \
+    notify-send -a "visuals" \
                 -u low \
                 -h string:x-dunst-stack-tag:volume_notif \
                 "$1"

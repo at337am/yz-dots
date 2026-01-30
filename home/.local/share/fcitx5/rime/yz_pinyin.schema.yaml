@@ -1,3 +1,5 @@
+# 参考默认配置: /usr/share/rime-data/luna_pinyin.schema.yaml
+
 schema:
   schema_id: yz_pinyin
   name: 越洲
@@ -52,9 +54,6 @@ speller:
     - derive/eng$/en/
     - derive/ing$/in/
     - derive/ong$/on/
-    # - derive/en$/eng/
-    # - derive/in$/ing/
-    # - derive/on$/ong/
     - derive/^mei$/me/
     - derive/^zai$/zia/
     - derive/^hui$/hiu/
@@ -62,10 +61,10 @@ speller:
     - derive/ang$/nag/
     - derive/ou$/o/
 
-# 备注:
+# 笔记：
 # 
-# 当 ü 跟在 j q x y 后面时, 书写时要去掉两点, 写作 "u", 但读音仍然是 ü, 打字时使用 u
-# 当 ü 跟在 n l 后面时, 通常必须保留两点, 以避免与 u 混淆, 打字时使用 v
+# 当 ü 跟在 j q x y 后面时，书写时要去掉两点，写作 "u"，但读音仍然是 ü，打字时使用 u
+# 当 ü 跟在 n l 后面时，通常必须保留两点，以避免与 u 混淆，打字时使用 v
 
 # 使用 "yz_pinyin.dict.yaml" 中定义的词库
 translator:

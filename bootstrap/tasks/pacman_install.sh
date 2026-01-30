@@ -2,6 +2,15 @@
 
 set -euo pipefail
 
+# 额外安装一个 LTS 版本的内核 作为备用, 后续若不需要了, 直接运行 -Rns 卸载即可
+sudo pacman -S --needed --noconfirm \
+    linux-lts \
+    linux-lts-headers
+
+# 安装 ZRAM
+sudo pacman -S --needed --noconfirm \
+    zram-generator
+
 # 音频驱动, 固件, 音频服务
 sudo pacman -S --needed --noconfirm \
     sof-firmware \
@@ -43,12 +52,17 @@ sudo pacman -S --needed --noconfirm \
 sudo pacman -S --needed --noconfirm \
     sound-theme-freedesktop
 
+# 手机传输相关
+sudo pacman -S --needed --noconfirm \
+    android-tools \
+    usbmuxd \
+    ifuse \
+    libimobiledevice
+
 # 常用软件
 sudo pacman -S --needed --noconfirm \
     foot \
     kitty \
-    alacritty \
-    android-tools \
     bat \
     bc \
     catimg \
@@ -123,12 +137,11 @@ sudo pacman -S --needed --noconfirm \
     thunar-volman \
     gvfs \
     xdg-user-dirs \
-    wl-clip-persist \
     xdg-desktop-portal \
     xdg-desktop-portal-gtk \
     libnewt \
     jq \
-    exiftool \
+    perl-image-exiftool \
     zathura \
     zathura-pdf-mupdf \
     tesseract-data-eng \
@@ -164,15 +177,8 @@ sudo pacman -S --needed --noconfirm \
     swayidle \
     swaylock \
     xdg-desktop-portal-wlr \
-    wlr-randr
-
-# 常用重量级 App
-sudo pacman -S --needed --noconfirm \
-    obsidian \
-    telegram-desktop \
-    discord \
-    obs-studio \
-    firefox
+    kanshi \
+    wlopm
 
 
 # ----- bak -----
@@ -189,4 +195,4 @@ sudo pacman -S --needed --noconfirm \
 # foot 在我的 sway 上存在卡顿 bug, 而在 hyprland 上却似乎是正常的
 # 一直找不到原因, 如果后续又迁移到了别的 WM, 再用回 foot 试试
 
-# river 中, 如果需要多个显示器热插拔的话, 可以使用 kanshi 来实现
+# 也许不再需要这个了: wl-clip-persist

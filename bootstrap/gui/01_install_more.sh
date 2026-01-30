@@ -12,6 +12,7 @@ if ! command -v "yay" &> /dev/null; then
     exit 1
 fi
 
+# 常用 AUR GUI 软件
 yay -S --needed --noconfirm \
     unimatrix-git \
     terminal-rain-lightning \
@@ -21,5 +22,14 @@ yay -S --needed --noconfirm \
     gpu-screen-recorder \
     visual-studio-code-bin \
     lswt
+
+# 常用重量级原生 GUI 软件
+sudo pacman -S --needed --noconfirm \
+    obsidian \
+    telegram-desktop \
+    discord \
+    obs-studio \
+    firefox \
+    inkscape
 
 printf "Done.\n"

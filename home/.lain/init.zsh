@@ -46,7 +46,15 @@ setopt no_bang_hist           # 关闭 !! 历史命令展开功能
 setopt long_list_jobs         # 使得后台任务状态变化的通知更详细
 setopt interactivecomments    # 可以在命令行直接写 # 注释
 
-export PAGER="${PAGER:-less}" LESS="${LESS:--R}"    # 使用 less 作为分页器, 默认为 -R, 显示颜色信息
+# 使用 less 作为分页器, 默认为 -R, 显示颜色信息
+export PAGER="${PAGER:-less}" LESS="${LESS:--R}"
+
+# 禁用 直接执行 >
+unset NULLCMD
+# 禁用 直接执行 <
+unset READNULLCMD
+# export READNULLCMD=less
+# export NULLCMD=:
 
 # ------------
 #  lib

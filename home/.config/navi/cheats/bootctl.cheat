@@ -1,0 +1,7 @@
+% bootctl
+
+# 列出 systemd-boot 检测到的所有可用引导项
+bootctl list
+
+# 检查 UEFI 引导环境的状态
+bootctl status

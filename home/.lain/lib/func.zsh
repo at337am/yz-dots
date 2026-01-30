@@ -1,74 +1,47 @@
-# 用于替代默认的 rm 命令, 实现"回收站式删除"
-# 注意: 不要在 U 盘挂载目录使用, 直接 sudo rm 就行了
+# 使用 gio trash 替代默认的 rm 命令
 rm() {
-    # 检查环境变量
-    if [[ ! -n "${TRASH_DIR+1}" ]]; then
-        printf "Error: TRASH_DIR variable not set.\n" >&2
-        return 1
-    fi
-
-    # 检查参数
+    # 检查参数数量
     if [[ "$#" -eq 0 ]]; then
-        printf "Error: Invalid arguments.\n" >&2
+        printf "Error: Missing arguments.\n" >&2
         printf "Usage: rm <path>...\n" >&2
         return 1
     fi
 
     # 禁止在 HOME 目录下批量删除
     if [[ "$PWD" == "$HOME" && "$#" -ge 2 ]]; then
-        printf "\033[31mrm: Do not bulk remove under HOME!\033[0m\n" >&2
+        printf "\033[0;31mrm: Do not bulk remove under HOME!\033[0m\n" >&2
         return 1
     fi
 
+    # 检查所有参数目标是否存在
     local item
-
-    # 检查参数指定的路径是否存在且不是符号链接
     for item in "$@"; do
         if [[ ! -e "$item" && ! -L "$item" ]]; then
-            printf "Error: '%s' does not exist.\n" "$item" >&2
-            printf "No items were moved.\n" >&2
+            printf "\033[0;31mError: '%s' does not exist.\033[0m\n" "$item" >&2
+            printf "Operation aborted.\n" >&2
             return 1
         fi
     done
 
-    # 检查回收站目录是否存在, 不存在则创建它
-    if [[ ! -d "$TRASH_DIR" ]]; then
-        if ! mkdir -p "$TRASH_DIR"; then
-            printf "Error: Failed to create the trash directory at '%s'.\n" "$TRASH_DIR" >&2
-            return 1
-        fi
+    # 执行回收站操作
+    if gio trash "$@"; then
+        printf "%d item(s) have been moved to the trash.\n" "$#"
+        return 0
+    else
+        printf "\033[0;31mError: gio trash failed.\033[0m\n" >&2
+        return 1
     fi
-
-    local move_failed=0
-
-    # 遍历所有参数进行移动
-    for item in "$@"; do
-        local base_name=$(basename -- "$item")
-        local destination_path="${TRASH_DIR}/$(date +%y%m%d_%H%M%S_%N)_${base_name}"
-
-        # 使用 '--' 明确后续为路径参数
-        if ! mv -- "$item" "$destination_path"; then
-            printf "\033[35mrm: '%s' may have been moved.\033[0m\n" "$item" >&2
-            move_failed=1
-
-            # 跳到下一个循环
-            continue
-        fi
-
-        printf "rm: %s -> %s\n" "$item" "$destination_path"
-    done
-
-    return $move_failed
 }
 
 # 用于清空自定义回收站目录中的所有内容
 cl_trash() {
-    if [[ -d "$TRASH_DIR" && -z "$(find "$TRASH_DIR" -mindepth 1 -print -quit)" ]]; then
-        printf "Trash is clean.\n"
+    if [[ -z "$(gio trash --list | head -c 1)" ]]; then
+        printf "\033[0;35mTrash is already empty.\033[0m\n"
         return 0
     fi
 
-    command rm -rfv -- "${TRASH_DIR}/"*(D)
+    gio trash --empty
+    printf "Trash has been emptied.\n"
 }
 
 # 创建一个新目录, 并进入该目录

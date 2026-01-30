@@ -8,6 +8,7 @@ if ! command -v "code" &> /dev/null; then
     exit 1
 fi
 
+# 当前脚本所在的目录
 script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 extensions_list="$script_dir/static/vscode-extensions-list.txt"
 

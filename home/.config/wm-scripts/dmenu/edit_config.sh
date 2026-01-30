@@ -18,12 +18,21 @@ if ! command -v "code" &> /dev/null; then
     exit 1
 fi
 
+notify() {
+    notify-send -a "visuals" \
+                -u low \
+                -h string:x-dunst-stack-tag:volume_notif \
+                "$1"
+}
+
 declare -A configs
 configs["hypr"]="$HOME/.config/hypr"
 configs["sway"]="$HOME/.config/sway"
 configs["river"]="$HOME/.config/river"
 configs["wm-scripts"]="$HOME/.config/wm-scripts"
 configs["swaylock"]="$HOME/.config/swaylock"
+configs["swayidle"]="$HOME/.config/swayidle"
+configs["kanshi"]="$HOME/.config/kanshi"
 configs["fuzzel"]="$HOME/.config/fuzzel"
 configs["waybar"]="$HOME/.config/waybar"
 configs["wob"]="$HOME/.config/wob"
@@ -32,7 +41,6 @@ configs["mako"]="$HOME/.config/mako"
 configs["navi"]="$HOME/.config/navi"
 configs["kitty"]="$HOME/.config/kitty"
 configs["foot"]="$HOME/.config/foot"
-configs["alacritty"]="$HOME/.config/alacritty"
 configs["fcitx5"]="$HOME/.local/share/fcitx5"
 configs["applications"]="$HOME/.local/share/applications"
 configs["fastfetch"]="$HOME/.config/fastfetch"
@@ -42,15 +50,21 @@ configs["lain-bin"]="$HOME/.lain/bin"
 configs["tidy"]="/workspace/dev/yz-dots/tidy"
 configs["bootstrap"]="/workspace/dev/yz-dots/bootstrap"
 
-config_choice=$(printf "%s\n" "${!configs[@]}" | fuzzel --dmenu)
+configs["notes"]="$HOME/Documents/notes"
 
-# 如果按 Esc 退出，则脚本结束
-if [[ -z "$config_choice" ]]; then
-    exit 0
+choice=$(printf "%s\n" "${!configs[@]}" | fuzzel --dmenu)
+
+# 如果按 Esc 退出, 则脚本结束
+[[ -z "$choice" ]] && exit 0
+
+config_path=${configs[$choice]}
+
+# 如果路径不存在, 则直接报错
+if [[ ! -e "$config_path" ]]; then
+    notify "ERROR"
+    exit 1
 fi
-
-config_path=${configs[$config_choice]}
 
 real_path=$(readlink -f "$config_path")
 
-code --force-device-scale-factor=1.0 "$real_path"
+exec code "$real_path"

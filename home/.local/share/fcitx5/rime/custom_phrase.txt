@@ -2,6 +2,11 @@
 
 
 
+文革	wg
+文革	wenge
+文革	wengge
+亲信	qinxin
+亲信	qinxing
 会话	huihua
 正常	zc
 还是什么	haishism
@@ -221,5 +226,8 @@ todo	tood
 《》	smh
 、	dunhao
 （）	kuohao
+「」	yh
+「」	yinhao
+「」	yinghao
 “”	yinhao
 “”	yinghao
