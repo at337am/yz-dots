@@ -28,7 +28,6 @@ sudo pacman -S --needed --noconfirm \
     obsidian \
     telegram-desktop \
     discord \
-    obs-studio \
     firefox \
     inkscape
 

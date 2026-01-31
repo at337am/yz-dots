@@ -182,17 +182,21 @@ sudo pacman -S --needed --noconfirm \
 
 
 # ----- bak -----
-
-# mgba-qt
-
-# 目前不需要 监听 ACPI 事件 和 电源调度策略
-# acpid power-profiles-daemon
-
+# 
 # 目前的壁纸工具为 swww
 # 注意: swww 项目已改名为 awww, 但是目前 arch 官方仓库中还没有, 以后记得换!
 # https://codeberg.org/LGFae/awww
-
+# 
+# 
 # foot 在我的 sway 上存在卡顿 bug, 而在 hyprland 上却似乎是正常的
 # 一直找不到原因, 如果后续又迁移到了别的 WM, 再用回 foot 试试
-
-# 也许不再需要这个了: wl-clip-persist
+# 补充: 已迁移到 river
+# 
+# 
+# 不再需要的:
+# 
+# mgba-qt
+# acpid (监听 ACPI 事件)
+# power-profiles-daemon (电源调度策略)
+# obs-studio
+# wl-clip-persist
