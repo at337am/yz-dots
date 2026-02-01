@@ -35,12 +35,12 @@ rm() {
 
 # 用于清空自定义回收站目录中的所有内容
 cl_trash() {
-    printf "Emptying the trash...\n"
-
     if [[ -z "$(gio trash --list | head -c 1)" ]]; then
         printf "\033[0;35mTrash is already empty.\033[0m\n"
         return 0
     fi
+
+    printf "Emptying the trash...\n"
 
     gio trash --empty
 
