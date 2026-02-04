@@ -203,9 +203,6 @@
 
 
 
-Telegram	tg
-Gemini	gemini
-ChatGPT	chatgpt
 code	code
 todo	todo
 todo	tood
