@@ -218,22 +218,38 @@ todo	tood
 
 
 
+，	douhoa
 ，	douhao
+。	juhoa
 。	juhao
+：	maohoa
 ：	maohao
+；	fenhoa
 ；	fenhao
+；	fenghoa
 ；	fenghao
+！	gantanhoa
 ！	gantanhao
 ！	gth
+？	wenhoa
 ？	wenhao
+？	wenghoa
 ？	wenghao
+《》	shuminhoa
 《》	shuminhao
+《》	shuminghoa
 《》	shuminghao
 《》	smh
+、	dunhoa
 、	dunhao
+（）	kuohoa
 （）	kuohao
 「」	yh
+「」	yinhoa
 「」	yinhao
+「」	yinghoa
 「」	yinghao
+“”	yinhoa
 “”	yinhao
+“”	yinghoa
 “”	yinghao
