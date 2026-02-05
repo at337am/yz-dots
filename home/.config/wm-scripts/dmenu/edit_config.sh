@@ -18,10 +18,11 @@ if ! command -v "code" &> /dev/null; then
     exit 1
 fi
 
+# 发送通知
 notify() {
     notify-send -a "visuals" \
                 -u low \
-                -h string:x-dunst-stack-tag:volume_notif \
+                -h string:x-canonical-private-synchronous:vis \
                 "$1"
 }
 

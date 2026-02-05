@@ -76,5 +76,5 @@ fi
 
 printf "Done.\n"
 
-notify-send "aps" "transmission completed."
+notify-send "ADB" "transmission completed."
 "$WM_SCRIPTS/play_audio.sh" "complete.oga"

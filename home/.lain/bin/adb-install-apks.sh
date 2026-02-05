@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
-# 脚本用途: 使用 ADB 安装当前路径下的所有 APK 文件到 Android 设备
+# 脚本用途: 将当前路径下的所有 APK 文件安装到 Android 设备
 # -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
 
 set -euo pipefail
@@ -38,5 +38,5 @@ printf "%s\n" "--- Total ---"
 printf "OK count: %d\n" "$success"
 printf "ERR count: %d\n" "$fail"
 
-notify-send "ADB install" "all APKs have been installed."
+notify-send "ADB" "all APKs have been installed."
 "$WM_SCRIPTS/play_audio.sh" "complete.oga"

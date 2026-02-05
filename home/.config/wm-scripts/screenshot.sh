@@ -15,7 +15,7 @@ file_path="$output_dir/$(date +'%y%m%d_%H%M%S').png"
 notify() {
     notify-send -a "visuals" \
                 -u low \
-                -h string:x-dunst-stack-tag:volume_notif \
+                -h string:x-canonical-private-synchronous:vis \
                 "$1"
 }
 
