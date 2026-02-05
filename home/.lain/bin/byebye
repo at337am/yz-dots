@@ -20,6 +20,9 @@ printf "Time to bid farewell to running apps...\n"
 # 执行关闭脚本
 "$kill_script"
 
+# 播放音频
+"$WM_SCRIPTS/play_audio.sh" "service-logout.oga"
+
 printf "All clear! Apps have left the building.\n"
 printf "Going dark in %d seconds. Press Ctrl+C to stay alive.\n" "$countdown"
 
