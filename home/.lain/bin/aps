@@ -41,7 +41,7 @@ if [[ -z "$(adb devices | tail -n +2 | grep -v '^$')" ]]; then
     exit 1
 fi
 
-target_dir="/sdcard/temp_dir_of_aps"
+target_dir="/sdcard/aps_inbox"
 
 if ! adb shell "mkdir -p '$target_dir'"; then
     printf "${RED}Error:${NC} 在 ADB 设备上创建目录 '%s' 失败\n" "$target_dir" >&2
