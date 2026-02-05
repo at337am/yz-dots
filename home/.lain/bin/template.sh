@@ -19,9 +19,6 @@ usage() {
   -f, --file FILE       指定输入文件
   -o, --output DIR      指定输出目录 (默认: ./output)
   --verbose             启用详细日志
-
-示例:
-  $SCRIPT_NAME -f input.txt /tmp/data
 EOF
 }
 
