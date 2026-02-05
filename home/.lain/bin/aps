@@ -21,6 +21,12 @@ GREEN='\033[0;32m'      # 绿色
 BLUE='\033[0;34m'       # 蓝色
 NC='\033[0m'            # 重置色
 
+# 推送目录
+push_dir="/sdcard/inbox"
+
+# 拉取目录
+pull_dir="/sdcard/outbox"
+
 # 检查设备是否连接
 if [[ -z "$(adb devices | tail -n +2 | grep -v '^$')" ]]; then
     printf "Error: 未检测到任何 ADB 连接的设备\n" >&2
@@ -36,38 +42,36 @@ adb_push() {
         fi
     done
 
-    local target_dir="/sdcard/inbox"
-
-    if ! adb shell "mkdir -p '$target_dir'"; then
-        printf "${RED}Error:${NC} 在 ADB 设备上创建目录 '%s' 失败\n" "$target_dir" >&2
+    if ! adb shell "mkdir -p '$push_dir'"; then
+        printf "${RED}Error:${NC} 在 ADB 设备上创建目录 '%s' 失败\n" "$push_dir" >&2
         exit 1
     fi
 
     for source in "$@"; do
         file_size=$(du -sh --apparent-size "$source" | awk '{print $1}')
         printf "Pushing: ${GREEN}%s${NC}  Size: ${BLUE}%s${NC}\n" "$source" "$file_size"
-        adb push "$source" "$target_dir"
+        adb push "$source" "$push_dir"
         printf "\n"
     done
 }
 
 adb_pull() {
-    local source_dir="/sdcard/outbox"
-
-    if ! adb shell "test -d '$source_dir'"; then
-        printf "${RED}Error:${NC} ADB 设备源目录 '%s' 不存在\n" "$source_dir" >&2
+    if ! adb shell "test -d '$pull_dir'"; then
+        printf "${RED}Error:${NC} ADB 设备源目录 '%s' 不存在\n" "$pull_dir" >&2
         exit 1
     fi
 
     printf "Pulling...\n"
 
-    adb pull "$source_dir" .
+    adb pull "$pull_dir" .
 }
 
 if [[ "$#" -eq 0 ]]; then
+    printf "Mode: ${BLUE}Pull${NC} (from %s)\n" "$pull_dir"
     adb_pull
 else
-    adb_push
+    printf "Mode: ${BLUE}Push${NC} (to %s)\n" "$push_dir"
+    adb_push "$@"
 fi
 
 printf "Done.\n"
