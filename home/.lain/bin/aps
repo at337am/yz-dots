@@ -42,7 +42,7 @@ adb_push() {
         fi
     done
 
-    if ! adb shell "mkdir -p '$push_dir'"; then
+    if ! adb shell "mkdir -p $push_dir"; then
         printf "${RED}Error:${NC} 在 ADB 设备上创建目录 '%s' 失败\n" "$push_dir" >&2
         exit 1
     fi
@@ -56,7 +56,7 @@ adb_push() {
 }
 
 adb_pull() {
-    if ! adb shell "test -d '$pull_dir'"; then
+    if ! adb shell "test -d $pull_dir"; then
         printf "${RED}Error:${NC} ADB 设备源目录 '%s' 不存在\n" "$pull_dir" >&2
         exit 1
     fi
