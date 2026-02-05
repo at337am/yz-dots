@@ -42,7 +42,7 @@ push() {
         fi
     done
 
-    target_dir="/sdcard/aps_inbox"
+    local target_dir="/sdcard/aps_inbox"
 
     if ! adb shell "mkdir -p '$target_dir'"; then
         printf "${RED}Error:${NC} 在 ADB 设备上创建目录 '%s' 失败\n" "$target_dir" >&2
