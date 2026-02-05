@@ -37,7 +37,7 @@ riverctl map normal Super Print             spawn "$WM_SCRIPTS/screenshot.sh ful
 riverctl map normal Shift+Control Print     spawn "$WM_SCRIPTS/screenshot.sh area-copy"
 riverctl map normal Super+Control Print     spawn "$WM_SCRIPTS/screenshot.sh full-copy"
 riverctl map normal Super Scroll_Lock       spawn "$WM_SCRIPTS/recorder.sh"
-riverctl map normal Shift+Control C         spawn "$WM_SCRIPTS/pick_color.sh"
+riverctl map normal Super+Control C         spawn "$WM_SCRIPTS/pick_color.sh"
 
 
 
