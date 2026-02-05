@@ -11,6 +11,7 @@ mkdir -p "$output_dir"
 
 file_path="$output_dir/$(date +'%y%m%d_%H%M%S').png"
 
+# 发送通知
 notify() {
     notify-send -a "visuals" \
                 -u low \
@@ -20,7 +21,7 @@ notify() {
 
 case "$1" in
     "area-save")
-        geometry=$(slurp)
+        geometry=$(slurp -b 0ABAB540)
         if [[ -n "$geometry" ]]; then
             grim -g "$geometry" "$file_path"
         else
@@ -31,7 +32,7 @@ case "$1" in
         grim "$file_path"
         ;;
     "area-copy")
-        geometry=$(slurp)
+        geometry=$(slurp -b 0ABAB540)
         if [[ -n "$geometry" ]]; then
             grim -g "$geometry" - | wl-copy -t image/png
             notify "SC Copied"

@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if pgrep -x slurp > /dev/null; then
+    pkill -x slurp
+    exit 0
+fi
+
 # 发送通知
 notify() {
     notify-send -a "visuals" \
@@ -11,19 +16,19 @@ notify() {
 # 使用 slurp 选择一个像素点
 # -p: 选择点而不是区域
 # -b: 设置选择时的背景颜色: 全透明
-GEOMETRY=$(slurp -p -b 00000000)
+geometry=$(slurp -p -b 00000000)
 
 # 如果用户按 ESC 取消, 直接退出
-if [[ -z "$GEOMETRY" ]]; then
+if [[ -z "$geometry" ]]; then
     notify "Cancelled"
     exit 0
 fi
 
-COLOR=$(grim -g "$GEOMETRY" -t ppm - | magick - -format '%[hex:u]' info:-)
+color=$(grim -g "$geometry" -t ppm - | magick - -format '%[hex:u]' info:-)
 
-FINAL_COLOR="#$(echo "$COLOR" | cut -c 1-6)"
+final_color="#$(echo "$color" | cut -c 1-6)"
 
 # 复制到剪贴板, -n: 不带换行符
-echo -n "$FINAL_COLOR" | wl-copy
+echo -n "$final_color" | wl-copy
 
 notify "Picked"
