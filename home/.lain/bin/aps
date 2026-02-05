@@ -57,7 +57,7 @@ adb_push() {
 
 adb_pull() {
     if ! adb shell "test -d $pull_dir"; then
-        printf "${RED}Error:${NC} ADB 设备源目录 '%s' 不存在\n" "$pull_dir" >&2
+        printf "${RED}Error:${NC} ADB 设备目录 '%s' 不存在\n" "$pull_dir" >&2
         exit 1
     fi
 
