@@ -49,7 +49,7 @@ adb_push() {
 
     for source in "$@"; do
         file_size=$(du -sh --apparent-size "$source" | awk '{print $1}')
-        printf "Pushing: ${GREEN}%s${NC}  Size: ${BLUE}%s${NC}\n" "$source" "$file_size"
+        printf "▪ Pushing: ${GREEN}%s${NC}  Size: ${BLUE}%s${NC}\n" "$source" "$file_size"
         adb push "$source" "$push_dir"
         printf "\n"
     done
@@ -62,15 +62,15 @@ adb_pull() {
     fi
 
     printf "Pulling...\n"
-
     adb pull "$pull_dir" .
+    printf "\n"
 }
 
 if [[ "$#" -eq 0 ]]; then
-    printf "Mode: ${BLUE}Pull${NC} (from %s)\n" "$pull_dir"
+    printf "Mode: ${BLUE}Pull${NC} (from %s)\n\n" "$pull_dir"
     adb_pull
 else
-    printf "Mode: ${BLUE}Push${NC} (to %s)\n" "$push_dir"
+    printf "Mode: ${BLUE}Push${NC} (to %s)\n\n" "$push_dir"
     adb_push "$@"
 fi
 
