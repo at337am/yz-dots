@@ -27,35 +27,39 @@ if [[ "$#" -eq 0 ]]; then
     exit 1
 fi
 
-# 路径校验, 目标可以是文件, 也可以是目录, 只要存在即可
-for item in "$@"; do
-    if [[ ! -e "$item" && ! -L "$item" ]]; then
-        printf "${RED}Error:${NC} '%s' does not exist.\n" "$item" >&2
-        exit 1
-    fi
-done
-
 # 检查设备是否连接
 if [[ -z "$(adb devices | tail -n +2 | grep -v '^$')" ]]; then
     printf "Error: 未检测到任何 ADB 连接的设备\n" >&2
     exit 1
 fi
 
-target_dir="/sdcard/aps_inbox"
+push() {
+    # 路径校验, 目标可以是文件, 也可以是目录, 只要存在即可
+    for item in "$@"; do
+        if [[ ! -e "$item" && ! -L "$item" ]]; then
+            printf "${RED}Error:${NC} '%s' does not exist.\n" "$item" >&2
+            exit 1
+        fi
+    done
 
-if ! adb shell "mkdir -p '$target_dir'"; then
-    printf "${RED}Error:${NC} 在 ADB 设备上创建目录 '%s' 失败\n" "$target_dir" >&2
-    exit 1
-fi
+    target_dir="/sdcard/aps_inbox"
 
-for source in "$@"; do
-    file_size=$(du -sh --apparent-size "$source" | awk '{print $1}')
-    printf "Pushing: ${GREEN}%s${NC}  Size: ${BLUE}%s${NC}\n" "$source" "$file_size"
-    adb push "$source" "$target_dir"
-    printf "\n"
-done
+    if ! adb shell "mkdir -p '$target_dir'"; then
+        printf "${RED}Error:${NC} 在 ADB 设备上创建目录 '%s' 失败\n" "$target_dir" >&2
+        exit 1
+    fi
 
-printf "Done.\n"
+    for source in "$@"; do
+        file_size=$(du -sh --apparent-size "$source" | awk '{print $1}')
+        printf "Pushing: ${GREEN}%s${NC}  Size: ${BLUE}%s${NC}\n" "$source" "$file_size"
+        adb push "$source" "$target_dir"
+        printf "\n"
+    done
 
-notify-send "ADB push" "all files have been transferred."
-"$WM_SCRIPTS/play_audio.sh" "complete.oga"
+    printf "Done.\n"
+
+    notify-send "ADB push" "all files have been transferred."
+    "$WM_SCRIPTS/play_audio.sh" "complete.oga"
+}
+
+push
