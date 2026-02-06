@@ -1,0 +1,33 @@
+% systemctl, user_service
+
+# 启动服务
+systemctl --user start xxx
+
+# 停止服务
+systemctl --user stop xxx
+
+# 重启服务
+systemctl --user restart xxx
+
+# 查看服务状态
+systemctl --user status xxx
+
+# 刷新 systemd 缓存 (修改 service 文件后)
+systemctl --user daemon-reload
+
+
+
+% systemctl, user_service, autostart
+
+# 启用开机自启
+systemctl --user enable xxx
+
+# 禁用开机自启
+systemctl --user disable xxx
+
+
+
+% systemctl, user_service, log
+
+# 查看日志 (实时)
+journalctl --user -u hello -f
