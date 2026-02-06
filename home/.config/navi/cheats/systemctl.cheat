@@ -1,13 +1,32 @@
-% systemctl, user
+% systemctl, user, start
 
 # 【用户级】启动某个服务
 systemctl --user start xxx
 
+
+
+% systemctl, user, stop
+
 # 【用户级】停止某个服务
 systemctl --user stop xxx
 
+
+
+% systemctl, user, restart
+
 # 【用户级】重启某个服务
 systemctl --user restart xxx
+
+
+
+% systemctl, user, status
+
+# 【用户级】查看某个服务的状态
+systemctl --user status hello
+
+
+
+% systemctl, user
 
 # 【用户级】刷新 systemd 缓存 (修改 service 文件后)
 systemctl --user daemon-reload
@@ -17,13 +36,6 @@ systemctl --user --failed
 
 # 【用户级】查看正在运行的所有服务
 systemctl --user list-units --type=service --state=running
-
-
-
-% systemctl, user, status
-
-# 【用户级】查看某个服务的状态
-systemctl --user status hello
 
 
 
