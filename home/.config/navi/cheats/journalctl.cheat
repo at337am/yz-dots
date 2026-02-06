@@ -14,14 +14,11 @@ sudo journalctl --vacuum-time=7d
 
 % journalctl, log, user
 
-# 【用户级】实时查看某个服务的日志
-journalctl --user -u hello --follow
-
 # 【用户级】查看某个服务的所有日志
 journalctl --user -u hello
 
-# 【用户级】查看某个服务今天的日志
-journalctl --user -u hello --since today
+# 【用户级】实时查看某个服务的日志
+journalctl --user -u hello --follow
 
 # 【用户级】查看本次开机后某个服务的所有日志 (0 本次, -1 上一次, -2 上上次)
 journalctl --user -u hello --boot 0
