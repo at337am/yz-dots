@@ -1,0 +1,12 @@
+[Unit]
+Description=hello server
+After=network.target
+
+[Service]
+WorkingDirectory=/opt/soft/hello-server
+ExecStart=/opt/soft/hello-server/hello
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

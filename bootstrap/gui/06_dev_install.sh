@@ -31,6 +31,9 @@ just pkg
 rm -rf /opt/soft/hello-server
 mv hello-server /opt/soft
 
+systemctl --user daemon-reload
+systemctl --user enable --now hello
+
 cd "/workspace/dev/raindrop"
 just install
 
