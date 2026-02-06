@@ -39,7 +39,6 @@ riverctl spawn "swww-daemon"
 (
     sleep 5
     "$WM_SCRIPTS/auto/gsettings.sh"
-    # "$WM_SCRIPTS/auto/hello-server.sh"
 ) &
 
 # 启动 wob 进程
