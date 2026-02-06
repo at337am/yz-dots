@@ -42,7 +42,7 @@ just install
 cd "/workspace/dev/hello"
 just pack
 rm -rf /opt/soft/hello
-mv release /opt/soft
+mv release /opt/soft/hello
 
 systemctl --user daemon-reload
 systemctl --user enable hello
