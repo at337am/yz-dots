@@ -1,6 +1,6 @@
-% journalctl, log
+% journalctl, log, disk
 
-# 查看全局的日志空间占用情况
+# 查看全局日志的空间占用情况
 journalctl --disk-usage
 
 
