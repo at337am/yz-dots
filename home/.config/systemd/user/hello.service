@@ -3,8 +3,8 @@ Description=hello server
 After=network.target
 
 [Service]
-WorkingDirectory=/opt/soft/hello-server
-ExecStart=/opt/soft/hello-server/hello
+WorkingDirectory=/opt/soft/hello
+ExecStart=/opt/soft/hello/hello
 Restart=always
 RestartSec=5
 
