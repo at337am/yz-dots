@@ -14,6 +14,7 @@ git_clone() {
     git clone git@github.com:at337am/notes.git
     git clone git@github.com:at337am/yz-dots.git
     git clone git@github.com:at337am/skit.git
+    git clone git@github.com:at337am/hello.git
     git clone git@github.com:at337am/raindrop.git
 }
 
