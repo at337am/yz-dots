@@ -23,17 +23,27 @@ if [[ ! -d "/opt/soft" ]]; then
     exit 1
 fi
 
+
+
+# ------------ skit ------------
 cd "/workspace/dev/skit"
 just install-all
 
+
+
+# ------------ hello-server ------------
 cd "/workspace/dev/skit/hello-server"
 just pkg
 rm -rf /opt/soft/hello-server
 mv hello-server /opt/soft
 
+# 将 hello.service 设置为自动启动, 并立刻启动
 systemctl --user daemon-reload
 systemctl --user enable --now hello
 
+
+
+# ------------ raindrop ------------
 cd "/workspace/dev/raindrop"
 just install
 
