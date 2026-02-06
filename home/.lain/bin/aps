@@ -29,7 +29,7 @@ pull_dir="/sdcard/outbox"
 
 # 检查设备是否连接
 if [[ -z "$(adb devices | tail -n +2 | grep -v '^$')" ]]; then
-    printf "Error: 未检测到任何 ADB 连接的设备\n" >&2
+    printf "${RED}Error:${NC} 未检测到任何 ADB 连接的设备\n" >&2
     exit 1
 fi
 
