@@ -134,6 +134,3 @@ ln -sv "$DOTS_PATH/.config/wm-scripts" ~/.config/wm-scripts
 
 rm -rf ~/.config/kanshi
 ln -sv "$DOTS_PATH/.config/kanshi" ~/.config/kanshi
-
-rm -rf ~/.config/systemd/user/hello.service
-ln -sv "$DOTS_PATH/.config/systemd/user/hello.service" ~/.config/systemd/user/hello.service
