@@ -7,7 +7,7 @@ journalctl --disk-usage
 
 % journalctl, log, clean
 
-# 清理日志 (只保留最近 7 天)
+# 清理全局日志 (只保留最近 7 天)
 sudo journalctl --vacuum-time=7d
 
 
