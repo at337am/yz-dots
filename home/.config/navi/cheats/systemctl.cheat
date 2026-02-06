@@ -10,7 +10,7 @@ systemctl --user stop xxx
 systemctl --user restart xxx
 
 # 查看服务状态
-systemctl --user status xxx
+systemctl --user status hello
 
 # 刷新 systemd 缓存 (修改 service 文件后)
 systemctl --user daemon-reload
@@ -30,4 +30,7 @@ systemctl --user disable xxx
 % systemctl, user_service, log
 
 # 查看日志 (实时)
-journalctl --user -u hello -f
+journalctl --user -u hello --follow
+
+# 查看自今天起的日志
+journalctl --user -u hello --since today
