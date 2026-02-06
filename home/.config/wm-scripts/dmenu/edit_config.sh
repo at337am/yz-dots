@@ -51,6 +51,10 @@ configs["lain-bin"]="$HOME/.lain/bin"
 configs["tidy"]="/workspace/dev/yz-dots/tidy"
 configs["bootstrap"]="/workspace/dev/yz-dots/bootstrap"
 
+configs["skit"]="/workspace/dev/skit"
+configs["raindrop"]="/workspace/dev/raindrop"
+configs["hello"]="/workspace/dev/hello"
+
 configs["notes"]="$HOME/Documents/notes"
 
 choice=$(printf "%s\n" "${!configs[@]}" | fuzzel --dmenu)
