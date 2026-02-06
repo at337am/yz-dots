@@ -39,6 +39,9 @@ just install
 
 
 # ------------ hello ------------
+systemctl --user stop hello
+systemctl --user disable hello
+
 cd "/workspace/dev/hello"
 just pack
 rm -rf /opt/soft/hello
