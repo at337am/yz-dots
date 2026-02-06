@@ -31,7 +31,7 @@ systemctl --user enable xxx
 # 【用户级】禁用开机自启
 systemctl --user disable xxx
 
-# 【用户级】查看自启动服务
+# 【用户级】查看有哪些服务是开机自启的
 systemctl --user list-unit-files --type=service --state=enabled
 
 
@@ -45,5 +45,5 @@ systemctl list-units --type=service --state=running
 
 % systemctl, root, autostart
 
-# 【系统级】查看自启动服务
+# 【系统级】查看有哪些服务是开机自启的
 systemctl list-unit-files --type=service --state=enabled
