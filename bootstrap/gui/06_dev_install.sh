@@ -8,20 +8,21 @@ if ! command -v "just" &> /dev/null; then
     exit 1
 fi
 
-if [[ ! -d "/workspace/dev/skit" ]]; then
-    printf "Error: skit directory does not exist!" >&2
-    exit 1
-fi
+# 需要检查的目录列表
+dirs=(
+    "/workspace/dev/skit"
+    "/workspace/dev/raindrop"
+    "/workspace/dev/hello"
+    "/opt/soft"
+)
 
-if [[ ! -d "/workspace/dev/raindrop" ]]; then
-    printf "Error: raindrop directory does not exist!" >&2
-    exit 1
-fi
-
-if [[ ! -d "/opt/soft" ]]; then
-    printf "Error: /opt/soft does not exist.\n" >&2
-    exit 1
-fi
+# 循环检查目录
+for dir in "${dirs[@]}"; do
+    if [[ ! -d "$dir" ]]; then
+        printf "Error: %s does not exist.\n" "$dir" >&2
+        exit 1
+    fi
+done
 
 
 
@@ -31,20 +32,22 @@ just install-all
 
 
 
-# ------------ hello-server ------------
-cd "/workspace/dev/skit/hello-server"
-just pkg
-rm -rf /opt/soft/hello-server
-mv hello-server /opt/soft
+# ------------ raindrop ------------
+cd "/workspace/dev/raindrop"
+just install
+
+
+
+# ------------ hello ------------
+cd "/workspace/dev/skit/hello"
+just pack
+rm -rf /opt/soft/hello
+mv release /opt/soft
 
 systemctl --user daemon-reload
 systemctl --user enable hello
 systemctl --user start hello
 
 
-
-# ------------ raindrop ------------
-cd "/workspace/dev/raindrop"
-just install
 
 printf "Done.\n"
