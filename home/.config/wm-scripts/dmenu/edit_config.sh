@@ -51,7 +51,14 @@ configs["lain-bin"]="$HOME/.lain/bin"
 configs["tidy"]="/workspace/dev/yz-dots/tidy"
 configs["bootstrap"]="/workspace/dev/yz-dots/bootstrap"
 
-configs["skit"]="/workspace/dev/skit"
+configs["skit-dirhash"]="/workspace/dev/skit/dirhash"
+configs["skit-gonew"]="/workspace/dev/skit/gonew"
+configs["skit-md2pg"]="/workspace/dev/skit/md2pg"
+configs["skit-siho"]="/workspace/dev/skit/siho"
+configs["skit-tmrn"]="/workspace/dev/skit/tmrn"
+configs["skit-vid2mp4"]="/workspace/dev/skit/vid2mp4"
+configs["skit-xla"]="/workspace/dev/skit/xla"
+
 configs["raindrop"]="/workspace/dev/raindrop"
 configs["hello"]="/workspace/dev/hello"
 
