@@ -33,22 +33,10 @@ systemctl --user list-units --type=service --state=running
 
 
 
-% systemctl, user_service, log
+% systemctl, root_service, autostart
 
-# 实时查看日志
-journalctl --user -u hello --follow
+# 查看所有开机自启的系统级服务 (root)
+systemctl list-unit-files --type=service --state=enabled
 
-# 查看所有日志
-journalctl --user -u hello
-
-# 查看自今天起的日志
-journalctl --user -u hello --since today
-
-# 查看本次开机后的所有日志 (0 是本次, -1 是上一次, -2 是上上次, 以此类推)
-journalctl --user -u hello --boot 0
-
-# 清理日志 (只保留最近 7 天)
-sudo journalctl --vacuum-time=7d
-
-# 查看当前所有日志占用的总磁盘空间
-journalctl --disk-usage
+# 查看所有正在运行的系统级服务 (root)
+systemctl list-units --type=service --state=running
