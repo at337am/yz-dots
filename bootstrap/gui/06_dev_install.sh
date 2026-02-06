@@ -39,7 +39,7 @@ just install
 
 
 # ------------ hello ------------
-cd "/workspace/dev/skit/hello"
+cd "/workspace/dev/hello"
 just pack
 rm -rf /opt/soft/hello
 mv release /opt/soft
