@@ -8,6 +8,13 @@ last
 
 
 
+% system, user
+
+# 查看所有本地用户
+cat /etc/passwd
+
+
+
 % system, user, who
 
 # 显示当前已登录的用户 (w)
