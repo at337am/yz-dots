@@ -37,9 +37,9 @@ just pkg
 rm -rf /opt/soft/hello-server
 mv hello-server /opt/soft
 
-# 将 hello.service 设置为开机自启, 并立刻启动
 systemctl --user daemon-reload
-systemctl --user enable --now hello
+systemctl --user enable hello
+systemctl --user start hello
 
 
 
