@@ -149,7 +149,8 @@ sudo pacman -S --needed --noconfirm \
     qt6-multimedia-ffmpeg \
     xorg-xlsclients \
     xorg-xwayland \
-    wob
+    wob \
+    dos2unix
 
 # arch 专用工具
 sudo pacman -S --needed --noconfirm \
