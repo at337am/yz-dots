@@ -1,42 +1,49 @@
-% systemctl, user_service
+% systemctl, user
 
-# 启动服务
+# 【用户级】启动服务
 systemctl --user start xxx
 
-# 停止服务
+# 【用户级】停止服务
 systemctl --user stop xxx
 
-# 重启服务
+# 【用户级】重启服务
 systemctl --user restart xxx
 
-# 查看服务状态
+# 【用户级】查看服务状态
 systemctl --user status hello
 
-# 刷新 systemd 缓存 (修改 service 文件后)
+# 【用户级】刷新 systemd 缓存 (修改 service 文件后)
 systemctl --user daemon-reload
 
+# 【用户级】查看失败的服务
+systemctl --user --failed
 
-
-% systemctl, user_service, autostart
-
-# 启用开机自启
-systemctl --user enable xxx
-
-# 禁用开机自启
-systemctl --user disable xxx
-
-# 查看【用户级】自启动服务
-systemctl --user list-unit-files --type=service --state=enabled
-
-# 查看【用户级 正在运行的服务
+# 【用户级】查看正在运行的服务
 systemctl --user list-units --type=service --state=running
 
 
 
-% systemctl, root_service, autostart
+% systemctl, user, autostart
 
-# 查看【系统级】自启动服务
-systemctl list-unit-files --type=service --state=enabled
+# 【用户级】启用开机自启
+systemctl --user enable xxx
 
-# 查看【系统级】正在运行的服务
+# 【用户级】禁用开机自启
+systemctl --user disable xxx
+
+# 【用户级】查看自启动服务
+systemctl --user list-unit-files --type=service --state=enabled
+
+
+
+% systemctl, root
+
+# 【系统级】查看正在运行的服务
 systemctl list-units --type=service --state=running
+
+
+
+% systemctl, root, autostart
+
+# 【系统级】查看自启动服务
+systemctl list-unit-files --type=service --state=enabled
