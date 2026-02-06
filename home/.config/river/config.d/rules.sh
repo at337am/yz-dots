@@ -24,6 +24,9 @@ riverctl rule-add -app-id "mpv" float
 # 尺寸对 mpv 不生效, 找不到解决方式, 不管了
 # riverctl rule-add -app-id "mpv" -title "* - mpv" dimensions 720 480
 
+riverctl rule-add -app-id "io.mgba.mGBA" float
+riverctl rule-add -app-id "io.mgba.mGBA" -title "mGBA - *" dimensions 600 450
+
 # -----------------------
 
 riverctl rule-add -app-id "thunar" float
