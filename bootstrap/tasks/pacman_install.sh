@@ -150,7 +150,8 @@ sudo pacman -S --needed --noconfirm \
     xorg-xlsclients \
     xorg-xwayland \
     wob \
-    dos2unix
+    dos2unix \
+    usbutils
 
 # arch 专用工具
 sudo pacman -S --needed --noconfirm \
