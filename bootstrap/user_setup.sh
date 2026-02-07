@@ -11,7 +11,7 @@ scripts=(
     "tasks/base.sh"
     "tasks/set_pacman_mirror.sh"
     "tasks/pacman_install.sh"
-    "tasks/xdg-user-dirs.sh"
+    "tasks/set_xdg_user_dirs.sh"
     "tasks/sync_dotfiles.sh"
     "tasks/symlink_dotfiles.sh"
     "tasks/set_path_perms.sh"
