@@ -9,7 +9,7 @@ set -euo pipefail
 
 scripts=(
     "tasks/base.sh"
-    "tasks/pacman_mirrorlist.sh"
+    "tasks/set_pacman_mirror.sh"
     "tasks/pacman_install.sh"
     "tasks/xdg-user-dirs.sh"
     "tasks/sync_dotfiles.sh"
