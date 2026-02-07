@@ -17,7 +17,7 @@ scripts=(
     "tasks/set_path_perms.sh"
     "tasks/fetch_fcitx5_dict.sh"
     "tasks/misc_settings.sh"
-    "tasks/install_yay.sh"
+    "tasks/build_yay.sh"
     "tasks/install_themes.sh"
 )
 

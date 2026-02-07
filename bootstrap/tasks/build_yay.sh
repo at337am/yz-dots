@@ -16,7 +16,7 @@ for cmd in "${dependencies[@]}"; do
 done
 
 # 构建并安装 yay
-install_yay() {
+build_yay() {
     tmp_dir=$(mktemp -d)
     trap 'rm -rf "$tmp_dir"' EXIT
 
@@ -25,4 +25,4 @@ install_yay() {
     makepkg -si --noconfirm
 }
 
-install_yay
+build_yay

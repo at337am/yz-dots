@@ -29,6 +29,7 @@ sudo pacman -S --needed --noconfirm \
     telegram-desktop \
     discord \
     firefox \
-    inkscape
+    inkscape \
+    mgba-qt
 
 printf "Done.\n"
