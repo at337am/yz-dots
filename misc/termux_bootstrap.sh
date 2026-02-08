@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# 在 Termux 中启用存储访问, 执行命令: termux-setup-storage
+# 注意: 要先在 Termux 中启用存储访问
 
 set -euo pipefail
 
