@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# 在 Termux 中启用存储访问, 执行命令: termux-setup-storage
+
 set -euo pipefail
 
 if [[ "${PREFIX:-}" != "/data/data/com.termux/files/usr" ]]; then
