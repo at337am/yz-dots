@@ -51,9 +51,6 @@ fcitx5
 vscode
 
 # ------------ .config ------------
-# rm -rf ~/.config/cava
-# ln -sv "$DOTS_PATH/.config/cava" ~/.config/cava
-
 rm -rf ~/.lain
 ln -sv "$DOTS_PATH/.lain" ~/.lain
 
@@ -67,9 +64,6 @@ ln -sv "$DOTS_PATH/.config/fd" ~/.config/fd
 
 rm -rf ~/.config/fontconfig
 ln -sv "$DOTS_PATH/.config/fontconfig" ~/.config/fontconfig
-
-rm -rf ~/.config/hypr
-ln -sv "$DOTS_PATH/.config/hypr" ~/.config/hypr
 
 rm -rf ~/.config/kitty
 ln -sv "$DOTS_PATH/.config/kitty" ~/.config/kitty
@@ -96,9 +90,6 @@ ln -sv "$DOTS_PATH/.config/nvim" ~/.config/nvim
 rm -rf ~/.config/waybar
 ln -sv "$DOTS_PATH/.config/waybar" ~/.config/waybar
 
-# rm -rf ~/.config/xdg-desktop-portal
-# ln -sv "$DOTS_PATH/.config/xdg-desktop-portal" ~/.config/xdg-desktop-portal
-
 rm -rf ~/.config/yt-dlp
 ln -sv "$DOTS_PATH/.config/yt-dlp" ~/.config/yt-dlp
 
@@ -107,9 +98,6 @@ ln -sv "$DOTS_PATH/.config/mimeapps.list" ~/.config/mimeapps.list
 
 rm -rf ~/.config/foot
 ln -sv "$DOTS_PATH/.config/foot" ~/.config/foot
-
-rm -rf ~/.config/sway
-ln -sv "$DOTS_PATH/.config/sway" ~/.config/sway
 
 rm -rf ~/.config/swaylock
 ln -sv "$DOTS_PATH/.config/swaylock" ~/.config/swaylock
