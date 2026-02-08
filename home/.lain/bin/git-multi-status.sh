@@ -18,7 +18,7 @@ project_paths=(
     "/workspace/dev/yz-dots"
     "/workspace/dev/skit"
     "/workspace/dev/raindrop"
-    "/workspace/dev/hello"
+    "/workspace/dev/sayhello"
 )
 
 # 定义颜色

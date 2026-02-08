@@ -22,7 +22,7 @@ systemctl --user restart xxx
 % systemctl, user, status
 
 # 【用户级】查看某个服务的状态
-systemctl --user status hello
+systemctl --user status sayhello
 
 
 

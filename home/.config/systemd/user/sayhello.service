@@ -1,10 +1,10 @@
 [Unit]
-Description=hello server
+Description=sayhello server
 After=network.target
 
 [Service]
-WorkingDirectory=/opt/soft/hello
-ExecStart=/opt/soft/hello/hello
+WorkingDirectory=/opt/soft/sayhello
+ExecStart=/opt/soft/sayhello/sayhello
 Restart=always
 RestartSec=5
 

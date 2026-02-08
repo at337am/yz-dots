@@ -12,7 +12,7 @@ fi
 dirs=(
     "/workspace/dev/skit"
     "/workspace/dev/raindrop"
-    "/workspace/dev/hello"
+    "/workspace/dev/sayhello"
     "/opt/soft"
 )
 
@@ -38,18 +38,18 @@ just install
 
 
 
-# ------------ hello ------------
-systemctl --user stop hello
-systemctl --user disable hello
+# ------------ sayhello ------------
+systemctl --user stop sayhello
+systemctl --user disable sayhello
 
-cd "/workspace/dev/hello"
+cd "/workspace/dev/sayhello"
 just pack
-rm -rf /opt/soft/hello
-mv release /opt/soft/hello
+rm -rf /opt/soft/sayhello
+mv release /opt/soft/sayhello
 
 systemctl --user daemon-reload
-systemctl --user enable hello
-systemctl --user start hello
+systemctl --user enable sayhello
+systemctl --user start sayhello
 
 
 
