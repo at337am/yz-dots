@@ -72,6 +72,8 @@ rsync -a "$dots_path/.gitconfig" ~/
 rsync -a "$dots_path/.lain" ~/
 rsync -a "$dots_path/.zshrc" ~/
 
+# 删除不需要的文件
+rm -rf ~/.lain/lib/func.zsh
 
 
 # ------------- 设置路径权限 -------------
