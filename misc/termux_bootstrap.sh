@@ -7,6 +7,20 @@ if [[ "${PREFIX:-}" != "/data/data/com.termux/files/usr" ]]; then
     exit 1
 fi
 
+confirm() {
+    local prompt=${1:-"Do you want to continue?"}
+    read -r -p "$prompt [y/N]: " choice
+    case "${choice,,}" in
+        y|yes) return 0 ;;
+        *) return 1 ;;
+    esac
+}
+
+if ! confirm "Initialize Termux?"; then
+    printf "Operation cancelled.\n" >&2
+    exit 1
+fi
+
 syncs_path="$HOME/syncs"
 dots_path="$syncs_path/dev/yz-dots/home"
 
@@ -77,6 +91,6 @@ just install-all
 cd "$syncs_path/dev/raindrop"
 just install
 
-
+chsh -s /usr/bin/zsh
 
 printf "Done.\n"
