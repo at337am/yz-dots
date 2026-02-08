@@ -61,7 +61,7 @@ configs["skit-vid2mp4"]="/workspace/dev/skit/vid2mp4"
 configs["skit-xla"]="/workspace/dev/skit/xla"
 
 configs["raindrop"]="/workspace/dev/raindrop"
-configs["hello"]="/workspace/dev/hello"
+configs["sayhello"]="/workspace/dev/sayhello"
 
 configs["notes"]="$HOME/Documents/notes"
 
