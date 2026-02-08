@@ -93,6 +93,6 @@ just install-all
 cd "$syncs_path/dev/raindrop"
 just install
 
-chsh -s /usr/bin/zsh
+chsh -s zsh
 
 printf "Done.\n"
