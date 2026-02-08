@@ -48,6 +48,7 @@ configs["fastfetch"]="$HOME/.config/fastfetch"
 configs["lain"]="$HOME/.lain"
 configs["lain-bin"]="$HOME/.lain/bin"
 
+configs["yz-dots"]="/workspace/dev/yz-dots"
 configs["tidy"]="/workspace/dev/yz-dots/tidy"
 configs["bootstrap"]="/workspace/dev/yz-dots/bootstrap"
 
