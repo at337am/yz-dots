@@ -105,9 +105,6 @@ ln -sv "$DOTS_PATH/.config/yt-dlp" ~/.config/yt-dlp
 rm -rf ~/.config/mimeapps.list
 ln -sv "$DOTS_PATH/.config/mimeapps.list" ~/.config/mimeapps.list
 
-rm -rf ~/.config/gtk-3.0/bookmarks
-ln -sv "$DOTS_PATH/.config/gtk-3.0/bookmarks" ~/.config/gtk-3.0/bookmarks
-
 rm -rf ~/.config/foot
 ln -sv "$DOTS_PATH/.config/foot" ~/.config/foot
 
