@@ -15,7 +15,7 @@ if [[ "$#" -ne 1 ]]; then
 fi
 
 PROJECT_NAME="$1"
-template_dir="$HOME/.config/shnew/templates"
+template_dir="$HOME/.local/share/shnew/templates"
 
 # 检查模板目录是否存在
 if [[ ! -d "$template_dir" ]]; then
