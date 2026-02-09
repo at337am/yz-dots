@@ -9,15 +9,13 @@ if [[ "$#" -ne 1 ]]; then
 fi
 
 template_path="$HOME/.local/share/shnew/example.sh"
-output_path="$1"
+output_path="${1}.sh"
 
-# 检查模板文件是否存在
 if [[ ! -f "$template_path" ]]; then
     printf "Error: %s does not exist.\n" "$IMG_PATH" >&2
     exit 1
 fi
 
-# 拷贝模板文件
 cp -a "$template_path" "$output_path"
 
 printf "Created -> %s\n" "$output_path"
