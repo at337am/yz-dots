@@ -14,3 +14,5 @@ firefox --new-window "https://aistudio.google.com/prompts/new_chat" &
 sleep 1
 
 riverctl toggle-fullscreen
+
+firefox "https://gemini.google.com"
