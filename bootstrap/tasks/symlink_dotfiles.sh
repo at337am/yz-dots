@@ -77,8 +77,11 @@ ln -sv "$DOTS_PATH/.config/mako" ~/.config/mako
 rm -rf ~/.config/mpv
 ln -sv "$DOTS_PATH/.config/mpv" ~/.config/mpv
 
-rm -rf ~/.config/navi
+rm -rf \
+    ~/.config/navi \
+    ~/.local/share/navi
 ln -sv "$DOTS_PATH/.config/navi" ~/.config/navi
+ln -sv "$DOTS_PATH/.local/share/navi" ~/.local/share/navi
 
 rm -rf \
 	~/.config/nvim \
@@ -119,3 +122,6 @@ ln -sv "$DOTS_PATH/.config/wm-scripts" ~/.config/wm-scripts
 
 rm -rf ~/.config/kanshi
 ln -sv "$DOTS_PATH/.config/kanshi" ~/.config/kanshi
+
+rm -rf ~/.local/share/shnew
+ln -sv "$DOTS_PATH/.local/share/shnew" ~/.local/share/shnew
