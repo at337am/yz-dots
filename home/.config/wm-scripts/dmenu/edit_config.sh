@@ -45,6 +45,7 @@ configs["applications"]="$HOME/.local/share/applications"
 configs["fastfetch"]="$HOME/.config/fastfetch"
 configs["lain"]="$HOME/.lain"
 configs["lain-bin"]="$HOME/.lain/bin"
+configs["shnew"]="$HOME/.local/share/shnew"
 
 configs["yz-dots"]="/workspace/dev/yz-dots"
 configs["tidy"]="/workspace/dev/yz-dots/tidy"
