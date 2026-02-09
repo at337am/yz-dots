@@ -15,4 +15,4 @@ sleep 1
 
 riverctl toggle-fullscreen
 
-firefox "https://gemini.google.com"
+# firefox "https://gemini.google.com"
