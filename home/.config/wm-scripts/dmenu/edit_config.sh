@@ -27,8 +27,6 @@ notify() {
 }
 
 declare -A configs
-# configs["hypr"]="$HOME/.config/hypr"
-# configs["sway"]="$HOME/.config/sway"
 configs["river"]="$HOME/.config/river"
 configs["wm-scripts"]="$HOME/.config/wm-scripts"
 configs["swaylock"]="$HOME/.config/swaylock"
