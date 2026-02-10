@@ -2,6 +2,10 @@
 
 
 
+客体	keti
+主体	zhuti
+主体性	zhutixin
+主体性	zhutixing
 利维坦	liweitan
 体制	tizhi
 极权	jiquan
