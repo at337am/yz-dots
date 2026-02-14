@@ -15,8 +15,8 @@
 文革	wg
 文革	wenge
 文革	wengge
-亲信	qinxin
-亲信	qinxing
+清醒	qinxin
+清醒	qinxing
 会话	huihua
 正常	zc
 还是什么	haishism
