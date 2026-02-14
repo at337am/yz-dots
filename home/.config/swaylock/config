@@ -40,10 +40,10 @@ line-color=424242
 separator-color=424242
 
 # 文字颜色
-text-color=ffffff
-text-clear-color=ffffff
-text-ver-color=ffffff
-text-wrong-color=ffffff
+text-color=F5F5F5
+text-clear-color=F5F5F5
+text-ver-color=F5F5F5
+text-wrong-color=F5F5F5
 
 # 每当你按下一个字符键时，圆环上闪过的高亮颜色
 key-hl-color=FFD6BA
@@ -52,4 +52,4 @@ key-hl-color=FFD6BA
 bs-hl-color=FFDCDC
 
 # 键盘布局文字颜色
-layout-text-color=ffffff
+layout-text-color=F5F5F5
