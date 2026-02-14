@@ -26,7 +26,9 @@ fi
 
 color=$(grim -g "$geometry" -t ppm - | magick - -format '%[hex:u]' info:-)
 
-final_color="#$(echo "$color" | cut -c 1-6)"
+final_color="$(echo "$color" | cut -c 1-6)"
+
+# final_color="#$(echo "$color" | cut -c 1-6)"
 
 # 复制到剪贴板, -n: 不带换行符
 echo -n "$final_color" | wl-copy
