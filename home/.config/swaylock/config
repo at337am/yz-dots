@@ -50,7 +50,7 @@ text-wrong-color=F5F5F5
 key-hl-color=FFD6BA
 
 # 每当你按下退格键时，圆环上闪过的高亮颜色
-bs-hl-color=B6AE9F
+bs-hl-color=C5C7BC
 
 # 键盘布局文字颜色
 layout-text-color=F5F5F5
