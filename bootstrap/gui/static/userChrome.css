@@ -32,3 +32,4 @@
 
 /* 将标签页添加到新群组 */
 menuitem[label="将标签页添加到新群组"] { display: none !important; }
+menuitem[label="Add Tab to New Group"] { display: none !important; }
