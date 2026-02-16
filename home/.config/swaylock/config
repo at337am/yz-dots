@@ -19,8 +19,6 @@ inside-clear-color=00000000
 inside-ver-color=00000000
 inside-wrong-color=00000000
 
-# color: https://colorhunt.co/palette/ffdcdcfff2ebffe8cdffd6ba
-
 # 默认状态下，外层圆环的颜色
 ring-color=FFF2EB
 
