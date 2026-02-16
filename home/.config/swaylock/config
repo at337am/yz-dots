@@ -24,12 +24,11 @@ inside-wrong-color=00000000
 # 默认状态下，外层圆环的颜色
 ring-color=FFF2EB
 
+# 正在验证密码时，外层圆环的颜色
+ring-ver-color=FFF2EB
+
 # 输入清空时，外层圆环闪烁的颜色
 ring-clear-color=C5C7BC
-
-# 正在验证密码时，外层圆环的颜色
-# todo
-ring-ver-color=F9F8F6
 
 # 密码错误时，外层圆环的颜色
 ring-wrong-color=FF8282
@@ -42,8 +41,8 @@ separator-color=424242
 
 # 文字颜色
 text-color=F5F5F5
-text-clear-color=F5F5F5
 text-ver-color=F5F5F5
+text-clear-color=F5F5F5
 text-wrong-color=F5F5F5
 
 # 每当你按下一个字符键时，圆环上闪过的高亮颜色
