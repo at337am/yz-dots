@@ -29,7 +29,7 @@ ring-clear-color=C5C7BC
 
 # 正在验证密码时，外层圆环的颜色
 # todo
-ring-ver-color=FFCCE1
+ring-ver-color=F9F8F6
 
 # 密码错误时，外层圆环的颜色
 ring-wrong-color=FF8282
