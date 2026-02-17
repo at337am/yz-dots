@@ -5,11 +5,11 @@ if pgrep -x slurp > /dev/null; then
     exit 0
 fi
 
-output_dir="$HOME/Pictures/Screenshots"
+output_dir="$HOME/Pictures/screen_shots"
 
 mkdir -p "$output_dir"
 
-file_path="$output_dir/$(date +'%y%m%d_%H%M%S').png"
+output_file="$output_dir/shot_$(date +'%y%m%d_%H%M%S').png"
 
 # 发送通知
 notify() {
@@ -23,13 +23,13 @@ case "$1" in
     "area-save")
         geometry=$(slurp -b 0ABAB540)
         if [[ -n "$geometry" ]]; then
-            grim -g "$geometry" "$file_path"
+            grim -g "$geometry" "$output_file"
         else
             notify "Cancelled"
         fi
         ;;
     "full-save")
-        grim "$file_path"
+        grim "$output_file"
         ;;
     "area-copy")
         geometry=$(slurp -b 0ABAB540)
