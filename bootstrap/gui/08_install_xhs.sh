@@ -53,7 +53,7 @@ uv sync
 
 # 最后软链接
 rm -rf /data/dl_xhs
-ln -sv "$destination/Volume/Download" /data/dl_xhs
+ln -sv "$destination/Volume/Download" /data/hello/dl_xhs
 
 printf "Done.\n"
 
