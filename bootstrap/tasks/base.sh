@@ -26,6 +26,7 @@ fi
 create_path() {
     mkdir -p ~/.config
     mkdir -p ~/.local/share/fonts
+    mkdir -p ~/.local/share/restore
     mkdir -p ~/Pictures/PFP
     mkdir -p ~/Documents
 
@@ -35,7 +36,6 @@ create_path() {
         /data/bak/pending \
         /data/hello/pending \
         /data/dl_tg \
-        /data/restore \
         /opt/soft
 
     sudo chown -R $(whoami):$(id -gn) \
@@ -49,11 +49,11 @@ migration() {
     rsync -a "$syncs_path/Documents/" ~/Documents/
     rsync -a "$syncs_path/PFP/" ~/Pictures/PFP/
     rsync -a "$syncs_path/fonts/" ~/.local/share/fonts/
-    rsync -a "$syncs_path/restore/" /data/restore/
+    rsync -a "$syncs_path/restore/" ~/.local/share/restore/
 }
 
 install_nekoray() {
-    local nekoray_path="/data/restore/nekoray.tar.gz"
+    local nekoray_path="$HOME/.local/share/restore/nekoray.tar.gz"
 
 	if [[ ! -f "$nekoray_path" ]]; then
 		printf "Error:  %s does not exist.\n" "$nekoray_path" >&2
