@@ -2,8 +2,8 @@
 
 set -euo pipefail
 
-restore_path="/data/restore/nekoray.tar.gz"
-old_restore_path="/data/restore/old/nekoray_bak_$(date +"%y%m%d_%H%M%S").tar.gz"
+restore_path="$HOME/.local/share/restore/nekoray.tar.gz"
+old_restore_path="$HOME/.local/share/restore/old/nekoray_bak_$(date +"%y%m%d_%H%M%S").tar.gz"
 nekoray_path="/opt/soft/nekoray"
 
 confirm() {

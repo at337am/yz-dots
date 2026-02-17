@@ -25,7 +25,7 @@ documents_path="$HOME/Documents"
 fonts_path="$HOME/.local/share/fonts"
 pfp_path="$HOME/Pictures/PFP"
 dev_path="/workspace/dev"
-restore_path="/data/restore"
+restore_path="$HOME/.local/share/restore"
 
 source_dirs=(
     "$documents_path"
