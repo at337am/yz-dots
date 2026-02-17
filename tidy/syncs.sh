@@ -84,12 +84,12 @@ fi
 action="${1:---sync}"
 
 case "$action" in
-    -s|--sync)
-        mirroring
-        ;;
     -p|--pack)
         mirroring
         pack_all
+        ;;
+    -s|--sync)
+        mirroring
         ;;
     -h|--help)
         usage
