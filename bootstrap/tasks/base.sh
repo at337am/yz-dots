@@ -29,11 +29,11 @@ create_path() {
     mkdir -p ~/.local/share/restore
     mkdir -p ~/Pictures/PFP
     mkdir -p ~/Documents
-    mkdir -p ~/Downloads/dl_tg
 
     sudo mkdir -p \
         /workspace/dev \
         /workspace/tmp \
+        /data/dl_tg \
         /data/bak \
         /data/avoid/pending \
         /data/hello/pending \
