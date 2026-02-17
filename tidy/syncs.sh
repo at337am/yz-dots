@@ -56,19 +56,19 @@ mirroring() {
             "$path/" \
             "$TARGET_DIR/$(basename "$path")"
     done
-    printf "All directory contents have been synced.\n"
+    printf "Directories synced\n"
 
     # 2. 同步所有软件包列表
     pacman -Qqen > "$native_pkglist"
     pacman -Qqem > "$aur_pkglist"
-    printf "All package lists have been synced.\n"
+    printf "Package lists synced\n"
 }
 
 # 为迁移做准备, 打包所有内容
 pack_all() {
     local timestamp=$(date +"%y%m%d_%H%M%S")
     tar -cf "$HOME/Downloads/syncs_migration_${timestamp}.tar" -C /data/bak/ syncs
-    printf "${GREEN}The migration has been packed into ~/Downloads.${NC}\n"
+    printf "${GREEN}The migration has been packed into ~/Downloads${NC}\n"
 }
 
 # -------------- 程序主入口 --------------
