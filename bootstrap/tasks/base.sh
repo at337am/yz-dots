@@ -29,13 +29,14 @@ create_path() {
     mkdir -p ~/.local/share/restore
     mkdir -p ~/Pictures/PFP
     mkdir -p ~/Documents
+    mkdir -p ~/Downloads/dl_tg
 
     sudo mkdir -p \
         /workspace/dev \
         /workspace/tmp \
-        /data/bak/pending \
+        /data/bak \
+        /data/avoid/pending \
         /data/hello/pending \
-        /data/dl_tg \
         /opt/soft
 
     sudo chown -R $(whoami):$(id -gn) \
