@@ -52,6 +52,10 @@ sudo pacman -S --needed --noconfirm \
 sudo pacman -S --needed --noconfirm \
     sound-theme-freedesktop
 
+# 光标主题
+sudo pacman -S --needed --noconfirm \
+    breeze-cursors
+
 # 手机传输相关
 sudo pacman -S --needed --noconfirm \
     android-tools \

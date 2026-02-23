@@ -27,6 +27,8 @@ create_path() {
     mkdir -p ~/.config
     mkdir -p ~/.local/share/fonts
     mkdir -p ~/.local/share/restore
+    mkdir -p ~/.local/share/themes
+    mkdir -p ~/.local/share/icons
     mkdir -p ~/Pictures/PFP
     mkdir -p ~/Documents
 
