@@ -8,17 +8,9 @@ if ! command -v "uv" &> /dev/null; then
     exit 1
 fi
 
-# ----------------------------------
-# 函数: 打印帮助信息
-# ----------------------------------
-usage() {
-    printf "Usage:\n"
-    printf "  %s [flags]\n" "$(basename "$0")"
-    printf "\nFlags:\n"
-    printf "  -c, --clear           清除历史记录\n"
-    printf "  -s, --start           启动 (默认)\n"
-    printf "  -h, --help            Show this help message\n"
-}
+# 定义颜色
+RED='\033[0;31m'        # 红色
+NC='\033[0m'            # 重置色
 
 # 项目目录
 TARGET_DIR="/opt/soft/XHS-Downloader"
@@ -31,6 +23,18 @@ fi
 
 # 进入项目目录
 cd "$TARGET_DIR"
+
+# ----------------------------------
+# 函数: 打印帮助信息
+# ----------------------------------
+usage() {
+    printf "Usage:\n"
+    printf "  %s [flags]\n" "$(basename "$0")"
+    printf "\nFlags:\n"
+    printf "  -c, --clear           清除历史记录\n"
+    printf "  -s, --start           启动 (默认)\n"
+    printf "  -h, --help            Show this help message\n"
+}
 
 # 清除历史记录
 clear_history() {
