@@ -32,7 +32,7 @@ usage() {
     printf "  %s [flags]\n" "$(basename "$0")"
     printf "\nFlags:\n"
     printf "  -c, --clear           清除历史记录\n"
-    printf "  -s, --start           启动 (默认)\n"
+    printf "  -s, --start           启动程序 (默认)\n"
     printf "  -h, --help            Show this help message\n"
 }
 
