@@ -2,6 +2,7 @@
 image/png=qimgv.desktop
 image/gif=qimgv.desktop
 image/jpeg=qimgv.desktop
+image/webp=qimgv.desktop
 text/html=firefox.desktop
 video/mp4=mpv.desktop
 video/webm=mpv.desktop

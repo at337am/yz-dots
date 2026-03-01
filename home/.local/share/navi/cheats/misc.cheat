@@ -15,19 +15,6 @@ terminal-rain
 
 
 
-% file
-
-# 检查文件的真实类型
-file a.mp4
-
-# 输出文件的 MIME 类型
-file -i a.mp4
-
-# 批量检查文件的类型
-file *
-
-
-
 % uniq, sort
 
 # 去除重复行

@@ -11,6 +11,19 @@ xdg-mime query default x-scheme-handler/https
 
 
 
+% xdg, mime, file, search
+
+# 检查文件的真实类型
+file xxx
+
+# 输出文件的 MIME 类型
+file -i xxx
+
+# 批量检查文件的类型
+file *
+
+
+
 % xdg, mime, setup
 
 # 设置默认关联
