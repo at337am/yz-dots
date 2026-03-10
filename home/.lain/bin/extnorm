@@ -41,7 +41,7 @@ for file in *.*; do
             printf "${RED}Error:${NC} 无法将 '%s' 重命名为 '%s', 因为目标文件已存在\n" "$file" "$new_file" >&2
         else
             mv -n -- "$file" "$new_file"
-            printf "${GREEN}normalize:${NC} %s -> %s\n" "$file" "$new_file"
+            printf "${GREEN}Renamed: %s -> %s${NC}\n" "$file" "$new_file"
         fi
     fi
 done
