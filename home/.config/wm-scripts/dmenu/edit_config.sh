@@ -63,6 +63,7 @@ configs["raindrop"]="/workspace/dev/raindrop"
 configs["sayhello"]="/workspace/dev/sayhello"
 
 configs["notes"]="$HOME/Documents/notes"
+configs["memos"]="$HOME/Documents/memos"
 
 choice=$(printf "%s\n" "${!configs[@]}" | fuzzel --dmenu)
 
