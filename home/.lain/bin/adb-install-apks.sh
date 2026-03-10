@@ -19,15 +19,15 @@ success=0
 fail=0
 
 # 遍历当前路径下, 所有「以 apk 为扩展名」的文件
-for apk in *.apk; do
+for file in *.apk; do
     # 确保是普通文件 (跳过目录和特殊文件)
-    [[ -f "$apk" ]] || continue
+    [[ -f "$file" ]] || continue
 
-    if adb install -r "$apk"; then
-        printf "OK -> %s\n" "$apk"
+    if adb install -r "$file"; then
+        printf "OK -> %s\n" "$file"
         success=$((success + 1))
     else
-        printf "ERR -> %s\n" "$apk"
+        printf "ERR -> %s\n" "$file"
         fail=$((fail + 1))
     fi
     printf "%s\n" "-------------"

@@ -14,7 +14,7 @@ for file in *.*; do
     filename="${file%.*}"
     ext="${file##*.}"
 
-    # 后缀转换为小写
+    # 将扩展名转换为小写
     ext_lower="${ext,,}"
 
     case "$ext_lower" in
@@ -22,7 +22,7 @@ for file in *.*; do
             new_ext="jpg"
             ;;
         *)
-            # 如果没有匹配到特殊规则, 就直接使用小写后缀
+            # 如果没有匹配到特殊规则, 就直接使用小写
             new_ext="$ext_lower"
             ;;
     esac
