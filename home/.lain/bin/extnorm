@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
+# 脚本用途: 规范化文件扩展名格式
+# -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
+
 set -euo pipefail
 
 # 遍历当前路径下，所有「有扩展名」的文件
@@ -32,7 +36,7 @@ for file in *.*; do
             printf "Error: 无法将 '%s' 重命名为 '%s', 因为目标文件已存在\n" "$file" "$new_file" >&2
         else
             mv "$file" "$new_file"
-            printf "rename: %s -> %s\n" "$file" "$new_file"
+            printf "normalize: %s -> %s\n" "$file" "$new_file"
         fi
     fi
 done
