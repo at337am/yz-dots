@@ -19,8 +19,7 @@ success=0
 fail=0
 
 # 遍历当前目录下所有 .apk 后缀的文件
-for apk in *.apk
-do
+for apk in *.apk; do
     # 检查是否存在文件
     [[ ! -f "$apk" ]] && continue
 
