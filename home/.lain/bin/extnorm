@@ -38,7 +38,7 @@ for file in *.*; do
     if [[ "$file" != "$new_file" ]]; then
         # 检查目标文件是否已经存在, 防止覆盖
         if [[ -e "$new_file" ]]; then
-            printf "${RED}Error:${NC} 无法将 '%s' 重命名为 '%s', 因为目标文件已存在\n" "$file" "$new_file" >&2
+            printf "${RED}Error:${NC} 无法将 '%s' 重命名为 '%s', 目标文件已存在\n" "$file" "$new_file" >&2
         else
             mv -n -- "$file" "$new_file"
             printf "${GREEN}Renamed: %s -> %s${NC}\n" "$file" "$new_file"
