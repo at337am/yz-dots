@@ -18,10 +18,10 @@ done
 success=0
 fail=0
 
-# 遍历当前目录下所有 .apk 后缀的文件
+# 遍历当前路径下, 所有「以 apk 为扩展名」的文件
 for apk in *.apk; do
-    # 检查是否存在文件
-    [[ ! -f "$apk" ]] && continue
+    # 确保是普通文件 (跳过目录和特殊文件)
+    [[ -f "$apk" ]] || continue
 
     if adb install -r "$apk"; then
         printf "OK -> %s\n" "$apk"
