@@ -18,4 +18,4 @@ fi
 
 cp -a "$template_path" "$output_path"
 
-printf "Created -> %s\n" "$output_path"
+printf "created -> %s\n" "$output_path"
