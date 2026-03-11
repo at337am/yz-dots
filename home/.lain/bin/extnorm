@@ -11,6 +11,20 @@ RED='\033[0;31m'        # 红色
 GREEN='\033[0;32m'      # 绿色
 NC='\033[0m'            # 重置色
 
+confirm() {
+    local prompt=${1:-"Do you want to continue?"}
+    read -r -p "$prompt [y/N]: " choice
+    case "${choice,,}" in
+        y|yes) return 0 ;;
+        *) return 1 ;;
+    esac
+}
+
+if ! confirm "Normalize extension?"; then
+    printf "Operation cancelled.\n" >&2
+    exit 1
+fi
+
 # 遍历当前路径下, 所有「有扩展名」的文件
 for file in *.*; do
     # 确保是普通文件 (跳过目录和特殊文件)

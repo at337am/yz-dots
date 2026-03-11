@@ -2,6 +2,7 @@
 
 
 
+简短	jianduan
 客体	keti
 主体	zhuti
 主体性	zhutixin
