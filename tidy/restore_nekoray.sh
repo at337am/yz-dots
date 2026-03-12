@@ -16,7 +16,7 @@ confirm() {
 }
 
 restore() {
-	if ! confirm "Are you sure you want to restore nekoray?"; then
+	if ! confirm "Restore nekoray?"; then
     	printf "Operation cancelled.\n" >&2
 	    exit 1
 	fi
@@ -35,7 +35,7 @@ restore() {
 }
 
 bak() {
-	if ! confirm "Are you sure you want to bak nekoray?"; then
+	if ! confirm "Back up nekoray?"; then
     	printf "Operation cancelled.\n" >&2
 	    exit 1
 	fi

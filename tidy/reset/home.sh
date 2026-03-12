@@ -13,7 +13,7 @@ confirm() {
     esac
 }
 
-if ! confirm "Are you sure you want to reset home?"; then
+if ! confirm "Reset home?"; then
     printf "Operation cancelled.\n" >&2
     exit 1
 fi
