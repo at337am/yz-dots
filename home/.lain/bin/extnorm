@@ -11,6 +11,12 @@ RED='\033[0;31m'        # 红色
 GREEN='\033[0;32m'      # 绿色
 NC='\033[0m'            # 重置色
 
+# 禁止在 HOME 目录下执行
+if [[ "$PWD" == "$HOME" ]]; then
+    printf "${RED}extnorm: Do not run under HOME!${NC}\n" >&2
+    return 1
+fi
+
 confirm() {
     local prompt=${1:-"Do you want to continue?"}
     read -r -p "$prompt [y/N]: " choice
