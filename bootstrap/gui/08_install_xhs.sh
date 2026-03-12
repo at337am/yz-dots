@@ -20,7 +20,7 @@ confirm() {
     esac
 }
 
-if ! confirm "Are you sure you want to install xhs?"; then
+if ! confirm "Install XHS-Downloader?"; then
     printf "Operation cancelled.\n" >&2
     exit 1
 fi
