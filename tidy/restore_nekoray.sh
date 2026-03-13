@@ -6,8 +6,8 @@ set -euo pipefail
 RED='\033[0;31m'        # 红色
 NC='\033[0m'            # 重置色
 
-restore_path="$HOME/.local/share/restore/nekoray.tar.gz"
-old_restore_path="$HOME/.local/share/restore/old/nekoray_bak_$(date +"%y%m%d_%H%M%S").tar.gz"
+bak_file_path="$HOME/.local/share/restore/nekoray.tar.gz"
+old_dir_path="$HOME/.local/share/restore/old"
 nekoray_path="/opt/soft/nekoray"
 
 usage() {
@@ -34,8 +34,8 @@ restore() {
 	    exit 1
 	fi
 
-	if [[ ! -f "$restore_path" ]]; then
-		printf "Error: %s does not exist.\n" "$restore_path" >&2
+	if [[ ! -f "$bak_file_path" ]]; then
+		printf "Error: %s does not exist.\n" "$bak_file_path" >&2
 		exit 1
 	fi
 
@@ -44,7 +44,7 @@ restore() {
 
 	rm -rf "$nekoray_path"
 
-	tar -zxf "$restore_path" -C /opt/soft/
+	tar -zxf "$bak_file_path" -C /opt/soft/
 }
 
 bak() {
@@ -61,13 +61,13 @@ bak() {
 	pkill -15 nekoray || true
 	sleep 1
 
-	mkdir -p /data/restore/old/
+	mkdir -p "$old_dir_path"
 
-	if [[ -f "$restore_path" ]]; then
-		mv -v "$restore_path" "$old_restore_path"
+	if [[ -f "$bak_file_path" ]]; then
+		mv -v "$bak_file_path" "$old_dir_path/nekoray_bak_$(date +"%y%m%d_%H%M%S").tar.gz"
 	fi
 
-	tar -zcf "$restore_path" -C /opt/soft/ nekoray
+	tar -zcf "$bak_file_path" -C /opt/soft/ nekoray
 }
 
 # -------------- 程序主入口 --------------
