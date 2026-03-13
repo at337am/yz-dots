@@ -37,20 +37,20 @@ confirm() {
 }
 
 stop_nekoray() {
-	pkill -15 nekoray || true
-	sleep 1
+    pkill -15 nekoray || true
+    sleep 1
 }
 
 update_geo_database() {
-	if ! confirm "Update NekoRay's geo database?"; then
+    if ! confirm "Update NekoRay's geo database?"; then
         printf "Operation cancelled.\n" >&2
-	    exit 1
-	fi
+        exit 1
+    fi
 
-	if [[ ! -d "$nekoray_path" ]]; then
-		printf "Error: %s does not exist.\n" "$nekoray_path" >&2
-		exit 1
-	fi
+    if [[ ! -d "$nekoray_path" ]]; then
+        printf "Error: %s does not exist.\n" "$nekoray_path" >&2
+        exit 1
+    fi
 
     stop_nekoray
 
@@ -59,43 +59,43 @@ update_geo_database() {
 }
 
 restore() {
-	if ! confirm "Restore NekoRay?"; then
-    	printf "Operation cancelled.\n" >&2
-	    exit 1
-	fi
+    if ! confirm "Restore NekoRay?"; then
+        printf "Operation cancelled.\n" >&2
+        exit 1
+    fi
 
-	if [[ ! -f "$bak_file_path" ]]; then
-		printf "Error: %s does not exist.\n" "$bak_file_path" >&2
-		exit 1
-	fi
+    if [[ ! -f "$bak_file_path" ]]; then
+        printf "Error: %s does not exist.\n" "$bak_file_path" >&2
+        exit 1
+    fi
 
     stop_nekoray
 
-	rm -rf "$nekoray_path"
+    rm -rf "$nekoray_path"
 
-	tar -zxf "$bak_file_path" -C /opt/soft/
+    tar -zxf "$bak_file_path" -C /opt/soft/
 }
 
 bak() {
-	if ! confirm "Back up NekoRay?"; then
-    	printf "Operation cancelled.\n" >&2
-	    exit 1
-	fi
+    if ! confirm "Back up NekoRay?"; then
+        printf "Operation cancelled.\n" >&2
+        exit 1
+    fi
 
-	if [[ ! -d "$nekoray_path" ]]; then
-		printf "Error: %s does not exist.\n" "$nekoray_path" >&2
-		exit 1
-	fi
+    if [[ ! -d "$nekoray_path" ]]; then
+        printf "Error: %s does not exist.\n" "$nekoray_path" >&2
+        exit 1
+    fi
 
     stop_nekoray
 
-	mkdir -p "$old_bak_dir_path"
+    mkdir -p "$old_bak_dir_path"
 
-	if [[ -f "$bak_file_path" ]]; then
-		mv -v "$bak_file_path" "$old_bak_dir_path/nekoray_bak_$(date +"%y%m%d_%H%M%S").tar.gz"
-	fi
+    if [[ -f "$bak_file_path" ]]; then
+        mv -v "$bak_file_path" "$old_bak_dir_path/nekoray_bak_$(date +"%y%m%d_%H%M%S").tar.gz"
+    fi
 
-	tar -zcf "$bak_file_path" -C /opt/soft/ nekoray
+    tar -zcf "$bak_file_path" -C /opt/soft/ nekoray
 }
 
 # -------------- 程序主入口 --------------
