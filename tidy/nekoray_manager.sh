@@ -6,6 +6,9 @@ set -euo pipefail
 RED='\033[0;31m'        # 红色
 NC='\033[0m'            # 重置色
 
+# 声明临时目录变量
+tmp_dir=""
+
 restore_path="$HOME/.local/share/restore"
 mkdir -p "$restore_path"
 
@@ -54,7 +57,6 @@ update_geo_assets() {
     fi
 
     # 创建临时目录
-    local tmp_dir
     tmp_dir=$(mktemp -d)
     trap 'rm -rf "$tmp_dir"' EXIT
 
