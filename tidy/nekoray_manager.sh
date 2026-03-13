@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Geo Assets 这个差不多每月更新一次就行
+
 set -euo pipefail
 
 # 定义颜色
