@@ -43,7 +43,7 @@ stop_nekoray() {
 
 update_geo_database() {
 	if ! confirm "Update NekoRay's geo database?"; then
-    	printf "Operation cancelled.\n" >&2
+        printf "Operation cancelled.\n" >&2
 	    exit 1
 	fi
 
@@ -112,7 +112,7 @@ action="${1:---restore}"
 
 case "$action" in
     -b|--bak)
-		bak
+        bak
         ;;
     -r|--restore)
         restore
