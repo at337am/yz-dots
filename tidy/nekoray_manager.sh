@@ -100,15 +100,14 @@ bak() {
 
 # -------------- 程序主入口 --------------
 
-# 参数个数不能大于 1
-if [[ "$#" -gt 1 ]]; then
-    printf "${RED}Error:${NC} Too many arguments.\n" >&2
+# 参数个数不等于 1
+if [[ "$#" -ne 1 ]]; then
+    printf "${RED}Error:${NC} Exactly one argument is required.\n" >&2
     usage >&2
     exit 1
 fi
 
-# 如果 $1 为空 (无参数)，则赋值为 --restore
-action="${1:---restore}"
+action="$1"
 
 case "$action" in
     -b|--bak)
