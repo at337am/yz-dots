@@ -22,8 +22,8 @@ usage() {
     printf "  %s [flags]\n" "$(basename "$0")"
     printf "\nFlags:\n"
     printf "  -b, --bak             备份整个 NekoRay\n"
-    printf "  -r, --restore         重置 NekoRay (默认)\n"
-    printf "  -u, --update          更新 NekoRay 的 geo database\n"
+    printf "  -r, --restore         重置整个 NekoRay (默认)\n"
+    printf "  -u, --update          更新 NekoRay 的 Geo Database\n"
     printf "  -h, --help            Show this help message\n"
 }
 
@@ -41,8 +41,9 @@ stop_nekoray() {
     sleep 1
 }
 
+# 更新 Geo Database
 update_geo_database() {
-    if ! confirm "Update NekoRay's geo database?"; then
+    if ! confirm "Update NekoRay's Geo Database?"; then
         printf "Operation cancelled.\n" >&2
         exit 1
     fi
@@ -70,13 +71,14 @@ update_geo_database() {
 
     stop_nekoray
 
-    printf "Applying new geo databases...\n"
+    printf "Applying new Geo Databases...\n"
 
     # 最后再进行覆盖替换
     mv -f "$tmp_dir/geoip.db" "$nekoray_path/geoip.db"
     mv -f "$tmp_dir/geosite.db" "$nekoray_path/geosite.db"
 }
 
+# 重置整个 NekoRay
 restore() {
     if ! confirm "Restore NekoRay?"; then
         printf "Operation cancelled.\n" >&2
@@ -95,6 +97,7 @@ restore() {
     tar -zxf "$bak_file_path" -C /opt/soft/
 }
 
+# 备份整个 NekoRay
 bak() {
     if ! confirm "Back up NekoRay?"; then
         printf "Operation cancelled.\n" >&2
