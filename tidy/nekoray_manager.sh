@@ -23,7 +23,7 @@ usage() {
     printf "\nFlags:\n"
     printf "  -b, --bak             备份整个 NekoRay\n"
     printf "  -r, --restore         重置整个 NekoRay (默认)\n"
-    printf "  -u, --update          更新 NekoRay 的 Geo Database\n"
+    printf "  -u, --update          更新 NekoRay 的 Geo Assets\n"
     printf "  -h, --help            Show this help message\n"
 }
 
@@ -41,9 +41,9 @@ stop_nekoray() {
     sleep 1
 }
 
-# 更新 Geo Database
-update_geo_database() {
-    if ! confirm "Update NekoRay's Geo Database?"; then
+# 更新 Geo Assets
+update_geo_assets() {
+    if ! confirm "Update NekoRay's geo assets?"; then
         printf "Operation cancelled.\n" >&2
         exit 1
     fi
@@ -60,18 +60,18 @@ update_geo_database() {
 
     # 先下载到临时目录
     if ! wget -O "$tmp_dir/geoip.db" "$singbox_geoip_url"; then
-        printf "${RED}Error:${NC} Failed to download GeoIP database.\n" >&2
+        printf "${RED}Error:${NC} Failed to download GeoIP data.\n" >&2
         exit 1
     fi
 
     if ! wget -O "$tmp_dir/geosite.db" "$singbox_geosite_url"; then
-        printf "${RED}Error:${NC} Failed to download GeoSite database.\n" >&2
+        printf "${RED}Error:${NC} Failed to download GeoSite data.\n" >&2
         exit 1
     fi
 
     stop_nekoray
 
-    printf "Applying new Geo Database...\n"
+    printf "Applying new geo assets...\n"
 
     # 最后再进行覆盖替换
     mv -f "$tmp_dir/geoip.db" "$nekoray_path/geoip.db"
@@ -139,7 +139,7 @@ case "$action" in
         restore
         ;;
     -u|--update)
-        update_geo_database
+        update_geo_assets
         ;;
     -h|--help)
         usage
