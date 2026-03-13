@@ -71,7 +71,7 @@ update_geo_database() {
 
     stop_nekoray
 
-    printf "Applying new Geo Databases...\n"
+    printf "Applying new Geo Database...\n"
 
     # 最后再进行覆盖替换
     mv -f "$tmp_dir/geoip.db" "$nekoray_path/geoip.db"
