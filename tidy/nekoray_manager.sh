@@ -52,10 +52,29 @@ update_geo_database() {
         exit 1
     fi
 
+    # 创建临时目录
+    local tmp_dir
+    tmp_dir=$(mktemp -d)
+    trap 'rm -rf "$tmp_dir"' EXIT
+
+    # 先下载到临时目录
+    if ! wget -O "$tmp_dir/geoip.db" "$singbox_geoip_url"; then
+        printf "${RED}Error:${NC} Failed to download GeoIP database.\n" >&2
+        exit 1
+    fi
+
+    if ! wget -O "$tmp_dir/geosite.db" "$singbox_geosite_url"; then
+        printf "${RED}Error:${NC} Failed to download GeoSite database.\n" >&2
+        exit 1
+    fi
+
     stop_nekoray
 
-    wget -O "$nekoray_path/geoip.db" "$singbox_geoip_url"
-    wget -O "$nekoray_path/geosite.db" "$singbox_geosite_url"
+    printf "Applying new geo databases...\n"
+
+    # 最后再进行覆盖替换
+    mv -f "$tmp_dir/geoip.db" "$nekoray_path/geoip.db"
+    mv -f "$tmp_dir/geosite.db" "$nekoray_path/geosite.db"
 }
 
 restore() {
