@@ -51,9 +51,6 @@ fcitx5
 vscode
 
 # ------------ .config ------------
-# rm -rf ~/.config/cava
-# ln -sv "$DOTS_PATH/.config/cava" ~/.config/cava
-
 rm -rf ~/.lain
 ln -sv "$DOTS_PATH/.lain" ~/.lain
 
@@ -68,9 +65,6 @@ ln -sv "$DOTS_PATH/.config/fd" ~/.config/fd
 rm -rf ~/.config/fontconfig
 ln -sv "$DOTS_PATH/.config/fontconfig" ~/.config/fontconfig
 
-rm -rf ~/.config/hypr
-ln -sv "$DOTS_PATH/.config/hypr" ~/.config/hypr
-
 rm -rf ~/.config/kitty
 ln -sv "$DOTS_PATH/.config/kitty" ~/.config/kitty
 
@@ -83,8 +77,11 @@ ln -sv "$DOTS_PATH/.config/mako" ~/.config/mako
 rm -rf ~/.config/mpv
 ln -sv "$DOTS_PATH/.config/mpv" ~/.config/mpv
 
-rm -rf ~/.config/navi
+rm -rf \
+    ~/.config/navi \
+    ~/.local/share/navi
 ln -sv "$DOTS_PATH/.config/navi" ~/.config/navi
+ln -sv "$DOTS_PATH/.local/share/navi" ~/.local/share/navi
 
 rm -rf \
 	~/.config/nvim \
@@ -96,23 +93,14 @@ ln -sv "$DOTS_PATH/.config/nvim" ~/.config/nvim
 rm -rf ~/.config/waybar
 ln -sv "$DOTS_PATH/.config/waybar" ~/.config/waybar
 
-# rm -rf ~/.config/xdg-desktop-portal
-# ln -sv "$DOTS_PATH/.config/xdg-desktop-portal" ~/.config/xdg-desktop-portal
-
 rm -rf ~/.config/yt-dlp
 ln -sv "$DOTS_PATH/.config/yt-dlp" ~/.config/yt-dlp
 
 rm -rf ~/.config/mimeapps.list
 ln -sv "$DOTS_PATH/.config/mimeapps.list" ~/.config/mimeapps.list
 
-rm -rf ~/.config/gtk-3.0/bookmarks
-ln -sv "$DOTS_PATH/.config/gtk-3.0/bookmarks" ~/.config/gtk-3.0/bookmarks
-
 rm -rf ~/.config/foot
 ln -sv "$DOTS_PATH/.config/foot" ~/.config/foot
-
-rm -rf ~/.config/sway
-ln -sv "$DOTS_PATH/.config/sway" ~/.config/sway
 
 rm -rf ~/.config/swaylock
 ln -sv "$DOTS_PATH/.config/swaylock" ~/.config/swaylock
@@ -134,3 +122,6 @@ ln -sv "$DOTS_PATH/.config/wm-scripts" ~/.config/wm-scripts
 
 rm -rf ~/.config/kanshi
 ln -sv "$DOTS_PATH/.config/kanshi" ~/.config/kanshi
+
+rm -rf ~/.local/share/shnew
+ln -sv "$DOTS_PATH/.local/share/shnew" ~/.local/share/shnew

@@ -1,0 +1,24 @@
+% journalctl, log, disk
+
+# 查看全局日志的空间占用情况
+journalctl --disk-usage
+
+
+
+% journalctl, log, clean
+
+# 清理全局日志 (只保留最近 7 天)
+sudo journalctl --vacuum-time=7d
+
+
+
+% journalctl, log, user
+
+# 【用户级】查看某个服务的所有日志
+journalctl --user -u sayhello
+
+# 【用户级】实时查看某个服务的日志
+journalctl --user -u sayhello --follow
+
+# 【用户级】查看本次开机后某个服务的所有日志 (0 本次, -1 上一次, -2 上上次)
+journalctl --user -u sayhello --boot 0

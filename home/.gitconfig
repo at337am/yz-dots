@@ -17,8 +17,6 @@
     aw = !git add --all && git commit -m "WIP"
     ps = push origin main
     count = rev-list --count HEAD
-    soft = reset --soft
-    rec = restore
 [core]
     quotepath = false
     editor = nvim

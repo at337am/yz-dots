@@ -25,7 +25,7 @@ trap 'rm -f "$status_file"; refresh_waybar' EXIT
 notify() {
     notify-send -a "visuals" \
                 -u low \
-                -h string:x-dunst-stack-tag:volume_notif \
+                -h string:x-canonical-private-synchronous:vis \
                 "$1"
 }
 
@@ -39,8 +39,11 @@ if pgrep -f "gpu-screen-recorder" > /dev/null; then
     exit 0
 fi
 
-output_file="$HOME/Videos/recorder_$(date +"%y%m%d_%H%M%S").mkv"
-mkdir -p "$HOME/Videos"
+output_dir="$HOME/Videos/screen_records"
+
+mkdir -p "$output_dir"
+
+output_file="$output_dir/record_$(date +"%y%m%d_%H%M%S").mkv"
 
 notify "🎀  REC"
 

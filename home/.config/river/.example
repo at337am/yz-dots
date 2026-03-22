@@ -1,4 +1,6 @@
-#! /usr/bin/env bash
+#!/usr/bin/env bash
+
+exit 0
 
 # The Figlet font is DOS Rebel from https://github.com/xero/figlet-fonts/blob/master/Examples.md
 

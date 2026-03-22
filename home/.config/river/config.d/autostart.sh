@@ -8,8 +8,8 @@ pkill -x "waybar"       || true
 pkill -x "swww-daemon"  || true
 pkill -x "wob"          || true
 
-riverctl spawn "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP"
-riverctl spawn "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP"
+riverctl spawn "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+riverctl spawn "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
 
 # 显示器设置
 riverctl spawn "kanshi"
@@ -39,7 +39,6 @@ riverctl spawn "swww-daemon"
 (
     sleep 5
     "$WM_SCRIPTS/auto/gsettings.sh"
-    "$WM_SCRIPTS/auto/hello-server.sh"
 ) &
 
 # 启动 wob 进程

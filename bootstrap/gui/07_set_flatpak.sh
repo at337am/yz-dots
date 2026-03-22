@@ -8,6 +8,8 @@ if ! command -v "flatpak" &> /dev/null; then
     exit 1
 fi
 
+# 镜像: flatpak remote-modify --user flathub --url=https://mirrors.ustc.edu.cn/flathub
+
 add_flathub() {
     flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 }
@@ -34,18 +36,3 @@ add_flathub
 set_perms
 
 printf "Done.\n"
-
-
-
-# ------------ bak ------------
-# 
-# flatpak override --user io.github.ungoogled_software.ungoogled_chromium \
-#     --filesystem=xdg-videos \
-#     --filesystem=xdg-pictures \
-#     --filesystem=xdg-documents \
-#     --filesystem=/workspace \
-#     --filesystem=/data
-# 
-# 镜像: flatpak remote-modify --user flathub --url=https://mirrors.ustc.edu.cn/flathub
-# 
-# ------------ bak ------------

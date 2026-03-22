@@ -40,8 +40,11 @@ cl_trash() {
         return 0
     fi
 
+    printf "Emptying the trash...\n"
+
     gio trash --empty
-    printf "Trash has been emptied.\n"
+
+    printf "Done.\n"
 }
 
 # 创建一个新目录, 并进入该目录

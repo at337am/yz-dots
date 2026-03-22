@@ -2,11 +2,22 @@
 
 
 
+简短	jianduan
+客体	keti
+主体	zhuti
+主体性	zhutixin
+主体性	zhutixing
+利维坦	liweitan
+体制	tizhi
+极权	jiquan
+威权	weiquan
+极权主义	jiquanzhuyi
+威权主义	weiquanzhuyi
 文革	wg
 文革	wenge
 文革	wengge
-亲信	qinxin
-亲信	qinxing
+清醒	qinxin
+清醒	qinxing
 会话	huihua
 正常	zc
 还是什么	haishism
@@ -194,12 +205,11 @@
 韩正	hanzheng
 何卫东	heweidong
 张又侠	zhangyouxia
+许立志	xulizhi
 
 
 
-Telegram	tg
-Gemini	gemini
-ChatGPT	chatgpt
+
 code	code
 todo	todo
 todo	tood
@@ -212,22 +222,38 @@ todo	tood
 
 
 
+，	douhoa
 ，	douhao
+。	juhoa
 。	juhao
+：	maohoa
 ：	maohao
+；	fenhoa
 ；	fenhao
+；	fenghoa
 ；	fenghao
+！	gantanhoa
 ！	gantanhao
 ！	gth
+？	wenhoa
 ？	wenhao
+？	wenghoa
 ？	wenghao
+《》	shuminhoa
 《》	shuminhao
+《》	shuminghoa
 《》	shuminghao
 《》	smh
+、	dunhoa
 、	dunhao
+（）	kuohoa
 （）	kuohao
 「」	yh
+「」	yinhoa
 「」	yinhao
+「」	yinghoa
 「」	yinghao
+“”	yinhoa
 “”	yinhao
+“”	yinghoa
 “”	yinghao

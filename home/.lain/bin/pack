@@ -14,6 +14,7 @@ NC='\033[0m'            # 重置色
 # 默认变量
 MODE="pack"         # 默认为打包模式
 USE_GZIP=0          # 默认不使用 Gzip
+APPEND_DATE=0       # 默认不追加日期后缀
 TARGETS=()          # 存储目标文件列表
 
 # ----------------------------------
@@ -25,6 +26,7 @@ usage() {
     printf "\nFlags:\n"
     printf "  -z, --gzip            Use gzip compression (for packing)\n"
     printf "  -x, --extract         Extract mode (unpack archives)\n"
+    printf "  -d, --date            Append date (_YYMMDD) to output filename\n"
     printf "  -h, --help            Show this help message\n"
 }
 
@@ -61,11 +63,17 @@ pack_files() {
     local output_dir="."
     local tar_options="-cf"
     local extension=".tar"
+    local date_suffix=""
 
     # 设置压缩选项
     if [[ $USE_GZIP -eq 1 ]]; then
         tar_options="-czf"
         extension=".tar.gz"
+    fi
+
+    # 设置日期后缀 (如果启用了选项)
+    if [[ $APPEND_DATE -eq 1 ]]; then
+        date_suffix="_$(date +"%y%m%d")"
     fi
 
     # 如果有多个目标, 创建统一输出目录
@@ -83,7 +91,8 @@ pack_files() {
     # 循环打包
     for item in "${TARGETS[@]}"; do
         local base_name="$(basename -- "$item")"
-        local archive_name="${base_name}${extension}"
+        # 拼接文件名: 原名 + 日期后缀(如果有) + 扩展名
+        local archive_name="${base_name}${date_suffix}${extension}"
         local full_output_path="${output_dir}/${archive_name}"
 
         if [[ -e "$full_output_path" ]]; then
@@ -135,6 +144,10 @@ while [[ $# -gt 0 ]]; do
     case $key in
         -z|--gzip)
             USE_GZIP=1
+            shift
+            ;;
+        -d|--date)
+            APPEND_DATE=1
             shift
             ;;
         -x|--extract)

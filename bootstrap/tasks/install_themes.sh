@@ -6,24 +6,13 @@
 set -euo pipefail
 
 # 依赖检查
-dependencies=("yay" "git")
-for cmd in "${dependencies[@]}"; do
-    if ! command -v "$cmd" &> /dev/null; then
-        printf "Error: Missing dependency: %s\n" "$cmd" >&2
-        exit 1
-    fi
-done
-
-# 安装依赖 (gtk-engine-murrine 是 gtk2 的, 现在似乎已经不需要了)
-# sudo pacman -S --needed --noconfirm \
-#     gnome-themes-extra \
-#     sassc
+if ! command -v "git" &> /dev/null; then
+    printf "Error: Missing dependency: git\n" >&2
+    exit 1
+fi
 
 tmp_dir=$(mktemp -d)
 trap 'rm -rf "$tmp_dir"' EXIT
-
-mkdir -p ~/.local/share/themes
-mkdir -p ~/.local/share/icons
 
 gtk_themes(){
     # 当前脚本所在的目录
@@ -38,13 +27,8 @@ icon_themes() {
     ./install.sh grey -d ~/.local/share/icons
 }
 
-cursor_theme() {
-    yay -S --needed --noconfirm xcursor-breeze
-}
-
 gtk_themes
 icon_themes
-cursor_theme
 
 # 最后设置主题
 gtk_script="$HOME/.config/wm-scripts/auto/gsettings.sh"

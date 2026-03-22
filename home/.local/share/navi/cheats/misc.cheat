@@ -1,0 +1,153 @@
+% cowsay
+
+# 生成一句随机格言
+fortune | cowsay
+
+
+
+% cmatrix, terminal-rain
+
+# 异步滚动
+unimatrix -c magenta -s 96 -a
+
+# 下雨天 (按 T 切换)
+terminal-rain
+
+
+
+% uniq, sort
+
+# 去除重复行
+sort a.txt | uniq
+
+# 显示重复行
+sort a.txt | uniq -d
+
+# 显示重复行及次数
+sort a.txt | uniq -c | awk '$1>1'
+
+# 只显示未重复的行
+sort a.txt | uniq -u
+
+# 显示每行出现次数
+sort a.txt | uniq -c
+
+
+
+% at
+
+# 10 分钟后响铃
+echo "paplay /usr/share/sounds/freedesktop/stereo/complete.oga" | at now + 10 minutes
+
+
+
+% history
+
+# 列出最近 50 条历史命令
+history -f 1 | tail -n 50
+
+# 查找所有历史命令
+history -f 1 | fzf
+
+
+
+% type, whence
+
+# 排查命令冲突 - zsh 专用
+whence -va ls
+
+# 排查命令冲突 - POSIX 兼容
+type -a ls
+
+
+
+% lines, count
+
+# 统计一个文件的行数
+wc -l x.txt
+
+
+
+
+
+
+% last
+
+# 显示系统重启历史 (倒序输出)
+last reboot -F | tac
+
+# 显示所有登录记录
+last
+
+
+
+% user
+
+# 查看所有本地用户
+cat /etc/passwd
+
+
+
+% user, who
+
+# 显示当前已登录的用户 (w)
+who
+
+
+
+% uptime
+
+# 显示系统启动时间
+uptime -s
+
+# 显示系统运行时间
+uptime -p
+
+
+
+% uname, kernel
+
+# 显示当前运行的内核版本
+uname -r
+
+
+
+% fc-cache, font
+
+# 刷新字体缓存
+fc-cache -fv
+
+
+
+% fc-list, font, search
+
+# 查找已安装的字体
+fc-list : family | fzf
+
+
+
+% language
+
+# 查看当前系统语言
+locale
+
+
+
+% swapon
+
+# 显示 swap 分区
+swapon --show
+
+
+
+% arch, pacman, kernel
+
+# 显示所有已安装的内核版本
+pacman -Q | grep -E '^linux(|-lts|-zen|-hardened) '
+
+
+
+% arch, paclog, history
+
+# 显示软件包历史记录 (安装, 删除, 更新)
+paclog --action=install --action=remove --action=upgrade

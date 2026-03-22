@@ -52,6 +52,10 @@ sudo pacman -S --needed --noconfirm \
 sudo pacman -S --needed --noconfirm \
     sound-theme-freedesktop
 
+# 光标主题
+sudo pacman -S --needed --noconfirm \
+    breeze-cursors
+
 # 手机传输相关
 sudo pacman -S --needed --noconfirm \
     android-tools \
@@ -149,7 +153,9 @@ sudo pacman -S --needed --noconfirm \
     qt6-multimedia-ffmpeg \
     xorg-xlsclients \
     xorg-xwayland \
-    wob
+    wob \
+    dos2unix \
+    usbutils
 
 # arch 专用工具
 sudo pacman -S --needed --noconfirm \
@@ -173,7 +179,7 @@ sudo pacman -S --needed --noconfirm \
 
 # river 相关
 sudo pacman -S --needed --noconfirm \
-    river \
+    river-classic \
     swayidle \
     swaylock \
     xdg-desktop-portal-wlr \
@@ -181,18 +187,20 @@ sudo pacman -S --needed --noconfirm \
     wlopm
 
 
-# ----- bak -----
-
-# mgba-qt
-
-# 目前不需要 监听 ACPI 事件 和 电源调度策略
-# acpid power-profiles-daemon
-
+# ----- note -----
+# 
 # 目前的壁纸工具为 swww
 # 注意: swww 项目已改名为 awww, 但是目前 arch 官方仓库中还没有, 以后记得换!
 # https://codeberg.org/LGFae/awww
-
-# foot 在我的 sway 上存在卡顿 bug, 而在 hyprland 上却似乎是正常的
-# 一直找不到原因, 如果后续又迁移到了别的 WM, 再用回 foot 试试
-
-# 也许不再需要这个了: wl-clip-persist
+# 
+# 
+# foot 在我的 sway 上存在卡顿 bug, 一直找不到原因, 垃圾 sway 狗都不用
+# 
+# 
+# 已弃用的软件包:
+# 
+# mgba-qt
+# acpid (监听 ACPI 事件)
+# power-profiles-daemon (电源调度策略)
+# obs-studio
+# wl-clip-persist

@@ -9,15 +9,15 @@ set -euo pipefail
 
 scripts=(
     "tasks/base.sh"
-    "tasks/pacman_mirrorlist.sh"
+    "tasks/set_pacman_mirror.sh"
     "tasks/pacman_install.sh"
-    "tasks/xdg-user-dirs.sh"
+    "tasks/set_xdg_user_dirs.sh"
     "tasks/sync_dotfiles.sh"
     "tasks/symlink_dotfiles.sh"
     "tasks/set_path_perms.sh"
     "tasks/fetch_fcitx5_dict.sh"
     "tasks/misc_settings.sh"
-    "tasks/install_yay.sh"
+    "tasks/build_yay.sh"
     "tasks/install_themes.sh"
 )
 
@@ -46,7 +46,7 @@ for run in "${scripts[@]}"; do
 done
 
 # 最后收尾
-printf "\nFINAL STEP!\n\n"
+printf "\n>>> FINAL STEP <<<\n\n"
 
 # 清理多余的文件
 sudo rm -rf /root/chroot_setup.sh

@@ -9,6 +9,7 @@ alias bd='bat -d'
 alias bp='bat -p'
 alias l='eza -lab --time-style="+%y%m%d %H:%M"'
 alias lt='l --sort=modified'
+alias lz='l --sort=size'
 alias fm='thunar . > /dev/null 2>&1'
 alias mm='nvim /workspace/tmp/mm_$(date +"%y%m%d_%H%M%S").md'
 alias cnt='printf "dirs: %s  symlinks: %s  files: %s\n" "$(fd -IH -t d -d 1 | wc -l)" "$(fd -IH -t l -d 1 | wc -l)" "$(fd -IH -t f -d 1 | wc -l)"'
@@ -16,6 +17,7 @@ alias du1='du -ah -d 1 .'
 alias duf='duf -only local'
 # alias cpwd='pwd | wl-copy -n'
 alias update='yay -Syyu'
+alias cnt-zh='wl-paste | rg -o -N "\p{Han}" | wc -l'
 
 # base
 alias _='sudo'
@@ -34,6 +36,15 @@ alias mv='mv -i'
 alias cp='cp -i'
 alias r='printf "zsh: r command disabled\n"'
 alias fc='printf "zsh: fc command disabled\n"'
+alias dc='printf "zsh: dc command disabled\n"'
+alias as='printf "zsh: as command disabled\n"'
+
+# cd ,
+alias ,dl='cd ~/Downloads'
+alias ,tg='cd /data/dl_tg'
+alias ,xhs='cd /data/hello/dl_xhs'
+alias ,nt='cd ~/Documents/notes'
+alias ,yz='cd /workspace/dev/yz-dots'
 
 # docker
 alias dstopall='sudo docker stop $(sudo docker ps -q)'

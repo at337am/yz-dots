@@ -20,7 +20,7 @@ confirm() {
     esac
 }
 
-if ! confirm "Are you sure you want to install xhs?"; then
+if ! confirm "Install XHS-Downloader?"; then
     printf "Operation cancelled.\n" >&2
     exit 1
 fi
@@ -53,7 +53,7 @@ uv sync
 
 # 最后软链接
 rm -rf /data/dl_xhs
-ln -sv "$destination/Volume/Download" /data/dl_xhs
+ln -sv "$destination/Volume/Download" /data/hello/dl_xhs
 
 printf "Done.\n"
 

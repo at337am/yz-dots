@@ -5,38 +5,39 @@ if pgrep -x slurp > /dev/null; then
     exit 0
 fi
 
-output_dir="$HOME/Pictures/Screenshots"
+output_dir="$HOME/Pictures/screen_shots"
 
 mkdir -p "$output_dir"
 
-file_path="$output_dir/$(date +'%y%m%d_%H%M%S').png"
+output_file="$output_dir/shot_$(date +'%y%m%d_%H%M%S').png"
 
+# 发送通知
 notify() {
     notify-send -a "visuals" \
                 -u low \
-                -h string:x-dunst-stack-tag:volume_notif \
+                -h string:x-canonical-private-synchronous:vis \
                 "$1"
 }
 
 case "$1" in
     "area-save")
-        geometry=$(slurp)
+        geometry=$(slurp -b 0ABAB540)
         if [[ -n "$geometry" ]]; then
-            grim -g "$geometry" "$file_path"
+            grim -g "$geometry" "$output_file"
         else
-            notify "SC Canc."
+            notify "Cancelled"
         fi
         ;;
     "full-save")
-        grim "$file_path"
+        grim "$output_file"
         ;;
     "area-copy")
-        geometry=$(slurp)
+        geometry=$(slurp -b 0ABAB540)
         if [[ -n "$geometry" ]]; then
             grim -g "$geometry" - | wl-copy -t image/png
             notify "SC Copied"
         else
-            notify "SC Canc."
+            notify "Cancelled"
         fi
         ;;
     "full-copy")

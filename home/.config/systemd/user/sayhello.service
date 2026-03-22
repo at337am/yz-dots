@@ -1,0 +1,12 @@
+[Unit]
+Description=sayhello server
+After=network.target
+
+[Service]
+WorkingDirectory=/opt/soft/sayhello
+ExecStart=/opt/soft/sayhello/sayhello
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

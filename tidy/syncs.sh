@@ -11,12 +11,8 @@ usage() {
     printf "Usage:\n"
     printf "  %s [flags]\n" "$(basename "$0")"
     printf "\nFlags:\n"
-    printf "  proj                  打包 dev 和 Documents\n"
-    printf "  fonts                 打包 fonts\n"
-    printf "  PFP                   打包 PFP\n"
-    printf "  restore               打包 restore\n"
-    printf "  all                   打包所有内容 (迁移)\n"
-    printf "  sync                  仅同步\n"
+    printf "  -p, --pack            同步并打包所有内容 (准备迁移)\n"
+    printf "  -s, --sync            仅同步 (默认)\n"
     printf "  -h, --help            Show this help message\n"
 }
 
@@ -25,7 +21,7 @@ documents_path="$HOME/Documents"
 fonts_path="$HOME/.local/share/fonts"
 pfp_path="$HOME/Pictures/PFP"
 dev_path="/workspace/dev"
-restore_path="/data/restore"
+restore_path="$HOME/.local/share/restore"
 
 source_dirs=(
     "$documents_path"
@@ -60,39 +56,22 @@ mirroring() {
             "$path/" \
             "$TARGET_DIR/$(basename "$path")"
     done
-    printf "All directory contents have been synced.\n"
+    printf "Directories synced\n"
 
     # 2. 同步所有软件包列表
     pacman -Qqen > "$native_pkglist"
     pacman -Qqem > "$aur_pkglist"
-    printf "All package lists have been synced.\n"
+    printf "Package lists synced\n"
 }
 
 # 为迁移做准备, 打包所有内容
 pack_all() {
     local timestamp=$(date +"%y%m%d_%H%M%S")
     tar -cf "$HOME/Downloads/syncs_migration_${timestamp}.tar" -C /data/bak/ syncs
-    printf "${GREEN}The migration has been packed into ~/Downloads.${NC}\n"
+    printf "${GREEN}The migration has been packed into ~/Downloads${NC}\n"
 }
 
-# 日常备份, 打包 proj 项目
-pack_proj(){
-    cd "$TARGET_DIR"
-    mkdir -p ~/Downloads/proj_bak
-    cp -a dev Documents ~/Downloads/proj_bak
-    cd ~/Downloads
-    tar -cf "proj_bak_$(date +"%y%m%d_%H%M%S").tar" proj_bak
-    command rm -rf proj_bak
-    printf "${GREEN}proj packed and ready in ~/Downloads.${NC}\n"
-}
-
-# 打包某个单独的内容
-pack_one() {
-    local name="$1"
-    local timestamp=$(date +"%y%m%d_%H%M%S")
-    tar -cf "$HOME/Downloads/${name}_bak_${timestamp}.tar" -C "$TARGET_DIR" "$name"
-    printf "${GREEN}%s packed and ready in ~/Downloads.${NC}\n" "$name"
-}
+# -------------- 程序主入口 --------------
 
 # 参数个数不能大于 1
 if [[ "$#" -gt 1 ]]; then
@@ -101,23 +80,15 @@ if [[ "$#" -gt 1 ]]; then
     exit 1
 fi
 
-# 如果 $1 为空 (无参数)，则赋值为 sync
-action="${1:-sync}"
+# 如果 $1 为空 (无参数)，则赋值为 --sync
+action="${1:---sync}"
 
 case "$action" in
-    proj)
-        mirroring
-        pack_proj
-        ;;
-    fonts|PFP|restore)
-        mirroring
-        pack_one "$action"
-        ;;
-    all)
+    -p|--pack)
         mirroring
         pack_all
         ;;
-    sync)
+    -s|--sync)
         mirroring
         ;;
     -h|--help)

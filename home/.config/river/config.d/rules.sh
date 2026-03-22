@@ -24,6 +24,9 @@ riverctl rule-add -app-id "mpv" float
 # 尺寸对 mpv 不生效, 找不到解决方式, 不管了
 # riverctl rule-add -app-id "mpv" -title "* - mpv" dimensions 720 480
 
+riverctl rule-add -app-id "io.mgba.mGBA" float
+riverctl rule-add -app-id "io.mgba.mGBA" -title "mGBA - *" dimensions 600 450
+
 # -----------------------
 
 riverctl rule-add -app-id "thunar" float
@@ -55,7 +58,8 @@ riverctl rule-add -app-id "org.telegram.desktop" -title "Choose Files" dimension
 
 riverctl rule-add -app-id "firefox" -title "我的足迹" float
 riverctl rule-add -app-id "firefox" -title "我的足迹" dimensions 830 630
-
+riverctl rule-add -app-id "firefox" -title "Library" float
+riverctl rule-add -app-id "firefox" -title "Library" dimensions 830 630
 
 
 # 强制给所有窗口添加边框

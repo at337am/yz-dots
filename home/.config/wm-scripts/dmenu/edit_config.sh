@@ -18,16 +18,15 @@ if ! command -v "code" &> /dev/null; then
     exit 1
 fi
 
+# 发送通知
 notify() {
     notify-send -a "visuals" \
                 -u low \
-                -h string:x-dunst-stack-tag:volume_notif \
+                -h string:x-canonical-private-synchronous:vis \
                 "$1"
 }
 
 declare -A configs
-configs["hypr"]="$HOME/.config/hypr"
-configs["sway"]="$HOME/.config/sway"
 configs["river"]="$HOME/.config/river"
 configs["wm-scripts"]="$HOME/.config/wm-scripts"
 configs["swaylock"]="$HOME/.config/swaylock"
@@ -38,19 +37,35 @@ configs["waybar"]="$HOME/.config/waybar"
 configs["wob"]="$HOME/.config/wob"
 configs["lf"]="$HOME/.config/lf"
 configs["mako"]="$HOME/.config/mako"
-configs["navi"]="$HOME/.config/navi"
-configs["kitty"]="$HOME/.config/kitty"
 configs["foot"]="$HOME/.config/foot"
+configs["kitty"]="$HOME/.config/kitty"
+configs["fastfetch"]="$HOME/.config/fastfetch"
+configs["fontconfig"]="$HOME/.config/fontconfig"
+
+configs["navi-cheats"]="$HOME/.local/share/navi"
 configs["fcitx5"]="$HOME/.local/share/fcitx5"
 configs["applications"]="$HOME/.local/share/applications"
-configs["fastfetch"]="$HOME/.config/fastfetch"
 configs["lain"]="$HOME/.lain"
 configs["lain-bin"]="$HOME/.lain/bin"
+configs["shnew"]="$HOME/.local/share/shnew"
 
+configs["yz-dots"]="/workspace/dev/yz-dots"
 configs["tidy"]="/workspace/dev/yz-dots/tidy"
 configs["bootstrap"]="/workspace/dev/yz-dots/bootstrap"
 
+configs["skit-dirhash"]="/workspace/dev/skit/dirhash"
+configs["skit-gonew"]="/workspace/dev/skit/gonew"
+configs["skit-md2pg"]="/workspace/dev/skit/md2pg"
+configs["skit-siho"]="/workspace/dev/skit/siho"
+configs["skit-tmrn"]="/workspace/dev/skit/tmrn"
+configs["skit-vid2mp4"]="/workspace/dev/skit/vid2mp4"
+configs["skit-xla"]="/workspace/dev/skit/xla"
+
+configs["raindrop"]="/workspace/dev/raindrop"
+configs["sayhello"]="/workspace/dev/sayhello"
+
 configs["notes"]="$HOME/Documents/notes"
+configs["memos"]="$HOME/Documents/memos"
 
 choice=$(printf "%s\n" "${!configs[@]}" | fuzzel --dmenu)
 

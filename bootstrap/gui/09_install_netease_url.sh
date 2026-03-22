@@ -20,7 +20,7 @@ confirm() {
     esac
 }
 
-if ! confirm "Are you sure you want to install Netease_url?"; then
+if ! confirm "Install Netease_url?"; then
     printf "Operation cancelled.\n" >&2
     exit 1
 fi

@@ -131,7 +131,7 @@ nmcli connection add type wifi con-name "oishi-profile" ssid "oishi" wifi-sec.ke
 # 设置 env 代理, 可以使用下面这个命令检查是否连接成功
 curl -I https://www.google.com
 
-# 解压 syncs_migration_xxx.tar, 开始执行 user_setup.sh
+# 解压 syncs_migration_xxx.tar, 开始执行 ./user_setup.sh
 
 # 执行完毕后重启, 进入 GUI
 
