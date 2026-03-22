@@ -182,7 +182,7 @@ o() {
 
     case "$ext" in
         jpg|jpeg|png|gif|webp)
-            qimgv "$1"
+            qimgv "$1" &> /dev/null
             ;;
         mp4|mkv|mov|mp3|flac|m4a|m4v|webm|ts|avi)
             mpv "$1"
