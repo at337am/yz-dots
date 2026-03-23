@@ -36,12 +36,12 @@ fi
 
 
 
-# ------------- 创建目录 -------------
+# ------------- 创建路径 -------------
 mkdir -p ~/.config
 mkdir -p ~/.local/share
 mkdir -p ~/Downloads
 mkdir -p ~/go/bin
-
+ln -s /sdcard ~/sdcard
 
 
 # ------------- 下载必要的软件包 -------------
