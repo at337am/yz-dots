@@ -41,10 +41,11 @@ alias as='printf "zsh: as command disabled\n"'
 
 # cd ,
 alias ,dl='cd ~/Downloads'
-alias ,tg='cd /data/dl_tg'
-alias ,xhs='cd /data/hello/dl_xhs'
+alias ,dlt='cd /data/dl_tg'
+alias ,dlx='cd /data/hello/dl_xhs'
 alias ,nt='cd ~/Documents/notes'
 alias ,yz='cd /workspace/dev/yz-dots'
+alias ,hx='cd /data/hello/pending/xhs'
 
 # docker
 alias dstopall='sudo docker stop $(sudo docker ps -q)'
