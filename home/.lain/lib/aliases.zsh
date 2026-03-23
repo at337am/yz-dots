@@ -44,6 +44,7 @@ alias ,dl='cd ~/Downloads'
 alias ,dlt='cd /data/dl_tg'
 alias ,dlx='cd /data/hello/dl_xhs'
 alias ,nt='cd ~/Documents/notes'
+alias ,mm='cd ~/Documents/memos'
 alias ,yz='cd /workspace/dev/yz-dots'
 
 # docker
