@@ -16,3 +16,6 @@ source "$HOME/.config/river/config.d/binds.sh"
 source "$HOME/.config/river/config.d/rules.sh"
 
 "$WM_SCRIPTS/play_audio.sh" "service-login.oga"
+
+# todo:
+# 之后有空了, 再去折腾 River 0.4 + WM
