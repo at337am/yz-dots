@@ -31,13 +31,13 @@ usage() {
     printf "Usage:\n"
     printf "  %s [flags]\n" "$(basename "$0")"
     printf "\nFlags:\n"
-    printf "  -c, --clear           清除历史记录\n"
+    printf "  -c, --clean           清空历史记录\n"
     printf "  -s, --start           启动程序 (默认)\n"
     printf "  -h, --help            Show this help message\n"
 }
 
 # 清除历史记录
-clear_history() {
+delete_history() {
     rm -rfv \
         Volume/ExploreID.db \
         Volume/MappingData.db \
@@ -61,8 +61,8 @@ fi
 action="${1:---start}"
 
 case "$action" in
-    -c|--clear)
-        clear_history
+    -c|--clean)
+        delete_history
         ;;
     -s|--start)
         start_app
