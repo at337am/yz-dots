@@ -50,27 +50,3 @@ alias ,dev='cd /workspace/dev'
 alias ,tmp='cd /workspace/tmp'
 alias ,xhs='cd /data/hello/pending/xhs'
 alias ,var='cd /data/hello/pending/var'
-
-# docker
-alias dstopall='sudo docker stop $(sudo docker ps -q)'
-alias dstartall='sudo docker start $(sudo docker ps -qa)'
-alias dstop='sudo docker stop'
-alias dstart='sudo docker start'
-alias dcup='sudo docker compose up -d'
-alias dis='sudo docker images'
-alias dps='sudo docker ps'
-alias dec='sudo docker exec -it'
-alias drm='sudo docker rm'
-alias drmi='sudo docker rmi'
-alias dvp='sudo docker volume prune'
-alias dlg='sudo docker logs'
-
-# tmux
-alias tls='tmux ls'
-alias tn='tmux new'
-alias tns='tmux new -s'
-alias ta='tmux attach'
-alias tat='tmux attach -t'
-alias tks='tmux kill-session -t'
-alias tksall='tmux kill-server'
-
