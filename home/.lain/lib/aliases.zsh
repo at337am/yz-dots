@@ -39,13 +39,15 @@ alias fc='printf "zsh: fc command disabled\n"'
 alias dc='printf "zsh: dc command disabled\n"'
 alias as='printf "zsh: as command disabled\n"'
 
-# cd ,
+# cd path
 alias ,dl='cd ~/Downloads'
 alias ,dlt='cd /data/dl_tg'
 alias ,dlx='cd /data/hello/dl_xhs'
 alias ,nt='cd ~/Documents/notes'
 alias ,mm='cd ~/Documents/memos'
 alias ,yz='cd /workspace/dev/yz-dots'
+alias ,xhs='cd /data/hello/pending/xhs'
+alias ,var='cd /data/hello/pending/var'
 
 # docker
 alias dstopall='sudo docker stop $(sudo docker ps -q)'
