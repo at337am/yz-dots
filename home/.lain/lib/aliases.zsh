@@ -46,6 +46,7 @@ alias ,dlx='cd /data/hello/dl_xhs'
 alias ,nt='cd ~/Documents/notes'
 alias ,mm='cd ~/Documents/memos'
 alias ,yz='cd /workspace/dev/yz-dots'
+alias ,tmp='cd /workspace/tmp'
 alias ,xhs='cd /data/hello/pending/xhs'
 alias ,var='cd /data/hello/pending/var'
 
