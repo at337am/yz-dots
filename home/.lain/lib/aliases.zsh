@@ -17,6 +17,7 @@ alias duf='duf -only local'
 # alias cpwd='pwd | wl-copy -n'
 alias update='yay -Syyu'
 alias cnt-zh='wl-paste | rg -o -N "\p{Han}" | wc -l'
+alias date='LC_TIME=en_GB.UTF-8 date'
 
 # base
 alias _='sudo'
