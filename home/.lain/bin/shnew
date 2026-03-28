@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
+# 脚本用途: 生成一个示例 shell 脚本文件
+# -=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=--=-=-
+
 set -euo pipefail
 
 if [[ "$#" -ne 1 ]]; then
@@ -9,10 +13,12 @@ if [[ "$#" -ne 1 ]]; then
 fi
 
 template_path="$HOME/.local/share/shnew/example.sh"
-output_path="${1}.sh"
+
+# 无论用户是否输入 .sh 后缀, 都确保输出只有一个 .sh
+output_path="${1%.sh}.sh"
 
 if [[ ! -f "$template_path" ]]; then
-    printf "Error: %s does not exist.\n" "$IMG_PATH" >&2
+    printf "Error: %s does not exist.\n" "$template_path" >&2
     exit 1
 fi
 
