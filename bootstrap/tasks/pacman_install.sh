@@ -155,7 +155,8 @@ sudo pacman -S --needed --noconfirm \
     xorg-xwayland \
     wob \
     dos2unix \
-    usbutils
+    usbutils \
+    at
 
 # arch 专用工具
 sudo pacman -S --needed --noconfirm \

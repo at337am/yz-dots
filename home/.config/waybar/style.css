@@ -26,14 +26,16 @@ window#waybar {
 
 
 
+/* 左右最外边: 6px+2px=8px */
+/* 2px*2=4px */
 #tags {
-    margin: 4px 0;
+    margin: 4px 6px;
 }
 
 /* 空白标签页 */
 #tags button {
     all:unset;
-    padding: 0 12.4px;
+    padding: 0 10px;
     margin: 0 2px;
     color: #AAAAAA;
 }

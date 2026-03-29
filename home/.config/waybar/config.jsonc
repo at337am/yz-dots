@@ -10,7 +10,8 @@
 
     "clock": {
         "tooltip": false,
-        "format": "{:%y%m%d %H:%M}"
+        // "format": "{:%y%m%d %H:%M}"
+        "format": "{:%a %b %d %H:%M}"
     },
 
     "river/tags": {
@@ -30,7 +31,7 @@
     },
 
     "river/window": {
-        "max-length": 60
+        "max-length": 50
     },
 
     "tray": {
