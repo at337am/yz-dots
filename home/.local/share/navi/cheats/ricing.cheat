@@ -1,0 +1,18 @@
+% ricing, cowsay
+
+# 生成一句随机格言
+fortune | cowsay
+
+
+
+% ricing, unimatrix
+
+# 异步滚动
+unimatrix -c magenta -s 96 -a
+
+
+
+% ricing, terminal-rain
+
+# 下雨天 (按 T 切换)
+terminal-rain

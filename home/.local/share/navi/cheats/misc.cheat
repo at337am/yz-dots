@@ -1,20 +1,3 @@
-% cowsay
-
-# 生成一句随机格言
-fortune | cowsay
-
-
-
-% cmatrix, terminal-rain
-
-# 异步滚动
-unimatrix -c magenta -s 96 -a
-
-# 下雨天 (按 T 切换)
-terminal-rain
-
-
-
 % uniq, sort
 
 # 去除重复行

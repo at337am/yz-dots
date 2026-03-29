@@ -70,6 +70,6 @@ bindkey -M viins '^[[1;5D' backward-word
 bindkey -M vicmd '^[[1;5D' backward-word
 
 # 集成 navi 快捷键 Ctrl + G
-if command -v navi >/dev/null 2>&1; then
+if command -v navi &> /dev/null; then
   eval "$(navi widget zsh)"
 fi

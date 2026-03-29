@@ -19,7 +19,7 @@ done
 RED='\033[0;31m'        # 红色
 GREEN='\033[0;32m'      # 绿色
 MAGENTA='\033[0;35m'    # 紫色
-CYAN='\033[0;36m'       # 青色
+B_CYAN='\033[1;36m'     # 青色加粗
 NC='\033[0m'            # 重置色
 
 # U 盘标签
@@ -98,7 +98,7 @@ check_dev_status() {
     size="${size:-N/A}"
     fstype="${fstype:-Unknown}"
 
-    printf "${CYAN}%s${NC}\n" "--- $TARGET_LABEL INFO ---"
+    printf "\n${B_CYAN}%s${NC}\n" "--- $TARGET_LABEL INFO ---"
 
     printf "%s: %s\n" "Disk" "$dev_name"
     printf "%s: %s\n" "Partition"  "$dev_part"
