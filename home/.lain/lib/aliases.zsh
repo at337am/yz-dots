@@ -18,6 +18,7 @@ alias duf='duf -only local'
 alias update='yay -Syyu'
 alias cnt-zh='wl-paste | rg -o -N "\p{Han}" | wc -l'
 alias date='LC_TIME=en_GB.UTF-8 date'
+alias ipv4='curl -sL4 icanhazip.com'
 
 # base
 alias _='sudo'
@@ -40,20 +41,20 @@ alias dc='printf "zsh: dc command disabled\n"'
 alias as='printf "zsh: as command disabled\n"'
 
 # cd path
-alias ,dl='cd ~/Downloads'
-alias ,dlt='cd /data/dl_tg'
-alias ,dlx='cd /data/hello/dl_xhs'
+alias ,Downloads='cd ~/Downloads'
+alias ,notes='cd ~/Documents/notes'
+alias ,memos='cd ~/Documents/memos'
 
-alias ,nt='cd ~/Documents/notes'
-alias ,mm='cd ~/Documents/memos'
+alias ,dl_tg='cd /data/dl_tg'
+alias ,dl_xhs='cd /data/hello/dl_xhs'
+alias ,avoid='cd /data/avoid'
+alias ,hello='cd /data/hello'
+alias ,xhs='cd /data/hello/pending/xhs'
+alias ,var='cd /data/hello/pending/var'
 
 alias ,dev='cd /workspace/dev'
 alias ,tmp='cd /workspace/tmp'
-
-alias ,yz='cd /workspace/dev/yz-dots'
-alias ,rd='cd /workspace/dev/raindrop'
+alias ,yz-dots='cd /workspace/dev/yz-dots'
+alias ,raindrop='cd /workspace/dev/raindrop'
 alias ,skit='cd /workspace/dev/skit'
 alias ,sayhello='cd /workspace/dev/sayhello'
-
-alias ,xhs='cd /data/hello/pending/xhs'
-alias ,var='cd /data/hello/pending/var'
