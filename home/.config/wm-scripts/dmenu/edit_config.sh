@@ -39,7 +39,6 @@ configs["lf"]="$HOME/.config/lf"
 configs["mako"]="$HOME/.config/mako"
 configs["foot"]="$HOME/.config/foot"
 configs["kitty"]="$HOME/.config/kitty"
-configs["fastfetch"]="$HOME/.config/fastfetch"
 configs["fontconfig"]="$HOME/.config/fontconfig"
 
 configs["navi-cheats"]="$HOME/.local/share/navi"

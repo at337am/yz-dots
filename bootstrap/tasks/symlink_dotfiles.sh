@@ -54,11 +54,6 @@ vscode
 rm -rf ~/.lain
 ln -sv "$DOTS_PATH/.lain" ~/.lain
 
-rm -rf \
-	~/.config/fastfetch \
-	~/.cache/fastfetch
-ln -sv "$DOTS_PATH/.config/fastfetch" ~/.config/fastfetch
-
 rm -rf ~/.config/fd
 ln -sv "$DOTS_PATH/.config/fd" ~/.config/fd
 
