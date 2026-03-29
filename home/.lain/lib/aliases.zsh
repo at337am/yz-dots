@@ -43,11 +43,17 @@ alias as='printf "zsh: as command disabled\n"'
 alias ,dl='cd ~/Downloads'
 alias ,dlt='cd /data/dl_tg'
 alias ,dlx='cd /data/hello/dl_xhs'
+
 alias ,nt='cd ~/Documents/notes'
 alias ,mm='cd ~/Documents/memos'
-alias ,yz='cd /workspace/dev/yz-dots'
-alias ,skit='cd /workspace/dev/skit'
+
 alias ,dev='cd /workspace/dev'
 alias ,tmp='cd /workspace/tmp'
+
+alias ,yz='cd /workspace/dev/yz-dots'
+alias ,rd='cd /workspace/dev/raindrop'
+alias ,skit='cd /workspace/dev/skit'
+alias ,sayhello='cd /workspace/dev/sayhello'
+
 alias ,xhs='cd /data/hello/pending/xhs'
 alias ,var='cd /data/hello/pending/var'
