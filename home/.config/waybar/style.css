@@ -26,7 +26,7 @@ window#waybar {
 
 
 
-/* 左右最外边: 6px+2px=8px */
+/* 左右最外边: 2px+6px=8px */
 /* 2px*2=4px */
 #tags {
     margin: 4px 6px;
