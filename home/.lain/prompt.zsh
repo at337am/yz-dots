@@ -65,7 +65,7 @@ precmd() {
     custom_git_info=$(get_git_status)
 }
 
-# 拦截清屏
+# 拦截清屏命令
 alias clear='_prompt_needs_newline=; command clear'
 alias reset='_prompt_needs_newline=; command reset'
 
