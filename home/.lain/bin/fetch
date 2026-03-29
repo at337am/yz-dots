@@ -7,12 +7,6 @@
 
 set -euo pipefail
 
-if [[ "$#" -ne 0 ]]; then
-    printf "Error: Invalid arguments.\n" >&2
-    printf "Usage: %s\n" "$(basename "$0")" >&2
-    exit 1
-fi
-
 # 定义颜色
 B_CYAN='\033[1;36m'     # 青色加粗
 B_BLACK='\033[1;30m'    # 黑色加粗
