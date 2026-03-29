@@ -73,7 +73,6 @@ sudo pacman -S --needed --noconfirm \
     cava \
     chafa \
     eza \
-    fastfetch \
     fcitx5 \
     fcitx5-configtool \
     fcitx5-gtk \
