@@ -17,14 +17,20 @@ B_CYAN='\033[1;36m'     # 青色加粗
 B_BLACK='\033[1;30m'    # 黑色加粗
 NC='\033[0m'            # 重置色
 
+
+
 # ------------- os -------------
 # 直接把文件「吸入 source」到当前 shell 的内存, 这样性能更好
 . /etc/os-release
 info_os="$PRETTY_NAME"
 
+
+
 # ------------- kernal -------------
 # 直接读取 /proc, 因为 uname -r 太慢了
 read -r info_kernel < /proc/sys/kernel/osrelease
+
+
 
 # ------------- wm -------------
 # 检查是否在运行 river 并获取版本
@@ -35,23 +41,34 @@ else
     info_wm="unknown"
 fi
 
+
+
 # ------------- terminal -------------
 info_term="${TERM:-${TERM_PROGRAM:-unknown}}"
 
+
+
 # ------------- disk -------------
-# 使用 %a (普通用户可用的块数 available) 而不是 %f (文件系统剩余块数 free)
-# 因为 linux 通常会为 root 用户预留 5% 的磁盘空间
-# %a 反映的是普通用户真正能使用的上限, 这与 df 命令的逻辑是一致的
+# linux 通常会为 root 用户预留 5% 的磁盘空间
+# 
+# %s 块大小 (通常为 4096)
+# %b 总块数 (整个磁盘)
+# %f 所有用户可用块 (文件系统剩余块数 free)
+# %a 普通用户可用块 (available)
 # 
 # 1024^3 = 1073741824
 # 
 # 一个细节: 这里 printf 输出的内容 是为了赋值给变量 (info_disk), 所以不需要在末尾加 \n
+
+# 磁盘用了多少 GiB (含 5% 预留) / 总共有多少 GiB
 info_disk=$(stat -f -c "%s %b %a" / | awk '{
     gib = $1 / 1073741824
     total = $2 * gib
     used = ($2 - $3) * gib
     printf "%.1f GiB / %.1f GiB", used, total
 }')
+
+
 
 # ------------- uptime -------------
 # 直接读取 /proc, 因为 uptime -p 太慢了
@@ -67,6 +84,8 @@ info_uptime=""
 (( d > 0 )) && info_uptime+="${d}d "
 (( h > 0 )) && info_uptime+="${h}h "
 info_uptime+="${m}m"
+
+
 
 # ------------- final output -------------
 print_line() {
