@@ -16,7 +16,7 @@
     aa = !git add --all && git status -bs
     aw = !git add --all && git commit -m "WIP"
     ps = push origin main
-    count = rev-list --count HEAD
+    cnt = rev-list --count HEAD
 [core]
     quotepath = false
     editor = nvim
