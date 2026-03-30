@@ -41,6 +41,7 @@ alias dc='printf "zsh: dc command disabled\n"'
 alias as='printf "zsh: as command disabled\n"'
 
 # cd path
+alias ,bin='cd ~/.lain/bin'
 alias ,Downloads='cd ~/Downloads'
 alias ,notes='cd ~/Documents/notes'
 alias ,memos='cd ~/Documents/memos'
