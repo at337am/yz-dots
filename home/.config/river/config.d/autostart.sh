@@ -18,6 +18,10 @@ riverctl spawn "kanshi"
 # 2 8 / 3 7
 riverctl spawn "rivertile -view-padding 3 -outer-padding 7 -main-ratio 0.5"
 
+# 壁纸放在在显示器启动后执行
+riverctl spawn "awww-daemon"
+riverctl spawn "waybar"
+
 riverctl spawn "nm-applet --indicator"
 riverctl spawn "foot --server"
 riverctl spawn "mako"
@@ -30,10 +34,6 @@ riverctl spawn "env LC_ALL=C thunar --daemon"
 
 # 自动熄屏和锁屏
 riverctl spawn "swayidle -w"
-
-# 这些放在最后执行, (壁纸一定要放在显示器之后执行)
-riverctl spawn "waybar"
-riverctl spawn "awww-daemon"
 
 # 最后执行一些脚本
 (
