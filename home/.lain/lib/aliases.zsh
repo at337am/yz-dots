@@ -44,7 +44,7 @@ alias as='printf "zsh: as command disabled\n"'
 alias ,bin='cd ~/.lain/bin'
 alias ,Downloads='cd ~/Downloads'
 alias ,notes='cd ~/Documents/notes'
-alias ,memos='cd ~/Documents/memos'
+alias ,insights='cd ~/Documents/insights'
 
 alias ,dl_tg='cd /data/dl_tg'
 alias ,dl_xhs='cd /data/hello/dl_xhs'
