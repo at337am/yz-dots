@@ -80,9 +80,6 @@ configure_ssh_keys() {
 home_symlinks() {
     rm -rf ~/workspace
     ln -sv /workspace ~/workspace
-
-    rm -rf ~/tidy
-    ln -sv /workspace/dev/yz-dots/tidy ~/tidy
 }
 
 create_path
