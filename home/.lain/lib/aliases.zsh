@@ -59,3 +59,5 @@ alias ,yz-dots='cd /workspace/dev/yz-dots'
 alias ,raindrop='cd /workspace/dev/raindrop'
 alias ,skit='cd /workspace/dev/skit'
 alias ,sayhello='cd /workspace/dev/sayhello'
+
+alias ,tidy='cd /workspace/dev/yz-dots/tidy'
