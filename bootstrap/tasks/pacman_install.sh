@@ -187,15 +187,11 @@ sudo pacman -S --needed --noconfirm \
     wlopm
 
 
-# ----- note -----
-# 
-# 
+# ------ note ------
 # 
 # foot 在我的 sway 上存在卡顿 bug, 一直找不到原因, 垃圾 sway 狗都不用
 # 
-# 
 # 已弃用的软件包:
-# 
 # mgba-qt
 # acpid (监听 ACPI 事件)
 # power-profiles-daemon (电源调度策略)
