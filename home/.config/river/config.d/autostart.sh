@@ -5,7 +5,7 @@ pkill -x "kanshi"       || true
 pkill -x "mako"         || true
 pkill -x "swayidle"     || true
 pkill -x "waybar"       || true
-pkill -x "swww-daemon"  || true
+pkill -x "awww-daemon"  || true
 pkill -x "wob"          || true
 
 riverctl spawn "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
@@ -33,7 +33,7 @@ riverctl spawn "swayidle -w"
 
 # 这些放在最后执行, (壁纸一定要放在显示器之后执行)
 riverctl spawn "waybar"
-riverctl spawn "swww-daemon"
+riverctl spawn "awww-daemon"
 
 # 最后执行一些脚本
 (

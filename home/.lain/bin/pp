@@ -12,8 +12,8 @@ GREEN='\033[0;32m'      # 绿色
 NC='\033[0m'            # 重置色
 
 # 依赖检查
-if ! command -v "swww" &> /dev/null; then
-    printf "${RED}Error:${NC} Missing dependency: swww\n" >&2
+if ! command -v "awww" &> /dev/null; then
+    printf "${RED}Error:${NC} Missing dependency: awww\n" >&2
     exit 1
 fi
 
@@ -30,9 +30,9 @@ if [[ ! -f "$IMG_PATH" ]]; then
     exit 1
 fi
 
-swww img "$IMG_PATH" --transition-type none
+awww img "$IMG_PATH" --transition-type none
 
 # 开启动画效果
-# swww img "$IMG_PATH" --transition-type any --transition-angle 60 --transition-step 90
+# awww img "$IMG_PATH" --transition-type any --transition-angle 60 --transition-step 90
 
 printf "${GREEN}Wallpaper has been changed to: %s${NC}\n" "$IMG_PATH"

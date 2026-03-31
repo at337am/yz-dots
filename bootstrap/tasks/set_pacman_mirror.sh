@@ -6,23 +6,8 @@ set -euo pipefail
 
 mirrors='#
 # Arch Linux repository mirrorlist
-# Generated on 2025-11-28
+# Generated on 2026-03-31
 #
-
-# Taiwan
-Server = http://mirror.archlinux.tw/ArchLinux/$repo/os/$arch
-Server = https://mirror.archlinux.tw/ArchLinux/$repo/os/$arch
-Server = http://archlinux.ccns.ncku.edu.tw/archlinux/$repo/os/$arch
-Server = https://archlinux.ccns.ncku.edu.tw/archlinux/$repo/os/$arch
-Server = http://tw.mirrors.cicku.me/archlinux/$repo/os/$arch
-Server = https://tw.mirrors.cicku.me/archlinux/$repo/os/$arch
-Server = http://free.nchc.org.tw/arch/$repo/os/$arch
-Server = https://taipei.mirror.pkgbuild.com/$repo/os/$arch
-Server = http://archlinux.cs.nycu.edu.tw/$repo/os/$arch
-Server = https://archlinux.cs.nycu.edu.tw/$repo/os/$arch
-Server = http://ftp.tku.edu.tw/Linux/ArchLinux/$repo/os/$arch
-Server = http://mirror.twds.com.tw/archlinux/$repo/os/$arch
-Server = https://mirror.twds.com.tw/archlinux/$repo/os/$arch
 
 # Japan
 Server = http://mirror.aria-on-the-planet.es/archlinux/$repo/os/$arch
@@ -38,6 +23,8 @@ Server = http://www.miraa.jp/archlinux/$repo/os/$arch
 Server = https://www.miraa.jp/archlinux/$repo/os/$arch
 Server = http://mirror.rain.ne.jp/archlinux/$repo/os/$arch
 Server = https://mirror.rain.ne.jp/archlinux/$repo/os/$arch
+Server = http://ftp.yz.yamagata-u.ac.jp/pub/linux/archlinux/$repo/os/$arch
+Server = https://ftp.yz.yamagata-u.ac.jp/pub/linux/archlinux/$repo/os/$arch
 '
 
 # 备份当前镜像列表

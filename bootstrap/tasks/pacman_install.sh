@@ -119,7 +119,7 @@ sudo pacman -S --needed --noconfirm \
     duf \
     hyperfine \
     cliphist \
-    swww \
+    awww \
     mako \
     fortune-mod \
     grim \
@@ -189,9 +189,6 @@ sudo pacman -S --needed --noconfirm \
 
 # ----- note -----
 # 
-# 目前的壁纸工具为 swww
-# 注意: swww 项目已改名为 awww, 但是目前 arch 官方仓库中还没有, 以后记得换!
-# https://codeberg.org/LGFae/awww
 # 
 # 
 # foot 在我的 sway 上存在卡顿 bug, 一直找不到原因, 垃圾 sway 狗都不用
