@@ -14,7 +14,7 @@ fi
 
 project_paths=(
     "$HOME/Documents/notes"
-    "$HOME/Documents/memos"
+    "$HOME/Documents/insights"
     "/workspace/dev/yz-dots"
     "/workspace/dev/skit"
     "/workspace/dev/raindrop"
