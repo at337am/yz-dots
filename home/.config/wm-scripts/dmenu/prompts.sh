@@ -15,7 +15,7 @@ notify() {
 
 prompts_path="$HOME/Documents/notes/prompts"
 
-choice=$(ls -1 "$prompts_path" | fuzzel --dmenu)
+choice=$(env LC_COLLATE=zh_CN.UTF-8 ls -1 "$prompts_path" | fuzzel --dmenu)
 
 # 如果按 Esc 退出, 则脚本结束
 [[ -z "$choice" ]] && exit 0
