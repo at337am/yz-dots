@@ -22,7 +22,7 @@ riverctl spawn "rivertile -view-padding 3 -outer-padding 7 -main-ratio 0.5"
 riverctl spawn "awww-daemon"
 riverctl spawn "waybar"
 
-riverctl spawn "nm-applet --indicator"
+riverctl spawn "env LANG=zh_CN.UTF-8 nm-applet --indicator"
 riverctl spawn "foot --server"
 riverctl spawn "mako"
 riverctl spawn "env LANG=zh_CN.UTF-8 fcitx5 -d --replace"
