@@ -3,6 +3,6 @@ Type=Application
 Terminal=false
 Name=NekoRay
 Comment=Longing for freedom
-Exec=/opt/soft/nekoray/nekoray
+Exec=env LANG=zh_CN.UTF-8 /opt/soft/nekoray/nekoray
 Icon=/opt/soft/nekoray/nekoray.png
 Categories=Network;
