@@ -30,7 +30,7 @@ riverctl spawn "wl-paste --type text --watch cliphist store"
 riverctl spawn "wl-paste --type image --watch cliphist store"
 # riverctl spawn "wl-clip-persist --clipboard regular"
 riverctl spawn "/usr/bin/lxqt-policykit-agent"
-riverctl spawn "env LC_ALL=C thunar --daemon"
+riverctl spawn "thunar --daemon"
 
 # 自动熄屏和锁屏
 riverctl spawn "swayidle -w"
