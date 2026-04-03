@@ -13,3 +13,6 @@ export FZF_DEFAULT_OPTS="--color=bg+:#565656,pointer:#c9bed0"
 export PATH="$HOME/.lain/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 # export PATH="$HOME/.cargo/bin:$PATH"
+
+# LANG
+export LANGUAGE=en_US.UTF-8

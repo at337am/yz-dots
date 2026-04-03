@@ -72,7 +72,6 @@ sudo pacman -S --needed --noconfirm \
     catimg \
     cava \
     chafa \
-    eza \
     fcitx5 \
     fcitx5-configtool \
     fcitx5-gtk \
@@ -197,3 +196,4 @@ sudo pacman -S --needed --noconfirm \
 # power-profiles-daemon (电源调度策略)
 # obs-studio
 # wl-clip-persist
+# eza
