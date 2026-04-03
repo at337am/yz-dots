@@ -30,6 +30,7 @@ pacman -S --needed --noconfirm \
     rsync \
     terminus-font
 
+# 启用英文和中文语言环境, 并生成系统可用的 locale 数据
 sed -i 's/^#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
 sed -i 's/^#zh_CN.UTF-8 UTF-8/zh_CN.UTF-8 UTF-8/' /etc/locale.gen
 
