@@ -15,20 +15,22 @@ alias date='LC_TIME=en_GB.UTF-8 date'
 alias ipv4='curl -sL4 icanhazip.com'
 
 # base
-alias ls='ls --color=auto'
+alias _='sudo'
 alias bn='bat -n'
 alias bd='bat -d'
 alias bp='bat -p'
+
+alias mv='mv -i'
+alias cp='cp -i'
+
+alias ls='ls --color=auto'
 
 alias l='ls -lh --time-style="+%y%m%d %H:%M"'
 alias lt='l --sort=time -r'
 alias lz='l --sort=size -r'
 
 alias la='ls -lhA --time-style="+%y%m%d %H:%M"'
-alias mv='mv -i'
-alias cp='cp -i'
 
-alias _='sudo'
 alias 1='cd -1'
 alias 2='cd -2'
 alias 3='cd -3'
@@ -38,6 +40,7 @@ alias 6='cd -6'
 alias 7='cd -7'
 alias 8='cd -8'
 alias 9='cd -9'
+
 alias r='printf "zsh: r command disabled\n"'
 alias fc='printf "zsh: fc command disabled\n"'
 alias dc='printf "zsh: dc command disabled\n"'
