@@ -15,14 +15,16 @@ alias date='LC_TIME=en_GB.UTF-8 date'
 alias ipv4='curl -sL4 icanhazip.com'
 
 # base
+alias ls='ls --color=auto'
 alias bn='bat -n'
 alias bd='bat -d'
 alias bp='bat -p'
-alias ls='ls --color=auto'
-alias l='ls -A'
-alias ll='l -lh --time-style="+%y%m%d %H:%M"'
-alias lt='ll --sort=time -r'
-alias lz='ll --sort=size -r'
+
+alias l='ls -lh --time-style="+%y%m%d %H:%M"'
+alias lt='l --sort=time -r'
+alias lz='l --sort=size -r'
+
+alias la='ls -lhA --time-style="+%y%m%d %H:%M"'
 alias mv='mv -i'
 alias cp='cp -i'
 
