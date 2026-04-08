@@ -27,7 +27,7 @@ usage() {
     printf "  %s [flags]\n" "$(basename "$0")"
     printf "\nFlags:\n"
     printf "  -b, --bak             备份整个 NekoRay\n"
-    printf "  -r, --restore         重置整个 NekoRay (默认)\n"
+    printf "  -r, --restore         重置整个 NekoRay\n"
     printf "  -u, --update          更新 NekoRay 的 Geo Assets\n"
     printf "  -h, --help            Show this help message\n"
 }
