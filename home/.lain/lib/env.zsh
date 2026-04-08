@@ -12,11 +12,9 @@ export FZF_DEFAULT_OPTS="--color=bg+:#565656,pointer:#c9bed0"
 
 export PATH="$HOME/.lain/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
-# export PATH="$HOME/.cargo/bin:$PATH"
-
 
 # 自定义 ls 颜色
-# 加载自定义 dircolors
+# 测试: 加载自定义 dircolors
 # [[ -f ~/.dircolors ]] && eval "$(dircolors ~/.dircolors)"
 
 # 静态注入
