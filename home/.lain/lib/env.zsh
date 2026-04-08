@@ -17,4 +17,3 @@ export PATH="$HOME/go/bin:$PATH"
 
 [[ -f ~/.dircolors ]] && eval "$(dircolors ~/.dircolors)"
 alias ls='ls --color=auto'
-
