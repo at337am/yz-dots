@@ -15,6 +15,7 @@ export PATH="$HOME/go/bin:$PATH"
 # export PATH="$HOME/.cargo/bin:$PATH"
 
 
+# 自定义 ls 颜色
 # 加载自定义 dircolors
 # [[ -f ~/.dircolors ]] && eval "$(dircolors ~/.dircolors)"
 
