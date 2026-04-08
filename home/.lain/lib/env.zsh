@@ -13,3 +13,8 @@ export FZF_DEFAULT_OPTS="--color=bg+:#565656,pointer:#c9bed0"
 export PATH="$HOME/.lain/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 # export PATH="$HOME/.cargo/bin:$PATH"
+
+
+[[ -f ~/.dircolors ]] && eval "$(dircolors ~/.dircolors)"
+alias ls='ls --color=auto'
+

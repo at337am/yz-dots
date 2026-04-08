@@ -23,8 +23,6 @@ alias bp='bat -p'
 alias mv='mv -i'
 alias cp='cp -i'
 
-alias ls='ls --color=auto'
-
 alias l='ls -lh --time-style="+%y%m%d %H:%M"'
 alias lt='l --sort=time -r'
 alias lz='l --sort=size -r'
