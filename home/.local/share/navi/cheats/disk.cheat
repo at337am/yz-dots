@@ -22,4 +22,4 @@ sudo fdisk -l
 % disk, fuser
 
 # 显示挂载目录被哪些进程占用
-sudo fuser -v /run/media/yz/EUNU
+sudo fuser -v /run/media/yz/IUDISK
