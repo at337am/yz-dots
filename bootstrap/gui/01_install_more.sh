@@ -23,10 +23,6 @@ yay -S --needed --noconfirm \
     visual-studio-code-bin \
     lswt
 
-# 播放音频时禁止自动休眠
-yay -S --needed --noconfirm \
-    wayland-pipewire-idle-inhibit
-
 # 常用重量级原生 GUI 软件
 sudo pacman -S --needed --noconfirm \
     obsidian \
@@ -34,6 +30,10 @@ sudo pacman -S --needed --noconfirm \
     discord \
     firefox \
     inkscape
+
+# 播放音频时禁止自动休眠
+yay -S --needed --noconfirm \
+    wayland-pipewire-idle-inhibit
 
 # 设置服务开机自启
 systemctl --user enable wayland-pipewire-idle-inhibit
