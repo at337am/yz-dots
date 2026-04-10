@@ -1,28 +1,21 @@
+% disk, df
+
+# 显示文件系统使用率 (仅显示已挂载)
+df -hT -x tmpfs -x devtmpfs -x efivarfs
+
+
+
 % disk, lsblk
 
-# 查看所有磁盘、分区和挂载点 (包含未挂载) - 最常用
+# 显示块设备结构 (包含未挂载)
 lsblk -pf
 
 
 
 % disk, fdisk
 
-# 查看和操作磁盘分区表, 底层的分区细节 (包含未挂载)
+# 显示磁盘分区表 (包含未挂载)
 sudo fdisk -l
-
-
-
-% disk, df
-
-# 查看已挂载的磁盘空间使用情况 (仅显示已挂载) - df
-df -hT
-
-
-
-% disk, duf
-
-# 查看已挂载的磁盘空间使用情况 (仅显示已挂载) - duf
-duf
 
 
 
