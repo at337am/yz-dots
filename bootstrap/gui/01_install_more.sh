@@ -23,6 +23,10 @@ yay -S --needed --noconfirm \
     visual-studio-code-bin \
     lswt
 
+# 播放音频时防止自动休眠
+yay -S --needed --noconfirm \
+    wayland-pipewire-idle-inhibit
+
 # 常用重量级原生 GUI 软件
 sudo pacman -S --needed --noconfirm \
     obsidian \
