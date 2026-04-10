@@ -115,7 +115,6 @@ sudo pacman -S --needed --noconfirm \
     cowsay \
     udisks2 \
     lf \
-    duf \
     hyperfine \
     cliphist \
     awww \
@@ -197,3 +196,4 @@ sudo pacman -S --needed --noconfirm \
 # obs-studio
 # wl-clip-persist
 # eza
+# duf
