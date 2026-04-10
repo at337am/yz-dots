@@ -46,6 +46,7 @@ alias as='printf "zsh: as command disabled\n"'
 
 # cd path
 alias ,bin='cd ~/.lain/bin'
+alias ,lib='cd ~/.lain/lib'
 alias ,Downloads='cd ~/Downloads'
 alias ,notes='cd ~/Documents/notes'
 alias ,insights='cd ~/Documents/insights'
