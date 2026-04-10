@@ -12,7 +12,7 @@ alias update='yay -Syyu'
 alias cnt-zh='wl-paste | rg -o -N "\p{Han}" | wc -l'
 alias date='LC_TIME=en_GB.UTF-8 date'
 alias ipv4='curl -sL4 icanhazip.com'
-alias disk='df -hT -x tmpfs -x devtmpfs -x efivarfs'
+alias df='df -hT -x tmpfs -x devtmpfs -x efivarfs'
 
 # base
 alias _='sudo'
