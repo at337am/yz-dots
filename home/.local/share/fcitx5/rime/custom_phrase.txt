@@ -222,8 +222,10 @@ todo	tood
 
 
 
+，	dh
 ，	douhoa
 ，	douhao
+。	jh
 。	juhoa
 。	juhao
 ：	maohoa
@@ -235,6 +237,7 @@ todo	tood
 ！	gantanhoa
 ！	gantanhao
 ！	gth
+？	wh
 ？	wenhoa
 ？	wenhao
 ？	wenghoa
