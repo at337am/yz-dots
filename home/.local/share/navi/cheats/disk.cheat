@@ -1,10 +1,3 @@
-% disk, df
-
-# 显示文件系统使用率 (仅显示已挂载)
-df -hT -x tmpfs -x devtmpfs -x efivarfs
-
-
-
 % disk, lsblk
 
 # 显示块设备结构 (包含未挂载)
