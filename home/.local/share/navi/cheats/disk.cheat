@@ -19,22 +19,6 @@ sudo fdisk -l
 
 
 
-% disk, udisksctl
-
-# 显示物理驱动器列表
-udisksctl status
-
-# 挂载 U 盘 (插入后执行)
-udisksctl mount -b /dev/sda1
-
-# 卸载 U 盘
-udisksctl unmount -b /dev/sda1
-
-# 给 U 盘断电 (拔出前执行)
-udisksctl power-off -b /dev/sda
-
-
-
 % disk, fuser
 
 # 显示挂载目录被哪些进程占用
